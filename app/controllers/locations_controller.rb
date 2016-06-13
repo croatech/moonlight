@@ -2,11 +2,19 @@ class LocationsController < ApplicationController
 
   before_action :authenticate_user!
 
+  layout 'main'
+
   def main
-    @location = Location.find_by(slug: params[:slug])
+    @location = location('main')
   end
 
-  def show
-    @location = Location.find_by(slug: params[:slug])
+  def shop
+    @location = location('shop')
+  end
+
+  private
+
+  def location(name)
+    Location.find_by(slug: name)
   end
 end

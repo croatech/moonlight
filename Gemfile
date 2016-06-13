@@ -25,6 +25,10 @@ gem 'devise'
 gem 'acts_as_tree'
 gem 'rails-observers'
 gem "haml-rails", "~> 0.9"
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootswatch-rails'
+gem 'better_errors'
+gem 'quiet_assets'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

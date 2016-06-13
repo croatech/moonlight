@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   root 'locations#main'
 
   devise_for :users
-  resources :locations, only: :show
+  resources :locations, only: :show do
+    collection do
+      get :main
+      get :shop
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
