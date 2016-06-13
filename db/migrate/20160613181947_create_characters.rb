@@ -3,7 +3,9 @@ class CreateCharacters < ActiveRecord::Migration
     create_table :characters do |t|
       t.string :name
       t.integer :location_id
+      t.integer :user_id
       t.references :location, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
       t.integer :head
       t.integer :chest
       t.integer :shoulders
