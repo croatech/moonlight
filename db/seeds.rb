@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Location.create(name: 'Mushroom Town', slug: 'main')
+Location.create(name: 'Shop', slug: 'shop', parent_id: Location.find_by(slug: 'main').id)

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  location_id: 1
+  location_id: 
+  head: 1
+  chest: 1
+  shoulders: 1
+  gloves: 1
+  legs: 1
+  weapon: 1
+
+two:
+  name: MyString
+  location_id: 1
+  location_id: 
+  head: 1
+  chest: 1
+  shoulders: 1
+  gloves: 1
+  legs: 1
+  weapon: 1
