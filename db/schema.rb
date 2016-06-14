@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613191254) do
+ActiveRecord::Schema.define(version: 20160614103207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,44 @@ ActiveRecord::Schema.define(version: 20160613191254) do
     t.integer  "gloves"
     t.integer  "legs"
     t.integer  "weapon"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.integer  "cash",        default: 300
+    t.integer  "attack",      default: 1
+    t.integer  "defense",     default: 1
+    t.integer  "hp",          default: 20
+    t.integer  "level",       default: 1
+    t.integer  "exp",         default: 0
+    t.integer  "exp_next",    default: 100
   end
 
   add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
+
+  create_table "item_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "slug"
+  end
+
+  create_table "item_items", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.integer  "attack",             default: 0
+    t.integer  "defense",            default: 0
+    t.integer  "hp",                 default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "level"
+    t.integer  "cost"
+  end
+
+  add_index "item_items", ["category_id"], name: "index_item_items_on_category_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"

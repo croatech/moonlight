@@ -1,0 +1,4 @@
+.col-md-3.categories
+  - @categories.each do |c|
+    .category
+      = link_to c.name, item_category_path(c.slug), class: 'category-btn btn btn-default'

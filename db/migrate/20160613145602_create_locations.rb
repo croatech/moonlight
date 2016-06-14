@@ -4,8 +4,6 @@ class CreateLocations < ActiveRecord::Migration
       t.string :name
       t.integer :parent_id
       t.string :slug
-
-      t.timestamps null: false
     end
   end
 end

@@ -29,6 +29,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootswatch-rails'
 gem 'better_errors'
 gem 'quiet_assets'
+gem 'awesome_print'
+gem 'paperclip'
+gem 'draper'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

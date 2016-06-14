@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :item do
+    resources :categories, only: [:index, :show]
+  end
+
   root 'locations#main'
 
   devise_for :users
