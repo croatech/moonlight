@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resource :profile, only: :show
+  resource :profile, only: :show do
+    get :stats
+    get :inventory
+  end
 
   namespace :item do
     resources :categories, only: [:index, :show]

@@ -7,8 +7,17 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .container-fluid
+    .container-fluid.profile
       .row
-        = render 'shared/main/header'
-        
-      = yield
+        .header
+          %nav.navbar
+            %ul
+              %li= link_to 'Inventory', inventory_profile_path, class: 'btn btn-default'
+              %li= link_to 'Stats', stats_profile_path, class: 'btn btn-default'
+              %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
+              %li
+                Gold:
+                = current_user.character.cash
+      
+      .container
+        = yield

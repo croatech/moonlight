@@ -1,6 +1,7 @@
-.profile
+.show
   .col-md-4
-    d
+    = render 'shared/profiles/profile'
+
   .col-md-8.items
     - if @items.present?
       - @items.each do |item|
