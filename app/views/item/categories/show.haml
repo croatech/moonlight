@@ -27,6 +27,6 @@
               = item.hp
 
             .buy-button
-              = link_to "Buy for #{item.cost}", root_path, class: 'btn btn-info'
+              = link_to "Buy for #{item.cost}", item_item_buy_path(item.id), method: :post, class: 'btn btn-info'
     - else
       %h2 No items

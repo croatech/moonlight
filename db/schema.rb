@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614103207) do
+ActiveRecord::Schema.define(version: 20160614145536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160614103207) do
     t.integer  "level",       default: 1
     t.integer  "exp",         default: 0
     t.integer  "exp_next",    default: 100
+    t.string   "inventory",   default: [],               array: true
   end
 
   add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree

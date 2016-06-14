@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   namespace :item do
     resources :categories, only: [:index, :show]
+    resources :items, except: :all do
+      post :buy
+    end
   end
 
   root 'locations#main'

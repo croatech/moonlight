@@ -1,4 +1,5 @@
 class Item::ItemDecorator < Draper::Decorator
+  
   delegate_all
 
   def level_status(character)
@@ -8,9 +9,4 @@ class Item::ItemDecorator < Draper::Decorator
       h.content_tag(:div, self.level)
     end
   end
-
-  def buy_button(character)
-    
-  end
-
 end

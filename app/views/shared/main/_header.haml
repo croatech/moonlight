@@ -6,6 +6,9 @@
       %li= link_to 'Bestiary', shop_locations_path, class: 'btn btn-default'
       %li= link_to 'Profile', shop_locations_path, class: 'btn btn-success'
       %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
+      %li
+        Gold:
+        = current_user.character.cash
     
     
     

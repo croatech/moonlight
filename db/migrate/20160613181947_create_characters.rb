@@ -19,6 +19,7 @@ class CreateCharacters < ActiveRecord::Migration
       t.integer :attack,      default: 1
       t.integer :defense,     default: 1
       t.integer :hp,          default: 20
+      t.string  :inventory, array: true, default: '{}'
 
       t.timestamps null: false
     end
