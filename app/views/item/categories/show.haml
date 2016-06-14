@@ -4,29 +4,7 @@
   .col-md-9.items
     - if @items.present?
       - @items.each do |item|
-        .item.row
-          .col-md-3
-            = image_tag item.image.url, class: 'item-img'
-
-          .col-md-9
-            .level
-              = item.level_status(current_user.character)
-
-            %h2= item.name
-
-            .attack.stat
-              = image_tag 'items/attack.png'
-              = item.attack
-
-            .defense.stat
-              = image_tag 'items/defense.png'
-              = item.defense
-
-            .hp.stat
-              = image_tag 'items/hp.png'
-              = item.hp
-
-            .buy-button
-              = link_to "Buy for #{item.cost}", item_item_buy_path(item.id), method: :post, class: 'btn btn-info'
+        = render item, item: item
+      
     - else
       %h2 No items

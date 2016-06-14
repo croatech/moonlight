@@ -1,0 +1,24 @@
+.item.row
+  .col-md-3
+    = image_tag item.image.url, class: 'item-img'
+
+  .col-md-9
+    .level
+      = item.level_status(current_user.character)
+
+    %h2= item.name
+
+    .attack.stat
+      = image_tag 'items/attack.png'
+      = item.attack
+
+    .defense.stat
+      = image_tag 'items/defense.png'
+      = item.defense
+
+    .hp.stat
+      = image_tag 'items/hp.png'
+      = item.hp
+
+    .buy-button
+      = item.buy_or_wear_button(current_user.character)

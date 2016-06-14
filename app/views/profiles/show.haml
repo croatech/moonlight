@@ -1,0 +1,7 @@
+.profile
+  .col-md-4
+    d
+  .col-md-8.items
+    - if @items.present?
+      - @items.each do |item|
+        = render item, item: item

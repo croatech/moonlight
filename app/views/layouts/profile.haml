@@ -8,4 +8,7 @@
     = csrf_meta_tags
   %body
     .container-fluid
+      .row
+        = render 'shared/main/header'
+        
       = yield
