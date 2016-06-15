@@ -8,10 +8,10 @@ class Profile::Stats::IncreaseService
   end
 
   def call
-    stat_method = "increase_#{stat}".to_sym
+    increasing_method = "increase_#{stat}".to_sym
 
     if profile.free_stats > 0
-      profile.public_send(stat_method)
+      profile.public_send(increasing_method)
       decrement_free_stats
     end
   end
