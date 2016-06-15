@@ -1,10 +1,10 @@
 class Items::BuyItemService
   
-  attr_reader :item, :character
+  attr_reader :item, :profile
 
-  def initialize(item, character)
+  def initialize(item, profile)
     @item = item
-    @character =  character
+    @profile =  profile
   end
 
   def call
@@ -16,14 +16,14 @@ class Items::BuyItemService
   private
 
   def is_money_enough?
-    true if character.cash >= item.cost
+    true if profile.cash >= item.cost
   end
 
   def withdraw_money 
-    character.decrement!(:cash, item.cost)
+    profile.decrement!(:cash, item.cost)
   end
 
   def put_item_in_inventory
-    Inventory::PutInService.new(character, item).call
+    Inventory::PutInService.new(profile, item).call
   end
 end 

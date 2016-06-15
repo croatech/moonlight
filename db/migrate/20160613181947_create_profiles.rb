@@ -1,6 +1,6 @@
-class CreateCharacters < ActiveRecord::Migration
+class CreateProfiles < ActiveRecord::Migration
   def change
-    create_table :characters do |t|
+    create_table :profiles do |t|
       t.string :name
       t.integer :location_id
       t.integer :user_id

@@ -1,0 +1,29 @@
+.show
+  .col-md-4
+    = render 'shared/profiles/profile'
+
+  .col-md-8
+    .stats
+      .level
+        %h3= "Level: #{@profile.level}"
+
+      %h2= @profile.name
+
+      .attack.stat
+        = image_tag 'items/attack.png'
+        = @profile.attack
+        = link_to '+', profile_stat_increase_path(stat_id: 'attack'), method: :post
+
+      .defense.stat
+        = image_tag 'items/defense.png'
+        = @profile.defense
+        = link_to '+', profile_stat_increase_path(stat_id: 'defense'), method: :post
+
+      .hp.stat
+        = image_tag 'items/hp.png'
+        = @profile.hp
+        = link_to '+', profile_stat_increase_path(stat_id: 'hp'), method: :post
+
+      .free-stats.stat
+        Free stats:
+        = @profile.free_stats

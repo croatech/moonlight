@@ -2,7 +2,7 @@ class Item::ItemsController < ApplicationController
 
   def buy
     item = Item::Item.find(params[:item_id])
-    service = Items::BuyItemService.new(item, current_user.character)
+    service = Items::BuyItemService.new(item, current_user.profile)
 
     if service.call
       redirect_to :back

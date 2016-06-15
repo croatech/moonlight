@@ -4,7 +4,7 @@
 
   .col-md-9
     .level
-      = item.level_status(current_user.character)
+      = item.level_status(current_user.profile)
 
     %h2= item.name
 
@@ -21,4 +21,4 @@
       = item.hp
 
     .buy-button
-      = item.buy_or_wear_button(current_user.character)
+      = item.buy_or_wear_button(current_user.profile)

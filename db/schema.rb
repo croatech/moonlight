@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614145536) do
+ActiveRecord::Schema.define(version: 20160615151916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "characters", force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string   "name"
     t.integer  "location_id"
     t.integer  "head"
@@ -35,10 +35,11 @@ ActiveRecord::Schema.define(version: 20160614145536) do
     t.integer  "level",       default: 1
     t.integer  "exp",         default: 0
     t.integer  "exp_next",    default: 100
-    t.string   "inventory",   default: [],  array: true
+    t.string   "inventory",   default: [],               array: true
+    t.integer  "free_stats",  default: 10
   end
 
-  add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
+  add_index "profiles", ["location_id"], name: "index_profiles_on_location_id", using: :btree
 
   create_table "item_categories", force: :cascade do |t|
     t.string   "name"
@@ -91,5 +92,5 @@ ActiveRecord::Schema.define(version: 20160614145536) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "characters", "locations"
+  add_foreign_key "profiles", "locations"
 end

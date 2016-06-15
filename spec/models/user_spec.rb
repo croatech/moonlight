@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe User do
   
-  it 'checks character observer' do
+  it 'checks profile observer' do
     user = User.create(email: 'test@gmail.com', password: 'password')
-    expect(user.character.user_id).to eq user.id
+    expect(user.profile.user_id).to eq user.id
   end
 
 end

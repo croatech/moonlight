@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
-  resource :profile, only: :show do
-    get :stats
-    get :inventory
+  resource :profile, only: :show
+
+  namespace :profile do
+    resources :stats, only: :index do
+      post :increase
+    end
+    resource :inventory, only: :show
   end
 
   namespace :item do
