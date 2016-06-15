@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user
 
   STATS = ['attack', 'defense', 'hp']
+  SLOTS = ['head', 'chest', 'shoulders', 'hands', 'legs', 'weapon', 'shield']
 
   # generating of methods for an increasing of stats
   STATS.each do |stat|

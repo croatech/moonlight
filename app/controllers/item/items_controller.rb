@@ -21,5 +21,9 @@ class Item::ItemsController < ApplicationController
   end
 
   def put_off
+    item = Item::Item.find(params[:item_id])
+    service = Profile::Inventory::PutOffService.new(current_user.profile, item)
+    service.call
+    redirect_to :back
   end
 end

@@ -12,9 +12,8 @@
   .avatar
     = image_tag 'profiles/warrior.jpg', class: 'avatar'
 
-  .profile-items
-    .head.item
-      = image_tag @head.image.url if @head.present?
-
-    .weapon.item
-      = image_tag @weapon.image.url if @weapon.present?
+  - if @inventory_items.present?
+    - @inventory_items.each do |item|
+      .profile-items
+        %div{class: "item.category.name item"}
+          = image_tag item.image.url

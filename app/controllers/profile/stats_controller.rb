@@ -4,7 +4,8 @@ class Profile::StatsController < ApplicationController
 
   def index
     @profile = current_user.profile
-    get_equipment
+    item_ids = Profile::Inventory::AllEquipmentService.new(current_user.profile).call
+    @items = Item::Item.where(id: item_ids)
   end
 
   def increase
