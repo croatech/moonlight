@@ -1,0 +1,20 @@
+.profile
+  .progress
+    .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: 100%"}
+      %span.sr-only 80% Complete (danger)
+      = "#{@profile.hp} hp"
+      
+  .progress
+    .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 100%"}
+      %span.sr-only 20% Complete
+      1 mp
+
+  .avatar
+    = image_tag 'profiles/warrior.jpg', class: 'avatar'
+
+  .items
+    .head.item
+      = image_tag @head.image.url if @head.present?
+
+    .weapon.item
+      = image_tag @weapon.image.url if @weapon.present?

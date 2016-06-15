@@ -12,6 +12,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.integer :gloves
       t.integer :legs
       t.integer :weapon
+      t.integer :shield
       t.integer :level, default: 1
       t.integer :exp, default: 0
       t.integer :exp_next, default: 100

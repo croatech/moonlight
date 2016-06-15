@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615151916) do
+ActiveRecord::Schema.define(version: 20160615190052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "profiles", force: :cascade do |t|
+  create_table "characters", force: :cascade do |t|
     t.string   "name"
     t.integer  "location_id"
     t.integer  "head"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160615151916) do
     t.integer  "free_stats",  default: 10
   end
 
-  add_index "profiles", ["location_id"], name: "index_profiles_on_location_id", using: :btree
+  add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
 
   create_table "item_categories", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +73,32 @@ ActiveRecord::Schema.define(version: 20160615151916) do
     t.datetime "updated_at", null: false
     t.string   "slug"
   end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "location_id"
+    t.integer  "head"
+    t.integer  "chest"
+    t.integer  "shoulders"
+    t.integer  "gloves"
+    t.integer  "legs"
+    t.integer  "weapon"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_id"
+    t.integer  "cash",        default: 300
+    t.integer  "attack",      default: 1
+    t.integer  "defense",     default: 1
+    t.integer  "hp",          default: 20
+    t.integer  "level",       default: 1
+    t.integer  "exp",         default: 0
+    t.integer  "exp_next",    default: 100
+    t.string   "inventory",   default: [],               array: true
+    t.integer  "free_stats",  default: 10
+    t.integer  "shield"
+  end
+
+  add_index "profiles", ["location_id"], name: "index_profiles_on_location_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

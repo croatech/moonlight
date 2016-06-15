@@ -3,4 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def get_equipment
+    profile = current_user.profile
+    items = Item::Item.all
+    @weapon = items.find_by(id: profile.weapon)
+    @head = items.find_by(id: profile.head)
+  end
 end

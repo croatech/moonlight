@@ -12,6 +12,7 @@
         .header
           %nav.navbar
             %ul
+              %li= link_to 'Profile', profile_path, class: 'btn btn-default'
               %li= link_to 'Inventory', profile_inventory_path, class: 'btn btn-default'
               %li= link_to 'Stats', profile_stats_path, class: 'btn btn-default'
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'

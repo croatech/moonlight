@@ -4,6 +4,7 @@ class Profile::StatsController < ApplicationController
 
   def index
     @profile = current_user.profile
+    get_equipment
   end
 
   def increase

@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class Profile::InventoriesController < ApplicationController
 
   layout 'profile'
 
