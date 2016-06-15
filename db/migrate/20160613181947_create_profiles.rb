@@ -9,7 +9,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.integer :head
       t.integer :chest
       t.integer :shoulders
-      t.integer :gloves
+      t.integer :hands
       t.integer :legs
       t.integer :weapon
       t.integer :shield

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615190052) do
+ActiveRecord::Schema.define(version: 20160615220233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,9 +80,10 @@ ActiveRecord::Schema.define(version: 20160615190052) do
     t.integer  "head"
     t.integer  "chest"
     t.integer  "shoulders"
-    t.integer  "gloves"
+    t.integer  "hands"
     t.integer  "legs"
     t.integer  "weapon"
+    t.integer  "shield"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "user_id"
@@ -95,7 +96,6 @@ ActiveRecord::Schema.define(version: 20160615190052) do
     t.integer  "exp_next",    default: 100
     t.string   "inventory",   default: [],               array: true
     t.integer  "free_stats",  default: 10
-    t.integer  "shield"
   end
 
   add_index "profiles", ["location_id"], name: "index_profiles_on_location_id", using: :btree

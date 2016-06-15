@@ -18,7 +18,7 @@ Item::Category.create(name: 'Legs', slug: 'legs')
 Item::Category.create(name: 'Weapon', slug: 'weapon')
 Item::Category.create(name: 'Shield', slug: 'shield')
 
-Item::Item.create(name: 'Dagger', category_id: Item::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, level: 1, cost: 50,
+Item::Item.create(name: 'Sword', category_id: Item::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, level: 1, cost: 50,
                       image: File.new("#{Rails.root}/public/items/weapon/sword.jpg"))
 Item::Item.create(name: 'Wind staff', category_id: Item::Category.find_by(slug: 'weapon').id, attack: 20, defense: 5, hp: 50, level: 3, cost: 150,
                       image: File.new("#{Rails.root}/public/items/weapon/wind_staff.jpg"))

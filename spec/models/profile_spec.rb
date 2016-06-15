@@ -7,7 +7,7 @@ describe Profile do
   let(:profile) { user.profile }
 
   context 'stats' do
-    # default after creating: attack:1, defense:1, hp:5
+    # default stats after creating: attack:1, defense:1, hp:5
 
     it 'checks increasing of attack' do
       profile.increase_attack
@@ -24,4 +24,4 @@ describe Profile do
       expect(profile.hp).to eq 25
     end
   end
-end
+end 

@@ -12,4 +12,14 @@ class Item::ItemsController < ApplicationController
       flash[:danger] = 'Not enough gold'
     end 
   end
+
+  def put_on
+    item = Item::Item.find(params[:item_id])
+    service = Profile::Inventory::PutOnService.new(current_user.profile, item)
+    service.call
+    redirect_to :back
+  end
+
+  def put_off
+  end
 end
