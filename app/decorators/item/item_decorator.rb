@@ -16,7 +16,7 @@ class Item::ItemDecorator < Draper::Decorator
     if profile.inventory.include?(self.id.to_s)
       h.link_to "Put on", item_item_put_on_path(self.id), method: :post, class: 'btn btn-info'
     else
-      h.link_to "Buy for #{self.cost}", item_item_buy_path(self.id), method: :post, class: 'btn btn-info'
+      h.link_to "Buy for #{self.cost} gold", item_item_buy_path(self.id), method: :post, class: 'btn btn-info'
     end
   end
 end

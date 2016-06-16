@@ -36,8 +36,8 @@ class Profile::Inventory::Put::OffService
   end
 
   def update_stats
-    profile.decrement(:attack, item.attack)
-    profile.decrement(:defense, item.defense)
-    profile.decrement(:hp, item.hp)
+    Profile.const_get("STATS").each do |stat_name|
+      profile.decrement(stat_name.to_sym, item[stat_name])
+    end
   end
 end

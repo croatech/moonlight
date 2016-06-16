@@ -18,9 +18,15 @@ Item::Category.create(name: 'Legs', slug: 'legs')
 Item::Category.create(name: 'Weapon', slug: 'weapon')
 Item::Category.create(name: 'Shield', slug: 'shield')
 
-Item::Item.create(name: 'Sword', category_id: Item::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, level: 1, cost: 50,
+Item::Item.create(name: 'Gold sword', category_id: Item::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, level: 1, cost: 50,
                       image: File.new("#{Rails.root}/public/items/weapon/sword.jpg"))
 Item::Item.create(name: 'Wind staff', category_id: Item::Category.find_by(slug: 'weapon').id, attack: 20, defense: 5, hp: 50, level: 3, cost: 150,
                       image: File.new("#{Rails.root}/public/items/weapon/wind_staff.jpg"))
-Item::Item.create(name: 'Helm', category_id: Item::Category.find_by(slug: 'head').id, attack: 0, defense: 10, hp: 30, level: 1, cost: 50,
+Item::Item.create(name: 'Gold helm', category_id: Item::Category.find_by(slug: 'head').id, attack: 0, defense: 10, hp: 30, level: 1, cost: 50,
                       image: File.new("#{Rails.root}/public/items/head/helm.jpg"))
+Item::Item.create(name: 'Gold shield', category_id: Item::Category.find_by(slug: 'shield').id, attack: 0, defense: 20, hp: 30, level: 1, cost: 50,
+                      image: File.new("#{Rails.root}/public/items/shield/shield.jpg"))
+Item::Item.create(name: 'Metal chest', category_id: Item::Category.find_by(slug: 'chest').id, attack: 0, defense: 50, hp: 50, level: 1, cost: 50,
+                      image: File.new("#{Rails.root}/public/items/chest/chest.jpg"))
+Item::Item.create(name: 'Metal shoes', category_id: Item::Category.find_by(slug: 'legs').id, attack: 10, defense: 10, hp: 10, level: 1, cost: 50,
+                      image: File.new("#{Rails.root}/public/items/legs/legs.jpg"))

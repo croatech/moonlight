@@ -50,8 +50,8 @@ class Profile::Inventory::Put::OnService
   end
 
   def update_stats
-    profile.increment(:attack, item.attack)
-    profile.increment(:defense, item.defense)
-    profile.increment(:hp, item.hp)
+    Profile.const_get("STATS").each do |stat_name|
+      profile.increment(stat_name.to_sym, item[stat_name])
+    end
   end
 end
