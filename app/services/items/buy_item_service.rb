@@ -16,11 +16,11 @@ class Items::BuyItemService
   private
 
   def is_money_enough?
-    true if profile.cash >= item.cost
+    true if profile.gold >= item.cost
   end
 
   def withdraw_money 
-    profile.decrement!(:cash, item.cost)
+    profile.decrement!(:gold, item.cost)
   end
 
   def put_item_in_inventory

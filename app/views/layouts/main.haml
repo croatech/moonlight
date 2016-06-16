@@ -19,7 +19,7 @@
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
               %li
                 Gold:
-                = current_user.profile.cash
+                = current_user.profile.gold
 
       .container
         = yield

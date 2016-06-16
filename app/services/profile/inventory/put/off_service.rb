@@ -16,6 +16,7 @@ class Profile::Inventory::Put::OffService
     if is_an_item_wear?
       put_an_old_item_in_inventory
       clear_slot
+      update_stats
       profile.save
     end
   end
@@ -32,5 +33,11 @@ class Profile::Inventory::Put::OffService
 
   def clear_slot
     profile[item_type] = nil
+  end
+
+  def update_stats
+    profile.decrement(:attack, item.attack)
+    profile.decrement(:defense, item.defense)
+    profile.decrement(:hp, item.hp)
   end
 end

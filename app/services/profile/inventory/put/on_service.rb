@@ -17,6 +17,7 @@ class Profile::Inventory::Put::OnService
       put_an_old_item_in_inventory if slot_is_busy?
       delete_a_new_item_from_inventory
       put_a_new_item_in_a_slot
+      update_stats
       profile.save
     end
   end
@@ -46,5 +47,11 @@ class Profile::Inventory::Put::OnService
 
   def put_an_old_item_in_inventory
     profile.inventory << profile[item_type]
+  end
+
+  def update_stats
+    profile.increment(:attack, item.attack)
+    profile.increment(:defense, item.defense)
+    profile.increment(:hp, item.hp)
   end
 end
