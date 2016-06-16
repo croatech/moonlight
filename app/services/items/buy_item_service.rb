@@ -24,6 +24,6 @@ class Items::BuyItemService
   end
 
   def put_item_in_inventory
-    Profile::Inventory::PutInService.new(profile, item).call
+    Profile::Inventory::Put::InService.new(profile, item).call
   end
 end 

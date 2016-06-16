@@ -15,14 +15,14 @@ class Item::ItemsController < ApplicationController
 
   def put_on
     item = Item::Item.find(params[:item_id])
-    service = Profile::Inventory::PutOnService.new(current_user.profile, item)
+    service = Profile::Inventory::Put::OnService.new(current_user.profile, item)
     service.call
     redirect_to :back
   end
 
   def put_off
     item = Item::Item.find(params[:item_id])
-    service = Profile::Inventory::PutOffService.new(current_user.profile, item)
+    service = Profile::Inventory::Put::OffService.new(current_user.profile, item)
     service.call
     redirect_to :back
   end

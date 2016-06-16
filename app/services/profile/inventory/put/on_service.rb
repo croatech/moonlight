@@ -1,6 +1,6 @@
-class Profile::Inventory::PutOnService
+class Profile::Inventory::Put::OnService
 
-  # put on(wear) an item
+  # put on an item in a slot
   
   attr_reader :profile, :inventory, :item, :item_id, :item_type
 

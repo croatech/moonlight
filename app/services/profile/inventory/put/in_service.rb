@@ -1,6 +1,6 @@
-class Profile::Inventory::PutInService
+class Profile::Inventory::Put::InService
 
-  # put in inventory item
+  # put an item in inventory
   
   attr_reader :profile, :inventory, :item
 

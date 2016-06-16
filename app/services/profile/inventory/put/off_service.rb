@@ -1,6 +1,6 @@
-class Profile::Inventory::PutOffService
+class Profile::Inventory::Put::OffService
 
-  # put on(wear) an item
+  # put off an item from a slot
   
   attr_reader :profile, :inventory, :item, :item_id, :item_type
 
@@ -13,7 +13,7 @@ class Profile::Inventory::PutOffService
   end
 
   def call
-    if is_an_item_weared?
+    if is_an_item_wear?
       put_an_old_item_in_inventory
       clear_slot
       profile.save
@@ -22,7 +22,7 @@ class Profile::Inventory::PutOffService
 
   private
 
-  def is_an_item_weared?
+  def is_an_item_wear?
     true if profile[item_type] == item_id
   end
 
