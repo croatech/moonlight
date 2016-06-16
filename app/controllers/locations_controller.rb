@@ -5,16 +5,17 @@ class LocationsController < ApplicationController
   layout 'main'
 
   def main
-    @location = location('main')
+    go_to_location('main')
   end
 
   def shop
-    @location = location('shop')
+    go_to_location('shop')
   end
 
   private
 
-  def location(name)
-    Location.find_by(slug: name)
+  def go_to_location(name)
+    @location = Location.find_by(slug: name)
+    Locations::ChangeLocationService.new(current_user.profile, @location.id).call
   end
 end

@@ -2,7 +2,7 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.string :name
-      t.integer :location_id
+      t.integer :location_id, default: 1
       t.integer :user_id
       t.references :location, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
