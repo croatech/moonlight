@@ -1,12 +1,12 @@
 class UserObserver < ActiveRecord::Observer
 
   def after_create(user)
-    profile_create(user)
+    player_create(user)
   end
 
   private
 
-  def profile_create(user)
-    Profile.create(user_id: user.id)
+  def player_create(user)
+    Player.create(user_id: user.id)
   end
 end

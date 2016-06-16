@@ -1,0 +1,29 @@
+.show
+  .col-md-6
+    = render 'players/player'
+
+  .col-md-6
+    .stats
+      .level
+        %h3= "Level: #{@player.level}"
+
+      %h2= @player.name
+
+      .attack.stat
+        = image_tag 'items/attack.png'
+        = @player.attack
+        = link_to '+', player_stat_increase_path(stat_id: 'attack'), method: :post
+
+      .defense.stat
+        = image_tag 'items/defense.png'
+        = @player.defense
+        = link_to '+', player_stat_increase_path(stat_id: 'defense'), method: :post
+
+      .hp.stat
+        = image_tag 'items/hp.png'
+        = @player.hp
+        = link_to '+', player_stat_increase_path(stat_id: 'hp'), method: :post
+
+      .free-stats.stat
+        Free stats:
+        = @player.free_stats

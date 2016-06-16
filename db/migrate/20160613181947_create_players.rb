@@ -1,6 +1,6 @@
-class CreateProfiles < ActiveRecord::Migration
+class CreatePlayers < ActiveRecord::Migration
   def change
-    create_table :profiles do |t|
+    create_table :players do |t|
       t.string :name
       t.integer :location_id, default: 1
       t.integer :user_id

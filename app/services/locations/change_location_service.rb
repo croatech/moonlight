@@ -1,14 +1,14 @@
 class Locations::ChangeLocationService
 
-  attr_reader :profile, :location_id
+  attr_reader :player, :location_id
 
-  def initialize(profile, location_id)
-    @profile = profile
+  def initialize(player, location_id)
+    @player = player
     @location_id = location_id
   end
 
   def call
-    profile.location_id = location_id
-    profile.save
+    player.location_id = location_id
+    player.save
   end
 end

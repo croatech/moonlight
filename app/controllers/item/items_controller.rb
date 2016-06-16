@@ -2,7 +2,7 @@ class Item::ItemsController < ApplicationController
 
   def buy
     item = Item::Item.find(params[:item_id])
-    service = Items::BuyItemService.new(item, current_user.profile)
+    service = Items::BuyItemService.new(item, current_user.player)
 
     if service.call
       redirect_to :back
@@ -15,14 +15,14 @@ class Item::ItemsController < ApplicationController
 
   def put_on
     item = Item::Item.find(params[:item_id])
-    service = Profile::Inventory::Put::OnService.new(current_user.profile, item)
+    service = Player::Inventory::Put::OnService.new(current_user.player, item)
     service.call
     redirect_to :back
   end
 
   def put_off
     item = Item::Item.find(params[:item_id])
-    service = Profile::Inventory::Put::OffService.new(current_user.profile, item)
+    service = Player::Inventory::Put::OffService.new(current_user.player, item)
     service.call
     redirect_to :back
   end

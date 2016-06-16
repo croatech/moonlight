@@ -7,19 +7,19 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .container-fluid.profile
+    .container-fluid.player
       .row
         .header
           %nav.navbar
             %ul
-              %li= link_to 'Profile', profile_path, class: 'btn btn-default'
-              %li= link_to 'Inventory', inventory_profile_path, class: 'btn btn-default'
-              %li= link_to 'Stats', profile_stats_path, class: 'btn btn-default'
-              %li= link_to "Back to #{current_user.profile.location.name}", location_path(current_user.profile.location.slug), class: 'btn btn-success'
+              %li= link_to 'Profile', player_path, class: 'btn btn-default'
+              %li= link_to 'Inventory', inventory_player_path, class: 'btn btn-default'
+              %li= link_to 'Stats', player_stats_path, class: 'btn btn-default'
+              %li= link_to "Back to #{current_user.player.location.name}", location_path(current_user.player.location.slug), class: 'btn btn-success'
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
               %li
-                = image_tag 'profiles/gold.png'
-                = current_user.profile.gold
+                = image_tag 'players/gold.png'
+                = current_user.player.gold
       
       .container
         = yield

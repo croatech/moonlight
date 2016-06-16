@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  resource :profile, only: :show do
+  resource :player, only: :show do
     get :inventory
   end
 
-  namespace :profile do
+  namespace :player do
     resources :stats, only: :index do
       post :increase
     end

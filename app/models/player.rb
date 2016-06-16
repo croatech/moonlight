@@ -1,4 +1,4 @@
-class Profile < ActiveRecord::Base
+class Player < ActiveRecord::Base
   
   belongs_to :location
   belongs_to :user

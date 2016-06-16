@@ -16,6 +16,6 @@ class LocationsController < ApplicationController
 
   def go_to_location(name)
     @location = Location.find_by(slug: name)
-    Locations::ChangeLocationService.new(current_user.profile, @location.id).call
+    Locations::ChangeLocationService.new(current_user.player, @location.id).call
   end
 end
