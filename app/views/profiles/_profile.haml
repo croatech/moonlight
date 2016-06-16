@@ -19,6 +19,29 @@
   - if @inventory_items.present?
     - @inventory_items.each do |item|
       .profile-items
-        %div{class: "item.category.name item"}
+        %div#item{class: "item.category.name item"}
           = link_to item_item_put_off_path(item_id: item.id), method: :post do
             = image_tag item.image.url
+          .stats#stats
+            .attack.stat
+              = image_tag 'items/attack.png'
+              = item.attack
+
+            .defense.stat
+              = image_tag 'items/defense.png'
+              = item.defense
+
+            .hp.stat
+              = image_tag 'items/hp.png'
+              = item.hp
+
+            .put-off
+              = link_to item_item_put_off_path(item_id: item.id), method: :post do
+                = image_tag 'profiles/put_off.png'
+
+:javascript
+  $('.profile-items > #item').hover(function () {
+    $(this).find('#stats').css('display', 'block');
+  }, function () {
+    $(this).find('#stats').css('display', 'none');
+  });

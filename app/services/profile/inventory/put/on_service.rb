@@ -25,15 +25,15 @@ class Profile::Inventory::Put::OnService
   private
 
   def is_an_item_purchased?
-    true if inventory.include?(item_id)
+    inventory.include?(item_id)
   end
 
   def level_required?
-    true if profile.level >= item.level
+    profile.level >= item.level
   end
 
   def slot_is_busy?
-    true if profile[item_type].present?
+    profile[item_type].present?
   end
 
   def delete_a_new_item_from_inventory

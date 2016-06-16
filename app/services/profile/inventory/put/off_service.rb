@@ -24,7 +24,7 @@ class Profile::Inventory::Put::OffService
   private
 
   def is_an_item_wear?
-    true if profile[item_type] == item_id
+    profile[item_type] == item_id
   end
 
   def put_an_old_item_in_inventory
