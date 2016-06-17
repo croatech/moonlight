@@ -10,17 +10,17 @@
       %h2= @player.name
 
       .attack.stat
-        = image_tag 'items/attack.png'
+        = image_tag 'attack.png'
         = @player.attack
         = link_to '+', player_stat_increase_path(stat_id: 'attack'), method: :post
 
       .defense.stat
-        = image_tag 'items/defense.png'
+        = image_tag 'defense.png'
         = @player.defense
         = link_to '+', player_stat_increase_path(stat_id: 'defense'), method: :post
 
       .hp.stat
-        = image_tag 'items/hp.png'
+        = image_tag 'hp.png'
         = @player.hp
         = link_to '+', player_stat_increase_path(stat_id: 'hp'), method: :post
 

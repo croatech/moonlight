@@ -1,4 +1,4 @@
-class BotFight < Fight
+class Fight::VsBot
 
   def enemy
     Bot.find(self.enemy_id)

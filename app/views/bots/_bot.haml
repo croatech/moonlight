@@ -1,0 +1,23 @@
+.col-md-4
+  .bot
+    %h2
+      = bot.name
+
+    .main-info
+      .image
+        = image_tag bot.image.url, class: 'center'
+
+      = link_to 'Attack', fights_path, method: :post, class: 'btn btn-danger attack-btn center'
+
+    .stats-info
+      .attack.stat
+        = image_tag 'attack.png'
+        = bot.attack
+
+      .defense.stat
+        = image_tag 'defense.png'
+        = bot.defense
+
+      .hp.stat
+        = image_tag 'hp.png'
+        = bot.hp

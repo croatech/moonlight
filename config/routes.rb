@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :rounds
-  resources :fights
+  #resources :bots, except: :all
+
+  root 'locations#main'
+
+  devise_for :users
+
+  resources :fights do
+    resources :rounds
+  end
+
   resource :player, only: :show do
     get :inventory
   end
@@ -21,14 +29,11 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'locations#main'
-
-  devise_for :users
-
   resources :locations, only: :show do
     collection do
       get :main
       get :shop
+      get :mushrooms
     end
   end
 end

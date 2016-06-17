@@ -12,6 +12,10 @@ class LocationsController < ApplicationController
     go_to_location('shop')
   end
 
+  def mushrooms
+    @bots = Bot::Mushroom.all
+  end
+
   private
 
   def go_to_location(name)

@@ -1,0 +1,14 @@
+class CreateBots < ActiveRecord::Migration
+  def change
+    create_table :bots do |t|
+      t.string :type
+      t.string :name
+      t.integer :attack
+      t.integer :defense
+      t.integer :hp
+      t.string :inventory, array: true, default: '{}'
+
+      t.timestamps null: false
+    end
+  end
+end
