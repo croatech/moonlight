@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616001212) do
+ActiveRecord::Schema.define(version: 20160617155054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fights", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "enemy_id"
+    t.integer  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "winner_id"
+  end
+
+  add_index "fights", ["player_id"], name: "index_fights_on_player_id", using: :btree
 
   create_table "item_categories", force: :cascade do |t|
     t.string   "name"
@@ -93,5 +104,6 @@ ActiveRecord::Schema.define(version: 20160616001212) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "fights", "players"
   add_foreign_key "players", "locations"
 end
