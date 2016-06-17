@@ -3,6 +3,8 @@ class Player < ActiveRecord::Base
   belongs_to :location
   belongs_to :user
 
+  has_many :fights
+
   STATS = ['attack', 'defense', 'hp']
   SLOTS = ['head', 'chest', 'shoulders', 'hands', 'legs', 'weapon', 'shield']
 

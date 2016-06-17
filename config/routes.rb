@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :rounds
   resources :fights
   resource :player, only: :show do
     get :inventory

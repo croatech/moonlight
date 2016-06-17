@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617155054) do
+ActiveRecord::Schema.define(version: 20160617160625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "location_id"
+    t.integer  "head"
+    t.integer  "chest"
+    t.integer  "shoulders"
+    t.integer  "gloves"
+    t.integer  "legs"
+    t.integer  "weapon"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_id"
+    t.integer  "cash",        default: 300
+    t.integer  "attack",      default: 1
+    t.integer  "defense",     default: 1
+    t.integer  "hp",          default: 20
+    t.integer  "level",       default: 1
+    t.integer  "exp",         default: 0
+    t.integer  "exp_next",    default: 100
+    t.string   "inventory",   default: [],               array: true
+    t.integer  "free_stats",  default: 10
+  end
+
+  add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
 
   create_table "fights", force: :cascade do |t|
     t.integer  "player_id"
@@ -86,6 +111,43 @@ ActiveRecord::Schema.define(version: 20160617155054) do
 
   add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree
 
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "location_id"
+    t.integer  "head"
+    t.integer  "chest"
+    t.integer  "shoulders"
+    t.integer  "hands"
+    t.integer  "legs"
+    t.integer  "weapon"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "user_id"
+    t.integer  "gold",        default: 300
+    t.integer  "attack",      default: 1
+    t.integer  "defense",     default: 1
+    t.integer  "hp",          default: 20
+    t.integer  "level",       default: 1
+    t.integer  "exp",         default: 0
+    t.integer  "exp_next",    default: 100
+    t.string   "inventory",   default: [],               array: true
+    t.integer  "free_stats",  default: 10
+    t.integer  "shield"
+  end
+
+  add_index "profiles", ["location_id"], name: "index_profiles_on_location_id", using: :btree
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "fight_id"
+    t.integer  "player_damage"
+    t.integer  "enemy_damage"
+    t.integer  "status"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "rounds", ["fight_id"], name: "index_rounds_on_fight_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -106,4 +168,5 @@ ActiveRecord::Schema.define(version: 20160617155054) do
 
   add_foreign_key "fights", "players"
   add_foreign_key "players", "locations"
+  add_foreign_key "rounds", "fights"
 end
