@@ -1,48 +1,50 @@
 .container
   .round
     = form_for fight_round_path(round_id: params[:round_id]), method: :put do |f|
-      .col-md-6
-        .character.player
-          .progress
-            .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: #{progress_percents(@player.hp, @round.player_hp)}"}
-              %span.sr-only 80% Complete (danger)
-              = "#{@round.player_hp} HP"
+      .row
+        .col-md-6
+          .character.player
+            .progress
+              .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: #{progress_percents(@player.hp, @round.player_hp)}"}
+                %span.sr-only 80% Complete (danger)
+                = "#{@round.player_hp} HP"
 
-          .progress
-            .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 100%"}
-              %span.sr-only 20% Complete
-              1 MP
+            .progress
+              .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 100%"}
+                %span.sr-only 20% Complete
+                1 MP
 
-          = image_tag @player.image.url, class: 'image'
+            = image_tag @player.image.url, class: 'image'
 
-          .slots
-            %h4.block-title Defense:
+            .slots
+              %h4.block-title Defense:
 
-            - @slots.each do |slot_name|
-              .button
-                = f.label slot_name
-                = f.radio_button 'defense', slot_name, checked: true
+              - @slots.each do |slot_name|
+                .button
+                  = f.label slot_name
+                  = f.radio_button 'defense', slot_name, checked: true
 
-      .col-md-6
-        .character.bot
-          .progress
-            .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: #{progress_percents(@bot.hp, @round.bot_hp)}"}
-              %span.sr-only 80% Complete (danger)
-              = "#{@round.bot_hp} HP"
+        .col-md-6
+          .character.bot
+            .progress
+              .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: #{progress_percents(@bot.hp, @round.bot_hp)}"}
+                %span.sr-only 80% Complete (danger)
+                = "#{@round.bot_hp} HP"
 
-          .progress
-            .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 100%"}
-              %span.sr-only 20% Complete
-              1 MP
+            .progress
+              .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 100%"}
+                %span.sr-only 20% Complete
+                1 MP
 
-          .slots
-            %h4.block-title Attack:
+            .slots
+              %h4.block-title Attack:
 
-            - @slots.each do |slot_name|
-              .button
-                = f.label slot_name
-                = f.radio_button 'attack', slot_name, checked: true
+              - @slots.each do |slot_name|
+                .button
+                  = f.label slot_name
+                  = f.radio_button 'attack', slot_name, checked: true
 
-          = image_tag @bot.image.url, class: 'image'
+            = image_tag @bot.image.url, class: 'image'
 
-      = f.submit 'HIT', class: 'btn btn-danger center'
+      .row
+        = f.submit 'HIT', class: 'btn btn-danger center'

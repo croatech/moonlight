@@ -50,12 +50,14 @@ class Fights::HitService
     player_hp = round.player_hp - bot_damage
     bot_hp = round.bot_hp - player_damage
 
-    if player_hp > 0 && bot_hp > 0
-      fight.rounds.create(player_hp: player_hp, bot_hp: bot_hp)
-    elsif player_hp <= 0
-      fight.update(winner_id: bot.id, status: :finished)
+    if player_hp <= 0
+      fight.update(winner: bot.type, status: :finished)
+    elsif bot_hp <= 0
+      fight.update(winner: 'Player', status: :finished)
     else
-      fight.update(winner_id: player.id, status: :finished)
+      false
     end
+
+    fight.rounds.create(player_hp: player_hp, bot_hp: bot_hp)
   end
 end

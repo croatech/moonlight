@@ -8,6 +8,7 @@ class RoundsController < ApplicationController
     @bot = fight.bot
     @round = fight.rounds.last
     @slots = Player.const_get("SLOTS")
+    redirect_to fight_path(fight.id) if fight.finished?
   end
 
   def update
@@ -15,8 +16,8 @@ class RoundsController < ApplicationController
     fight = Fight.find(params[:fight_id])
     service = Fights::HitService.new(fight, form_params['defense'], form_params['attack'])
     service.call
+
     fight = Fight.find(params[:fight_id])
-    
     if fight.finished?
       redirect_to fight_path(fight.id)
     else
