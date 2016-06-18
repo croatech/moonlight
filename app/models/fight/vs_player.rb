@@ -1,4 +1,4 @@
-class Fight::VsPlayer
+class Fight::VsPlayer < Fight
 
   def enemy
     Player.find(self.enemy_id)

@@ -13,6 +13,7 @@ class LocationsController < ApplicationController
   end
 
   def mushrooms
+    go_to_location('mushrooms')
     @bots = Bot::Mushroom.all
   end
 

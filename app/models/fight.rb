@@ -6,6 +6,8 @@ class Fight < ActiveRecord::Base
 
   enum status: [:active, :finished]
 
+  validates :player_id, uniqueness: { scope: [:enemy_id, :status] }
+
   protected
 
   def enemy
