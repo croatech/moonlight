@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :fights, only: [:create, :show] do
-    resources :rounds
+    get :log
+    
+    resources :rounds do
+      post :hit
+    end
   end
 
   resource :player, only: :show do

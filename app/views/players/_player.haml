@@ -14,7 +14,7 @@
       = "EXP: #{@player.exp}/#{@player.exp_next}"
 
   .avatar
-    = image_tag 'players/warrior.jpg', class: 'avatar'
+    = image_tag @player.image.url, class: 'avatar'
 
   - if @inventory_items.present?
     - @inventory_items.each do |item|

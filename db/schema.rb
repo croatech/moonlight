@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617234458) do
+ActiveRecord::Schema.define(version: 20160618021904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 20160617234458) do
 
   create_table "fights", force: :cascade do |t|
     t.integer  "player_id"
-    t.integer  "enemy_id"
+    t.integer  "bot_id"
     t.integer  "status",     default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "winner_id"
-    t.string   "type"
   end
 
+  add_index "fights", ["bot_id"], name: "index_fights_on_bot_id", using: :btree
   add_index "fights", ["player_id"], name: "index_fights_on_player_id", using: :btree
 
   create_table "item_categories", force: :cascade do |t|
@@ -85,19 +85,23 @@ ActiveRecord::Schema.define(version: 20160617234458) do
     t.integer  "hands"
     t.integer  "legs"
     t.integer  "weapon"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "user_id"
-    t.integer  "gold",        default: 300
-    t.integer  "attack",      default: 1
-    t.integer  "defense",     default: 1
-    t.integer  "hp",          default: 20
-    t.integer  "level",       default: 1
-    t.integer  "exp",         default: 0
-    t.integer  "exp_next",    default: 100
-    t.string   "inventory",   default: [],               array: true
-    t.integer  "free_stats",  default: 10
+    t.integer  "gold",               default: 300
+    t.integer  "attack",             default: 1
+    t.integer  "defense",            default: 1
+    t.integer  "hp",                 default: 20
+    t.integer  "level",              default: 1
+    t.integer  "exp",                default: 0
+    t.integer  "exp_next",           default: 100
+    t.string   "inventory",          default: [],               array: true
+    t.integer  "free_stats",         default: 10
     t.integer  "shield"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree
@@ -105,10 +109,12 @@ ActiveRecord::Schema.define(version: 20160617234458) do
   create_table "rounds", force: :cascade do |t|
     t.integer  "fight_id"
     t.integer  "player_damage"
-    t.integer  "enemy_damage"
+    t.integer  "bot_damage"
     t.integer  "status",        default: 0
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "player_hp"
+    t.integer  "bot_hp"
   end
 
   add_index "rounds", ["fight_id"], name: "index_rounds_on_fight_id", using: :btree

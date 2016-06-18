@@ -6,12 +6,13 @@ class ApplicationController < ActionController::Base
   before_action :check_for_an_active_fight
 
   def check_for_an_active_fight
-    unless params[:controller] == 'rounds'
-      fight = Fight.active.where('player_id = ? or enemy_id = ?', current_user.player.id, current_user.player.id).take
+    unless params[:controller] == 'rounds' || params[:controller] == 'devise'
+      fight = Fight.active.where(player_id: current_user.player.id).take
       
       if fight.present?
         redirect_to fight_round_path(fight_id: fight.id, id: fight.rounds.last.id)
       end
     end
   end
+
 end
