@@ -6,4 +6,8 @@ class Bot < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   
   validates :name, :attack, :defense, :hp, :type, presence: true
+
+  def exp
+    self.attack * 1.5
+  end
 end

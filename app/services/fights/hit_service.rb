@@ -54,6 +54,7 @@ class Fights::HitService
       fight.update(winner: bot.type, status: :finished)
     elsif bot_hp <= 0
       fight.update(winner: 'Player', status: :finished)
+      player.increment!(:exp, bot.exp)
     else
       false
     end
