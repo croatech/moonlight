@@ -22,4 +22,12 @@ class Player < ActiveRecord::Base
       self.increment!(stat_name, 1)
     end
   end
+
+  def level_up_gold
+    level * 150
+  end
+
+  def level_up_exp
+    exp_next * 2
+  end
 end

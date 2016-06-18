@@ -17,7 +17,7 @@ class Fights::HitService
     player_damage = calculate_player_damage
     bot_damage = calculate_bot_damage
     round.update(player_damage: player_damage, bot_damage: bot_damage, status: :finished)
-    create_new_round_or_finish_fight(player_damage, bot_damage)
+    checking_for_finishing_fight(player_damage, bot_damage)
   end
 
   private
@@ -46,19 +46,27 @@ class Fights::HitService
     attacker.attack - defender.defense * 0.25
   end
 
-  def create_new_round_or_finish_fight(player_damage, bot_damage)
+  def checking_for_finishing_fight(player_damage, bot_damage)
     player_hp = round.player_hp - bot_damage
     bot_hp = round.bot_hp - player_damage
 
     if player_hp <= 0
-      fight.update(winner_type: bot.type, status: :finished)
+      finish_fight(winner: bot.type)
     elsif bot_hp <= 0
-      fight.update(winner_type: 'Player', status: :finished)
-      player.increment!(:exp, bot.exp)
+      finish_fight(winner: 'Player')
+      increase_player_exp
     else
       false
     end
 
     fight.rounds.create(player_hp: player_hp, bot_hp: bot_hp)
+  end
+
+  def finish_fight(winner:)
+    fight.update(winner_type: winner, status: :finished)
+  end
+
+  def increase_player_exp
+    Player::Exp::IncreaseService.new(player, bot.exp).call
   end
 end
