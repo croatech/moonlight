@@ -1,0 +1,21 @@
+.fight-show
+  .navbar
+    %li
+      = link_to "Back to #{@player.location.name}", location_path(@player.location.slug), class: 'btn btn-success'
+
+  .winner.center
+    %h1.text-center= "Winner: #{@winner.name}"
+
+    - if @winner.is_a?(Player)
+      .progress
+        .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: #{progress_percents(@player.hp, @rounds.last.player_hp)}"}
+          %span.sr-only 80% Complete (danger)
+          = "#{@winner.hp} HP"
+
+      .progress
+        .progress-bar.progress-bar-warning{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :role => "progressbar", :style => "width: #{progress_percents(@player.exp_next, @player.exp)}"}
+          = "EXP: #{@player.exp}/#{@player.exp_next}"
+    
+    = image_tag @winner.image.url, class: 'image center'
+
+  

@@ -7,4 +7,11 @@ class FightsController < ApplicationController
     service.call
     redirect_to :back
   end
+
+  def show
+    @player = current_user.player
+    @fight = Fight.find(params[:id])
+    @rounds = @fight.rounds
+    @winner = @fight.winner
+  end
 end

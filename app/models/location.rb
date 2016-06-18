@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
 
-  has_many :users
+  has_many :players
   
   validates :name, :slug, presence: true
 

@@ -5,7 +5,7 @@ class CreateFights < ActiveRecord::Migration
       t.references :player, index: true, foreign_key: true
       t.integer :bot_id
       t.references :bot, index: true, foreign_key: true
-      t.string :winner
+      t.string :winner_type
       t.integer :status, default: 0
 
       t.timestamps null: false

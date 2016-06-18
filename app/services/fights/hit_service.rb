@@ -51,9 +51,9 @@ class Fights::HitService
     bot_hp = round.bot_hp - player_damage
 
     if player_hp <= 0
-      fight.update(winner: bot.type, status: :finished)
+      fight.update(winner_type: bot.type, status: :finished)
     elsif bot_hp <= 0
-      fight.update(winner: 'Player', status: :finished)
+      fight.update(winner_type: 'Player', status: :finished)
       player.increment!(:exp, bot.exp)
     else
       false
