@@ -24,6 +24,9 @@ class Player::Exp::IncreaseService
   def level_up
     difference = new_exp - (player.exp_next - player.exp)
     player.increment!(:level, 1)
-    player.update(free_stats: 10, gold: player.level_up_gold, exp: difference, exp_next: player.level_up_exp)
+    player.update(free_stats: player.free_stats + 10, 
+                  gold: player.gold + player.level_up_gold, 
+                  exp: difference, 
+                  exp_next: player.level_up_exp)
   end
 end
