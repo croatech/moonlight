@@ -1,8 +1,7 @@
-
 User.create(email: 'admin@gmail.com', password: 'password')
 
 Location.create(name: 'Moon Light', slug: 'moon_light')
-Location.create(name: 'The Elder Shop', slug: 'shop', parent_id: Location.find_by(slug: 'moon_light').id)
+Location.create(name: 'The Elder Shop', slug: 'the_elder_shop', parent_id: Location.find_by(slug: 'moon_light').id)
 Location.create(name: 'Mushroom\'s room', slug: 'mushrooms', parent_id: Location.find_by(slug: 'moon_light').id)
 
 Item::Category.create(name: 'Head', slug: 'head')
