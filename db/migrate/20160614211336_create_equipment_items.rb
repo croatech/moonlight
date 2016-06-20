@@ -1,6 +1,6 @@
-class CreateItemItems < ActiveRecord::Migration
+class CreateEquipmentItems < ActiveRecord::Migration
   def change
-    create_table :item_items do |t|
+    create_table :equipment_items do |t|
       t.string :name
       t.integer :category_id
       t.integer :attack, default: 0

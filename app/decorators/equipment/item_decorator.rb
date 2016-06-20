@@ -1,4 +1,4 @@
-class Item::ItemDecorator < Draper::Decorator
+class Equipment::ItemDecorator < Draper::Decorator
   
   delegate_all
 
@@ -14,9 +14,9 @@ class Item::ItemDecorator < Draper::Decorator
 
   def buy_or_wear_button(player)
     if player.inventory.include?(self.id.to_s)
-      h.link_to "Put on", item_item_put_on_path(self.id), method: :post, class: 'btn btn-info'
+      h.link_to "Put on", equipment_item_put_on_path(self.id), method: :post, class: 'btn btn-info'
     else
-      h.link_to "Buy for #{self.cost} gold", item_item_buy_path(self.id), method: :post, class: 'btn btn-info'
+      h.link_to "Buy for #{self.cost} gold", equipment_item_buy_path(self.id), method: :post, class: 'btn btn-info'
     end
   end
 end

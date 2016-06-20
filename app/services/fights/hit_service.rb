@@ -43,7 +43,8 @@ class Fights::HitService
   end
 
   def hit_damage(attacker, defender)
-    attacker.attack - defender.defense * 0.25
+    damage = attacker.attack - defender.defense * 0.25
+    damage < 0 ? attacker.attack / 2 : damage
   end
 
   def checking_for_finishing_fight(player_damage, bot_damage)

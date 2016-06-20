@@ -1,4 +1,4 @@
-class Item::CategoriesController < ApplicationController
+class Equipment::CategoriesController < ApplicationController
 
   layout 'moon_light'
 
@@ -8,13 +8,13 @@ class Item::CategoriesController < ApplicationController
 
   def show
     get_categories_list
-    @category = Item::Category.find_by(slug: params[:id])
+    @category = Equipment::Category.find_by(slug: params[:id])
     @items = @category.items.decorate
   end
 
   private
 
   def get_categories_list
-    @categories = Item::Category.order(:name)
+    @categories = Equipment::Category.order(:name)
   end
 end

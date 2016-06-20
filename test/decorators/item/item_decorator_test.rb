@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class Item::ItemDecoratorTest < Draper::TestCase
+class Equipment::ItemDecoratorTest < Draper::TestCase
 end

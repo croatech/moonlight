@@ -20,7 +20,7 @@
     - @inventory_items.each do |item|
       .player-items
         %div#item{class: "item.category.name item"}
-          = link_to item_item_put_off_path(item_id: item.id), method: :post do
+          = link_to equipment_item_put_off_path(item_id: item.id), method: :post do
             = image_tag item.image.url
           .stats#stats
             .attack.stat
@@ -36,7 +36,7 @@
               = item.hp
 
             .put-off
-              = link_to item_item_put_off_path(item_id: item.id), method: :post do
+              = link_to equipment_item_put_off_path(item_id: item.id), method: :post do
                 = image_tag 'players/put_off.png'
 
 :javascript

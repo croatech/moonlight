@@ -10,15 +10,15 @@ default: &default
 
 development:
   <<: *default
-  database: mushrooms_development
+  database: moonlight_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: mushrooms_test
+  database: moonlight_test
 
 production:
   <<: *default
-  database: mushrooms_production
+  database: moonlight_production

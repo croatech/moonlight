@@ -1,0 +1,11 @@
+.item-categories
+  .col-md-3
+    = render 'list'
+
+  .col-md-9.items
+    - if @items.present?
+      - @items.each do |item|
+        = render item, item: item
+      
+    - else
+      %h2 No items
