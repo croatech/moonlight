@@ -2,14 +2,14 @@ class LocationsController < ApplicationController
 
   before_action :authenticate_user!
 
-  layout 'main'
+  layout 'moon_light'
 
-  def main
-    go_to_location('main')
+  def moon_light
+    go_to_location('moon_light')
   end
 
-  def shop
-    go_to_location('shop')
+  def the_elder_shop
+    go_to_location('the_elder_shop')
   end
 
   def mushrooms

@@ -1,9 +1,9 @@
 
 User.create(email: 'admin@gmail.com', password: 'password')
 
-Location.create(name: 'Mushroom Town', slug: 'main')
-Location.create(name: 'Shop', slug: 'shop', parent_id: Location.find_by(slug: 'main').id)
-Location.create(name: 'Mushroom\'s room', slug: 'mushrooms', parent_id: Location.find_by(slug: 'main').id)
+Location.create(name: 'Moon Light', slug: 'moon_light')
+Location.create(name: 'The Elder Shop', slug: 'shop', parent_id: Location.find_by(slug: 'moon_light').id)
+Location.create(name: 'Mushroom\'s room', slug: 'mushrooms', parent_id: Location.find_by(slug: 'moon_light').id)
 
 Item::Category.create(name: 'Head', slug: 'head')
 Item::Category.create(name: 'Chest', slug: 'chest')

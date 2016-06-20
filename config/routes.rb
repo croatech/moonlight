@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   #resources :bots, except: :all
 
-  root 'locations#main'
+  root 'locations#moon_light'
 
   devise_for :users
 
@@ -35,8 +35,8 @@ Rails.application.routes.draw do
 
   resources :locations, only: :show do
     collection do
-      get :main
-      get :shop
+      get :moon_light
+      get :the_elder_shop
       get :mushrooms
     end
   end

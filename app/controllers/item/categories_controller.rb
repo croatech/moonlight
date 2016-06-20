@@ -1,6 +1,6 @@
 class Item::CategoriesController < ApplicationController
 
-  layout 'main'
+  layout 'moon_light'
 
   def index
     get_categories_list
