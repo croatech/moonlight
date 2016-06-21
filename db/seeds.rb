@@ -8,7 +8,7 @@ Location.create(name: 'Mushroom\'s room', slug: 'mushrooms', parent_id: Location
 Location.create(name: 'Wayward Pines', slug: 'wayward_pines')
 
 64.times do |t|
-  Location.create(name: "#{t+1}", slug: "1-#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id)
+  Location.create(name: "Wayward Pines - #{t+1}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id)
 end
 
 # EQUIPMENT
