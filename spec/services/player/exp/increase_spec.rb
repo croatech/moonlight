@@ -31,12 +31,12 @@ describe Player::Exp::IncreaseService do
   it 'checks an increasing free stats after level up' do
     player.update_attribute(:exp, 80)
     Player::Exp::IncreaseService.new(player, 50).call
-    expect(player.free_stats).to eq 10
+    expect(player.free_stats).to eq 20
   end
 
   it 'checks an increasing gold after level up' do
     player.update_attribute(:exp, 80)
     Player::Exp::IncreaseService.new(player, 50).call
-    expect(player.gold).to eq 300
+    expect(player.gold).to eq 600
   end
 end 

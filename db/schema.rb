@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621185743) do
+ActiveRecord::Schema.define(version: 20160621222511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160621185743) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "level"
   end
 
   create_table "equipment_categories", force: :cascade do |t|
@@ -62,6 +63,14 @@ ActiveRecord::Schema.define(version: 20160621185743) do
   add_index "fights", ["bot_id"], name: "index_fights_on_bot_id", using: :btree
   add_index "fights", ["player_id"], name: "index_fights_on_player_id", using: :btree
 
+  create_table "location_bots", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "bot_id"
+  end
+
+  add_index "location_bots", ["bot_id"], name: "index_location_bots_on_bot_id", using: :btree
+  add_index "location_bots", ["location_id"], name: "index_location_bots_on_location_id", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
@@ -73,14 +82,6 @@ ActiveRecord::Schema.define(version: 20160621185743) do
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
   end
-
-  create_table "locations_bots", force: :cascade do |t|
-    t.integer "location_id"
-    t.integer "bot_id"
-  end
-
-  add_index "locations_bots", ["bot_id"], name: "index_locations_bots_on_bot_id", using: :btree
-  add_index "locations_bots", ["location_id"], name: "index_locations_bots_on_location_id", using: :btree
 
   create_table "players", force: :cascade do |t|
     t.string   "name"

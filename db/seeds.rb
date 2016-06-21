@@ -36,7 +36,12 @@ Equipment::Item.create(name: 'Metal shoes', category_id: Equipment::Category.fin
                   image: File.new("#{Rails.root}/public/items/legs/legs.jpg"))
 
 # BOT
-Bot::Mushroom.create(name: 'Armillaria', attack: 20, defense: 20, hp: 20,
+Bot::Mushroom.create(level: 1, name: 'Armillaria', attack: 20, defense: 20, hp: 20,
                      image: File.new("#{Rails.root}/public/bots/mushrooms/armillaria.jpg"))
-Bot::Mushroom.create(name: 'Chanterelle', attack: 40, defense: 40, hp: 40,
+Bot::Mushroom.create(level: 2, name: 'Chanterelle', attack: 40, defense: 40, hp: 40,
                      image: File.new("#{Rails.root}/public/bots/mushrooms/chanterelle.jpg"))
+Bot::Mushroom.create(level: 3, name: 'Chanterelle', attack: 40, defense: 40, hp: 40,
+                     image: File.new("#{Rails.root}/public/bots/mushrooms/chanterelle.jpg"))
+
+# POPULATE BOTS
+## MUSHROOMS

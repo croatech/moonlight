@@ -4,6 +4,8 @@ class Location < ActiveRecord::Base
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\Z/
 
   has_many :players
+  has_many :location_bots
+  has_many :bots, through: :location_bots
   
   validates :name, :slug, presence: true
 
