@@ -2,8 +2,12 @@ class LocationsController < ApplicationController
 
   before_action :authenticate_user!
 
-  layout 'moon_light', only: [:moon_light, :the_elder_shop, :mushrooms]
-  layout 'map', only: :wayward_pines
+  layout 'moon_light'
+
+  def show
+    location = Location.find_by(slug: params[:id])
+    redirect_to location_cell_path(location_id: location.parent.slug, id: location.id)
+  end
 
   def moon_light
     go_to_location('moon_light')
@@ -18,15 +22,10 @@ class LocationsController < ApplicationController
     @bots = Bot::Mushroom.all
   end
 
-  def wayward_pines
-    go_to_location('wayward_pines')
-    @cells = @location.children.order(:id)
-  end
-
   private
 
-  def go_to_location(name)
-    @location = Location.find_by(slug: name)
+  def go_to_location(location_name)
+    @location = Location.find_by(slug: location_name)
     Locations::ChangeLocationService.new(current_user.player, @location.id).call
   end
 end

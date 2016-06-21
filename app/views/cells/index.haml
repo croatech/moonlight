@@ -1,0 +1,9 @@
+.wayward-pines
+  %h1.text-center= @location.name
+
+  .map.center
+    .cells
+      - @cells.each do |cell|
+        - cache cell do
+          .cell
+            = link_to image_tag("locations/wayward_pines/cells/#{cell.slug}.jpg"), location_cell_path(location_id: params[:location_id], id: cell.id)

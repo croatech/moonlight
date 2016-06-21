@@ -1,0 +1,6 @@
+.cell
+  %h1.text-center= @location.name
+
+
+  //= image_tag @location.background.url if @location.background.present?
+  = image_tag 'locations/wayward_pines/cells/bg.jpg', class: 'center'

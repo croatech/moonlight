@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  #resources :bots, except: :all
-
   root 'locations#moon_light'
 
   devise_for :users
@@ -33,12 +31,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :locations, only: :show do
+  resources :locations, except: :all do
     collection do
       get :moon_light
       get :the_elder_shop
       get :mushrooms
-      get :wayward_pines
     end
+
+    resources :cells, only: [:index, :show]
   end
 end
