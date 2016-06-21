@@ -3,19 +3,18 @@ class CellsController < ApplicationController
   layout 'map'
 
   def index
-    @location = Location.find_by(slug: params[:location_id])
+    change_location(params[:location_id])
     @cells = @location.children.order(:id)
-    change_location(@location.id)
   end
 
   def show
-    @location = Location.find(params[:id])
-    change_location(@location.id)
+    change_location(params[:id])
   end
 
   private
 
-  def change_location(location_id)
+  def change_location(location_name)
+    @location = Location.find_by(slug: location_name)
     Locations::ChangeLocationService.new(current_user.player, @location.id).call
   end
 end
