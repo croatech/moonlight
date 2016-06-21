@@ -4,5 +4,5 @@ class Location < ActiveRecord::Base
   
   validates :name, :slug, presence: true
 
-  acts_as_tree order: 'name'
+  acts_as_tree
 end

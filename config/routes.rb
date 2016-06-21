@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get :moon_light
       get :the_elder_shop
       get :mushrooms
+      get :wayward_pines
     end
   end
 end
