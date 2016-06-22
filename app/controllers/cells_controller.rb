@@ -2,13 +2,9 @@ class CellsController < ApplicationController
 
   layout 'map'
 
-  def index
-    change_location(params[:location_id])
-    @cells = @location.children.order(:id)
-  end
-
   def show
     change_location(params[:id])
+    @bots = @location.bots
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621222511) do
+ActiveRecord::Schema.define(version: 20160622003046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20160621222511) do
     t.datetime "image_updated_at"
   end
 
+  add_index "equipment_items", ["category_id"], name: "index_equipment_items_on_category_id", using: :btree
+
   create_table "fights", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "bot_id"
@@ -74,14 +76,18 @@ ActiveRecord::Schema.define(version: 20160621222511) do
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "slug"
     t.string   "background_file_name"
     t.string   "background_content_type"
     t.integer  "background_file_size"
     t.datetime "background_updated_at"
+    t.boolean  "cell",                    default: false
   end
+
+  add_index "locations", ["parent_id"], name: "index_locations_on_parent_id", using: :btree
+  add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
@@ -112,6 +118,7 @@ ActiveRecord::Schema.define(version: 20160621222511) do
   end
 
   add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree
+  add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
   create_table "rounds", force: :cascade do |t|
     t.integer  "fight_id"

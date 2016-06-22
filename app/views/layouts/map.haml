@@ -12,7 +12,7 @@
         .header
           %nav.navbar
             %ul
-              %li= link_to 'Wayward Pines', location_cells_path(location_id: 'wayward_pines'), class: 'btn btn-default'
+              %li= link_to 'Wayward Pines', wayward_pines_locations_path, class: 'btn btn-default'
 
               - if ["29", "37"].include?(params[:id])
                 %li= link_to 'Moon Light', moon_light_locations_path, class: 'btn btn-default'

@@ -68,6 +68,6 @@ class Fights::HitService
   end
 
   def increase_player_exp
-    Player::Exp::IncreaseService.new(player, bot.exp).call
+    Player::Exp::IncreaseService.new(player, bot.given_exp).call
   end
 end

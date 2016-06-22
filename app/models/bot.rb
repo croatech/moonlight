@@ -9,7 +9,7 @@ class Bot < ActiveRecord::Base
   
   validates :name, :attack, :defense, :hp, :type, presence: true
 
-  def exp
-    self.attack * 1.5
+  def given_exp
+    level * 20
   end
 end

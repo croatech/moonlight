@@ -6,7 +6,14 @@
     = image_tag 'locations/wayward_pines/cells/bg.jpg', class: 'center'
 
   .col-md-4
-    .spoiler-wrapper
-      .spoiler.folded
-        = link_to 'Bot 1', "javascript:void(0);"
-      .spoiler-text Текст, размещенный внутри спойлера.
+    - if @bots.present?
+      .bots
+        - @bots.each do |bot|
+          - cache bot do
+            .bot.spoiler-wrapper
+              .spoiler.folded
+                = link_to "#{bot.name}[#{bot.level}]", "javascript:void(0);"
+
+              .spoiler-text
+                .row
+                  = render 'bots/bot', bot: bot

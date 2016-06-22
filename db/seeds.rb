@@ -8,7 +8,9 @@ Location.create(name: 'Mushroom\'s room', slug: 'mushrooms', parent_id: Location
 Location.create(name: 'Wayward Pines', slug: 'wayward_pines')
 
 64.times do |t|
-  Location.create(name: "Wayward Pines - #{t+1}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id)
+  location_name = "#{t} cell"
+  location_name = 'Mycelium' if t + 1 == 22
+  Location.create(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
 end
 
 # EQUIPMENT
@@ -36,12 +38,18 @@ Equipment::Item.create(name: 'Metal shoes', category_id: Equipment::Category.fin
                   image: File.new("#{Rails.root}/public/items/legs/legs.jpg"))
 
 # BOT
-Bot::Mushroom.create(level: 1, name: 'Armillaria', attack: 20, defense: 20, hp: 20,
+Bot::Mushroom.create(level: 1, name: 'Armillaria', attack: 10, defense: 10, hp: 10,
                      image: File.new("#{Rails.root}/public/bots/mushrooms/armillaria.jpg"))
-Bot::Mushroom.create(level: 2, name: 'Chanterelle', attack: 40, defense: 40, hp: 40,
+Bot::Mushroom.create(level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 20,
                      image: File.new("#{Rails.root}/public/bots/mushrooms/chanterelle.jpg"))
-Bot::Mushroom.create(level: 3, name: 'Chanterelle', attack: 40, defense: 40, hp: 40,
-                     image: File.new("#{Rails.root}/public/bots/mushrooms/chanterelle.jpg"))
+Bot::Mushroom.create(level: 3, name: 'Amanita', attack: 30, defense: 30, hp: 30,
+                     image: File.new("#{Rails.root}/public/bots/mushrooms/amanita.jpg"))
 
 # POPULATE BOTS
 ## MUSHROOMS
+locations = Location.all
+mycelium = locations.find_by(slug: 22)
+
+Bot::Mushroom.all.each do |bot|
+  LocationBot.create(location_id: mycelium.id, bot_id: bot.id)
+end
