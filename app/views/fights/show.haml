@@ -1,7 +1,7 @@
 .fight-show
   .navbar
     %li
-      = link_to "Back to #{@player.location.name}", location_path(@player.location.slug), class: 'btn btn-success'
+      = @player.decorate.current_location_path
 
   .winner.center
     %h1.text-center= "Winner: #{@winner.name}"

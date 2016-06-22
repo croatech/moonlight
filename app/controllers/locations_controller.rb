@@ -20,6 +20,7 @@ class LocationsController < ApplicationController
   def wayward_pines
     change_location('wayward_pines')
     @cells = @location.children.order(:id)
+    render layout: 'map'
   end
 
   private
