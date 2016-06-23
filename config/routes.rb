@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       post :buy
       post :put_on
       post :put_off
+      post :sell
     end
   end
 

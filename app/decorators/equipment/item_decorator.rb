@@ -16,7 +16,7 @@ class Equipment::ItemDecorator < Draper::Decorator
     if player.inventory.include?(self.id.to_s)
       h.link_to "Put on", equipment_item_put_on_path(self.id), method: :post, class: 'btn btn-info'
     else
-      h.link_to "Buy for #{self.cost} gold", equipment_item_buy_path(self.id), method: :post, class: 'btn btn-info'
+      h.link_to "Buy for #{self.price} gold", equipment_item_buy_path(self.id), method: :post, class: 'btn btn-info'
     end
   end
 end

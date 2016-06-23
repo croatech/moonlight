@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623085733) do
+ActiveRecord::Schema.define(version: 20160623113126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160623085733) do
     t.integer  "defense",            default: 0
     t.integer  "hp",                 default: 0
     t.integer  "level",              default: 1
-    t.integer  "cost"
+    t.integer  "price"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -136,12 +136,16 @@ ActiveRecord::Schema.define(version: 20160623085733) do
   create_table "tool_categories", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tool_items", force: :cascade do |t|
     t.string   "name"
     t.integer  "category_id"
-    t.integer  "cost"
+    t.integer  "price"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
