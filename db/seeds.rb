@@ -41,8 +41,8 @@ Equipment::Item.create [{name: 'Gold sword', category_id: Equipment::Category.fi
 
 # TOOLS
 ## CATEGORY
-Tool::Category.create [{name: 'Axes', slug: 'axes'},
-                       {name: 'Fishing rods', slug: 'rods'}]
+Tool::Category.create [{name: 'Chopping Axes', slug: 'axes'},
+                       {name: 'Fishing Rods', slug: 'rods'}]
 
 ## ITEM
 

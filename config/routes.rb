@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :tool do
-    resources :categories
-  end
   root 'locations#moon_light'
 
   devise_for :users
@@ -32,6 +29,11 @@ Rails.application.routes.draw do
       post :put_on
       post :put_off
     end
+  end
+
+  namespace :tool do
+    resources :items
+    resources :categories
   end
 
   resources :locations, except: :all do
