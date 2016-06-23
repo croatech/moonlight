@@ -7,6 +7,6 @@ class UserObserver < ActiveRecord::Observer
   private
 
   def player_create(user)
-    Player.create(user_id: user.id, image: File.new("#{Rails.root}/public/players/warrior.jpg"))
+    Player.create(user_id: user.id, image: File.new("#{Rails.root}/app/assets/images/players/warrior.jpg"))
   end
 end

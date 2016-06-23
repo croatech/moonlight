@@ -25,19 +25,17 @@ Equipment::Category.create [{name: 'Head', slug: 'head'},
 
 ## ITEM
 Equipment::Item.create [{name: 'Gold sword', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, level: 1, cost: 50,
-                         image: File.new("#{Rails.root}/public/items/weapon/sword.jpg")},
+                         image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/sword.jpg")},
                         {name: 'Wind staff', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 20, defense: 5, hp: 50, level: 3, cost: 150,
-                         image: File.new("#{Rails.root}/public/items/weapon/wind_staff.jpg")},
+                         image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/wind_staff.jpg")},
                         {name: 'Gold helm', category_id: Equipment::Category.find_by(slug: 'head').id, attack: 0, defense: 10, hp: 30, level: 1, cost: 50,
-                         image: File.new("#{Rails.root}/public/items/head/helm.jpg")},
+                         image: File.new("#{Rails.root}/db/seeds/equipments/items/head/helm.jpg")},
                         {name: 'Gold shield', category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0, defense: 20, hp: 30, level: 1, cost: 50,
-                         image: File.new("#{Rails.root}/public/items/shield/shield.jpg")},
+                         image: File.new("#{Rails.root}/db/seeds/equipments/items/shield/shield.jpg")},
                         {name: 'Metal chest', category_id: Equipment::Category.find_by(slug: 'chest').id, attack: 0, defense: 50, hp: 50, level: 1, cost: 50,
-                         image: File.new("#{Rails.root}/public/items/chest/chest.jpg")},
+                         image: File.new("#{Rails.root}/db/seeds/equipments/items/chest/chest.jpg")},
                         {name: 'Metal shoes', category_id: Equipment::Category.find_by(slug: 'legs').id, attack: 10, defense: 10, hp: 10, level: 1, cost: 50,
-                         image: File.new("#{Rails.root}/public/items/legs/legs.jpg")}
-                       ]
-
+                         image: File.new("#{Rails.root}/db/seeds/equipments/items/legs/legs.jpg")}]
 
 # TOOLS
 ## CATEGORY
@@ -45,12 +43,15 @@ Tool::Category.create [{name: 'Chopping Axes', slug: 'axes'},
                        {name: 'Fishing Rods', slug: 'rods'}]
 
 ## ITEM
-
+Tool::Item.create [{name: 'Axe for a beginner', category_id: Tool::Category.find_by(slug: 'axes').id, cost: 50,
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/axe_for_a_beginner.png")},
+                   {name: 'Axe for a beginner', category_id: Tool::Category.find_by(slug: 'axes').id, cost: 100,
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/axe_for_a_beginner.png")}]
 
 # BOT
-Bot::Mushroom.create [{level: 1, name: 'Armillaria', attack: 10, defense: 10, hp: 10, image: File.new("#{Rails.root}/public/bots/mushrooms/armillaria.jpg")},
-                      {level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 20, image: File.new("#{Rails.root}/public/bots/mushrooms/chanterelle.jpg")},
-                      {level: 3, name: 'Amanita', attack: 30, defense: 30, hp: 30, image: File.new("#{Rails.root}/public/bots/mushrooms/amanita.jpg")}]
+Bot::Mushroom.create [{level: 1, name: 'Armillaria', attack: 10, defense: 10, hp: 10, image: File.new("#{Rails.root}/db/seeds/bots/mushrooms/armillaria.jpg")},
+                      {level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 20, image: File.new("#{Rails.root}/db/seeds/bots/mushrooms/chanterelle.jpg")},
+                      {level: 3, name: 'Amanita', attack: 30, defense: 30, hp: 30, image: File.new("#{Rails.root}/db/seeds/bots/mushrooms/amanita.jpg")}]
 
 # POPULATE BOTS
 ## MUSHROOMS
