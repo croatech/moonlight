@@ -21,4 +21,5 @@
       = item.hp
 
     .buy-button
-      = item.buy_or_wear_button(current_user.player)
+      = link_to 'Put on', equipment_item_put_on_path(item.id), method: :post, class: 'btn btn-info'
+      = item.buy_or_sell_button(current_user.player)

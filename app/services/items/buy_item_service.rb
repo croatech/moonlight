@@ -2,9 +2,9 @@ class Items::BuyItemService
   
   attr_reader :item, :player
 
-  def initialize(item, player)
-    @item = item
+  def initialize(player, item)
     @player =  player
+    @item = item
   end
 
   def call
@@ -16,7 +16,7 @@ class Items::BuyItemService
   private
 
   def is_money_enough?
-    true if player.gold >= item.price
+    player.gold >= item.price
   end
 
   def withdraw_money 
