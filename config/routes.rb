@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   resources :locations, except: :all do
     collection do
       get :moon_light
-      get :the_elder_shop
+      get :weapon_shop
       get :wayward_pines
     end
 

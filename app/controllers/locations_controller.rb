@@ -8,8 +8,8 @@ class LocationsController < ApplicationController
     change_location('moon_light')
   end
 
-  def the_elder_shop
-    change_location('the_elder_shop')
+  def weapon_shop
+    change_location('weapon_shop')
   end
 
   def wayward_pines
