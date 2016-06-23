@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :show]
     resources :items, except: :all do
       post :buy
+      post :put_on
+      post :put_off
       post :sell
     end
   end

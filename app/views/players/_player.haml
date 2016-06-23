@@ -16,8 +16,8 @@
   .avatar
     = image_tag @player.image.url, class: 'avatar'
 
-  - if @inventory_items.present?
-    - @inventory_items.each do |item|
+  - if @wearable_weapons.present?
+    - @wearable_weapons.each do |item|
       .player-items
         %div#item{class: "item.category.name item"}
           = link_to equipment_item_put_off_path(item_id: item.id), method: :post do
@@ -37,6 +37,20 @@
 
             .put-off
               = link_to equipment_item_put_off_path(item_id: item.id), method: :post do
+                = image_tag 'players/put_off.png'
+
+  - if @wearable_tools.present?
+    - @wearable_tools.each do |item|
+      .player-items
+        %div#item{class: "item.category.name item"}
+          = link_to tool_item_put_off_path(item_id: item.id), method: :post do
+            = image_tag item.image.url
+          .stats#stats
+            .attack.stat
+              qwe
+              
+            .put-off
+              = link_to tool_item_put_off_path(item_id: item.id), method: :post do
                 = image_tag 'players/put_off.png'
 
 :javascript

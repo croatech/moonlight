@@ -1,4 +1,4 @@
-class Player::Inventory::AllEquipmentService
+class Player::Inventory::Tool::AllItemsService
 
   attr_reader :player
 
@@ -10,8 +10,8 @@ class Player::Inventory::AllEquipmentService
     item_ids = []
     
     slots.each do |slot_name|
-      if @player[slot_name].present?
-        item_ids << @player[slot_name]
+      if @player["#{slot_name}_slot"].present?
+        item_ids << @player["#{slot_name}_slot"]
       end
     end
 
@@ -21,6 +21,6 @@ class Player::Inventory::AllEquipmentService
   private
 
   def slots
-    Player.const_get("SLOTS")
+    Player.const_get("CRAFT")
   end
 end

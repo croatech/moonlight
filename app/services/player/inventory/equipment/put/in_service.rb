@@ -1,4 +1,4 @@
-class Player::Inventory::Put::InService
+class Player::Inventory::Equipment::Put::InService
 
   # put an item in inventory
   

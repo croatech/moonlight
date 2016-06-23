@@ -1,4 +1,4 @@
-class Player::Inventory::Put::OffService
+class Player::Inventory::Equipment::Put::OffService
 
   # put off an item from a slot
   

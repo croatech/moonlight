@@ -1,4 +1,4 @@
-class Player::Inventory::Put::OnService
+class Player::Inventory::Equipment::Put::OnService
 
   # put on an item in a slot
   

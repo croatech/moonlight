@@ -8,8 +8,9 @@ class Player < ActiveRecord::Base
 
   has_many :fights
 
-  STATS = ['attack', 'defense', 'hp']
-  SLOTS = ['head', 'chest', 'shoulders', 'hands', 'legs', 'weapon', 'shield']
+  STATS = %w( attack defense hp )
+  SLOTS = %w( head chest shoulders hands legs weapon shield )
+  CRAFT = %w( lumberjacking fishing )
 
   # generating of methods for an increasing of stats
   STATS.each do |stat|

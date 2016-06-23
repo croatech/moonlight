@@ -15,14 +15,14 @@ class Equipment::ItemsController < ApplicationController
 
   def put_on
     item = Equipment::Item.find(params[:item_id])
-    service = Player::Inventory::Put::OnService.new(current_user.player, item)
+    service = Player::Inventory::Equipment::Put::OnService.new(current_user.player, item)
     service.call
     redirect_to :back
   end
 
   def put_off
     item = Equipment::Item.find(params[:item_id])
-    service = Player::Inventory::Put::OffService.new(current_user.player, item)
+    service = Player::Inventory::Equipment::Put::OffService.new(current_user.player, item)
     service.call
     redirect_to :back
   end
