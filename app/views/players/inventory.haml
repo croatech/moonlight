@@ -4,8 +4,14 @@
 
   .col-md-6
     .items
-      - if @items.present?
-        - @items.each do |item|
+      - if @weapons.present?
+        - @weapons.each do |item|
           = render 'equipment/items/item', item: item
       - else
-        %h2 No items
+        %h2 No equipment items
+
+      - if @tools.present?
+        - @tools.each do |item|
+          = render 'tool/items/item', item: item
+      - else
+        %h2 No craft tools

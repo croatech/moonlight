@@ -12,7 +12,8 @@ class PlayersController < ApplicationController
 
   def inventory
     @player = current_user.player
-    @items = Equipment::Item.where(id: @player.inventory).decorate
+    @weapons = Equipment::Item.where(id: @player.inventory).decorate
+    @tools = Tool::Item.where(id: @player.tools).decorate
     item_ids = Player::Inventory::AllEquipmentService.new(current_user.player).call
     @inventory_items = Equipment::Item.where(id: item_ids)
   end

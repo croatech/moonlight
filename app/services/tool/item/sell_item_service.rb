@@ -1,4 +1,4 @@
-class Equipment::Item::SellItemService
+class Tool::Item::SellItemService
   
   attr_reader :player, :item
 
@@ -9,15 +9,16 @@ class Equipment::Item::SellItemService
 
   def call
     deposite_money if delete_an_item_from_an_inventory
+    player.save
   end
 
   private
 
   def deposite_money 
-    player.increment!(:gold, item.sell_price)
+    player.increment(:gold, item.sell_price)
   end
 
   def delete_an_item_from_an_inventory
-    player.inventory.delete(item.id.to_s)
+    player.tools.delete(item.id.to_s)
   end
 end 

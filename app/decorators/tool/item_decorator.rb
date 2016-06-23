@@ -6,9 +6,9 @@ class Tool::ItemDecorator < Draper::Decorator
 
   def level_of_skill(player)
     if is_skill_correct?(player, self)
-      h.content_tag(:div, "#{self.type}[#{self.required_skill}]")
+      h.content_tag(:div, "[#{self.required_skill}]")
     else
-      h.content_tag(:div, "#{self.type}[#{self.required_skill}]", class: 'red')
+      h.content_tag(:div, "[#{self.required_skill}]", class: 'red')
     end
   end
 

@@ -6,9 +6,9 @@ class Equipment::ItemDecorator < Draper::Decorator
 
   def level_status(player)
     if is_level_correct?(player, self)
-      h.content_tag(:div, self.required_level)
+      h.content_tag(:div, "[#{self.required_level}]")
     else
-      h.content_tag(:div, self.required_level, class: 'red')
+      h.content_tag(:div, "[#{self.required_level}]", class: 'red')
     end
   end
 
