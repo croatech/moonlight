@@ -4,7 +4,7 @@
 
   .col-md-9
     .level
-      //= item.level_status(current_user.player)
+      = item.level_of_skill(current_user.player, item.type)
 
     %h2= item.name
 

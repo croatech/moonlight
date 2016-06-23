@@ -4,6 +4,8 @@ class CreateToolItems < ActiveRecord::Migration
       t.string :name
       t.integer :category_id
       t.integer :price
+      t.integer :required_skill
+      t.string :type
     end
   end
 end

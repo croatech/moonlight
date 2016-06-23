@@ -6,7 +6,7 @@ class Equipment::ItemDecorator < Draper::Decorator
 
   def level_status(player)
     if player.level < self.level
-      h.content_tag(:div, self.level, class: 'red') if player.level < self.level
+      h.content_tag(:div, self.level, class: 'red')
     else
       h.content_tag(:div, self.level)
     end
