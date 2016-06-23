@@ -12,11 +12,6 @@ class LocationsController < ApplicationController
     change_location('the_elder_shop')
   end
 
-  def mushrooms
-    change_location('mushrooms')
-    @bots = Bot::Mushroom.all
-  end
-
   def wayward_pines
     change_location('wayward_pines')
     @cells = @location.children.order(:id)

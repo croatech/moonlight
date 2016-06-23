@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :tools do
+    resources :categories
+  end
   root 'locations#moon_light'
 
   devise_for :users
@@ -35,7 +38,6 @@ Rails.application.routes.draw do
     collection do
       get :moon_light
       get :the_elder_shop
-      get :mushrooms
       get :wayward_pines
     end
 
