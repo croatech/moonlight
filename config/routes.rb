@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :tools do
-    resources :categories
-  end
   root 'locations#moon_light'
 
   devise_for :users
