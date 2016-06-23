@@ -6,6 +6,7 @@ class CreateBots < ActiveRecord::Migration
       t.integer :attack
       t.integer :defense
       t.integer :hp
+      t.integer :level
       t.string :inventory, array: true, default: '{}'
 
       t.timestamps null: false

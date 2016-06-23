@@ -38,6 +38,15 @@ Equipment::Item.create [{name: 'Gold sword', category_id: Equipment::Category.fi
                          image: File.new("#{Rails.root}/public/items/legs/legs.jpg")}
                        ]
 
+
+# TOOLS
+## CATEGORY
+Tool::Category.create [{name: 'Axes', slug: 'axes'},
+                       {name: 'Fishing rods', slug: 'rods'}]
+
+## ITEM
+
+
 # BOT
 Bot::Mushroom.create [{level: 1, name: 'Armillaria', attack: 10, defense: 10, hp: 10, image: File.new("#{Rails.root}/public/bots/mushrooms/armillaria.jpg")},
                       {level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 20, image: File.new("#{Rails.root}/public/bots/mushrooms/chanterelle.jpg")},
