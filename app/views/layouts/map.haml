@@ -10,6 +10,8 @@
     .container
       .row
         .header
+          = render 'shared/flashes'
+          
           %nav.navbar
             %ul
               %li= link_to 'Wayward Pines', wayward_pines_locations_path, class: 'btn btn-default'

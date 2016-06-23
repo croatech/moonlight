@@ -12,6 +12,10 @@ class LocationsController < ApplicationController
     change_location('weapon_shop')
   end
 
+  def craft_shop
+    change_location('craft_shop')
+  end
+
   def wayward_pines
     change_location('wayward_pines')
     @cells = @location.children.order(:id)

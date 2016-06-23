@@ -13,8 +13,8 @@ Location.create [{name: 'Weapon Shop', slug: 'weapon_shop', parent_id: Location.
   Location.create(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
 end
 
-# EQUIPMENT
-## CATEGORY
+# EQUIPMENTS
+## CATEGORIES
 Equipment::Category.create [{name: 'Head', slug: 'head'},
                             {name: 'Chest', slug: 'chest'},
                             {name: 'Shoulders', slug: 'shoulders'},
@@ -23,7 +23,7 @@ Equipment::Category.create [{name: 'Head', slug: 'head'},
                             {name: 'Weapon', slug: 'weapon'},
                             {name: 'Shield', slug: 'shield'}]
 
-## ITEM
+## ITEMS
 Equipment::Item.create [{name: 'Gold sword', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, level: 1, cost: 50,
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/sword.jpg")},
                         {name: 'Wind staff', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 20, defense: 5, hp: 50, level: 3, cost: 150,
@@ -38,17 +38,17 @@ Equipment::Item.create [{name: 'Gold sword', category_id: Equipment::Category.fi
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/legs/legs.jpg")}]
 
 # TOOLS
-## CATEGORY
+## CATEGORIES
 Tool::Category.create [{name: 'Chopping Axes', slug: 'axes'},
                        {name: 'Fishing Rods', slug: 'rods'}]
 
-## ITEM
+## ITEMS
 Tool::Item.create [{name: 'Axe for a beginner', category_id: Tool::Category.find_by(slug: 'axes').id, cost: 50,
                     image: File.new("#{Rails.root}/db/seeds/tools/items/axe_for_a_beginner.png")},
                    {name: 'Axe for a beginner', category_id: Tool::Category.find_by(slug: 'axes').id, cost: 100,
                     image: File.new("#{Rails.root}/db/seeds/tools/items/axe_for_a_beginner.png")}]
 
-# BOT
+# BOTS
 Bot::Mushroom.create [{level: 1, name: 'Armillaria', attack: 10, defense: 10, hp: 10, image: File.new("#{Rails.root}/db/seeds/bots/mushrooms/armillaria.jpg")},
                       {level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 20, image: File.new("#{Rails.root}/db/seeds/bots/mushrooms/chanterelle.jpg")},
                       {level: 3, name: 'Amanita', attack: 30, defense: 30, hp: 30, image: File.new("#{Rails.root}/db/seeds/bots/mushrooms/amanita.jpg")}]

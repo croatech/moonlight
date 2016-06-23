@@ -32,14 +32,19 @@ Rails.application.routes.draw do
   end
 
   namespace :tool do
-    resources :items
-    resources :categories
+    resources :categories, only: [:index, :show]
+    resources :items, except: :all do
+      post :buy
+      post :put_on
+      post :put_off
+    end
   end
 
   resources :locations, except: :all do
     collection do
       get :moon_light
       get :weapon_shop
+      get :craft_shop
       get :wayward_pines
     end
 

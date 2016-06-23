@@ -1,0 +1,3 @@
+- @categories.each do |c|
+  .category
+    = link_to c.name, tool_category_path(c.slug), class: 'category-btn btn btn-default'

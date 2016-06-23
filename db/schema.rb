@@ -136,16 +136,12 @@ ActiveRecord::Schema.define(version: 20160623085733) do
   create_table "tool_categories", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "tool_items", force: :cascade do |t|
     t.string   "name"
     t.integer  "category_id"
     t.integer  "cost"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
