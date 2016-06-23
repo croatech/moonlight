@@ -1,3 +1,6 @@
 .show
   .col-md-6.col-md-offset-3
     = render @player
+
+  .row
+    = request.url.split('/').last
