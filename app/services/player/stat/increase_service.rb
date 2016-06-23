@@ -1,4 +1,4 @@
-class Player::Stats::IncreaseService
+class Player::Stat::IncreaseService
 
   attr_reader :player, :stat
 

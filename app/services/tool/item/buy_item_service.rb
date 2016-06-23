@@ -1,6 +1,6 @@
-class Items::BuyItemService
+class Tool::Item::BuyItemService
   
-  attr_reader :item, :player
+  attr_reader :player, :item
 
   def initialize(player, item)
     @player =  player
@@ -24,6 +24,10 @@ class Items::BuyItemService
   end
 
   def put_item_in_inventory
-    Player::Inventory::Put::InService.new(player, item).call
+    player.tools << item.id
+  end
+
+  def is_skill_correct?
+    player.public_send("#{item.type}_skill") >= item.required_skill
   end
 end 

@@ -2,7 +2,7 @@ class Equipment::ItemsController < ApplicationController
 
   def buy
     item = Equipment::Item.find(params[:item_id])
-    service = Items::BuyItemService.new(current_user.player, item)
+    service = Equipment::Item::BuyItemService.new(current_user.player, item)
 
     if service.call
       redirect_to :back
@@ -29,7 +29,7 @@ class Equipment::ItemsController < ApplicationController
 
   def sell
     item = Equipment::Item.find(params[:item_id])
-    service = Items::SellItemService.new(current_user.player, item)
+    service = Equipment::Item::SellItemService.new(current_user.player, item)
     service.call
     redirect_to :back
   end

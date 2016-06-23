@@ -1,4 +1,4 @@
-class Fights::StartService
+class Fight::StartService
 
   attr_reader :player, :bot, :fight
 

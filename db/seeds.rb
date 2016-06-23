@@ -24,17 +24,17 @@ Equipment::Category.create! [{name: 'Head', slug: 'head'},
                             {name: 'Shield', slug: 'shield'}]
 
 ## ITEMS
-Equipment::Item.create! [{name: 'Gold sword', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, level: 1, price: 50,
+Equipment::Item.create! [{name: 'Gold sword', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 5, defense: 2, hp: 20, required_level: 1, price: 50,
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/sword.jpg")},
-                        {name: 'Wind staff', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 20, defense: 5, hp: 50, level: 3, price: 150,
+                        {name: 'Wind staff', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 20, defense: 5, hp: 50, required_level: 3, price: 150,
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/wind_staff.jpg")},
-                        {name: 'Gold helm', category_id: Equipment::Category.find_by(slug: 'head').id, attack: 0, defense: 10, hp: 30, level: 1, price: 50,
+                        {name: 'Gold helm', category_id: Equipment::Category.find_by(slug: 'head').id, attack: 0, defense: 10, hp: 30, required_level: 1, price: 50,
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/head/helm.jpg")},
-                        {name: 'Gold shield', category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0, defense: 20, hp: 30, level: 1, price: 50,
+                        {name: 'Gold shield', category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0, defense: 20, hp: 30, required_level: 1, price: 50,
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/shield/shield.jpg")},
-                        {name: 'Metal chest', category_id: Equipment::Category.find_by(slug: 'chest').id, attack: 0, defense: 50, hp: 50, level: 1, price: 50,
+                        {name: 'Metal chest', category_id: Equipment::Category.find_by(slug: 'chest').id, attack: 0, defense: 50, hp: 50, required_level: 1, price: 50,
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/chest/chest.jpg")},
-                        {name: 'Metal shoes', category_id: Equipment::Category.find_by(slug: 'legs').id, attack: 10, defense: 10, hp: 10, level: 1, price: 50,
+                        {name: 'Metal shoes', category_id: Equipment::Category.find_by(slug: 'legs').id, attack: 10, defense: 10, hp: 10, required_level: 1, price: 50,
                          image: File.new("#{Rails.root}/db/seeds/equipments/items/legs/legs.jpg")}]
 
 # TOOLS

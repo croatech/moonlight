@@ -14,7 +14,7 @@ class RoundsController < ApplicationController
   def update
     form_params = params.values[3]
     fight = Fight.find(params[:fight_id])
-    service = Fights::HitService.new(fight, form_params['defense'], form_params['attack'])
+    service = Fight::HitService.new(fight, form_params['defense'], form_params['attack'])
     service.call
 
     fight = Fight.find(params[:fight_id])

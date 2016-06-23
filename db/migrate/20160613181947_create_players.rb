@@ -23,6 +23,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string  :inventory, array: true, default: '{}'
       t.integer :lumberjacking_skill, default: 0
       t.integer :fishing_skill, default: 0
+      t.string  :tols, array: true, default: '{}'
 
       t.timestamps null: false
     end

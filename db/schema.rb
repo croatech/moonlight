@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623121802) do
+ActiveRecord::Schema.define(version: 20160623135440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160623121802) do
     t.integer  "attack",             default: 0
     t.integer  "defense",            default: 0
     t.integer  "hp",                 default: 0
-    t.integer  "level",              default: 1
+    t.integer  "required_level",     default: 1
     t.integer  "price"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20160623121802) do
     t.datetime "image_updated_at"
     t.integer  "lumberjacking_skill", default: 0
     t.integer  "fishing_skill",       default: 0
+    t.string   "tools",               default: [],               array: true
   end
 
   add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree

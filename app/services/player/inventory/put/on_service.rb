@@ -29,7 +29,7 @@ class Player::Inventory::Put::OnService
   end
 
   def level_required?
-    player.level >= item.level
+    player.level >= item.required_level
   end
 
   def slot_is_busy?

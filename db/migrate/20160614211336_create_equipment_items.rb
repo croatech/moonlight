@@ -6,7 +6,7 @@ class CreateEquipmentItems < ActiveRecord::Migration
       t.integer :attack, default: 0
       t.integer :defense, default: 0
       t.integer :hp, default: 0
-      t.integer :level, default: 1
+      t.integer :required_level, default: 1
       t.integer :price
     end
   end
