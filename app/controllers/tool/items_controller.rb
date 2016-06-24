@@ -3,14 +3,8 @@ class Tool::ItemsController < ApplicationController
   def buy
     item = Tool::Item.find(params[:item_id])
     service = Tool::Item::BuyItemService.new(current_user.player, item)
-
-    if service.call
-      redirect_to :back
-      flash[:success] = "You have bought the #{item.name}"
-    else
-      redirect_to :back
-      flash[:danger] = 'Not enough gold'
-    end 
+    service.call
+    redirect_to :back
   end
 
   def put_on

@@ -10,3 +10,4 @@ ready = function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+$('#flash').replaceWith("<%= j render partial: 'layouts/flash' %>");
