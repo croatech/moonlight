@@ -20,7 +20,7 @@ describe Player::Inventory::Tool::Put::OnService do
     it 'checks if the required skill too high' do
       Tool::Item::BuyItemService.new(player, second_item).call
       Player::Inventory::Tool::Put::OnService.new(player, second_item).call
-      expect(player.tools).to eq []
+      expect(player.tools).to eq [1]
     end
   end
 end 

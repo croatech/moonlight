@@ -1,6 +1,6 @@
 # USERS #
 User.create!(email: 'admin@gmail.com', password: 'password')
-
+Player.first.increment!(:gold, 5555)
 # LOCATIONS #
 Location.create!(name: 'Moon Light', slug: 'moon_light')
 Location.create! [{name: 'Weapon Shop', slug: 'weapon_shop', parent_id: Location.find_by(slug: 'moon_light').id},
@@ -13,7 +13,8 @@ Location.create! [{name: 'Weapon Shop', slug: 'weapon_shop', parent_id: Location
   case t + 1 
   when 22
     location_name = 'Mycelium'
-
+  when 28 || 29 || 36
+    location_name = 'The nearest forest'
   end
 
   Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
@@ -88,9 +89,12 @@ Resource.create! [{name: 'Beech', item_id: Tool::Item.find_by(name: 'Axe for a b
                   {name: 'Mysterious_wood', item_id: Tool::Item.find_by(name: 'Axe for a mysterious wood').id, price: 80, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/mysterious_wood.png")}]
 
 # POPULATE RESOURCES
-locations = Location.all
 ## LUMBERJACKING
-LocationResource.create!()
+nearest_forest = Location.find_by(name: 'The nearest forest')
+
+LocationResource.create!(location_id: nearest_forest.id, resource_id: Resource.find_by(name: 'Beech').id)
+LocationResource.create!(location_id: nearest_forest.id, resource_id: Resource.find_by(name: 'Elm').id)
+LocationResource.create!(location_id: nearest_forest.id, resource_id: Resource.find_by(name: 'Larch').id)
 
 
 # BOTS
