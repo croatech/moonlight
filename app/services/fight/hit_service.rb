@@ -52,7 +52,7 @@ class Fight::HitService
     bot_hp = round.bot_hp - player_damage
 
     if player_hp <= 0
-      finish_fight(winner: bot.type)
+      finish_fight(winner: bot.name)
     elsif bot_hp <= 0
       finish_fight(winner: 'Player')
       increase_player_exp

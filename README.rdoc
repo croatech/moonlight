@@ -1,9 +1,16 @@
-== MAP
-=== CELLS
+=== MAP
 ==== CITIES
 Moonlight: 29, 37
 
+==== CELLS
+Mycelium: 22
+The nearest forest: 28, 29, 36
+Shady walk: 37
+
 ==== BOTS
-Mushrooms[1,2,3] = 22
+Mushrooms[1,2,3]: 22
+Rat[4]: 37
+Spider[5]: 37
+
 
 ==== RESOURCES

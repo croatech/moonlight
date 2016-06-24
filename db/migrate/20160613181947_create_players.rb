@@ -24,6 +24,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :lumberjacking_skill, default: 0
       t.integer :fishing_skill, default: 0
       t.string  :tols, array: true, default: '{}'
+      t.integer :lumberjacking_slot
+      t.integer :fishing_slot
 
       t.timestamps null: false
     end

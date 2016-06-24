@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624073551) do
+ActiveRecord::Schema.define(version: 20160624112439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bots", force: :cascade do |t|
-    t.string   "type"
     t.string   "name"
     t.integer  "attack"
     t.integer  "defense"

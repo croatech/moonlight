@@ -1,7 +1,6 @@
 class CreateBots < ActiveRecord::Migration
   def change
     create_table :bots do |t|
-      t.string :type
       t.string :name
       t.integer :attack
       t.integer :defense
