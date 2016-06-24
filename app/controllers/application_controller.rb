@@ -18,4 +18,13 @@ class ApplicationController < ActionController::Base
   def current_location
     current_user.player.location
   end
+
+  def get_inventory_items
+    items ||= Equipment::Item.all
+    player ||= current_user.player
+
+    Player::SLOTS.each do |slot|
+      self.instance_variable_set "@#{slot}", items.find_by(id: player["#{slot}_slot"])
+    end
+  end
 end

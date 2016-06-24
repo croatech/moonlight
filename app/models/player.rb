@@ -9,7 +9,7 @@ class Player < ActiveRecord::Base
   has_many :fights
 
   STATS = %w( attack defense hp )
-  SLOTS = %w( head chest hands legs weapon shield )
+  SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace )
   CRAFT = %w( lumberjacking fishing )
 
   # generate methods for an increasing of stats

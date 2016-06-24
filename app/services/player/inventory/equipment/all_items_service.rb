@@ -9,9 +9,9 @@ class Player::Inventory::Equipment::AllItemsService
   def call
     item_ids = []
     
-    slots.each do |slot_name|
-      if @player[slot_name].present?
-        item_ids << @player[slot_name]
+    slots.each do |slot|
+      if @player["#{slot}_slot"].present?
+        item_ids << @player["#{slot}_slot"]
       end
     end
 

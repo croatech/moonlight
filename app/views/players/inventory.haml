@@ -1,8 +1,8 @@
 .show
-  .col-md-6
+  .col-md-6.grid.col-md-offset-2
     = render 'players/player'
 
-  .col-md-6
+  .col-md-4
     .items
       - if @weapons.present?
         - @weapons.each do |item|

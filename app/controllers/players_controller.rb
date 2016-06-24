@@ -13,8 +13,8 @@ class PlayersController < ApplicationController
     @player = current_user.player
     @weapons = Equipment::Item.where(id: @player.inventory).decorate
     @tools = Tool::Item.where(id: @player.tools).decorate
-    @wearable_weapons = Equipment::Item.where(id: weapons_ids)
     @wearable_tools = Tool::Item.where(id: tools_ids)
+    get_inventory_items
   end
 
   private
