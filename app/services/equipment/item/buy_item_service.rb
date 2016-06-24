@@ -25,6 +25,6 @@ class Equipment::Item::BuyItemService
   end
 
   def put_item_in_inventory
-    Player::Inventory::Put::InService.new(player, item).call
+    Player::Inventory::Equipment::Put::InService.new(player, item).call
   end
 end 
