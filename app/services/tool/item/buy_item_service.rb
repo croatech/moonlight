@@ -8,7 +8,7 @@ class Tool::Item::BuyItemService
   end
 
   def call
-    if is_money_enough? && is_skill_correct?
+    if is_money_enough?
       withdraw_money
       put_item_in_inventory
       player.save
@@ -27,9 +27,5 @@ class Tool::Item::BuyItemService
 
   def put_item_in_inventory
     player.tools << item.id
-  end
-
-  def is_skill_correct?
-    player.public_send("#{item.type}_skill") >= item.required_skill
   end
 end 
