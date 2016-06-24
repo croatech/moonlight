@@ -6,13 +6,17 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :user_id
       t.references :location, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
-      t.integer :head
-      t.integer :chest
-      t.integer :shoulders
-      t.integer :hands
-      t.integer :legs
-      t.integer :weapon
-      t.integer :shield
+      t.integer :helmet_slot
+      t.integer :armor_slot
+      t.integer :mail_slot
+      t.integer :gloves_slot
+      t.integer :bracers_slot
+      t.integer :foots_slot
+      t.integer :belt_slot
+      t.integer :weapon_slot
+      t.integer :shield_slot
+      t.integer :ring_slot
+      t.integer :necklace_slot
       t.integer :level, default: 1
       t.integer :exp, default: 0
       t.integer :exp_next, default: 100

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624112439) do
+ActiveRecord::Schema.define(version: 20160624164310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,12 +99,17 @@ ActiveRecord::Schema.define(version: 20160624112439) do
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.integer  "location_id"
-    t.integer  "head"
-    t.integer  "chest"
-    t.integer  "shoulders"
-    t.integer  "hands"
-    t.integer  "legs"
-    t.integer  "weapon"
+    t.integer  "helmet_slot"
+    t.integer  "armor_slot"
+    t.integer  "mail_slot"
+    t.integer  "gloves_slot"
+    t.integer  "foots_slot"
+    t.integer  "bracers_slot"
+    t.integer  "belt_slot"
+    t.integer  "weapon_slot"
+    t.integer  "shield_slot"
+    t.integer  "ring_slot"
+    t.integer  "necklace_slot"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "user_id"
@@ -117,7 +122,6 @@ ActiveRecord::Schema.define(version: 20160624112439) do
     t.integer  "exp_next",            default: 100
     t.string   "inventory",           default: [],               array: true
     t.integer  "free_stats",          default: 10
-    t.integer  "shield"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

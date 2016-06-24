@@ -9,7 +9,7 @@ class Player::Inventory::Equipment::Put::OffService
     @inventory = player.inventory
     @item = item
     @item_id = item.id
-    @item_type = item.category.slug
+    @item_type = "#{item.category.slug}_slot"
   end
 
   def call

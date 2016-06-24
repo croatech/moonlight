@@ -9,7 +9,7 @@ class Player::Inventory::Equipment::Put::OnService
     @inventory = player.inventory
     @item = item
     @item_id = item.id.to_s
-    @item_type = item.category.slug
+    @item_type = "#{item.category.slug}_slot"
   end
 
   def call
@@ -46,7 +46,7 @@ class Player::Inventory::Equipment::Put::OnService
   end
 
   def put_an_old_item_in_inventory
-    player.inventory << player[item_type]
+    Player::Inventory::Equipment::Put::OffService(player, item)
   end
 
   def update_stats
