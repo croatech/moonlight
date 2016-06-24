@@ -9,10 +9,10 @@ class Player < ActiveRecord::Base
   has_many :fights
 
   STATS = %w( attack defense hp )
-  SLOTS = %w( head chest shoulders hands legs weapon shield )
+  SLOTS = %w( head chest hands legs weapon shield )
   CRAFT = %w( lumberjacking fishing )
 
-  # generating of methods for an increasing of stats
+  # generate methods for an increasing of stats
   STATS.each do |stat|
     stat_name = stat.to_sym
     method_name = "increase_#{stat}".to_sym

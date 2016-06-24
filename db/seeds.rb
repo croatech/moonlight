@@ -16,7 +16,7 @@ Location.create! [{name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Locati
   when 28
     location_name = 'Dalf Lagoon'
   when 29, 36
-    location_name = 'Ork\'s forest'
+    location_name = 'Sacred Forest'
   when 37
     location_name = 'Shady walk'
   end
@@ -26,30 +26,42 @@ end
 
 # EQUIPMENTS
 ## CATEGORIES
-Equipment::Category.create! [{name: 'Head',      slug: 'head'},
-                             {name: 'Chest',     slug: 'chest'},
-                             {name: 'Shoulders', slug: 'shoulders'},
-                             {name: 'Hands',     slug: 'hands'},
-                             {name: 'Legs',      slug: 'legs'},
-                             {name: 'Weapon',    slug: 'weapon'},
-                             {name: 'Shield',    slug: 'shield'}]
+Equipment::Category.create! [{name: 'Helmet',   slug: 'helmet'},
+                             {name: 'Armor',    slug: 'armor'},
+                             {name: 'Mail',     slug: 'mail'},
+                             {name: 'Gloves',   slug: 'gloves'},
+                             {name: 'Bracers',  slug: 'bracers'},
+                             {name: 'Foots',    slug: 'foots'},
+                             {name: 'Belt',    slug: 'belt'},
+                             {name: 'Weapon',   slug: 'weapon'},
+                             {name: 'Shield',   slug: 'shield'},
+                             {name: 'Ring',     slug: 'ring'},
+                             {name: 'Necklace', slug: 'necklace'}]
 
 ## ITEMS
-### HEAD
-Equipment::Item.create! [{name: 'Gold helm',   category_id: Equipment::Category.find_by(slug: 'head').id,    attack: 0, defense: 10, hp: 30, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/head/helm.jpg")}]
+### HELMET
+Equipment::Item.create! [{name: 'Leather hat',   category_id: Equipment::Category.find_by(slug: 'helmet').id,   attack: 0, defense: 10, hp: 30, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/leather_hat.png")}]
 ### CHEST
-Equipment::Item.create! [{name: 'Metal chest', category_id: Equipment::Category.find_by(slug: 'chest').id,   attack: 0, defense: 50, hp: 50, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/chest/chest.jpg")}]
-### SHOULDERS
-#Equipment::Item.create! []
-### HANDS
-#Equipment::Item.create! []
-### LEGS
-Equipment::Item.create! [{name: 'Metal shoes', category_id: Equipment::Category.find_by(slug: 'legs').id,    attack: 10, defense: 10, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/legs/legs.jpg")}]
+Equipment::Item.create! [{name: 'Leather armor', category_id: Equipment::Category.find_by(slug: 'armor').id,  attack: 0, defense: 50, hp: 50, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/leather_armor.png")}]
+### MAIL
+Equipment::Item.create! [{name: 'Fur Vest',      category_id: Equipment::Category.find_by(slug: 'mail').id,   attack: 0, defense: 50, hp: 50, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/fur_vest.png")}]
+### GLOVES
+Equipment::Item.create! [{name: 'Leather Gloves',category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 0, defense: 50, hp: 50, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/gloves/leather_gloves.png")}]
+### BRACERS
+Equipment::Item.create! [{name: 'Leather Bracers',category_id: Equipment::Category.find_by(slug: 'bracers').id,   attack: 0, defense: 50, hp: 50, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/bracers/leather_bracers.png")}]
+### PANTS
+Equipment::Item.create! [{name: 'Leather shoes', category_id: Equipment::Category.find_by(slug: 'foots').id,   attack: 10, defense: 10, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/foots/leather_shoes.png")}]
+### BELT
+Equipment::Item.create! [{name: 'Rag belt', category_id: Equipment::Category.find_by(slug: 'belt').id,   attack: 10, defense: 10, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/belt/rag_belt.png")}]
 ### WEAPON
-Equipment::Item.create! [{name: 'Gold sword',  category_id: Equipment::Category.find_by(slug: 'weapon').id,  attack: 5,  defense: 2,  hp: 20, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/sword.jpg")},
-                         {name: 'Wind staff',  category_id: Equipment::Category.find_by(slug: 'weapon').id,  attack: 20, defense: 5,  hp: 50, required_level: 3, price: 150, image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/wind_staff.jpg")}]
+Equipment::Item.create! [{name: 'Metal axe',     category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 5,  defense: 2,  hp: 20, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/metal_axe.png")}]
 ### SHIELD
-Equipment::Item.create! [{name: 'Gold shield', category_id: Equipment::Category.find_by(slug: 'shield').id,  attack: 0,  defense: 20, hp: 30, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/shield/shield.jpg")}]
+Equipment::Item.create! [{name: 'Wood shield',   category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0,  defense: 20, hp: 30, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/shield/wood_shield.png")}]
+### RING
+Equipment::Item.create! [{name: 'Wood ring',   category_id: Equipment::Category.find_by(slug: 'ring').id, attack: 0,  defense: 20, hp: 30, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/ring/wood_ring.png")}]
+### NECKLACE
+Equipment::Item.create! [{name: 'Bone necklace',   category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,  defense: 20, hp: 30, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/necklace/bone_necklace.png")}]
+
 
 # TOOLS
 ## CATEGORIES
@@ -80,9 +92,9 @@ Resource.create! [{name: 'Beech',           item_id: Tool::Item.find_by(name: 'A
 
 # POPULATE RESOURCES
 ## LUMBERJACKING
-LocationResource.create! [{location_id: Location.find_by(name: 'Ork\'s forest'), resource_id: Resource.find_by(name: 'Beech').id},
-                          {location_id: Location.find_by(name: 'Ork\'s forest'), resource_id: Resource.find_by(name: 'Elm').id},
-                          {location_id: Location.find_by(name: 'Ork\'s forest'), resource_id: Resource.find_by(name: 'Larch').id}]
+LocationResource.create! [{location_id: Location.find_by(name: 'Sacred Forest').id, resource_id: Resource.find_by(name: 'Beech').id},
+                          {location_id: Location.find_by(name: 'Sacred Forest').id, resource_id: Resource.find_by(name: 'Elm').id},
+                          {location_id: Location.find_by(name: 'Sacred Forest').id, resource_id: Resource.find_by(name: 'Larch').id}]
 
 
 # BOTS
@@ -98,7 +110,7 @@ Bot.create! [{level: 1, name: 'Armillaria',  attack: 10, defense: 10, hp: 60,  i
 # POPULATE BOTS
 ## MULTIPLE CELLS
 
-Location.where(name: 'Ork\'s forest').each do |location|
+Location.where(name: 'Sacred Forest').each do |location|
   LocationBot.create! [{location_id: location.id, bot_id: Bot.find_by(name: 'Hoblin').id},
                        {location_id: location.id, bot_id: Bot.find_by(name: 'Ork').id}]
 end

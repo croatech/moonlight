@@ -17,3 +17,10 @@
               .spoiler-text
                 .row
                   = render 'bots/bot', bot: bot
+
+    - if @resources.present?
+      .resources
+        - @resources.each do |resource|
+          - cache resource do
+            .resource
+              = image_tag resource.image.url

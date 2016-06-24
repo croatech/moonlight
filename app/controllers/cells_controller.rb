@@ -5,6 +5,7 @@ class CellsController < ApplicationController
   def show
     change_location(params[:id])
     @bots = @location.bots
+    @resources = @location.resources
   end
 
   private
