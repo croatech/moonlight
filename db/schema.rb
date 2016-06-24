@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623170034) do
+ActiveRecord::Schema.define(version: 20160624073551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,14 @@ ActiveRecord::Schema.define(version: 20160623170034) do
   add_index "location_bots", ["bot_id"], name: "index_location_bots_on_bot_id", using: :btree
   add_index "location_bots", ["location_id"], name: "index_location_bots_on_location_id", using: :btree
 
+  create_table "location_resources", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "resource_id"
+  end
+
+  add_index "location_resources", ["location_id"], name: "index_location_resources_on_location_id", using: :btree
+  add_index "location_resources", ["resource_id"], name: "index_location_resources_on_resource_id", using: :btree
+
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
@@ -124,6 +132,19 @@ ActiveRecord::Schema.define(version: 20160623170034) do
 
   add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree
   add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
+
+  create_table "resources", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "item_id"
+    t.integer  "price"
+    t.string   "type"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "resources", ["item_id"], name: "index_resources_on_item_id", using: :btree
 
   create_table "rounds", force: :cascade do |t|
     t.integer  "fight_id"
@@ -180,6 +201,8 @@ ActiveRecord::Schema.define(version: 20160623170034) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "fights", "players"
+  add_foreign_key "location_resources", "locations"
+  add_foreign_key "location_resources", "resources"
   add_foreign_key "players", "locations"
   add_foreign_key "rounds", "fights"
 end

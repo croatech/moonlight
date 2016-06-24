@@ -21,6 +21,6 @@ class Player::Inventory::Tool::AllItemsService
   private
 
   def slots
-    Player.const_get("CRAFT")
+    Player::CRAFT
   end
 end

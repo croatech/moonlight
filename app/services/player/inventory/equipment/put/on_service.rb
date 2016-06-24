@@ -50,7 +50,7 @@ class Player::Inventory::Equipment::Put::OnService
   end
 
   def update_stats
-    Player.const_get("STATS").each do |stat_name|
+    Player::STATS.each do |stat_name|
       player.increment(stat_name.to_sym, item[stat_name])
     end
   end

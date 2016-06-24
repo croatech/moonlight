@@ -5,6 +5,7 @@ class Location < ActiveRecord::Base
 
   has_many :players
   has_many :location_bots
+  has_many :resources
   has_many :bots, through: :location_bots
   
   validates :name, :slug, presence: true

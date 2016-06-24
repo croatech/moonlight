@@ -6,7 +6,7 @@ class Equipment::ItemsController < ApplicationController
 
     if service.call
       redirect_to :back
-      flash[:notice] = "You have bought the #{item.name}"
+      flash[:success] = "You have bought the #{item.name}"
     else
       redirect_to :back
       flash[:danger] = 'Not enough gold'

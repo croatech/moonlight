@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :resources
   root 'locations#moon_light'
 
   devise_for :users
