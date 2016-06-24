@@ -13,8 +13,7 @@ Location.create! [{name: 'Weapon Shop', slug: 'weapon_shop', parent_id: Location
   case t + 1 
   when 22
     location_name = 'Mycelium'
-  when 
-      
+
   end
 
   Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
@@ -46,37 +45,37 @@ Equipment::Item.create! [{name: 'Gold sword', category_id: Equipment::Category.f
 
 # TOOLS
 ## CATEGORIES
-Tool::Category.create! [{id: 1, name: 'Chopping Axes', slug: 'lumberjacking'},
-                        {id: 2, name: 'Fishing Rods', slug: 'fishing'}]
+Tool::Category.create! [{id: 1, name: 'Lumberjacking', slug: 'lumberjacking'},
+                        {id: 2, name: 'Fishing', slug: 'fishing'}]
 
 ## ITEMS
 ### Lumberjacking
 Tool::Item.create! [{id: 1, name: 'Axe for a beech', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 100, required_skill: 0, type: 'lumberjacking',
                     image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_beech.png")},
                     {id: 2, name: 'Axe for an elm', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 200, required_skill: 50, type: 'lumberjacking',
-                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_elm.png")},
-                    {id: 3, name: 'Axe for a student', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 400, required_skill: 100, type: 'lumberjacking',
-                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_student.png")},
-                    {id: 4, name: 'Axe for a student', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 800, required_skill: 150, type: 'lumberjacking',
-                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_student.png")},
-                    {id: 5, name: 'Axe for a student', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 1600, required_skill: 200, type: 'lumberjacking',
-                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_student.png")}
-                    {id: 6, name: 'Axe for a student', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 3200, required_skill: 250, type: 'lumberjacking',
-                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_student.png")}
-                    {id: 7, name: 'Axe for a student', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 6400, required_skill: 300, type: 'lumberjacking',
-                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_student.png")}
-                    {id: 8, name: 'Axe for a student', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 12800, required_skill: 350, type: 'lumberjacking',
-                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_student.png")}]
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_an_elm.png")},
+                    {id: 3, name: 'Axe for a larch', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 400, required_skill: 100, type: 'lumberjacking',
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_larch.png")},
+                    {id: 4, name: 'Axe for a birch', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 800, required_skill: 150, type: 'lumberjacking',
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_birch.png")},
+                    {id: 5, name: 'Axe for a sequoia', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 1600, required_skill: 200, type: 'lumberjacking',
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_sequoia.png")},
+                    {id: 6, name: 'Axe for an eucalyptus', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 3200, required_skill: 250, type: 'lumberjacking',
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_an_eucalyptus.png")},
+                    {id: 7, name: 'Axe for a rowan', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 6400, required_skill: 300, type: 'lumberjacking',
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_rowan.png")},
+                    {id: 8, name: 'Axe for a mysterious wood', category_id: Tool::Category.find_by(slug: 'lumberjacking').id, price: 12800, required_skill: 350, type: 'lumberjacking',
+                    image: File.new("#{Rails.root}/db/seeds/tools/items/lumberjacking/axe_for_a_mysterious_wood.png")}]
 
 # RESOURCES
-Resource.create! [{name: 'Beech', item_id: 1, price: 10, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/beech.jpg")},
-                  {name: 'Elm', item_id: 1, price: 20, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/elm.jpg")},
-                  {name: 'Larch', item_id: 1, price: 30, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/larch.jpg")},
-                  {name: 'Birch', item_id: 1, price: 40, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/birch.jpg")},
-                  {name: 'Sequoia', item_id: 1, price: 50, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/sequoia.jpg")},
-                  {name: 'Eucalyptus', item_id: 1, price: 60, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/eucalyptus.jpg")},
-                  {name: 'Rowan', item_id: 1, price: 70, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/rowan.jpg")},
-                  {name: 'Mysterious_wood', item_id: 1, price: 80, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/mysterious_wood.jpg")}]
+Resource.create! [{name: 'Beech', item_id: 1, price: 10, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/beech.png")},
+                  {name: 'Elm', item_id: 2, price: 20, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/elm.png")},
+                  {name: 'Larch', item_id: 3, price: 30, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/larch.png")},
+                  {name: 'Birch', item_id: 4, price: 40, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/birch.png")},
+                  {name: 'Sequoia', item_id: 5, price: 50, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/sequoia.png")},
+                  {name: 'Eucalyptus', item_id: 6, price: 60, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/eucalyptus.png")},
+                  {name: 'Rowan', item_id: 7, price: 70, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/rowan.png")},
+                  {name: 'Mysterious_wood', item_id: 8, price: 80, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/mysterious_wood.png")}]
 
 # POPULATE RESOURCES
 locations = Location.all
