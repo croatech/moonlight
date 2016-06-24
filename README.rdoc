@@ -5,7 +5,9 @@ Moonlight: 29, 37
 ==== CELLS
 Mycelium: 22
 
-The nearest forest: 28, 29, 36
+The nearest forest: 29, 36
+
+Dalf Lagoon: 28
 
 Shady walk: 37
 
