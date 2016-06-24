@@ -7,6 +7,7 @@ class Player < ActiveRecord::Base
   belongs_to :user
 
   has_many :fights
+  has_many :logs
 
   STATS = %w( attack defense hp )
   SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace )

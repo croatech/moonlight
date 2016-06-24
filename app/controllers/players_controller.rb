@@ -6,7 +6,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = current_user.player
-    @wearable_weapons = Equipment::Item.where(id: weapons_ids)
+    get_inventory_items
   end
 
   def inventory
@@ -18,10 +18,6 @@ class PlayersController < ApplicationController
   end
 
   private
-
-  def weapons_ids
-    Player::Inventory::Equipment::AllItemsService.new(current_user.player).call
-  end
 
   def tools_ids
     Player::Inventory::Tool::AllItemsService.new(current_user.player).call

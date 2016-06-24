@@ -7,11 +7,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    .container
+    .container-fluid
       .row
         .header
-          = render 'shared/flashes'
-          
           %nav.navbar
             %ul
               %li= link_to 'Wayward Pines', wayward_pines_locations_path, class: 'btn btn-default'
@@ -25,4 +23,7 @@
                 = image_tag 'players/gold.png'
                 = current_user.player.gold
 
-      = yield
+      .container
+        = yield
+
+      = render 'shared/log'

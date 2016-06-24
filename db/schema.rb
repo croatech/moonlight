@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624164310) do
+ActiveRecord::Schema.define(version: 20160624203313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,15 @@ ActiveRecord::Schema.define(version: 20160624164310) do
 
   add_index "locations", ["parent_id"], name: "index_locations_on_parent_id", using: :btree
   add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
+
+  create_table "logs", force: :cascade do |t|
+    t.integer  "player_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "logs", ["player_id"], name: "index_logs_on_player_id", using: :btree
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
@@ -206,6 +215,7 @@ ActiveRecord::Schema.define(version: 20160624164310) do
   add_foreign_key "fights", "players"
   add_foreign_key "location_resources", "locations"
   add_foreign_key "location_resources", "resources"
+  add_foreign_key "logs", "players"
   add_foreign_key "players", "locations"
   add_foreign_key "rounds", "fights"
 end

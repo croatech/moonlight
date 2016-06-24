@@ -4,8 +4,7 @@ class Player::StatsController < ApplicationController
 
   def index
     @player = current_user.player
-    item_ids = Player::Inventory::Equipment::AllItemsService.new(current_user.player).call
-    @inventory_items = Equipment::Item.where(id: item_ids)
+    get_inventory_items
   end
 
   def increase

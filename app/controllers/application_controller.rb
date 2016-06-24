@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :check_for_an_active_fight
+  before_action :log_get
 
   def check_for_an_active_fight
     unless params[:controller] == 'rounds' || params[:controller] == 'devise'
@@ -26,5 +27,14 @@ class ApplicationController < ActionController::Base
     Player::SLOTS.each do |slot|
       self.instance_variable_set "@#{slot}", items.find_by(id: player["#{slot}_slot"])
     end
+  end
+
+  def log_get
+    @logs = current_user.player.logs.order('id DESC').limit(50)
+  end
+
+  def log(event)
+    service = Log::AddEventService.new(current_user.player, event)
+    service.call
   end
 end
