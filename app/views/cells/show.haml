@@ -24,3 +24,4 @@
           - cache resource do
             .resource
               = image_tag resource.image.url
+              = link_to 'Collect', resource_collect_path(resource_id: resource.id), method: :post, class: 'btn btn-primary'

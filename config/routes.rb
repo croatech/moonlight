@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :resources
   root 'locations#moon_light'
 
   devise_for :users
@@ -15,6 +14,10 @@ Rails.application.routes.draw do
 
   resource :player, only: :show do
     get :inventory
+  end
+
+  resources :resources do
+    post :collect
   end
 
   namespace :player do
