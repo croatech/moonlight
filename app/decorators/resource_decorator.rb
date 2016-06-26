@@ -9,7 +9,7 @@ class ResourceDecorator < Draper::Decorator
     if player[slot_name] == self.item_id
       h.link_to 'Collect', resource_collect_path(resource_id: resource.id), method: :post, class: 'btn btn-primary'
     else
-      h.link_to 'Buy item', craft_shop_locations_path, class: 'btn btn-danger'
+      h.link_to 'Buy tool', craft_shop_locations_path, class: 'btn btn-danger'
     end
   end
 end

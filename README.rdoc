@@ -5,7 +5,7 @@ Moonlight: 29, 37
 ==== CELLS
 Mycelium: 22
 
-The nearest forest: 29, 36
+Sacred forest: 29, 36
 
 Dalf Lagoon: 28
 
@@ -20,8 +20,8 @@ Spider [5]: 37
 
 
 ==== RESOURCES
-Beech[0-50] = 27, 37
-Elm[50-100] = 36
+Beech[0-50] = 29, 36
+Elm[50-100] = 29, 36
 Larch[100-150] = 28
 
 === CRAFT

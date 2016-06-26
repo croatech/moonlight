@@ -92,10 +92,14 @@ Resource.create! [{name: 'Beech',           item_id: Tool::Item.find_by(name: 'A
 
 # POPULATE RESOURCES
 ## LUMBERJACKING
-LocationResource.create! [{location_id: Location.find_by(name: 'Sacred Forest').id, resource_id: Resource.find_by(name: 'Beech').id},
-                          {location_id: Location.find_by(name: 'Sacred Forest').id, resource_id: Resource.find_by(name: 'Elm').id},
-                          {location_id: Location.find_by(name: 'Sacred Forest').id, resource_id: Resource.find_by(name: 'Larch').id}]
+### MULTIPLE CELLS
+Location.where(name: 'Sacred Forest').each do |location|
+  LocationResource.create! [{location_id: location.id, resource_id: Resource.find_by(name: 'Beech').id},
+                            {location_id: location.id, resource_id: Resource.find_by(name: 'Elm').id}]
+end
 
+### SINGLE CELLS
+LocationResource.create!(location_id: Location.find_by(name: 'Dalf Lagoon').id, resource_id: Resource.find_by(name: 'Larch').id)
 
 # BOTS
 Bot.create! [{level: 1, name: 'Armillaria',  attack: 10, defense: 10, hp: 60,  image: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
@@ -109,7 +113,6 @@ Bot.create! [{level: 1, name: 'Armillaria',  attack: 10, defense: 10, hp: 60,  i
 
 # POPULATE BOTS
 ## MULTIPLE CELLS
-
 Location.where(name: 'Sacred Forest').each do |location|
   LocationBot.create! [{location_id: location.id, bot_id: Bot.find_by(name: 'Hoblin').id},
                        {location_id: location.id, bot_id: Bot.find_by(name: 'Ork').id}]

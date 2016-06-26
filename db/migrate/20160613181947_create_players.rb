@@ -20,7 +20,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :level, default: 1
       t.integer :exp, default: 0
       t.integer :exp_next, default: 100
-      t.integer :gold,        default: 300
+      t.integer :gold
       t.integer :attack,      default: 1
       t.integer :defense,     default: 1
       t.integer :hp,          default: 20
