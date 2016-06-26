@@ -46,7 +46,8 @@ class Player::Inventory::Equipment::Put::OnService
   end
 
   def put_an_old_item_in_inventory
-    Player::Inventory::Equipment::Put::OffService(player, item)
+    service = Player::Inventory::Equipment::Put::OffService.new(player, item)
+    service.call
   end
 
   def update_stats
