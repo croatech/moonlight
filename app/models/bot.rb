@@ -17,7 +17,15 @@ class Bot < ActiveRecord::Base
     level * 20
   end
 
+  def try_drop_gold_chance
+    1 == rand(1..2)
+  end
+
   def drop_item
-    rand(1..Equipment::Item.count)
+    Equipment::Item.all.sample.id
+  end
+
+  def try_drop_item_chance
+    1 == rand(1..2)
   end
 end
