@@ -9,8 +9,8 @@ class Fight::DropGetService
   end
 
   def call
-    gold_has_dropped if bot.try_drop_gold_chance
-    item_has_dropped if bot.try_drop_item_chance
+    gold_has_dropped if bot.try_drop_gold
+    item_has_dropped if bot.try_drop_item
     fight.save
     player.save
   end
