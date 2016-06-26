@@ -10,8 +10,8 @@ class CellsController < ApplicationController
 
   private
 
-  def change_location(location_name)
-    @location = Location.find_by(slug: location_name)
+  def change_location(location_id)
+    @location = Location.find_by(slug: location_id)
     Locations::ChangeLocationService.new(current_user.player, @location.id).call
   end
 end

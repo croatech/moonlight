@@ -25,3 +25,5 @@
             .resource
               = image_tag resource.image.url
               = resource.decorate.collect_link(current_user.player)
+
+= @resources.count

@@ -20,6 +20,9 @@ Spider [5]: 37
 
 
 ==== RESOURCES
+Beech[0-50] = 27, 37
+Elm[50-100] = 36
+Larch[100-150] = 28
 
 === CRAFT
 ==== Chances for an increment of skill(lumberjacking, fishing, etc.)
