@@ -1,0 +1,13 @@
+.inventory.resources
+  .col-md-6.grid.col-md-offset-2
+    = render 'players/player'
+
+  = render 'menu'
+
+  .items
+    - if @resources.present?
+      - @resources.each do |resource|
+        - cache resource do
+          = image_tag resource.image.url
+    - else
+      %h2 No craft resources

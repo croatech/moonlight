@@ -6,14 +6,7 @@ class PlayersController < ApplicationController
 
   def show
     @player = current_user.player
-    get_inventory_items
-    get_tool_items
-  end
-
-  def inventory
-    @player = current_user.player
-    @weapons = Equipment::Item.where(id: @player.inventory).decorate
-    get_inventory_items
-    get_tool_items
+    set_equipment_items
+    @wearable_tools = get_tool_items
   end
 end

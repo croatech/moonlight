@@ -12,8 +12,7 @@
         .header
           %nav.navbar
             %ul
-              %li= link_to 'Profile', player_path, class: 'btn btn-default'
-              %li= link_to 'Inventory', inventory_player_path, class: 'btn btn-default'
+              %li= link_to 'Inventory', player_inventory_index_path, class: 'btn btn-default'
               %li= link_to 'Stats', player_stats_path, class: 'btn btn-default'
               %li= @player.decorate.current_location_path
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'

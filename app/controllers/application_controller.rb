@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
     current_user.player.location
   end
 
-  def get_inventory_items
-    items ||= Equipment::Item.all
-    player ||= current_user.player
+  def set_equipment_items
+    items = Equipment::Item.all
+    player = current_user.player
 
     Player::SLOTS.each do |slot|
       self.instance_variable_set "@#{slot}", items.find_by(id: player["#{slot}_slot"])
@@ -30,8 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_tool_items
-    @tools = Tool::Item.where(id: current_user.player.tools).decorate
-    @wearable_tools = Tool::Item.where(id: tools_ids)
+    Tool::Item.where(id: tools_ids)
   end
 
   def log_get

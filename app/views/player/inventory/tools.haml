@@ -1,0 +1,14 @@
+.inventory.tools
+  .col-md-6.grid.col-md-offset-2
+    = render 'players/player'
+
+  = render 'menu'
+
+  .col-md-4
+    .items
+      - if @tools.present?
+        - @tools.each do |item|
+          - cache item do
+            = render 'tool/items/item', item: item
+      - else
+        %h2 No craft tools

@@ -4,8 +4,8 @@ class Player::StatsController < ApplicationController
 
   def index
     @player = current_user.player
-    get_inventory_items
-    get_tool_items
+    set_equipment_items
+    @wearable_tools = get_tool_items
   end
 
   def increase

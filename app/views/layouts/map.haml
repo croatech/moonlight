@@ -17,7 +17,7 @@
               - if ["29", "37"].include?(params[:id])
                 %li= link_to 'Moon Light', moon_light_locations_path, class: 'btn btn-default'
                 
-              %li= link_to 'Inventory', inventory_player_path, class: 'btn btn-success'
+              %li= link_to 'Inventory', player_inventory_index_path, class: 'btn btn-success'
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
               %li
                 = image_tag 'players/gold.png'

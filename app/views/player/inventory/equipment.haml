@@ -1,0 +1,14 @@
+.inventory.eqipment
+  .col-md-6.grid.col-md-offset-2
+    = render 'players/player'
+
+  = render 'menu'
+
+  .col-md-4
+    .items
+      - if @weapons.present?
+        - @weapons.each do |item|
+          - cache item do
+            = render 'equipment/items/item', item: item
+      - else
+        %h2 No equipment items

@@ -21,5 +21,5 @@
       = item.hp
 
     .buy-button
-      = link_to 'Put on', equipment_item_put_on_path(item.id), method: :post, class: 'btn btn-info' if params[:action] == 'inventory'
+      = item.put_on_button(current_user.player)
       = item.buy_or_sell_button(current_user.player)

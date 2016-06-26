@@ -21,6 +21,10 @@ class Tool::ItemDecorator < Draper::Decorator
     end
   end
 
+  def put_on_button(player)
+    h.link_to 'Put on', tool_item_put_on_path(self.id), method: :post, class: 'btn btn-info' if player.tools.include?(self.id.to_s)
+  end
+
   private
 
   def is_skill_correct?(player, item)

@@ -1,0 +1,28 @@
+.inventory
+  .col-md-6.grid.col-md-offset-2
+    = render 'players/player'
+
+  = render 'menu'
+
+  .col-md-4
+    .items
+      - if @weapons.present?
+        - @weapons.each do |item|
+          - cache item do
+            = render 'equipment/items/item', item: item
+      - else
+        %h2 No equipment items
+
+      - if @tools.present?
+        - @tools.each do |item|
+          - cache item do
+            = render 'tool/items/item', item: item
+      - else
+        %h2 No craft tools
+
+      - if @resources.present?
+        - @resources.each do |resource|
+          - cache resource do
+            = resource.image.url
+      - else
+        %h2 No craft resources

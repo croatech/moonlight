@@ -12,9 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :player, only: :show do
-    get :inventory
-  end
+  #resource :player, only: :show
 
   resources :resources do
     post :collect
@@ -23,6 +21,14 @@ Rails.application.routes.draw do
   namespace :player do
     resources :stats, only: :index do
       post :increase
+    end
+
+    resources :inventory, only: :index do
+      collection do 
+        get :equipment
+        get :tools
+        get :resources
+      end
     end
   end
 
