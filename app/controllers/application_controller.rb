@@ -29,12 +29,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_tool_items
+    @tools = Tool::Item.where(id: current_user.player.tools).decorate
+    @wearable_tools = Tool::Item.where(id: tools_ids)
+  end
+
   def log_get
-    @logs = current_user.player.logs.order('id DESC').limit(50)
+    @logs = Log::EventsGetService.new(current_user.player).call if current_user
   end
 
   def log(event)
     service = Log::AddEventService.new(current_user.player, event)
     service.call
+  end
+
+  private
+
+  def tools_ids
+    Player::Inventory::Tool::AllItemsService.new(current_user.player).call
   end
 end

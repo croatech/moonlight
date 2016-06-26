@@ -56,6 +56,7 @@ class Fight::HitService
     elsif bot_hp <= 0
       finish_fight(winner: 'Player')
       increase_player_exp
+      check_for_drop
     else
       false
     end
@@ -69,5 +70,11 @@ class Fight::HitService
 
   def increase_player_exp
     Player::Exp::IncreaseService.new(player, bot.given_exp).call
+  end
+
+  def check_for_drop
+    fight.dropped_gold = bot.drop_gold if 1 == rand(1..2)
+    fight.dropped_item = bot.drop_item if 1 == 1
+    fight.save
   end
 end

@@ -17,8 +17,17 @@ class RoundsController < ApplicationController
     service = Fight::HitService.new(fight, form_params['defense'], form_params['attack'])
     service.call
 
-    fight = Fight.find(params[:fight_id])
     if fight.finished?
+      if fight.dropped_gold.present?
+        @dropped_gold = fight.dropped_gold
+        log("Dropped <span>#{@dropped_gold}</span> gold from the enemy.")
+      end
+
+      if fight.dropped_item.present?
+        @dropped_item = Equipment::Item.find(fight.dropped_item)
+        log("Dropped <span>#{@dropped_item.name}</span> from the enemy.")
+      end
+
       redirect_to fight_path(fight.id)
     else
       redirect_to fight_round_path(fight_id: fight.id, id: fight.rounds.last.id)

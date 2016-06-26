@@ -3,10 +3,8 @@ class ResourcesController < ApplicationController
   def collect
     resource = Resource.find(params[:resource_id])
     service = Resource::CollectService.new(current_user.player, resource)
-
-    if service.call
-      log("You've successfully chopped <span>#{resource.name}</span>")
-      redirect_to :back
-    end
+    service.call
+    log("You've successfully chopped <span>#{resource.name}</span>. Your #{resource.type} skill is <span>#{current_user.player.decorate.current_skill(resource)}</span>.")
+    redirect_to :back
   end
 end

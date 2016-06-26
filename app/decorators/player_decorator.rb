@@ -12,4 +12,9 @@ class PlayerDecorator < Draper::Decorator
       h.link_to "Back to #{current_location.name}", location_path(current_location.slug), class: 'btn btn-success'
     end
   end
+
+  def current_skill(resource)
+    skill_name = "#{resource.type}_skill"
+    self[skill_name]
+  end
 end

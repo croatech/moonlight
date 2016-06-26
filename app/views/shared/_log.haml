@@ -1,7 +1,5 @@
-.log
-  - if @logs.present?
+- if @logs.present?
+  .log
     - @logs.each do |log|
       .event
         = raw(log.body)
-  - else
-    %p Welcome to Moonlight

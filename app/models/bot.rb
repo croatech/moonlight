@@ -12,4 +12,12 @@ class Bot < ActiveRecord::Base
   def given_exp
     level * 20
   end
+
+  def drop_gold
+    level * 20
+  end
+
+  def drop_item
+    rand(1..Equipment::Item.count)
+  end
 end
