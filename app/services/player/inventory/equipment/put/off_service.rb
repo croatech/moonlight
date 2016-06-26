@@ -13,7 +13,7 @@ class Player::Inventory::Equipment::Put::OffService
   end
 
   def call
-    if is_an_item_wear?
+    if is_an_item_wearing?
       put_an_old_item_in_inventory
       clear_slot
       update_stats
@@ -23,7 +23,7 @@ class Player::Inventory::Equipment::Put::OffService
 
   private
 
-  def is_an_item_wear?
+  def is_an_item_wearing?
     player[item_type] == item_id
   end
 

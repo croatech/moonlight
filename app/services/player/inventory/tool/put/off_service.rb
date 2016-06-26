@@ -12,7 +12,7 @@ class Player::Inventory::Tool::Put::OffService
   end
 
   def call
-    if is_an_item_wear?
+    if is_an_item_wearing?
       put_an_old_item_in_inventory
       clear_slot
       player.save
@@ -21,7 +21,7 @@ class Player::Inventory::Tool::Put::OffService
 
   private
 
-  def is_an_item_wear?
+  def is_an_item_wearing?
     player[slot_name] == item.id
   end
 

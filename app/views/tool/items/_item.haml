@@ -7,19 +7,7 @@
       = item.level_of_skill(current_user.player)
 
     %h2= item.name
-
-    -# .attack.stat
-    -#   = image_tag 'attack.png'
-    -#   = item.attack
-
-    -# .defense.stat
-    -#   = image_tag 'defense.png'
-    -#   = item.defense
-
-    -# .hp.stat
-    -#   = image_tag 'hp.png'
-    -#   = item.hp
-
+    
     .buy-button
       = link_to 'Put on', tool_item_put_on_path(item.id), method: :post, class: 'btn btn-info' if params[:action] == 'inventory'
       = item.buy_or_sell_button(current_user.player)

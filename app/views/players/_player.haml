@@ -86,18 +86,11 @@
 
 
   - if @wearable_tools.present?
-    - @wearable_tools.each do |item|
-      .player-items
-        %div#item{class: "item.category.name item"}
+    - @wearable_tools.each_with_index do |item, index|
+      .player-items.tools
+        %div{class: "item tool num-#{index}"}
           = link_to tool_item_put_off_path(item_id: item.id), method: :post do
             = image_tag item.image.url
-          .stats#stats
-            .attack.stat
-              qwe
-              
-            .put-off
-              = link_to tool_item_put_off_path(item_id: item.id), method: :post do
-                = image_tag 'players/put_off.png'
 
 :javascript
   $('.player-items > #item').hover(function () {

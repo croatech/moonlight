@@ -14,6 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require hover-item
 //= require spoiler
 //= require_tree .
