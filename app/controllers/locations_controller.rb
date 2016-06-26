@@ -26,7 +26,7 @@ class LocationsController < ApplicationController
 
   def change_location(location_name)
     @location = Location.find_by(slug: location_name)
-    Locations::ChangeLocationService.new(current_user.player, @location.id).call
+    Location::ChangeLocationService.new(current_user.player, @location.id).call
     log("You\'ve changed the location to <span>#{@location.name}</span>")
   end
 end

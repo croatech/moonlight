@@ -12,6 +12,6 @@ class CellsController < ApplicationController
 
   def change_location(location_id)
     @location = Location.find_by(slug: location_id)
-    Locations::ChangeLocationService.new(current_user.player, @location.id).call
+    Location::ChangeLocationService.new(current_user.player, @location.id).call
   end
 end

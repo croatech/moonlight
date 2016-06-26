@@ -1,4 +1,4 @@
-class Locations::ChangeLocationService
+class Location::ChangeLocationService
 
   attr_reader :player, :location_id
 
