@@ -16,7 +16,7 @@ class Player::InventoryController < ApplicationController
   end
 
   def resources
-
+    @resources = current_user.player.resources
   end
 
   private

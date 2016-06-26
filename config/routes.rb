@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :resources do
     post :collect
+    post :sell_all, on: :collection
   end
 
   namespace :player do

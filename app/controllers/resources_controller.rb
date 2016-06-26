@@ -7,4 +7,10 @@ class ResourcesController < ApplicationController
     log("You've successfully chopped <span>#{resource.name}</span>. Your #{resource.type} skill is <span>#{current_user.player.decorate.current_skill(resource)}</span>.")
     redirect_to :back
   end
+
+  def sell_all
+    service = Resource::SellAllService.new(current_user.player)
+    service.call
+    redirect_to :back
+  end
 end
