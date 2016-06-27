@@ -11,7 +11,13 @@ Dalf Lagoon: 28
 
 Shady Walk: 37
 
-Northern Forest: 20, 21 
+Northern Forest: 20, 21
+
+South Thicket: 44
+
+River Fork: 45
+
+Dangerous Grounds: 53
 
 ==== BOTS
 Mushrooms [1,2,3]: 22
@@ -27,6 +33,9 @@ Elm[50-100]: 29, 36 (Sacred Forest)
 Larch[100-150]: 28 (Dalf Lagoon)
 Birch[150-200]: 20, 21 (Northern Forest)
 Sequoia[200-250]: 22 (Mycelium)
+Eucalyptus[250-300]: 44 (South Thicket)
+Rowan[300-350]: 45 (River Fork)
+Mysterious wood[350-400]: 53 (Dangerous Grounds)
 
 
 === CRAFT

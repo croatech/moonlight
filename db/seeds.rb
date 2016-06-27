@@ -2,8 +2,8 @@
 User.create!(email: 'admin@gmail.com', password: 'password')
 Player.first.increment!(:gold, 5555)
 # LOCATIONS #
-Location.create! [{name: 'Moon Light',      slug: 'moon_light'},
-                  {name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Location.find_by(slug: 'moon_light').id},
+Location.create!(name: 'Moon Light',    slug: 'moon_light')
+Location.create! [{name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Location.find_by(slug: 'moon_light').id},
                   {name: 'Craft Shop',    slug: 'craft_shop',  parent_id: Location.find_by(slug: 'moon_light').id},
                   {name: 'Wayward Pines', slug: 'wayward_pines'}]
 
@@ -21,6 +21,10 @@ Location.create! [{name: 'Moon Light',      slug: 'moon_light'},
     location_name = 'Sacred Forest'
   when 37
     location_name = 'Shady Walk'
+  when 44
+    location_name = 'South Thicket'
+  when 45
+    location_name = 'River Fork'
   end
 
   Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
@@ -76,9 +80,9 @@ Equipment::Item.create! [{name: 'Fur Vest',       category_id: Equipment::Catego
                          {name: 'Kvark mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 50, hp: 100, required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/kvark_mail.png")},
                          {name: 'Earl mail',      category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 55, hp: 110, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/earl_mail.png")}]
 ### GLOVES
-Equipment::Item.create! [{name: 'Leather Gloves',category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 0, defense: 10, hp: 20, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/gloves/leather_gloves.png")}]
+Equipment::Item.create! [{name: 'Leather Gloves', category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 0, defense: 10, hp: 20, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/gloves/leather_gloves.png")}]
 ### BRACERS
-Equipment::Item.create! [{name: 'Leather Bracers',category_id: Equipment::Category.find_by(slug: 'bracers').id,   attack: 0, defense: 5, hp: 10, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/bracers/leather_bracers.png")}]
+Equipment::Item.create! [{name: 'Leather Bracers', category_id: Equipment::Category.find_by(slug: 'bracers').id,   attack: 0, defense: 5, hp: 10, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/bracers/leather_bracers.png")}]
 ### PANTS
 Equipment::Item.create! [{name: 'Leather shoes', category_id: Equipment::Category.find_by(slug: 'foots').id,   attack: 5, defense: 5, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/foots/leather_shoes.png")}]
 ### BELT
@@ -118,7 +122,7 @@ Resource.create! [{name: 'Beech',           item_id: Tool::Item.find_by(name: 'A
                   {name: 'Sequoia',         item_id: Tool::Item.find_by(name: 'Axe for a sequoia').id,         price: 50, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/sequoia.png")},
                   {name: 'Eucalyptus',      item_id: Tool::Item.find_by(name: 'Axe for an eucalyptus').id,     price: 60, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/eucalyptus.png")},
                   {name: 'Rowan',           item_id: Tool::Item.find_by(name: 'Axe for a rowan').id,           price: 70, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/rowan.png")},
-                  {name: 'Mysterious_wood', item_id: Tool::Item.find_by(name: 'Axe for a mysterious wood').id, price: 80, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/mysterious_wood.png")}]
+                  {name: 'Mysterious wood', item_id: Tool::Item.find_by(name: 'Axe for a mysterious wood').id, price: 80, type: 'lumberjacking', image: File.new("#{Rails.root}/db/seeds/resources/lumberjacking/mysterious_wood.png")}]
 
 # POPULATE RESOURCES
 ## LUMBERJACKING
@@ -132,7 +136,10 @@ Location.where(name: 'Northern Forest').each do |location|
   LocationResource.create!(location_id: location.id, resource_id: Resource.find_by(name: 'Birch').id)
 end
 
-LocationResource.create!(location_id: Location.where(name: 'Mycelium'), resource_id: Resource.find_by(name: 'Sequoia').id)
+LocationResource.create!(location_id: Location.where(name: 'Mycelium'),          resource_id: Resource.find_by(name: 'Sequoia').id)
+LocationResource.create!(location_id: Location.where(name: 'South Thicket'),     resource_id: Resource.find_by(name: 'Eucalyptus').id)
+LocationResource.create!(location_id: Location.where(name: 'River Fork'),        resource_id: Resource.find_by(name: 'Rowan').id)
+LocationResource.create!(location_id: Location.where(name: 'Dangerous Grounds'), resource_id: Resource.find_by(name: 'Mysterious wood').id)
 
 
 
@@ -161,5 +168,5 @@ LocationBot.create! [{location_id: Location.find_by(name: 'Mycelium').id,    bot
                      {location_id: Location.find_by(name: 'Mycelium').id,    bot_id: Bot.find_by(name: 'Chanterelle').id},
                      {location_id: Location.find_by(name: 'Mycelium').id,    bot_id: Bot.find_by(name: 'Amanita').id},
                      {location_id: Location.find_by(name: 'Shady Walk').id,  bot_id: Bot.find_by(name: 'Rat').id},
-                     {location_id: Location.find_by(name: 'Shady walk').id,  bot_id: Bot.find_by(name: 'Spider').id},
+                     {location_id: Location.find_by(name: 'Shady Walk').id,  bot_id: Bot.find_by(name: 'Spider').id},
                      {location_id: Location.find_by(name: 'Dalf Lagoon').id, bot_id: Bot.find_by(name: 'Drowned').id}]
