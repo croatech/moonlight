@@ -16,7 +16,7 @@ class Resource::SellAllService
   private
 
   def add_event_to_log(revenue)
-    event_message = "You have cell all resources for #{revenue} gold!"
+    event_message = "You have cell all resources for <span>#{revenue}</span> gold!"
     service = Log::AddEventService.new(player, event_message)
     service.call
   end

@@ -2,15 +2,17 @@
 User.create!(email: 'admin@gmail.com', password: 'password')
 Player.first.increment!(:gold, 5555)
 # LOCATIONS #
-Location.create!(name: 'Moon Light',      slug: 'moon_light')
-Location.create! [{name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Location.find_by(slug: 'moon_light').id},
+Location.create! [{name: 'Moon Light',      slug: 'moon_light'},
+                  {name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Location.find_by(slug: 'moon_light').id},
                   {name: 'Craft Shop',    slug: 'craft_shop',  parent_id: Location.find_by(slug: 'moon_light').id},
                   {name: 'Wayward Pines', slug: 'wayward_pines'}]
 
 64.times do |t|
   location_name = "#{t} cell"
 
-  case t + 1 
+  case t + 1
+  when 20, 21
+    location_name = 'Northern Forest'
   when 22
     location_name = 'Mycelium'
   when 28
@@ -18,7 +20,7 @@ Location.create! [{name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Locati
   when 29, 36
     location_name = 'Sacred Forest'
   when 37
-    location_name = 'Shady walk'
+    location_name = 'Shady Walk'
   end
 
   Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
@@ -126,6 +128,14 @@ Location.where(name: 'Sacred Forest').each do |location|
                             {location_id: location.id, resource_id: Resource.find_by(name: 'Elm').id}]
 end
 
+Location.where(name: 'Northern Forest').each do |location|
+  LocationResource.create!(location_id: location.id, resource_id: Resource.find_by(name: 'Birch').id)
+end
+
+LocationResource.create!(location_id: Location.where(name: 'Mycelium'), resource_id: Resource.find_by(name: 'Sequoia').id)
+
+
+
 ### SINGLE CELLS
 LocationResource.create!(location_id: Location.find_by(name: 'Dalf Lagoon').id, resource_id: Resource.find_by(name: 'Larch').id)
 
@@ -150,6 +160,6 @@ end
 LocationBot.create! [{location_id: Location.find_by(name: 'Mycelium').id,    bot_id: Bot.find_by(name: 'Armillaria').id},
                      {location_id: Location.find_by(name: 'Mycelium').id,    bot_id: Bot.find_by(name: 'Chanterelle').id},
                      {location_id: Location.find_by(name: 'Mycelium').id,    bot_id: Bot.find_by(name: 'Amanita').id},
-                     {location_id: Location.find_by(name: 'Shady walk').id,  bot_id: Bot.find_by(name: 'Rat').id},
+                     {location_id: Location.find_by(name: 'Shady Walk').id,  bot_id: Bot.find_by(name: 'Rat').id},
                      {location_id: Location.find_by(name: 'Shady walk').id,  bot_id: Bot.find_by(name: 'Spider').id},
                      {location_id: Location.find_by(name: 'Dalf Lagoon').id, bot_id: Bot.find_by(name: 'Drowned').id}]

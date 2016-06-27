@@ -5,11 +5,13 @@ Moonlight: 29, 37
 ==== CELLS
 Mycelium: 22
 
-Sacred forest: 29, 36
+Sacred Forest: 29, 36
 
 Dalf Lagoon: 28
 
-Shady walk: 37
+Shady Walk: 37
+
+Northern Forest: 20, 21 
 
 ==== BOTS
 Mushrooms [1,2,3]: 22
@@ -20,9 +22,12 @@ Spider [5]: 37
 
 
 ==== RESOURCES
-Beech[0-50] = 29, 36
-Elm[50-100] = 29, 36
-Larch[100-150] = 28
+Beech[0-50]: 29, 36 (Sacred Forest)
+Elm[50-100]: 29, 36 (Sacred Forest)
+Larch[100-150]: 28 (Dalf Lagoon)
+Birch[150-200]: 20, 21 (Northern Forest)
+Sequoia[200-250]: 22 (Mycelium)
+
 
 === CRAFT
 ==== Chances for an increment of skill(lumberjacking, fishing, etc.)
