@@ -55,6 +55,8 @@ class Player < ActiveRecord::Base
       try_chance(percent: 20)
     when 300..350
       try_chance(percent: 10)
+    when 350..400
+      try_chance(percent: 5)
     end
   end 
 end
