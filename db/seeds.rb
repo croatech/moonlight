@@ -25,6 +25,8 @@ Location.create! [{name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Locati
     location_name = 'South Thicket'
   when 45
     location_name = 'River Fork'
+  when 53
+    location_name = 'Dangerous Grounds'
   end
 
   Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
@@ -136,19 +138,16 @@ Location.where(name: 'Northern Forest').each do |location|
   LocationResource.create!(location_id: location.id, resource_id: Resource.find_by(name: 'Birch').id)
 end
 
-LocationResource.create!(location_id: Location.where(name: 'Mycelium'),          resource_id: Resource.find_by(name: 'Sequoia').id)
-LocationResource.create!(location_id: Location.where(name: 'South Thicket'),     resource_id: Resource.find_by(name: 'Eucalyptus').id)
-LocationResource.create!(location_id: Location.where(name: 'River Fork'),        resource_id: Resource.find_by(name: 'Rowan').id)
-LocationResource.create!(location_id: Location.where(name: 'Dangerous Grounds'), resource_id: Resource.find_by(name: 'Mysterious wood').id)
-
-
-
 ### SINGLE CELLS
-LocationResource.create!(location_id: Location.find_by(name: 'Dalf Lagoon').id, resource_id: Resource.find_by(name: 'Larch').id)
+LocationResource.create!(location_id: Location.find_by(name: 'Dalf Lagoon').id,       resource_id: Resource.find_by(name: 'Larch').id)
+LocationResource.create!(location_id: Location.find_by(name: 'Mycelium').id,          resource_id: Resource.find_by(name: 'Sequoia').id)
+LocationResource.create!(location_id: Location.find_by(name: 'South Thicket').id,     resource_id: Resource.find_by(name: 'Eucalyptus').id)
+LocationResource.create!(location_id: Location.find_by(name: 'River Fork').id,        resource_id: Resource.find_by(name: 'Rowan').id)
+LocationResource.create!(location_id: Location.find_by(name: 'Dangerous Grounds').id, resource_id: Resource.find_by(name: 'Mysterious wood').id)
 
 # BOTS
-Bot.create! [{level: 1, name: 'Armillaria',  attack: 10, defense: 10, hp: 100,  image: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
-             {level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 200,  image: File.new("#{Rails.root}/db/seeds/bots/chanterelle.jpg")},
+Bot.create! [{level: 1, name: 'Armillaria',  attack: 10, defense: 10, hp: 100, image: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
+             {level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 200, image: File.new("#{Rails.root}/db/seeds/bots/chanterelle.jpg")},
              {level: 3, name: 'Amanita',     attack: 30, defense: 30, hp: 300, image: File.new("#{Rails.root}/db/seeds/bots/amanita.jpg")},
              {level: 4, name: 'Rat',         attack: 40, defense: 40, hp: 400, image: File.new("#{Rails.root}/db/seeds/bots/rat.jpg")},
              {level: 5, name: 'Spider',      attack: 50, defense: 50, hp: 500, image: File.new("#{Rails.root}/db/seeds/bots/spider.jpg")},
