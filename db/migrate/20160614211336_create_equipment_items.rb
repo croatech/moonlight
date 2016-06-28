@@ -8,6 +8,7 @@ class CreateEquipmentItems < ActiveRecord::Migration
       t.integer :hp, default: 0
       t.integer :required_level, default: 1
       t.integer :price
+      t.boolean :artifact, default: false
     end
   end
 end

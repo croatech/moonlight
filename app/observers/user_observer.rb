@@ -7,6 +7,6 @@ class UserObserver < ActiveRecord::Observer
   private
 
   def player_create(user)
-    Player.create(user_id: user.id, gold: 500, image: File.new("#{Rails.root}/app/assets/images/players/warrior.jpg"), name: "Player №#{Player.count + 1}", inventory: [1,11,21,31,41,51,61,71,81,91,101,111])
+    Player.create(user_id: user.id, gold: 1500, image: File.new("#{Rails.root}/app/assets/images/players/warrior.jpg"), name: "Player №#{Player.count + 1}")
   end
 end

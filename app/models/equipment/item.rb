@@ -8,6 +8,6 @@ class Equipment::Item < ActiveRecord::Base
   validates :name, :category_id, :required_level, :price, presence: true
 
   def sell_price
-    price * 0.9
+    self.artifact? ? price : price * 0.9
   end
 end

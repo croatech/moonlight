@@ -13,12 +13,11 @@ class Equipment::ItemDecorator < Draper::Decorator
   end
 
   def buy_or_sell_button(player)
-    if is_level_correct?(player, self)
-      if player.inventory.include?(self.id.to_s)
-        h.link_to "Sell for #{self.sell_price.to_i} gold", equipment_item_sell_path(self.id), method: :post, class: 'btn btn-info'
-      else
-        h.link_to "Buy for #{self.price} gold", equipment_item_buy_path(self.id), method: :post, class: 'btn btn-info'
-      end
+    if player.inventory.include?(self.id.to_s)
+      h.link_to "Sell for #{self.sell_price.to_i} gold", equipment_item_sell_path(self.id), method: :post, class: 'btn btn-info'
+    else
+      class_name = player.gold >= self.price ? 'success' : 'danger'
+      h.link_to "Buy for #{self.price} gold", equipment_item_buy_path(self.id), method: :post, class: "btn btn-#{class_name}"
     end
   end
 
