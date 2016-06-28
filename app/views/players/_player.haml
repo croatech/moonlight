@@ -77,9 +77,11 @@
 
     .ring.item
       - if @ring.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @ring.id), method: :post do
-            = image_tag @ring.image.url
+        - 4.times do |num|
+          %div{class: "ring-#{num}"}
+            .ring-item
+              = link_to equipment_item_put_off_path(item_id: @ring.id), method: :post do
+                = image_tag @ring.image.url
 
   .avatar
     = image_tag @player.image.url, class: 'avatar'
