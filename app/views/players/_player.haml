@@ -21,6 +21,12 @@
           = link_to equipment_item_put_off_path(item_id: @weapon.id), method: :post do
             = image_tag @weapon.image.url
 
+    .cloak.item
+      - if @cloak.present?
+        .item
+          = link_to equipment_item_put_off_path(item_id: @cloak.id), method: :post do
+            = image_tag @cloak.image.url
+
     .belt.item
       - if @belt.present?
         .item
@@ -44,6 +50,12 @@
         .item
           = link_to equipment_item_put_off_path(item_id: @gloves.id), method: :post do
             = image_tag @gloves.image.url
+
+    .pants.item
+      - if @pants.present?
+        .item
+          = link_to equipment_item_put_off_path(item_id: @pants.id), method: :post do
+            = image_tag @pants.image.url
 
     .necklace.item
       - if @necklace.present?

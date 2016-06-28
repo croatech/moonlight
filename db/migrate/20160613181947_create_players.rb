@@ -17,6 +17,8 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :shield_slot
       t.integer :ring_slot
       t.integer :necklace_slot
+      t.integer :cloak_slot
+      t.integer :pants_slot
       t.integer :level, default: 1
       t.integer :exp, default: 0
       t.integer :exp_next, default: 100

@@ -10,4 +10,6 @@ class Equipment::Item < ActiveRecord::Base
   def sell_price
     self.artifact? ? price : price * 0.9
   end
+
+  scope :not_artifact, -> { where(artifact: false) }
 end

@@ -24,7 +24,7 @@ class Bot < ActiveRecord::Base
   end
 
   def drop_item
-    Equipment::Item.all.sample.id
+    Equipment::Item.not_artifact.sample.id
   end
 
   def try_drop_item

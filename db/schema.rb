@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628164317) do
+ActiveRecord::Schema.define(version: 20160628204037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -143,6 +143,8 @@ ActiveRecord::Schema.define(version: 20160628164317) do
     t.string   "tools",               default: [],               array: true
     t.integer  "lumberjacking_slot"
     t.integer  "fishing_slot"
+    t.integer  "cloak_slot"
+    t.integer  "pants_slot"
   end
 
   add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree
