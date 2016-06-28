@@ -16,13 +16,13 @@
 
             = image_tag @player.image.url, class: 'image'
 
-            .slots
+            .points
               %h4.block-title Defense:
 
-              - @slots.each do |slot_name|
+              - @points.each do |point_name|
                 .button
-                  = f.label slot_name
-                  = f.radio_button 'defense', slot_name, checked: true
+                  = f.label point_name
+                  = f.radio_button 'defense', point_name, checked: true
 
         .col-md-6
           .character.bot
@@ -36,13 +36,13 @@
                 %span.sr-only 20% Complete
                 1 MP
 
-            .slots
+            .points
               %h4.block-title Attack:
 
-              - @slots.each do |slot_name|
+              - @points.each do |point_name|
                 .button
-                  = f.label slot_name
-                  = f.radio_button 'attack', slot_name, checked: true
+                  = f.label point_name
+                  = f.radio_button 'attack', point_name, checked: true
 
             = image_tag @bot.image.url, class: 'image'
 

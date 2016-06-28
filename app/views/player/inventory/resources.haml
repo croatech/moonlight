@@ -4,10 +4,11 @@
 
   = render 'menu'
 
-  = link_to 'Sell all', sell_all_resources_path, method: :post, class: 'btn btn-warning'
-
   .items
     - if @resources.present?
+
+      = link_to 'Sell all', sell_all_resources_path, method: :post, class: 'btn btn-warning'
+      
       - @resources.each do |resource|
         - cache resource do
           = image_tag resource.image.url

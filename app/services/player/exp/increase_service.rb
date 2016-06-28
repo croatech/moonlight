@@ -12,6 +12,7 @@ class Player::Exp::IncreaseService
       level_up
     else
       player.increment!(:exp, new_exp)
+      Log::AddEventService.new(player, "You've earn <span>#{new_exp}</span> EXP").call
     end
   end
 

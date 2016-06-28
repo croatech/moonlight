@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       post :increase
     end
 
-    resources :inventory, only: :index do
+    resources :inventory, except: :all do
       collection do 
         get :equipment
         get :tools

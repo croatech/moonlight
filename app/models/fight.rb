@@ -7,6 +7,8 @@ class Fight < ActiveRecord::Base
 
   enum status: [:active, :finished]
 
+  POINTS = %w( head chest belly hands legs )
+
   def winner
     if winner_type == 'Player'
       Player.find(self.player_id)

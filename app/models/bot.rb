@@ -12,15 +12,15 @@ class Bot < ActiveRecord::Base
   validates :name, :attack, :defense, :hp, presence: true
 
   def given_exp
-    level * 20
+    rand(level * 10..level * 20)
   end
 
   def drop_gold
-    level * 20
+    rand(level * 10..level * 20)
   end
 
   def try_drop_gold
-    try_chance(percent: 50)
+    try_chance(percent: 100)
   end
 
   def drop_item
@@ -28,6 +28,6 @@ class Bot < ActiveRecord::Base
   end
 
   def try_drop_item
-    try_chance(percent: 50)
+    try_chance(percent: 10)
   end
 end
