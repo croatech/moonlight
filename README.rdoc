@@ -16,8 +16,9 @@ Dangerous Grounds: 53
 Mushrooms[1,2,3]: 22 (Mycelium)
 Rat[4]: 37 (Shady Walk)
 Spider[5]: 37 (Shady Walk)
-Hoblin[7]: 29, 36 (Sacred Forest)
-Ork[8]: 29, 36 (Sacred Forest)
+Hoblin[6]: 29, 36 (Sacred Forest)
+Ork[7]: 29, 36 (Sacred Forest)
+Drowned[8]: 28 (Dalf Lagoon)
 
 ==== RESOURCES
 Beech[0-50]: 29, 36 (Sacred Forest)
