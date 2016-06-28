@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def log_get
-    @logs = Log::EventsGetService.new(current_user.player).call if current_user
+    @logs = current_user.player.logs.order('id DESC') if current_user
   end
 
   def log(event)
