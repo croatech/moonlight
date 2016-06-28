@@ -32,7 +32,7 @@ Location.create! [{name: 'Weapon Shop',   slug: 'weapon_shop', parent_id: Locati
   Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
 end
 
-# EQUIPMENTS
+# EQUIPMENT
 ## CATEGORIES
 Equipment::Category.create! [{name: 'Helmet',   slug: 'helmet'},
                              {name: 'Armor',    slug: 'armor'},
@@ -40,63 +40,74 @@ Equipment::Category.create! [{name: 'Helmet',   slug: 'helmet'},
                              {name: 'Gloves',   slug: 'gloves'},
                              {name: 'Bracers',  slug: 'bracers'},
                              {name: 'Foots',    slug: 'foots'},
-                             {name: 'Belt',    slug: 'belt'},
+                             {name: 'Belt',     slug: 'belt'},
                              {name: 'Weapon',   slug: 'weapon'},
                              {name: 'Shield',   slug: 'shield'},
                              {name: 'Ring',     slug: 'ring'},
-                             {name: 'Necklace', slug: 'necklace'}]
+                             {name: 'Necklace', slug: 'necklace'},
+                             {name: 'Cloak',    slug: 'cloak'},
+                             {name: 'Pants',    slug: 'pants'}]
 
 ## ITEMS
 ### HELMET
-Equipment::Item.create! [{name: 'Leather hat',      category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 10, hp: 10,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/leather_hat.png")},
-                         {name: 'Bone helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 10, hp: 20,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/bone_helm.png")},
-                         {name: 'Scary mask',       category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 15, hp: 30,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/scary_mask.png")},
-                         {name: 'Bloody helm',      category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 20, hp: 40,  required_level: 4,  price: 200, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/bloody_helm.png")},
-                         {name: 'Gold helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 25, hp: 50,  required_level: 5,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/gold_helm.png")},
-                         {name: 'Wiking helm',      category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 30, hp: 60,  required_level: 6,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/wiking_helm.png")},
-                         {name: 'Mithrill helm',    category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 35, hp: 70,  required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/mithrill_helm.png")},
-                         {name: 'Shell helm',       category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 40, hp: 80,  required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/shell_helm.png")},
-                         {name: 'Holy helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 45, hp: 90,  required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/holy_helm.png")},
-                         {name: 'Streamlined helm', category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 50, hp: 100, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipments/items/helmet/streamlined_helm.png")}]
+Equipment::Item.create! [{name: 'Leather hat',      category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 10, hp: 10,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/leather_hat.png")},
+                         {name: 'Bone helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 10, hp: 20,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/bone_helm.png")},
+                         {name: 'Scary mask',       category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 15, hp: 30,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/scary_mask.png")},
+                         {name: 'Bloody helm',      category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 20, hp: 40,  required_level: 4,  price: 200, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/bloody_helm.png")},
+                         {name: 'Gold helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 25, hp: 50,  required_level: 5,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/gold_helm.png")},
+                         {name: 'Wiking helm',      category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 30, hp: 60,  required_level: 6,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/wiking_helm.png")},
+                         {name: 'Mithrill helm',    category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 35, hp: 70,  required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/mithrill_helm.png")},
+                         {name: 'Shell helm',       category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 40, hp: 80,  required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/shell_helm.png")},
+                         {name: 'Holy helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 45, hp: 90,  required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/holy_helm.png")},
+                         {name: 'Streamlined helm', category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 50, hp: 100, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/streamlined_helm.png")}]
 ### CHEST
-Equipment::Item.create! [{name: 'Leather armor',   category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 10, hp: 20,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/leather_armor.png")},
-                         {name: 'Bright armor',    category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 15, hp: 30,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/bright_armor.png")},
-                         {name: 'Scary armor',     category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 20, hp: 40,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/scary_armor.png")},
-                         {name: 'Kvark armor',     category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 25, hp: 50,  required_level: 4,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/kvark_armor.png")},
-                         {name: 'Gold armor',      category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 30, hp: 60,  required_level: 5,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/gold_armor.png")},
-                         {name: 'Centuri armor',   category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 35, hp: 70,  required_level: 6,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/centuri_armor.png")},
-                         {name: 'Sea armor',       category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 40, hp: 80,  required_level: 7,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/sea_armor.png")},
-                         {name: 'Blueberry armor', category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 45, hp: 90,  required_level: 8,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/blueberry_armor.png")},
-                         {name: 'Holy armor',      category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 50, hp: 100, required_level: 9,  price: 500, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/holy_armor.png")},
-                         {name: 'Elite armor',     category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 55, hp: 110, required_level: 10, price: 550, image: File.new("#{Rails.root}/db/seeds/equipments/items/armor/elite_armor.png")}]
+Equipment::Item.create! [{name: 'Leather armor',   category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 10, hp: 20,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/leather_armor.png")},
+                         {name: 'Bright armor',    category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 15, hp: 30,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/bright_armor.png")},
+                         {name: 'Scary armor',     category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 20, hp: 40,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/scary_armor.png")},
+                         {name: 'Kvark armor',     category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 25, hp: 50,  required_level: 4,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/kvark_armor.png")},
+                         {name: 'Gold armor',      category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 30, hp: 60,  required_level: 5,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/gold_armor.png")},
+                         {name: 'Centuri armor',   category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 35, hp: 70,  required_level: 6,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/centuri_armor.png")},
+                         {name: 'Sea armor',       category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 40, hp: 80,  required_level: 7,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/sea_armor.png")},
+                         {name: 'Blueberry armor', category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 45, hp: 90,  required_level: 8,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/blueberry_armor.png")},
+                         {name: 'Holy armor',      category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 50, hp: 100, required_level: 9,  price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/holy_armor.png")},
+                         {name: 'Elite armor',     category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 55, hp: 110, required_level: 10, price: 550, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/elite_armor.png")}]
 
 ### MAIL
-Equipment::Item.create! [{name: 'Fur Vest',       category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 10, hp: 20,  required_level: 1,  price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/fur_vest.png")},
-                         {name: 'Slinky mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 15, hp: 30,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/slinky_mail.png")},
-                         {name: 'Binded mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 20, hp: 40,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/binded_mail.png")},
-                         {name: 'Assasin jacket', category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 25, hp: 50,  required_level: 4,  price: 200, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/assasin_jacket.png")},
-                         {name: 'Metal mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 30, hp: 60,  required_level: 5,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/metal_mail.png")},
-                         {name: 'Steel mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 35, hp: 70,  required_level: 6,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/steel_mail.png")},
-                         {name: 'Copper mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 40, hp: 80,  required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/copper_mail.png")},
-                         {name: 'Sacred mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 45, hp: 90,  required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/sacred_mail.png")},
-                         {name: 'Kvark mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 50, hp: 100, required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/kvark_mail.png")},
-                         {name: 'Earl mail',      category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 55, hp: 110, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipments/items/mail/earl_mail.png")}]
+Equipment::Item.create! [{name: 'Fur Vest',       category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 10, hp: 20,  required_level: 1,  price: 50, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/fur_vest.png")},
+                         {name: 'Slinky mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 15, hp: 30,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/slinky_mail.png")},
+                         {name: 'Binded mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 20, hp: 40,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/binded_mail.png")},
+                         {name: 'Assasin jacket', category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 25, hp: 50,  required_level: 4,  price: 200, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/assasin_jacket.png")},
+                         {name: 'Metal mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 30, hp: 60,  required_level: 5,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/metal_mail.png")},
+                         {name: 'Steel mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 35, hp: 70,  required_level: 6,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/steel_mail.png")},
+                         {name: 'Copper mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 40, hp: 80,  required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/copper_mail.png")},
+                         {name: 'Sacred mail',    category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 45, hp: 90,  required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/sacred_mail.png")},
+                         {name: 'Kvark mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 50, hp: 100, required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/kvark_mail.png")},
+                         {name: 'Earl mail',      category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 55, hp: 110, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/earl_mail.png")}]
 ### GLOVES
-Equipment::Item.create! [{name: 'Leather Gloves', category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 0, defense: 10, hp: 20, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/gloves/leather_gloves.png")}]
+Equipment::Item.create! [{name: 'Leather Gloves', category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 0, defense: 10, hp: 20, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/leather_gloves.png")}]
 ### BRACERS
-Equipment::Item.create! [{name: 'Leather Bracers', category_id: Equipment::Category.find_by(slug: 'bracers').id,   attack: 0, defense: 5, hp: 10, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipments/items/bracers/leather_bracers.png")}]
+Equipment::Item.create! [{name: 'Leather Bracers', category_id: Equipment::Category.find_by(slug: 'bracers').id,   attack: 0, defense: 5, hp: 10, required_level: 1, price: 50, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/leather_bracers.png")}]
 ### PANTS
-Equipment::Item.create! [{name: 'Leather shoes', category_id: Equipment::Category.find_by(slug: 'foots').id,   attack: 5, defense: 5, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/foots/leather_shoes.png")}]
+Equipment::Item.create! [{name: 'Leather shoes', category_id: Equipment::Category.find_by(slug: 'foots').id,   attack: 5, defense: 5, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/leather_shoes.png")}]
 ### BELT
-Equipment::Item.create! [{name: 'Rag belt', category_id: Equipment::Category.find_by(slug: 'belt').id,   attack: 0, defense: 5, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/belt/rag_belt.png")}]
+Equipment::Item.create! [{name: 'Rag belt', category_id: Equipment::Category.find_by(slug: 'belt').id,   attack: 0, defense: 5, hp: 10, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/rag_belt.png")}]
 ### WEAPON
-Equipment::Item.create! [{name: 'Metal axe',     category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 10,  defense: 0,  hp: 0, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/weapon/metal_axe.png")}]
+Equipment::Item.create! [{name: 'Metal axe',     category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 10,  defense: 0,  hp: 0, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/metal_axe.png")}]
 ### SHIELD
-Equipment::Item.create! [{name: 'Wood shield',   category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0,  defense: 20, hp: 30, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/shield/wood_shield.png")}]
+Equipment::Item.create! [{name: 'Wood shield',   category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0,  defense: 20, hp: 30, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/shield/wood_shield.png")}]
 ### RING
-Equipment::Item.create! [{name: 'Wood ring',   category_id: Equipment::Category.find_by(slug: 'ring').id, attack: 5,  defense: 5, hp: 5, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/ring/wood_ring.png")}]
+Equipment::Item.create! [{name: 'Wood ring',   category_id: Equipment::Category.find_by(slug: 'ring').id, attack: 5,  defense: 5, hp: 5, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/ring/wood_ring.png")}]
 ### NECKLACE
-Equipment::Item.create! [{name: 'Bone necklace',   category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,  defense: 5, hp: 5, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipments/items/necklace/bone_necklace.png")}]
+Equipment::Item.create! [{name: 'Bone necklace',   category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,  defense: 5, hp: 5, required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/necklace/bone_necklace.png")}]
+### CLOAK
+Equipment::Item.create! [{name: 'Tramp cloak',     category_id: Equipment::Category.find_by(slug: 'cloak').id, attack: 0,  defense: 5,  hp: 5,   required_level: 1,  price: 50,    image: File.new("#{Rails.root}/db/seeds/equipment/items/cloak/tramp_cloak.png")},
+                         {name: 'Gilded cloak',    category_id: Equipment::Category.find_by(slug: 'cloak').id, attack: 0,  defense: 5,  hp: 5,   required_level: 5,  price: 500,   image: File.new("#{Rails.root}/db/seeds/equipment/items/cloak/gilded_cloak.png")},
+                         {name: 'Dementor cloak',  category_id: Equipment::Category.find_by(slug: 'cloak').id, attack: 0,  defense: 5,  hp: 5,   required_level: 10, price: 2500,  image: File.new("#{Rails.root}/db/seeds/equipment/items/cloak/dementor_cloak.png")},
+                         {name: 'Snake cloak',     category_id: Equipment::Category.find_by(slug: 'cloak').id, attack: 0,  defense: 5,  hp: 5,   required_level: 15, price: 5000,  image: File.new("#{Rails.root}/db/seeds/equipment/items/cloak/snake_cloak.png")},
+                         {name: 'Cape of Croaton', category_id: Equipment::Category.find_by(slug: 'cloak').id, attack: 20, defense: 50, hp: 500, required_level: 5,  price: 50000, image: File.new("#{Rails.root}/db/seeds/equipment/items/cloak/art/cape_of_croaton.png")}]
+### PANTS
+Equipment::Item.create! [{name: 'Leather pants',  category_id: Equipment::Category.find_by(slug: 'pants').id, attack: 0,  defense: 5, hp: 5,   required_level: 1, price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/pants/leather_pants.png")},
+                         {name: 'Spectral pants', category_id: Equipment::Category.find_by(slug: 'pants').id, attack: 0,  defense: 50, hp: 50, required_level: 5, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/pants/spectral_pants.png")}]
 
 
 # TOOLS
