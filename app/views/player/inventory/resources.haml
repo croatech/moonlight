@@ -7,7 +7,7 @@
   .items
     - if @resources.present?
 
-      = link_to 'Sell all', sell_all_resources_path, method: :post, class: 'btn btn-warning'
+      = link_to "Sell all for #{@resources.pluck(:price).reduce(:+)} gold", sell_all_resources_path, method: :post, class: 'btn btn-warning'
       
       - @resources.each do |resource|
         - cache resource do

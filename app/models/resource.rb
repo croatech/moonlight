@@ -13,9 +13,9 @@ class Resource < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   # generate scopes for a search: Resource.all.fishing, Resource.all.lumberjacking, etc.
-  Player::CRAFT.each do |name|
-    define_singleton_method name.to_sym do
-      where(type: name)
-    end
-  end
+  #Player::CRAFT.each do |name|
+  #  define_singleton_method name.to_sym do
+  #    where(type: name)
+  #  end
+  #end
 end

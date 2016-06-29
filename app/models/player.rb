@@ -42,21 +42,21 @@ class Player < ActiveRecord::Base
   def try_skill_up(skill_name)
     case self[skill_name]
     when 0..50
-      try_chance(percent: 100)
-    when 50..100
-      try_chance(percent: 75)
-    when 100..150
       try_chance(percent: 50)
-    when 150..200
-      try_chance(percent: 40)
-    when 200..250
+    when 50..100
       try_chance(percent: 30)
-    when 250..300
+    when 100..150
       try_chance(percent: 20)
-    when 300..350
+    when 150..200
+      try_chance(percent: 15)
+    when 200..250
       try_chance(percent: 10)
-    when 350..400
+    when 250..300
+      try_chance(percent: 7)
+    when 300..350
       try_chance(percent: 5)
+    when 350..400
+      try_chance(percent: 2)
     end
   end 
 end
