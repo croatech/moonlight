@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
   end
 
   def wayward_pines
-    change_location('wayward_pines')
+    @location = Location.find_by(slug: 'wayward_pines')
     @cells = @location.children.order(:id)
     render layout: 'map'
   end
