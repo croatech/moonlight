@@ -9,4 +9,7 @@
             = link_to image_tag("locations/wayward_pines/cells/#{cell.slug}.png"), location_cell_path(location_id: params[:action], id: cell.slug)
 
             .current_position
-              = image_tag 'locations/point.png' if current_user.player.location_id == cell.id
+              = image_tag 'locations/point.png' if current_user.player.location.slug == cell.slug
+
+
+= current_user.player.location.slug
