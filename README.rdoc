@@ -4,39 +4,65 @@ Moonlight: 29, 37
 
 ==== CELLS
 Mycelium: 22
+
 Sacred Forest: 29, 36
+
 Dalf Lagoon: 28
+
 Shady Walk: 37
+
 Northern Forest: 20, 21
+
 South Thicket: 44
+
 River Fork: 45
+
 Dangerous Grounds: 53
 
 ==== BOTS
 Mushrooms[1,2,3]: 22 (Mycelium)
+
 Rat[4]: 37 (Shady Walk)
+
 Spider[5]: 37 (Shady Walk)
+
 Hoblin[6]: 29, 36 (Sacred Forest)
+
 Ork[7]: 29, 36 (Sacred Forest)
+
 Drowned[8]: 28 (Dalf Lagoon)
 
 ==== RESOURCES
 Beech[0-50]: 29, 36 (Sacred Forest)
+
 Elm[50-100]: 29, 36 (Sacred Forest)
+
 Larch[100-150]: 28 (Dalf Lagoon)
+
 Birch[150-200]: 20, 21 (Northern Forest)
+
 Sequoia[200-250]: 22 (Mycelium)
+
 Eucalyptus[250-300]: 44 (South Thicket)
+
 Rowan[300-350]: 45 (River Fork)
+
 Mysterious wood[350-400]: 53 (Dangerous Grounds)
 
 === CRAFT
 ==== Chances for an increment of skill(lumberjacking, fishing, etc.)
 0-50 = 100%
+
 50-100 = 75%
+
 100-150 = 50%
+
 150-200 = 40%
+
 200-250 = 30%
+
 250-300 = 20%
+
 300-350 = 10%
+
 350-400 = 5%
