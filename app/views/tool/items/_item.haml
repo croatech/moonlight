@@ -9,5 +9,5 @@
     %h2= item.name
     
     .buy-button
-      = item.put_on_button(current_user.player)
+      = item.put_on_button(current_user.player) if params[:action] == 'tools'
       = item.buy_or_sell_button(current_user.player)
