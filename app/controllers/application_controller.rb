@@ -20,19 +20,6 @@ class ApplicationController < ActionController::Base
     current_user.player.location
   end
 
-  def set_equipment_items
-    items = Equipment::Item.all
-    player = current_user.player
-
-    Player::SLOTS.each do |slot|
-      self.instance_variable_set "@#{slot}", items.find_by(id: player["#{slot}_slot"])
-    end
-  end
-
-  def get_tool_items
-    Tool::Item.where(id: tools_ids)
-  end
-
   def log_get
     @logs = current_user.player.logs.order('id DESC') if current_user
   end
@@ -40,11 +27,5 @@ class ApplicationController < ActionController::Base
   def log(event)
     service = Log::AddEventService.new(current_user.player, event)
     service.call
-  end
-
-  private
-
-  def tools_ids
-    Player::Inventory::Tool::AllItemsService.new(current_user.player).call
   end
 end

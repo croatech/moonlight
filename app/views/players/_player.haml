@@ -18,85 +18,10 @@
 
 .player
   .player-items.left-column
-    .weapon.item
-      - if @weapon.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @weapon.id), method: :post do
-            = image_tag @weapon.image.url
-
-    .cloak.item
-      - if @cloak.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @cloak.id), method: :post do
-            = image_tag @cloak.image.url
-
-    .belt.item
-      - if @belt.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @belt.id), method: :post do
-            = image_tag @belt.image.url
-
-    .helmet.item
-      - if @helmet.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @helmet.id), method: :post do
-            = image_tag @helmet.image.url
-
-    .armor.item
-      - if @armor.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @armor.id), method: :post do
-            = image_tag @armor.image.url
-
-    .gloves.item
-      - if @gloves.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @gloves.id), method: :post do
-            = image_tag @gloves.image.url
-
-    .pants.item
-      - if @pants.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @pants.id), method: :post do
-            = image_tag @pants.image.url
-
-    .necklace.item
-      - if @necklace.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @necklace.id), method: :post do
-            = image_tag @necklace.image.url
-
-    .mail.item
-      - if @mail.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @mail.id), method: :post do
-            = image_tag @mail.image.url
-
-    .bracers.item
-      - if @bracers.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @bracers.id), method: :post do
-            = image_tag @bracers.image.url
-
-    .foots.item
-      - if @foots.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @foots.id), method: :post do
-            = image_tag @foots.image.url
-
-    .shield.item
-      - if @shield.present?
-        .item
-          = link_to equipment_item_put_off_path(item_id: @shield.id), method: :post do
-            = image_tag @shield.image.url
-
-    .ring.item
-      - if @ring.present?
-        - 4.times do |num|
-          %div{class: "ring-#{num}"}
-            .ring-item
-              = link_to equipment_item_put_off_path(item_id: @ring.id), method: :post do
-                = image_tag @ring.image.url
+    - @wearable_eqipment.each do |item|
+      %div{class: "#{item.category.name.downcase} item"} 
+        = link_to equipment_item_put_off_path(item_id: item.id), method: :post do 
+          = image_tag item.image.url
 
   .avatar
     = image_tag @player.image.url, class: 'avatar'

@@ -37,6 +37,6 @@ describe Player::Exp::IncreaseService do
   it 'checks an increasing gold after level up' do
     player.update_attribute(:exp, 80)
     Player::Exp::IncreaseService.new(player, 50).call
-    expect(player.gold).to eq 600
+    expect(player.gold).to eq 1800
   end
 end 

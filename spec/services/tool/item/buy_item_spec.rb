@@ -8,9 +8,9 @@ describe Tool::Item::BuyItemService do
   let(:second_item) { create(:tool_item, required_skill: 50) }
 
   it 'checks the gold after buy' do
-    expect(player.gold).to eq 300
+    expect(player.gold).to eq 1500
     Tool::Item::BuyItemService.new(player, item).call
-    expect(player.gold).to eq 200
+    expect(player.gold).to eq 1400
   end
 
   it 'checks an inventory after buy' do

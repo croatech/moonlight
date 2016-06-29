@@ -16,10 +16,10 @@ class Player < ActiveRecord::Base
   has_and_belongs_to_many :resources
 
   STATS = %w( attack defense hp )
-  SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
-  CRAFT = %w( lumberjacking fishing )
+  EQUIPMENT_SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
+  TOOL_SLOTS = %w( lumberjacking fishing )
 
-  # generate methods for an increasing of stats
+  # generate methods for increase of stats
   STATS.each do |stat|
     stat_name = stat.to_sym
     method_name = "increase_#{stat}".to_sym

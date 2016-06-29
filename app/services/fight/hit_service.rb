@@ -9,8 +9,8 @@ class Fight::HitService
     @bot = @fight.bot
     @player_defense_point = defense_point
     @player_attack_point = attack_point
-    @bot_defense_point = Player::SLOTS.sample
-    @bot_attack_point = Player::SLOTS.sample
+    @bot_defense_point = Player::EQUIPMENT_SLOTS.sample
+    @bot_attack_point = Player::EQUIPMENT_SLOTS.sample
   end
 
   def call

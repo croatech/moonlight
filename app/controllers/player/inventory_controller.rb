@@ -23,7 +23,11 @@ class Player::InventoryController < ApplicationController
 
   def set_player
     @player = current_user.player
-    set_equipment_items
-    @wearable_tools = get_tool_items
+
+    wearable_equipment_ids = Player::Inventory::WearableItemsIdsService.new(current_user.player, Player::EQUIPMENT_SLOTS).call
+    @wearable_eqipment = Equipment::Item.where(id: wearable_equipment_ids).includes(:category)
+
+    wearable_tools_ids = Player::Inventory::WearableItemsIdsService.new(current_user.player, Player::TOOL_SLOTS).call
+    @wearable_tools = Tool::Item.where(id: wearable_tools_ids).includes(:category)
   end
 end
