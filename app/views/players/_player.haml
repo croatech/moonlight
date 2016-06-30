@@ -1,5 +1,6 @@
 .player-name
-  = "#{@player.name}[#{@player.level}]"
+  =  @player.name
+  %strong= "[#{@player.level}]"
 
 .progresses
   .progress
@@ -27,10 +28,3 @@
         %div{class: "item tool num-#{index}"}
           = link_to tool_item_put_off_path(item_id: item.id), method: :post do
             = image_tag item.image.url
-
-:javascript
-  $('.player-items > #item').hover(function () {
-    $(this).find('#stats').css('display', 'block');
-  }, function () {
-    $(this).find('#stats').css('display', 'none');
-  });
