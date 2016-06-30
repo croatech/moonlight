@@ -2,11 +2,11 @@ class Player::Inventory::Equipment::Put::OnService
 
   # put on an item in a slot
   
-  attr_reader :player, :inventory, :item, :item_id, :item_type
+  attr_reader :player, :equipment, :item, :item_id, :item_type
 
   def initialize(player, item)
     @player = player
-    @inventory = player.inventory
+    @equipment = player.equipment
     @item = item
     @item_id = item.id.to_s
     @item_type = "#{item.category.slug}_slot"
@@ -25,7 +25,7 @@ class Player::Inventory::Equipment::Put::OnService
   private
 
   def is_an_item_purchased?
-    inventory.include?(item_id)
+    equipment.include?(item_id)
   end
 
   def level_required?
@@ -37,7 +37,7 @@ class Player::Inventory::Equipment::Put::OnService
   end
 
   def delete_a_new_item_from_inventory
-    player.inventory.delete(item_id)
+    player.equipment.delete(item_id)
   end
 
   def put_a_new_item_in_a_slot
@@ -46,7 +46,7 @@ class Player::Inventory::Equipment::Put::OnService
   end
 
   def put_an_old_item_in_inventory
-    player.inventory << player[item_type]
+    player.equipment << player[item_type]
   end
 
   def update_stats

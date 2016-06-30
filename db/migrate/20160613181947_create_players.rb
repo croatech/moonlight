@@ -25,11 +25,12 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :gold
       t.integer :attack,      default: 1
       t.integer :defense,     default: 1
+      t.integer :current_hp
       t.integer :hp,          default: 20
-      t.string  :inventory, array: true, default: '{}'
+      t.string  :equipment, array: true, default: '{}'
       t.integer :lumberjacking_skill, default: 0
       t.integer :fishing_skill, default: 0
-      t.string  :tols, array: true, default: '{}'
+      t.string  :tools, array: true, default: '{}'
       t.integer :lumberjacking_slot
       t.integer :fishing_slot
 

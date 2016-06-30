@@ -19,6 +19,6 @@ class Equipment::Item::SellItemService
   end
 
   def delete_an_item_from_an_inventory
-    player.inventory.delete(item.id.to_s)
+    player.equipment.delete(item.id.to_s)
   end
 end 

@@ -2,16 +2,16 @@ class Player::Inventory::Equipment::Put::InService
 
   # put an item in inventory
   
-  attr_reader :player, :inventory, :item
+  attr_reader :player, :equipment, :item
 
   def initialize(player, item)
     @player = player
-    @inventory = player.inventory
+    @equipment = player.equipment
     @item = item
   end
 
   def call
-    inventory << item.id
+    equipment << item.id
     player.save
   end
 end

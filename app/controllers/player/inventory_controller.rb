@@ -8,7 +8,7 @@ class Player::InventoryController < ApplicationController
   end
 
   def equipment
-    @weapons = Equipment::Item.where(id: @player.inventory).decorate
+    @weapons = Equipment::Item.where(id: @player.equipment).decorate
   end
 
   def tools

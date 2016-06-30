@@ -24,6 +24,6 @@ class Fight::DropGetService
 
   def item_has_dropped
     fight.dropped_item = bot.drop_item
-    player.inventory << fight.dropped_item
+    player.equipment << fight.dropped_item
   end
 end

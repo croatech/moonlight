@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628204037) do
+ActiveRecord::Schema.define(version: 20160630150009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20160628204037) do
     t.integer  "level",               default: 1
     t.integer  "exp",                 default: 0
     t.integer  "exp_next",            default: 100
-    t.string   "inventory",           default: [],               array: true
+    t.string   "equipment",           default: [],               array: true
     t.integer  "free_stats",          default: 10
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 20160628204037) do
     t.integer  "fishing_slot"
     t.integer  "cloak_slot"
     t.integer  "pants_slot"
+    t.integer  "current_hp"
   end
 
   add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree
