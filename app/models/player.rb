@@ -18,6 +18,7 @@ class Player < ActiveRecord::Base
   STATS = %w( attack defense hp )
   EQUIPMENT_SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
   TOOL_SLOTS = %w( lumberjacking fishing )
+  REGENERATION_HP_PERCENT = 0.10
 
   # generate methods for increase of stats
   STATS.each do |stat|

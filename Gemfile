@@ -33,6 +33,8 @@ gem 'awesome_print'
 gem 'paperclip'
 gem 'draper'
 gem 'newrelic_rpm'
+gem 'sidekiq'
+gem 'sinatra'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

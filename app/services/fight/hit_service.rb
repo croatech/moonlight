@@ -18,6 +18,7 @@ class Fight::HitService
     bot_damage = calculate_bot_damage
     round.update(player_damage: player_damage, bot_damage: bot_damage, status: :finished)
     checking_for_finishing_fight(player_damage, bot_damage)
+    player.save
   end
 
   private
@@ -53,10 +54,12 @@ class Fight::HitService
 
     if player_hp <= 0
       finish_fight(winner: bot.name)
+      start_repair_hp(0)
     elsif bot_hp <= 0
       finish_fight(winner: 'Player')
       increase_player_exp
       drop_get
+      start_repair_hp(player_hp)
     else
       false
     end
@@ -74,6 +77,11 @@ class Fight::HitService
 
   def drop_get
     service = Fight::DropGetService.new(fight, player, bot)
+    service.call
+  end
+
+  def start_repair_hp(current_hp)
+    service = Player::RepairHpService.new(player, current_hp)
     service.call
   end
 end

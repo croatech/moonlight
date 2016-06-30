@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   root 'locations#moon_light'
 
   devise_for :users

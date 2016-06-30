@@ -17,4 +17,8 @@ class PlayerDecorator < Draper::Decorator
     skill_name = "#{resource.type}_skill"
     self[skill_name]
   end
+
+  def current_hp_get
+    current_hp ? current_hp : hp
+  end
 end
