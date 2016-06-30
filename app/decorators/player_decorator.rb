@@ -19,6 +19,10 @@ class PlayerDecorator < Draper::Decorator
   end
 
   def current_hp_get
-    current_hp ? current_hp : hp
+    current_hp ? "#{current_hp} / #{hp}  HP" : "#{hp} / #{hp}  HP"
+  end
+
+  def current_exp_get
+    "EXP: #{exp} / #{exp_next}"
   end
 end

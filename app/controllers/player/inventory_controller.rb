@@ -22,7 +22,7 @@ class Player::InventoryController < ApplicationController
   private
 
   def set_player
-    @player = current_user.player
+    @player = current_user.player.decorate
 
     wearable_equipment_ids = Player::Inventory::WearableItemsIdsService.new(current_user.player, Player::EQUIPMENT_SLOTS).call
     @wearable_eqipment = Equipment::Item.where(id: wearable_equipment_ids).includes(:category)

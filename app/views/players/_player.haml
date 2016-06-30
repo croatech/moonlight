@@ -3,18 +3,12 @@
 
 .progresses
   .progress
-    .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: 100%"}
-      %span.sr-only 80% Complete (danger)
-      = "#{@player.decorate.current_hp_get} HP"
-      
-  .progress
-    .progress-bar.progress-bar-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 100%"}
-      %span.sr-only 20% Complete
-      1 MP
+    .progress-bar.progress-bar-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "80", :role => "progressbar", :style => "width: #{progress_percents(@player.hp, @player.current_hp)}"}
+      = @player.current_hp_get
 
   .progress
     .progress-bar.progress-bar-warning{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "60", :role => "progressbar", :style => "width: #{progress_percents(@player.exp_next, @player.exp)}"}
-      = "EXP: #{@player.exp}/#{@player.exp_next}"
+      = @player.current_exp_get
 
 .player
   .player-items.left-column
