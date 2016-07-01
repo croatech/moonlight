@@ -24,6 +24,7 @@ $(function () {
     })
     .on('finish.countdown', function(event) {
       $(this).html('Now collect it!');
+      $('#collect-status').text('Done!');
       $('#cancel-button').hide();
       $('#collect-button').show();
       $('#collect-image').hide();
