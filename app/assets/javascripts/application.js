@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require spoiler
+//= require magnific-popup
 //= require_tree .
