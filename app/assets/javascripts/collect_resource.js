@@ -14,7 +14,9 @@ $(function () {
 
   $(document).on('click', '#collect', function () {
     $('#collect-button').hide();
-    $('#clock').countdown(Date.now()+1000)
+    $('#collected-image').hide();
+
+    $('#clock').countdown(Date.now()+10000)
     .on('update.countdown', function(event) {
       var format = 'Wait for %S seconds...';
 
@@ -22,7 +24,10 @@ $(function () {
     })
     .on('finish.countdown', function(event) {
       $(this).html('Now collect it!');
+      $('#cancel-button').hide();
       $('#collect-button').show();
+      $('#collect-image').hide();
+      $('#collected-image').show();
     });
   });
 });

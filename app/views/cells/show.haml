@@ -23,16 +23,19 @@
         - @resources.each do |resource|
           - cache resource do
             .resource
-              = image_tag resource.image.url, id: 'craft-bg'
+              = image_tag resource.image.url
               = resource.decorate.collect_link(current_user.player) #collect
 
-            #test-modal.white-popup-block.mfp-hide
+            #modal.white-popup-block.mfp-hide
               %h2 Processing...
               .countdown
                 %p
                   %i#clock
 
-              = image_tag "craft/#{resource.type}"
+              .images
+                = image_tag "craft/#{resource.type}/#{resource.type}", class: 'center', id: 'collect-image'
+                = image_tag "craft/#{resource.type}/#{resource.type}-done", class: 'center', id: 'collected-image'
 
-              = link_to 'Collect', resource_collect_path(resource_id: resource.id), method: :post, class: 'btn btn-primary', id: 'collect-button'
-              = link_to 'Cancel', '#', class: 'popup-modal-dismiss btn btn-danger'
+              .buttons
+                = link_to 'Collect', resource_collect_path(resource_id: resource.id), method: :post, class: 'btn btn-primary', id: 'collect-button'
+                = link_to 'Cancel', '#', class: 'popup-modal-dismiss btn btn-danger', id: 'cancel-button'
