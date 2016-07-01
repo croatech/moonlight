@@ -11,7 +11,7 @@ class Equipment::CategoriesController < ApplicationController
   def show
     get_categories_list
     @category = Equipment::Category.find_by(slug: params[:id])
-    @items = @category.items.decorate
+    @items = @category.items.not_artifact.decorate
   end
 
   private

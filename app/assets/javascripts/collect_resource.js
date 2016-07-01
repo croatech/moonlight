@@ -1,4 +1,6 @@
-$(function () {
+var ready;
+ready = function() {
+
   $('#collect').magnificPopup({
     type: 'inline',
     preloader: false,
@@ -31,4 +33,8 @@ $(function () {
       $('#collected-image').show();
     });
   });
-});
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

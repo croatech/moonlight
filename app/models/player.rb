@@ -2,7 +2,7 @@ class Player < ActiveRecord::Base
   
   include Percentable  
 
-  has_attached_file :image, default_url: "/images/:style/missing.png"
+  has_attached_file :image, default_url: "/images/players/avatars/1.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   
   validates :name, presence: true
