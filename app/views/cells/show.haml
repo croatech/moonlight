@@ -23,28 +23,16 @@
         - @resources.each do |resource|
           - cache resource do
             .resource
-              = image_tag resource.image.url
-              = resource.decorate.collect_link(current_user.player)
+              = image_tag resource.image.url, id: 'craft-bg'
+              = resource.decorate.collect_link(current_user.player) #collect
 
             #test-modal.white-popup-block.mfp-hide
               %h2 Processing...
-              %p
-                %i Wait for 10 seconds...
+              .countdown
+                %p
+                  %i#clock
+
               = image_tag "craft/#{resource.type}"
-              %p
-                = link_to 'Cancel', '#', class: 'popup-modal-dismiss btn btn-danger'
 
-
-:javascript
-  $(function () {
-    $('#collect').magnificPopup({
-      type: 'inline',
-      preloader: false,
-      focus: '#username',
-      modal: true
-    });
-    $(document).on('click', '.popup-modal-dismiss', function (e) {
-      e.preventDefault();
-      $.magnificPopup.close();
-    });
-  });
+              = link_to 'Collect', resource_collect_path(resource_id: resource.id), method: :post, class: 'btn btn-primary', id: 'collect-button'
+              = link_to 'Cancel', '#', class: 'popup-modal-dismiss btn btn-danger'

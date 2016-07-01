@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require spoiler
 //= require magnific-popup
+//= require collect_resource
 //= require_tree .
