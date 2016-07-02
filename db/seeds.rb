@@ -125,18 +125,18 @@ end
                              {name: 'Spiked belt',       category_id: Equipment::Category.find_by(slug: 'belt').id, attack: 0, defense: 30, hp: 44,  required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/spiked_belt.png")},
                              {name: 'Holy belt',         category_id: Equipment::Category.find_by(slug: 'belt').id, attack: 0, defense: 34, hp: 51,  required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/holy_belt.png")},
                              {name: 'Titan belt',        category_id: Equipment::Category.find_by(slug: 'belt').id, attack: 0, defense: 39, hp: 55,  required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/titan_belt.png")},
-                             {name: 'Kvark belt',        category_id: Equipment::Category.find_by(slug: 'belt').id, attack: 0, defense: 45, hp: 63, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/kvark_belt.png")}]
+                             {name: 'Kvark belt',        category_id: Equipment::Category.find_by(slug: 'belt').id, attack: 0, defense: 45, hp: 63, required_level: 10, price: 500,  image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/kvark_belt.png")}]
     ### WEAPON
-    Equipment::Item.create! [{name: 'Metal axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 11,  defense: 0, hp: 0, required_level: 1,  price: 50,     image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/metal_axe.png")},
-                             {name: 'Light axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 21,  defense: 0, hp: 0, required_level: 2,  price: 100,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/light_axe.png")},
-                             {name: 'Rapid axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 31,  defense: 0, hp: 0, required_level: 3,  price: 150,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/rapid_axe.png")},
-                             {name: 'Rough axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 41,  defense: 0, hp: 0, required_level: 4,  price: 200,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/rough_axe.png")},
-                             {name: 'Round axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 51,  defense: 0, hp: 0, required_level: 5,  price: 250,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/round_axe.png")},
-                             {name: 'Kvark axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 61,  defense: 0, hp: 0, required_level: 6,  price: 300,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/kvark_axe.png")},
-                             {name: 'Spiked axe',      category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 71,  defense: 0, hp: 0, required_level: 7,  price: 350,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/spiked_axe.png")},
-                             {name: 'Great axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 81,  defense: 0, hp: 0, required_level: 8,  price: 400,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/great_axe.png")},
-                             {name: 'Duke axe',        category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 91,  defense: 0, hp: 0, required_level: 9,  price: 450,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/duke_axe.png")},
-                             {name: 'Destructive axe', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 101, defense: 0, hp: 0, required_level: 10, price: 500,    image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/destructive_axe.png")}]
+    Equipment::Item.create! [{name: 'Metal axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 11,  defense: 0, hp: 0, required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/metal_axe.png")},
+                             {name: 'Light axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 21,  defense: 0, hp: 0, required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/light_axe.png")},
+                             {name: 'Rapid axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 31,  defense: 0, hp: 0, required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/rapid_axe.png")},
+                             {name: 'Rough axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 41,  defense: 0, hp: 0, required_level: 4,  price: 200, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/rough_axe.png")},
+                             {name: 'Round axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 51,  defense: 0, hp: 0, required_level: 5,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/round_axe.png")},
+                             {name: 'Kvark axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 61,  defense: 0, hp: 0, required_level: 6,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/kvark_axe.png")},
+                             {name: 'Spiked axe',      category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 71,  defense: 0, hp: 0, required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/spiked_axe.png")},
+                             {name: 'Great axe',       category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 81,  defense: 0, hp: 0, required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/great_axe.png")},
+                             {name: 'Duke axe',        category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 91,  defense: 0, hp: 0, required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/duke_axe.png")},
+                             {name: 'Destructive axe', category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 101, defense: 0, hp: 0, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/destructive_axe.png")}]
     ### SHIELD
     Equipment::Item.create! [{name: 'Wood shield',        category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0, defense: 20,  hp: 15, required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/shield/wood_shield.png")},
                              {name: 'Blueberry shield',   category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0, defense: 30,  hp: 20, required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/shield/blueberry_shield.png")},
@@ -234,14 +234,14 @@ end
     LocationResource.create!(location_id: Location.find_by(name: 'Dangerous Grounds').id, resource_id: Resource.find_by(name: 'Mysterious wood').id)
 
 # BOTS
-Bot.create! [{level: 1, name: 'Armillaria',  attack: 15, defense: 80, hp: 100, image: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
-             {level: 2, name: 'Chanterelle', attack: 20, defense: 20, hp: 200, image: File.new("#{Rails.root}/db/seeds/bots/chanterelle.jpg")},
-             {level: 3, name: 'Amanita',     attack: 30, defense: 30, hp: 300, image: File.new("#{Rails.root}/db/seeds/bots/amanita.jpg")},
-             {level: 4, name: 'Rat',         attack: 40, defense: 40, hp: 400, image: File.new("#{Rails.root}/db/seeds/bots/rat.jpg")},
-             {level: 5, name: 'Spider',      attack: 50, defense: 50, hp: 500, image: File.new("#{Rails.root}/db/seeds/bots/spider.jpg")},
-             {level: 6, name: 'Hoblin',      attack: 60, defense: 60, hp: 600, image: File.new("#{Rails.root}/db/seeds/bots/hoblin.jpg")},
-             {level: 7, name: 'Ork',         attack: 70, defense: 70, hp: 700, image: File.new("#{Rails.root}/db/seeds/bots/ork.jpg")},
-             {level: 8, name: 'Drowned',     attack: 80, defense: 80, hp: 800, image: File.new("#{Rails.root}/db/seeds/bots/drowned.jpg")}]
+Bot.create! [{level: 1, name: 'Armillaria',  attack: 15,  defense: 80,  hp: 100, image: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
+             {level: 2, name: 'Chanterelle', attack: 40,  defense: 85,  hp: 150, image: File.new("#{Rails.root}/db/seeds/bots/chanterelle.jpg")},
+             {level: 3, name: 'Amanita',     attack: 60,  defense: 120, hp: 200, image: File.new("#{Rails.root}/db/seeds/bots/amanita.jpg")},
+             {level: 4, name: 'Rat',         attack: 90,  defense: 180, hp: 250, image: File.new("#{Rails.root}/db/seeds/bots/rat.jpg")},
+             {level: 5, name: 'Spider',      attack: 110, defense: 300, hp: 400, image: File.new("#{Rails.root}/db/seeds/bots/spider.jpg")},
+             {level: 6, name: 'Hoblin',      attack: 160, defense: 300, hp: 600, image: File.new("#{Rails.root}/db/seeds/bots/hoblin.jpg")},
+             {level: 7, name: 'Ork',         attack: 200, defense: 350, hp: 800, image: File.new("#{Rails.root}/db/seeds/bots/ork.jpg")},
+             {level: 8, name: 'Drowned',     attack: 220,  defense: 80, hp: 1000, image: File.new("#{Rails.root}/db/seeds/bots/drowned.jpg")}]
 
 # POPULATE BOTS
   ## MULTIPLE CELLS
