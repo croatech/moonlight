@@ -37,5 +37,5 @@
                 = image_tag "craft/#{resource.type}/#{resource.type}-done", class: 'center', id: 'collected-image'
 
               .buttons
-                = link_to 'Collect', resource_collect_path(resource_id: resource.id), method: :post, class: 'btn btn-primary', id: 'collect-button'
+                = link_to 'Collect', resource_collect_path(resource_id: resource.id), method: :put, class: 'btn btn-primary', id: 'collect-button'
                 = link_to 'Cancel', '#', class: 'popup-modal-dismiss btn btn-danger', id: 'cancel-button'

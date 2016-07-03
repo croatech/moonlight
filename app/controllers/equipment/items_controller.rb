@@ -27,4 +27,16 @@ class Equipment::ItemsController < ApplicationController
     service.call
     redirect_to :back
   end
+
+  def put_on_all
+    service = Player::Inventory::Equipment::Put::OnAllService.new(current_user.player)
+    service.call
+    redirect_to :back
+  end
+
+  def put_off_all
+    service = Player::Inventory::Equipment::Put::OffAllService.new(current_user.player)
+    service.call
+    redirect_to :back
+  end
 end

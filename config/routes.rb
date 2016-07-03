@@ -18,13 +18,13 @@ Rails.application.routes.draw do
   #resource :player, only: :show
 
   resources :resources do
-    post :collect
-    post :sell_all, on: :collection
+    put :collect
+    put :sell_all, on: :collection
   end
 
   namespace :player do
     resources :stats, only: :index do
-      post :increase
+      put :increase
     end
 
     resources :inventory, except: :all do
@@ -39,20 +39,25 @@ Rails.application.routes.draw do
   namespace :equipment do
     resources :categories, only: [:index, :show]
     resources :items, except: :all do
-      post :buy
-      post :put_on
-      post :put_off
-      post :sell
+      put :buy
+      put :put_on
+      put :put_off
+      put :sell
+
+      collection do 
+        put :put_on_all
+        put :put_off_all
+      end
     end
   end
 
   namespace :tool do
     resources :categories, only: [:index, :show]
     resources :items, except: :all do
-      post :buy
-      post :put_on
-      post :put_off
-      post :sell
+      put :buy
+      put :put_on
+      put :put_off
+      put :sell
     end
   end
 

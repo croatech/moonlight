@@ -12,17 +12,17 @@
       .attack.stat
         = image_tag 'attack.png'
         = @player.attack
-        = link_to '+', player_stat_increase_path(stat_id: 'attack'), method: :post
+        = link_to '+', player_stat_increase_path(stat_id: 'attack'), method: :put
 
       .defense.stat
         = image_tag 'defense.png'
         = @player.defense
-        = link_to '+', player_stat_increase_path(stat_id: 'defense'), method: :post
+        = link_to '+', player_stat_increase_path(stat_id: 'defense'), method: :put
 
       .hp.stat
         = image_tag 'hp.png'
         = @player.hp
-        = link_to '+', player_stat_increase_path(stat_id: 'hp'), method: :post
+        = link_to '+', player_stat_increase_path(stat_id: 'hp'), method: :put
 
       .free-stats.stat
         Free stats:
