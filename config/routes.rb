@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       collection do 
         put :put_on_all
         put :put_off_all
+        put :sell_all
       end
     end
   end

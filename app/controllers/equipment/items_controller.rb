@@ -39,4 +39,10 @@ class Equipment::ItemsController < ApplicationController
     service.call
     redirect_to :back
   end
+
+  def sell_all
+    service = Player::Inventory::Equipment::SellAllService.new(current_user.player)
+    service.call
+    redirect_to :back
+  end
 end
