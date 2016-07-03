@@ -18,6 +18,7 @@ class Player::Inventory::Equipment::Put::OnService
       delete_a_new_item_from_inventory
       put_a_new_item_in_a_slot
       update_stats
+      repair_hp
       player.save
     end
   end
@@ -52,6 +53,13 @@ class Player::Inventory::Equipment::Put::OnService
   def update_stats
     Player::STATS.each do |stat_name|
       player.increment(stat_name.to_sym, item[stat_name])
+    end
+  end
+
+  def repair_hp
+    if player.current_hp < player.hp
+      service = Player::RepairHpService.new(player, player.current_hp)
+      service.call
     end
   end
 end

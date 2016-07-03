@@ -34,6 +34,7 @@ gem 'paperclip'
 gem 'draper'
 gem 'newrelic_rpm'
 gem 'sidekiq'
+gem 'sidekiq-unique-jobs'
 gem 'sinatra'
 gem 'magnific-popup-rails', '~> 1.1.0'
 # Use ActiveModel has_secure_password

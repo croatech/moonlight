@@ -1,6 +1,6 @@
 class Player::Inventory::Equipment::Put::OnAllService
 
-  # put on an item in a slot
+  # put on all items
   
   attr_reader :player
 

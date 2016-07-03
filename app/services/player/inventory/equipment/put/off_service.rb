@@ -39,5 +39,7 @@ class Player::Inventory::Equipment::Put::OffService
     Player::STATS.each do |stat_name|
       player.decrement(stat_name.to_sym, item[stat_name])
     end
+
+    player.current_hp = player.hp
   end
 end
