@@ -10,10 +10,12 @@ class LocationsController < ApplicationController
 
   def weapon_shop
     change_location('weapon_shop')
+    redirect_to equipment_categories_path
   end
 
   def craft_shop
     change_location('craft_shop')
+    redirect_to tool_categories_path
   end
 
   def wayward_pines
