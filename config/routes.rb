@@ -52,6 +52,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :artifact do
+    resources :categories, only: [:index, :show]
+  end
+
+
   namespace :tool do
     resources :categories, only: [:index, :show]
     resources :items, except: :all do
@@ -67,6 +72,7 @@ Rails.application.routes.draw do
       get :moon_light
       get :weapon_shop
       get :craft_shop
+      get :shop_of_artifacts
       get :wayward_pines
     end
 

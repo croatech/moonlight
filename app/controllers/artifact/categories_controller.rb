@@ -1,14 +1,14 @@
-class Equipment::CategoriesController < ApplicationController
+class Artifact::CategoriesController < ApplicationController
 
   layout 'moon_light'
 
   def index
-    check_for_correct_location('weapon_shop')
     get_categories_list
+    check_for_correct_location('shop_of_artifacts')
   end
 
   def show
-    check_for_correct_location('weapon_shop')
+    check_for_correct_location('shop_of_artifacts')
     get_categories_list
     @category = Equipment::Category.find_by(slug: params[:id])
     @items = @category.items.not_artifact.decorate

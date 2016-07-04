@@ -18,6 +18,11 @@ class LocationsController < ApplicationController
     redirect_to tool_categories_path
   end
 
+  def shop_of_artifacts
+    change_location('shop_of_artifacts')
+    redirect_to artifact_categories_path
+  end
+
   def wayward_pines
     @location = Location.find_by(slug: 'wayward_pines')
     @cells = @location.children.order(:id)

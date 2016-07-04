@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
     current_user.player.location
   end
 
+  def check_for_correct_location(location_name)
+    if current_location.slug == location_name
+      true
+    else
+      redirect_to root_path
+    end
+  end
+
   def log_get
     @logs = current_user.player.logs.order('id DESC') if current_user
   end
