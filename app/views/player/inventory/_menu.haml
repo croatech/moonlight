@@ -4,7 +4,8 @@
     %li= link_to 'Tools', tools_player_inventory_index_path, class: 'btn btn-default'
     %li= link_to 'Resources', resources_player_inventory_index_path, class: 'btn btn-default'
 
-.actions
-  = link_to 'Put off all', put_off_all_equipment_items_path, method: :put, class: 'btn btn-warning'
-  = link_to 'Put on all', put_on_all_equipment_items_path, method: :put, class: 'btn btn-success'
-  = link_to "Sell all for #{@weapons.object.pluck(:price).reduce(:+)} gold", sell_all_equipment_items_path, method: :put, class: 'btn btn-primary'
+- if params[:action] == 'equpipment'
+  .actions
+    = link_to 'Put off all', put_off_all_equipment_items_path, method: :put, class: 'btn btn-warning'
+    = link_to 'Put on all', put_on_all_equipment_items_path, method: :put, class: 'btn btn-success'
+    = link_to "Sell all for #{@weapons.object.pluck(:price).reduce(:+)} gold", sell_all_equipment_items_path, method: :put, class: 'btn btn-primary'
