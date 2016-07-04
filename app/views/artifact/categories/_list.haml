@@ -1,0 +1,3 @@
+- @categories.each do |c|
+  .category
+    = link_to c, artifact_category_path(c), class: "category-btn btn btn-default #{check_for_active_tab(params[:query], c)}"

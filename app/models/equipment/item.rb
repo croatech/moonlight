@@ -11,5 +11,6 @@ class Equipment::Item < ActiveRecord::Base
     self.artifact? ? price : price * 0.9
   end
 
+  scope :artifacts, -> { where(artifact: true) }
   scope :not_artifact, -> { where(artifact: false) }
 end
