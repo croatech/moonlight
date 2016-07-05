@@ -27,7 +27,7 @@ end
 
 # EQUIPMENT
   ## CATEGORIES
-  Equipment::Category.create! [{name: 'Helmet',   slug: 'helmet'},
+    Equipment::Category.create! [{name: 'Helmet',   slug: 'helmet'},
                                {name: 'Armor',    slug: 'armor'},
                                {name: 'Mail',     slug: 'mail'},
                                {name: 'Gloves',   slug: 'gloves'},
@@ -266,9 +266,20 @@ end
                              {name: 'Amethyst bracers', category_id: Equipment::Category.find_by(slug: 'bracers').id,  attack: 40,  defense: 125, hp: 215, required_level: 18,  price: 21000, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/art/amethyst_bracers.png"), artifact: true},
                              {name: 'Amethyst boots',   category_id: Equipment::Category.find_by(slug: 'foots').id,    attack: 40,  defense: 125, hp: 215, required_level: 18,  price: 21000, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/art/amethyst_boots.png"), artifact: true},
                              {name: 'Amethyst belt',    category_id: Equipment::Category.find_by(slug: 'belt').id,     attack: 0,   defense: 100, hp: 190, required_level: 18,  price: 21000, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/art/amethyst_belt.png"), artifact: true},
-                             {name: 'Amethyst axe',     category_id: Equipment::Category.find_by(slug: 'weapon').id,   attack: 330, defense: 0,   hp: 0,   required_level: 18,  price: 21000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/amethyst_axe.png"), artifact: true},
+                             {name: 'Amethyst axe',     category_id: Equipment::Category.find_by(slug: 'weapon').id,   attack: 330, defense: 0,   hp: 0,  required_level: 18,  price: 21000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/amethyst_axe.png"), artifact: true},
                              {name: 'Amethyst ring',    category_id: Equipment::Category.find_by(slug: 'ring').id,     attack: 20,  defense: 105, hp: 200, required_level: 18,  price: 21000, image: File.new("#{Rails.root}/db/seeds/equipment/items/ring/art/amethyst_ring.png"), artifact: true},
                              {name: 'Amethyst amulet',  category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,   defense: 105, hp: 190, required_level: 18,  price: 21000, image: File.new("#{Rails.root}/db/seeds/equipment/items/necklace/art/amethyst_amulet.png"), artifact: true}]
+  ### WINGED GOD SET
+    Equipment::Item.create! [{name: 'Helm of Demon Warrior',    category_id: Equipment::Category.find_by(slug: 'helmet').id,   attack: 0,   defense: 150, hp: 260, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/art/helm_of_demon_warrior.png"), artifact: true},
+                             {name: 'Armor of Demon Warrior',   category_id: Equipment::Category.find_by(slug: 'armor').id,    attack: 0,   defense: 155, hp: 265, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/art/armor_of_demon_warrior.png"), artifact: true},
+                             {name: 'Mail of Demon Warrior',    category_id: Equipment::Category.find_by(slug: 'mail').id,     attack: 0,   defense: 130, hp: 280, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/art/mail_of_demon_warrior.png"), artifact: true},
+                             {name: 'Gloves of Demon Warrior',  category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 45,  defense: 135, hp: 230, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/art/gloves_of_demon_warrior.png"), artifact: true},
+                             {name: 'Bracers of Demon Warrior', category_id: Equipment::Category.find_by(slug: 'bracers').id,  attack: 45,  defense: 130, hp: 225, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/art/bracers_of_demon_warrior.png"), artifact: true},
+                             {name: 'Boots of Demon Warrior',   category_id: Equipment::Category.find_by(slug: 'foots').id,    attack: 45,  defense: 135, hp: 230, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/art/boots_of_demon_warrior.png"), artifact: true},
+                             {name: 'Belt of Demon Warrior',    category_id: Equipment::Category.find_by(slug: 'belt').id,     attack: 0,   defense: 105, hp: 200, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/art/belt_of_demon_warrior.png"), artifact: true},
+                             {name: 'Sword of Demon Warrior',   category_id: Equipment::Category.find_by(slug: 'weapon').id,   attack: 360, defense: 0,   hp: 0,   required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/sword_of_demon_warrior.png"), artifact: true},
+                             {name: 'Ring of Demon Warrior',    category_id: Equipment::Category.find_by(slug: 'ring').id,     attack: 25,  defense: 110,  hp: 240, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/ring/art/ring_of_demon_warrior.png"), artifact: true},
+                             {name: 'Amulet of Demon Warrior',  category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,   defense: 110,  hp: 210, required_level: 16,  price: 17000, image: File.new("#{Rails.root}/db/seeds/equipment/items/necklace/art/amulet_of_demon_warrior.png"), artifact: true}]
 
 
 # TOOLS
