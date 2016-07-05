@@ -12,22 +12,14 @@ Location.create! [{name: 'Weapon Shop',       slug: 'weapon_shop',       parent_
   location_name = "#{t} cell"
 
   case t + 1
-  when 20, 21
-    location_name = 'Northern Forest'
-  when 22
-    location_name = 'Mycelium'
-  when 28
-    location_name = 'Dalf Lagoon'
-  when 29, 36
-    location_name = 'Sacred Forest'
-  when 37
-    location_name = 'Shady Walk'
-  when 44
-    location_name = 'South Thicket'
-  when 45
-    location_name = 'River Fork'
-  when 53
-    location_name = 'Dangerous Grounds'
+  when 20, 21 then location_name = 'Northern Forest'
+  when 22     then location_name = 'Mycelium'
+  when 28     then location_name = 'Dalf Lagoon'
+  when 29, 36 then location_name = 'Sacred Forest'
+  when 37     then location_name = 'Shady Walk'
+  when 44     then location_name = 'South Thicket'
+  when 45     then location_name = 'River Fork'
+  when 53     then location_name = 'Dangerous Grounds'
   end
 
   Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
@@ -49,7 +41,7 @@ end
                                {name: 'Cloak',    slug: 'cloak'},
                                {name: 'Pants',    slug: 'pants'}]
 
-  ## ITEMS
+  ## NORMAL ITEMS
     ### HELMET
     Equipment::Item.create! [{name: 'Leather hat',      category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 6,  hp: 6,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/leather_hat.png")},
                              {name: 'Bone helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 10, hp: 12, required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/bone_helm.png")},
@@ -60,7 +52,7 @@ end
                              {name: 'Mithrill helm',    category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 35, hp: 35, required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/mithrill_helm.png")},
                              {name: 'Shell helm',       category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 40, hp: 44, required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/shell_helm.png")},
                              {name: 'Holy helm',        category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 45, hp: 51, required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/holy_helm.png")},
-                             {name: 'Streamlined helm', category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 50, hp: 55, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/streamlined_helm.png")}]
+                             {name: 'Streamlined helm', category_id: Equipment::Category.find_by(slug: 'helmet').id, attack: 0, defense: 50, hp: 55, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/streamlined_helm.png")}] 
     ### CHEST
     Equipment::Item.create! [{name: 'Leather armor',   category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 10, hp: 20,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/leather_armor.png")},
                              {name: 'Bright armor',    category_id: Equipment::Category.find_by(slug: 'armor').id, attack: 0, defense: 5,  hp: 15,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/bright_armor.png")},
@@ -84,16 +76,16 @@ end
                              {name: 'Kvark mail',     category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 39, hp: 55,  required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/kvark_mail.png")},
                              {name: 'Earl mail',      category_id: Equipment::Category.find_by(slug: 'mail').id, attack: 0, defense: 45, hp: 60, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/earl_mail.png")}]
     ### GLOVES
-    Equipment::Item.create! [{name: 'Leather Gloves',  category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 0,  defense: 10, hp: 20,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/leather_gloves.png")},
-                             {name: 'Elastic Gloves',  category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 2,  defense: 5,  hp: 15,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/elastic_gloves.png")},
-                             {name: 'Rubber Gloves',   category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 4,  defense: 11, hp: 20,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/rubber_gloves.png")},
+    Equipment::Item.create! [{name: 'Leather gloves',  category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 0,  defense: 10, hp: 20,  required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/leather_gloves.png")},
+                             {name: 'Elastic gloves',  category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 2,  defense: 5,  hp: 15,  required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/elastic_gloves.png")},
+                             {name: 'Rubber gloves',   category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 4,  defense: 11, hp: 20,  required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/rubber_gloves.png")},
                              {name: 'Gloves of Rogue', category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 6,  defense: 16, hp: 24,  required_level: 4,  price: 200, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/gloves_of_rogue.png")},
-                             {name: 'Spiked Gloves',   category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 8,  defense: 20, hp: 29,  required_level: 5,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/spiked_gloves.png")},
-                             {name: 'Steel Gloves',    category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 12, defense: 27, hp: 35,  required_level: 6,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/steel_gloves.png")},
-                             {name: 'Emerald Gloves',  category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 14, defense: 30, hp: 44,  required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/emerald_gloves.png")},
-                             {name: 'Titan Gloves',    category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 16, defense: 34, hp: 51,  required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/titan_gloves.png")},
-                             {name: 'Executor Gloves', category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 18, defense: 39, hp: 55,  required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/executor_gloves.png")},
-                             {name: 'Hedgehog Gloves', category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 20, defense: 45, hp: 60, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/hedgehog_gloves.png")}]
+                             {name: 'Spiked gloves',   category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 8,  defense: 20, hp: 29,  required_level: 5,  price: 250, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/spiked_gloves.png")},
+                             {name: 'Steel gloves',    category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 12, defense: 27, hp: 35,  required_level: 6,  price: 300, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/steel_gloves.png")},
+                             {name: 'Emerald gloves',  category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 14, defense: 30, hp: 44,  required_level: 7,  price: 350, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/emerald_gloves.png")},
+                             {name: 'Titan gloves',    category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 16, defense: 34, hp: 51,  required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/titan_gloves.png")},
+                             {name: 'Executor gloves', category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 18, defense: 39, hp: 55,  required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/executor_gloves.png")},
+                             {name: 'Hedgehog gloves', category_id: Equipment::Category.find_by(slug: 'gloves').id, attack: 20, defense: 45, hp: 60, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/hedgehog_gloves.png")}]
     ### BRACERS
     Equipment::Item.create! [{name: 'Leather bracers',     category_id: Equipment::Category.find_by(slug: 'bracers').id, attack: 0,  defense: 5,  hp: 10, required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/leather_bracers.png")},
                              {name: 'Straw bracers',       category_id: Equipment::Category.find_by(slug: 'bracers').id, attack: 1,  defense: 5,  hp: 15, required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/straw_bracers.png")},
@@ -105,7 +97,7 @@ end
                              {name: 'Holy bracers',        category_id: Equipment::Category.find_by(slug: 'bracers').id, attack: 7,  defense: 34, hp: 51, required_level: 8,  price: 400, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/holy_bracers.png")},
                              {name: 'Titan bracers',       category_id: Equipment::Category.find_by(slug: 'bracers').id, attack: 8,  defense: 39, hp: 55, required_level: 9,  price: 450, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/titan_bracers.png")},
                              {name: 'Unbreakable bracers', category_id: Equipment::Category.find_by(slug: 'bracers').id, attack: 10, defense: 45, hp: 61, required_level: 10, price: 500, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/unbreakable_bracers.png")}]
-    ### SHOES
+    ### FOOTS
     Equipment::Item.create! [{name: 'Leather boots',      category_id: Equipment::Category.find_by(slug: 'foots').id, attack: 0,  defense: 5,  hp: 10, required_level: 1,  price: 50,  image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/leather_boots.png")},
                              {name: 'Straw shoes',        category_id: Equipment::Category.find_by(slug: 'foots').id, attack: 3,  defense: 5,  hp: 15, required_level: 2,  price: 100, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/straw_shoes.png")},
                              {name: 'Magic boots',        category_id: Equipment::Category.find_by(slug: 'foots').id, attack: 6,  defense: 11, hp: 20, required_level: 3,  price: 150, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/magic_boots.png")},
@@ -187,6 +179,43 @@ end
     Equipment::Item.create!(name: 'Judgment Day',      category_id: Equipment::Category.find_by(slug: 'weapon').id, attack: 666, defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/judgment_day.png"), artifact: true)
     Equipment::Item.create!(name: 'Death Note',        category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 666, defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/death_note.png"), artifact: true)
     Equipment::Item.create!(name: 'Amulet of Croaton', category_id: Equipment::Category.find_by(slug: 'shield').id, attack: 0,   defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/amulet_of_croaton.png"), artifact: true)
+
+  ## ARTIFACTS
+  ### SAPPHIRE SET
+    Equipment::Item.create! [{name: 'Sapphire helm',    category_id: Equipment::Category.find_by(slug: 'helmet').id,   attack: 0,   defense: 70,  hp: 80,  required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/art/sapphire_helm.png"), artifact: true},
+                             {name: 'Sapphire armor',   category_id: Equipment::Category.find_by(slug: 'armor').id,    attack: 0,   defense: 90,  hp: 120, required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/art/sapphire_armor.png"), artifact: true},
+                             {name: 'Sapphire mail',    category_id: Equipment::Category.find_by(slug: 'mail').id,     attack: 0,   defense: 95,  hp: 100, required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/art/sapphire_mail.png"), artifact: true},
+                             {name: 'Sapphire gloves',  category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 10,  defense: 65,  hp: 75,  required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/art/sapphire_gloves.png"), artifact: true},
+                             {name: 'Sapphire bracers', category_id: Equipment::Category.find_by(slug: 'bracers').id,  attack: 15,  defense: 65,  hp: 75,  required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/art/sapphire_bracers.png"), artifact: true},
+                             {name: 'Sapphire boots',   category_id: Equipment::Category.find_by(slug: 'foots').id,    attack: 15,  defense: 65,  hp: 75,  required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/art/sapphire_boots.png"), artifact: true},
+                             {name: 'Sapphire belt',    category_id: Equipment::Category.find_by(slug: 'belt').id,     attack: 0,   defense: 65,  hp: 75,  required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/art/sapphire_belt.png"), artifact: true},
+                             {name: 'Sapphire staff',   category_id: Equipment::Category.find_by(slug: 'weapon').id,   attack: 150, defense: 0,   hp: 0,   required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/sapphire_staff.png"), artifact: true},
+                             {name: 'Sapphire ring',    category_id: Equipment::Category.find_by(slug: 'ring').id,     attack: 10,  defense: 60,  hp: 80,  required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/ring/art/sapphire_ring.png"), artifact: true},
+                             {name: 'Sapphire amulet',  category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,   defense: 60,  hp: 70,  required_level: 11,  price: 3000, image: File.new("#{Rails.root}/db/seeds/equipment/items/necklace/art/sapphire_amulet.png"), artifact: true}]
+
+  ### BERSERKER SET
+    Equipment::Item.create! [{name: 'Helm of Berserker',    category_id: Equipment::Category.find_by(slug: 'helmet').id,   attack: 0,   defense: 120, hp: 120, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/art/helm_of_berserker.png"), artifact: true},
+                             {name: 'Armor of Berserker',   category_id: Equipment::Category.find_by(slug: 'armor').id,    attack: 0,   defense: 110, hp: 140, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/art/armor_of_berserker.png"), artifact: true},
+                             {name: 'Mail of Berserker',    category_id: Equipment::Category.find_by(slug: 'mail').id,     attack: 0,   defense: 105, hp: 125, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/art/mail_of_berserker.png"), artifact: true},
+                             {name: 'Gloves of Berserker',  category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 15,  defense: 85,  hp: 105, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/art/gloves_of_berserker.png"), artifact: true},
+                             {name: 'Bracers of Berserker', category_id: Equipment::Category.find_by(slug: 'bracers').id,  attack: 15,  defense: 85,  hp: 105, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/art/bracers_of_berserker.png"), artifact: true},
+                             {name: 'Boots of Berserker',   category_id: Equipment::Category.find_by(slug: 'foots').id,    attack: 15,  defense: 85,  hp: 105, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/art/boots_of_berserker.png"), artifact: true},
+                             {name: 'Belt of Berserker',    category_id: Equipment::Category.find_by(slug: 'belt').id,     attack: 0,   defense: 75,  hp: 85,  required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/art/belt_of_berserker.png"), artifact: true},
+                             {name: 'Axe of Berserker',   category_id: Equipment::Category.find_by(slug: 'weapon').id,     attack: 180, defense: 0,   hp: 0,   required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/axe_of_berserker.png"), artifact: true},
+                             {name: 'Ring of Berserker',    category_id: Equipment::Category.find_by(slug: 'ring').id,     attack: 10,  defense: 70,  hp: 95,  required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/ring/art/ring_of_berserker.png"), artifact: true},
+                             {name: 'Amulet of Berserker',  category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,   defense: 70,  hp: 80,  required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/necklace/art/amulet_of_berserker.png"), artifact: true}]
+
+  ### MAD KNIGHT SET
+    Equipment::Item.create! [{name: 'Helm of Mad Knight',    category_id: Equipment::Category.find_by(slug: 'helmet').id,   attack: 0,   defense: 125, hp: 140, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/helmet/art/helm_of_mad_knight.png"), artifact: true},
+                             {name: 'Armor of Mad Knight',   category_id: Equipment::Category.find_by(slug: 'armor').id,    attack: 0,   defense: 110, hp: 165, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/armor/art/armor_of_mad_knight.png"), artifact: true},
+                             {name: 'Mail of Mad Knight',    category_id: Equipment::Category.find_by(slug: 'mail').id,     attack: 0,   defense: 105, hp: 155, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/mail/art/mail_of_mad_knight.png"), artifact: true},
+                             {name: 'Gloves of Mad Knight',  category_id: Equipment::Category.find_by(slug: 'gloves').id,   attack: 20,  defense: 95,  hp: 135, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/gloves/art/gloves_of_mad_knight.png"), artifact: true},
+                             {name: 'Bracers of Mad Knight', category_id: Equipment::Category.find_by(slug: 'bracers').id,  attack: 20,  defense: 95,  hp: 135, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/art/bracers_of_mad_knight.png"), artifact: true},
+                             {name: 'Boots of Mad Knight',   category_id: Equipment::Category.find_by(slug: 'foots').id,    attack: 20,  defense: 95,  hp: 135, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/art/boots_of_mad_knight.png"), artifact: true},
+                             {name: 'Belt of Mad Knight',    category_id: Equipment::Category.find_by(slug: 'belt').id,     attack: 0,   defense: 80,  hp: 100, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/art/belt_of_mad_knight.png"), artifact: true},
+                             {name: 'Axe of Mad Knight',     category_id: Equipment::Category.find_by(slug: 'weapon').id,   attack: 200, defense: 0,   hp: 0,   required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/axe_of_mad_knight.png"), artifact: true},
+                             {name: 'Ring of Mad Knight',    category_id: Equipment::Category.find_by(slug: 'ring').id,     attack: 10,  defense: 70,  hp: 105, required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/ring/art/ring_of_mad_knight.png"), artifact: true},
+                             {name: 'Amulet of Mad Knight',  category_id: Equipment::Category.find_by(slug: 'necklace').id, attack: 0,   defense: 70,  hp: 95,  required_level: 13,  price: 8000, image: File.new("#{Rails.root}/db/seeds/equipment/items/necklace/art/amulet_of_mad_knight.png"), artifact: true}]
 
 # TOOLS
   ## CATEGORIES
