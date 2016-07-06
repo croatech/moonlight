@@ -2,64 +2,54 @@ class Player::Inventory::Equipment::Put::OnService
 
   # put on an item in a slot
   
-  attr_reader :player, :equipment, :item, :item_id, :item_type
+  attr_reader :player, :equipment, :new_item, :current_item
 
   def initialize(player, item)
     @player = player
     @equipment = player.equipment
-    @item = item
-    @item_id = item.id.to_s
-    @item_type = "#{item.category.slug}_slot"
+    @new_item = item
+    @current_item = player["#{item.category.slug}_slot"]
   end
 
   def call
     if is_an_item_purchased? && level_required?
-      put_an_old_item_in_inventory if slot_is_busy?
-      delete_a_new_item_from_inventory
-      put_a_new_item_in_a_slot
-      update_stats
-      repair_hp
+      put_the_current_item_in_inventory if slot_is_busy?
+      put_the_new_item_from_inventory
+      put_the_new_item_in_the_slot
       player.save
+      #start_repair_hp
     end
   end
 
   private
 
   def is_an_item_purchased?
-    equipment.include?(item_id)
+    equipment.include?(new_item.id)
   end
 
   def level_required?
-    player.level >= item.required_level
+    player.level >= new_item.required_level
   end
 
   def slot_is_busy?
-    player[item_type].present?
+    current_item.present?
   end
 
-  def delete_a_new_item_from_inventory
-    player.equipment.delete(item_id)
+  def put_the_new_item_from_inventory
+    player.equipment.delete(new_item.id)
   end
 
-  def put_a_new_item_in_a_slot
+  def put_the_new_item_in_the_slot
     # player['weapon'] = 1
-    player[item_type] = item_id.to_i
+    current_item = new_item.id.to_i
   end
 
-  def put_an_old_item_in_inventory
-    player.equipment << player[item_type]
+  def put_the_current_item_in_inventory
+    player.equipment << current_item
   end
 
-  def update_stats
-    Player::STATS.each do |stat_name|
-      player.increment(stat_name.to_sym, item[stat_name])
-    end
-  end
-
-  def repair_hp
-    if player.current_hp < player.hp
-      service = Player::RepairHpService.new(player, player.current_hp)
-      service.call
-    end
+  def start_repair_hp
+    service = Player::RepairHpService.new(player)
+    service.call
   end
 end

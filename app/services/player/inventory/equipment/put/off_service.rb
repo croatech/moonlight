@@ -16,7 +16,6 @@ class Player::Inventory::Equipment::Put::OffService
     if is_an_item_wearing?
       put_an_old_item_in_inventory
       clear_slot
-      update_stats
       player.save
     end
   end
@@ -33,13 +32,5 @@ class Player::Inventory::Equipment::Put::OffService
 
   def clear_slot
     player[item_type] = nil
-  end
-
-  def update_stats
-    Player::STATS.each do |stat_name|
-      player.decrement(stat_name.to_sym, item[stat_name])
-    end
-
-    player.current_hp = player.hp
   end
 end
