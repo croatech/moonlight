@@ -37,7 +37,6 @@ class Player::Inventory::Equipment::Put::OnService
   end
 
   def put_the_new_item_in_the_slot
-    # player['weapon'] = 1
     equipment.delete(new_item.id.to_s)
     player[slot] = new_item.id.to_i
   end
@@ -47,7 +46,9 @@ class Player::Inventory::Equipment::Put::OnService
   end
 
   def update_stats
-    new_stats = Player::Stats::GetAllService.new(player, equipment).call
+    # get all wearable items, then calculate all stats from those items
+    wearable_equipment_ids = Player::Inventory::WearableItemsIdsService.new(player, Player::EQUIPMENT_SLOTS).call
+    new_stats = Player::Stats::GetAllService.new(player, wearable_equipment_ids).call
     new_stats.each do |stat_name, stat_value|
       player[stat_name] = stat_value
     end
