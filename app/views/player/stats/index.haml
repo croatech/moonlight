@@ -8,12 +8,12 @@
         %h3= "Level: #{@player.level}"
 
       %h2= @player.name
-
-      - @stats.each do |stat|
-        %div{class: "#{stat} stat"}
-          = image_tag "#{stat}.png"
-          = @player[stat]
-          = link_to '+', player_stat_increase_path(stat_id: stat), method: :put
+      
+      - @stats.each do |stat_name, stat_value|
+        %div{class: "#{stat_name} stat"}
+          = image_tag "#{stat_name}.png"
+          = stat_value
+          = link_to '+', player_stat_increase_path(stat_id: stat_name), method: :put
 
       .free-stats.stat
         Free stats:

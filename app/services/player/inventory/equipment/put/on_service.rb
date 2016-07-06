@@ -16,7 +16,6 @@ class Player::Inventory::Equipment::Put::OnService
     if is_an_item_purchased? && level_required?
       put_the_current_item_in_inventory if slot_is_busy?
       put_the_new_item_in_the_slot
-      update_stats
       player.save
       #start_repair_hp
     end
@@ -43,15 +42,6 @@ class Player::Inventory::Equipment::Put::OnService
 
   def put_the_current_item_in_inventory
     equipment << current_item.to_s
-  end
-
-  def update_stats
-    # get all wearable items, then calculate all stats from those items
-    wearable_equipment_ids = Player::Inventory::WearableItemsIdsService.new(player, Player::EQUIPMENT_SLOTS).call
-    new_stats = Player::Stats::GetAllService.new(player, wearable_equipment_ids).call
-    new_stats.each do |stat_name, stat_value|
-      player[stat_name] = stat_value
-    end
   end
 
   def start_repair_hp

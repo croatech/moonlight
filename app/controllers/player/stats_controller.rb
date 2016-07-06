@@ -4,12 +4,9 @@ class Player::StatsController < ApplicationController
 
   def index
     @player = current_user.player.decorate
-    wearable_equipment_ids = Player::Inventory::WearableItemsIdsService.new(current_user.player, Player::EQUIPMENT_SLOTS).call
-    @wearable_eqipment = Equipment::Item.where(id: wearable_equipment_ids).includes(:category)
-    @stats = Player::STATS
-
-    wearable_tools_ids = Player::Inventory::WearableItemsIdsService.new(current_user.player, Player::TOOL_SLOTS).call
-    @wearable_tools = Tool::Item.where(id: wearable_tools_ids).includes(:category)
+    @wearable_eqipment = @player.wearable_equipment
+    @stats = @player.stats(@wearable_eqipment)
+    @wearable_tools = @player.wearable_tools
   end
 
   def increase

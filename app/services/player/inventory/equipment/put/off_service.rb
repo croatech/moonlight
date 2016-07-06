@@ -2,19 +2,18 @@ class Player::Inventory::Equipment::Put::OffService
 
   # put off an item from a slot
   
-  attr_reader :player, :equipment, :item, :item_id, :item_type
+  attr_reader :player, :equipment, :new_item, :slot
 
   def initialize(player, item)
     @player = player
     @equipment = player.equipment
-    @item = item
-    @item_id = item.id
-    @item_type = "#{item.category.slug}_slot"
+    @new_item = item
+    @slot = "#{item.category.slug}_slot"
   end
 
   def call
-    if is_an_item_wearing?
-      put_an_old_item_in_inventory
+    if is_an_item_weared?
+      put_an_current_item_in_inventory
       clear_slot
       player.save
     end
@@ -22,15 +21,15 @@ class Player::Inventory::Equipment::Put::OffService
 
   private
 
-  def is_an_item_wearing?
-    player[item_type] == item_id
+  def is_an_item_weared?
+    player[slot] == new_item.id
   end
 
-  def put_an_old_item_in_inventory
-    player.equipment << item_id
+  def put_an_current_item_in_inventory
+    player.equipment << new_item.id
   end
 
   def clear_slot
-    player[item_type] = nil
+    player[slot] = nil
   end
 end

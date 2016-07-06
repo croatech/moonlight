@@ -59,5 +59,20 @@ class Player < ActiveRecord::Base
     when 350..400
       try_chance(percent: 2)
     end
-  end 
+  end
+
+  def wearable_equipment
+    wearable_equipment_ids = Player::Inventory::WearableItemsIdsService.new(self, Player::EQUIPMENT_SLOTS).call
+    Equipment::Item.where(id: wearable_equipment_ids).includes(:category)
+  end
+
+  def wearable_tools
+    wearable_tools_ids = Player::Inventory::WearableItemsIdsService.new(self, Player::TOOL_SLOTS).call
+    Tool::Item.where(id: wearable_tools_ids).includes(:category)
+  end
+
+  def stats(wearable_equipment)
+    service = Player::Stats::GetAllService.new(self, wearable_equipment)
+    service.call
+  end
 end
