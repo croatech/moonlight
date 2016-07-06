@@ -9,7 +9,7 @@ class Equipment::Item::BuyItemService
 
   def call
     if is_money_enough?
-      withdraw_money if put_item_in_inventory
+      withdraw_money if put_an_item_in_inventory
       player.save
     end
   end
@@ -24,7 +24,7 @@ class Equipment::Item::BuyItemService
     player.decrement(:gold, item.price)
   end
 
-  def put_item_in_inventory
+  def put_an_item_in_inventory
     Player::Inventory::Equipment::Put::InService.new(player, item).call
   end
 end 

@@ -1,4 +1,4 @@
-class Player::Stat::IncreaseService
+class Player::Stats::IncreaseService
 
   attr_reader :player, :stat
 
@@ -12,13 +12,7 @@ class Player::Stat::IncreaseService
 
     if player.free_stats > 0
       player.public_send(increasing_method)
-      decrement_free_stats
+      player.decrement!(:free_stats, 1)
     end
-  end
-
-  private
-
-  def decrement_free_stats
-    player.decrement!(:free_stats, 1)
   end
 end

@@ -2,20 +2,21 @@ class Player::Inventory::Equipment::Put::OnService
 
   # put on an item in a slot
   
-  attr_reader :player, :equipment, :new_item, :current_item
+  attr_reader :player, :equipment, :new_item, :current_item, :slot
 
   def initialize(player, item)
     @player = player
     @equipment = player.equipment
     @new_item = item
-    @current_item = player["#{item.category.slug}_slot"]
+    @slot = "#{item.category.slug}_slot"
+    @current_item = player[slot]
   end
 
   def call
     if is_an_item_purchased? && level_required?
       put_the_current_item_in_inventory if slot_is_busy?
-      put_the_new_item_from_inventory
       put_the_new_item_in_the_slot
+      update_stats
       player.save
       #start_repair_hp
     end
@@ -24,7 +25,7 @@ class Player::Inventory::Equipment::Put::OnService
   private
 
   def is_an_item_purchased?
-    equipment.include?(new_item.id)
+    equipment.include?(new_item.id.to_s)
   end
 
   def level_required?
@@ -35,17 +36,21 @@ class Player::Inventory::Equipment::Put::OnService
     current_item.present?
   end
 
-  def put_the_new_item_from_inventory
-    player.equipment.delete(new_item.id)
-  end
-
   def put_the_new_item_in_the_slot
     # player['weapon'] = 1
-    current_item = new_item.id.to_i
+    equipment.delete(new_item.id.to_s)
+    player[slot] = new_item.id.to_i
   end
 
   def put_the_current_item_in_inventory
-    player.equipment << current_item
+    equipment << current_item.to_s
+  end
+
+  def update_stats
+    new_stats = Player::Stats::GetAllService.new(player, equipment).call
+    new_stats.each do |stat_name, stat_value|
+      player[stat_name] = stat_value
+    end
   end
 
   def start_repair_hp
