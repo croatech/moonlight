@@ -8,8 +8,8 @@ class Equipment::Item::BuyItemService
   end
 
   def call
-    if is_money_enough?
-      withdraw_money if put_an_item_in_inventory
+    if is_money_enough? && level_required?
+      put_an_item_in_the_inventory if withdraw_money
       player.save
     end
   end
@@ -20,11 +20,15 @@ class Equipment::Item::BuyItemService
     player.gold >= item.price
   end
 
-  def withdraw_money 
-    player.decrement(:gold, item.price)
+  def level_required?
+    player.level >= item.required_level
   end
 
-  def put_an_item_in_inventory
-    Player::Inventory::Equipment::Put::InService.new(player, item).call
+  def put_an_item_in_the_inventory
+    player.equipment << item.id
+  end
+
+  def withdraw_money 
+    player.decrement(:gold, item.price)
   end
 end 
