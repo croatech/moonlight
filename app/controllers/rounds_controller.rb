@@ -7,6 +7,7 @@ class RoundsController < ApplicationController
     @player = fight.player
     @bot = fight.bot
     @round = fight.rounds.last
+    @rounds = fight.rounds.finished.limit(5).order('id DESC')
     @points = Fight::POINTS
     redirect_to fight_path(fight.id) if fight.finished?
   end

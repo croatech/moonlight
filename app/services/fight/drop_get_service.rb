@@ -25,8 +25,9 @@ class Fight::DropGetService
 
   def item_has_dropped
     fight.dropped_item = bot.drop_item
+    item = Equipment::Item.find(fight.dropped_item)
     player.equipment << fight.dropped_item
-    log("Dropped <span>#{fight.dropped_item.name}</span> from the enemy.")
+    log("Dropped <span>#{item.name}</span> from the enemy.")
   end
 
   def log(event)
