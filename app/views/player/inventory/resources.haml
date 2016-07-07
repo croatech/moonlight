@@ -1,10 +1,10 @@
 .inventory.resources
-  .col-md-6.grid.col-md-offset-2
+  .col-md-6.grid.col-md-offset-1
     = render 'players/player'
 
-  = render 'menu'
+  .items.col-md-5
+    = render 'menu'
 
-  .items
     - if @resources.present?
 
       = link_to "Sell all for #{@resources.pluck(:price).reduce(:+)} gold", sell_all_resources_path, method: :put, class: 'btn btn-warning'

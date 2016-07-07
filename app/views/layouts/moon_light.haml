@@ -18,7 +18,7 @@
               %li= link_to 'Shop of artifacts', shop_of_artifacts_locations_path, class: 'btn btn-default'
               %li= link_to 'Wayward Pines', wayward_pines_locations_path, class: 'btn btn-default'
               %li
-                = link_to equipment_player_inventory_index_path, class: 'btn btn-success' do
+                = link_to player_inventory_index_path, class: 'btn btn-success' do
                   Inventory
                   - if current_user.player.free_stats > 0
                     %span.badge= current_user.player.free_stats

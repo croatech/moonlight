@@ -18,7 +18,7 @@
                 %li= link_to 'Moon Light', moon_light_locations_path, class: 'btn btn-default'
                 
               %li
-                = link_to equipment_player_inventory_index_path, class: 'btn btn-success' do
+                = link_to player_inventory_index_path, class: 'btn btn-success' do
                   Inventory
                   - if current_user.player.free_stats > 0
                     %span.badge= current_user.player.free_stats
