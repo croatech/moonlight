@@ -11,7 +11,9 @@ class FightsController < ApplicationController
   def show
     @player = current_user.player
     @fight = Fight.find(params[:id])
-    @rounds = @fight.rounds
+    @rounds = @fight.rounds.where("player_damage IS NOT NULL")
     @winner = @fight.winner
+    @player = @fight.player
+    @bot = @fight.bot
   end
 end

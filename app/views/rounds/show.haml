@@ -50,19 +50,6 @@
         = f.submit 'HIT', class: 'btn btn-danger center'
 
     .rounds
-      %hr
       - @rounds.each do |round|
         - cache round do
-          .damage
-            %p
-              = "#{@player.name} has dealt"
-              %span= "#{round.player_damage}"
-              = "to #{@bot.name}."
-
-          .damage
-            %p
-              = "#{@bot.name} has dealt"
-              %span= "#{round.bot_damage}"
-              = "to #{@player.name}."
-
-        %hr/
+          = render round

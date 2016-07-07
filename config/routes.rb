@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :fights, only: [:create, :show] do
-    get :log
-    
     resources :rounds do
       post :hit
     end
@@ -55,7 +53,6 @@ Rails.application.routes.draw do
   namespace :artifact do
     resources :categories, only: [:index, :show]
   end
-
 
   namespace :tool do
     resources :categories, only: [:index, :show]

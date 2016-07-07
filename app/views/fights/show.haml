@@ -18,4 +18,22 @@
     
     = image_tag @winner.image.url, class: 'image center'
 
-  
+  .results.row
+    .col-md-6.col-md-offset-3
+      %table.table
+        %thead
+          %tr
+            %th Player damage
+            %th Bot damage
+        %tbody
+          %tr
+            %td.red
+              %strong= @rounds.pluck(:player_damage).reduce(:+)
+            %td.red
+              %strong= @rounds.pluck(:bot_damage).reduce(:+)
+
+  .rounds
+    - @rounds.each do |round|
+      - cache round do
+        = render round
+

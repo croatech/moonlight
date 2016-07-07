@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     @logs = current_user.player.logs.order('id DESC') if current_user
   end
 
-  def log(event)
+  def add_event_to_log(event)
     service = Log::AddEventService.new(current_user.player, event)
     service.call
   end
