@@ -14,6 +14,7 @@ class Player::Inventory::Equipment::Put::OffService
   def call
     if is_an_item_weared?
       put_an_current_item_in_inventory
+      update_hp
       clear_slot
       player.save
     end
@@ -27,6 +28,12 @@ class Player::Inventory::Equipment::Put::OffService
 
   def put_an_current_item_in_inventory
     player.equipment << new_item.id
+  end
+
+  def update_hp
+    current_hp = player.current_hp
+    final_hp = player.stats['hp']
+    player.current_hp = final_hp - new_item.hp if current_hp > final_hp
   end
 
   def clear_slot

@@ -1,27 +1,24 @@
 class Player::RepairHpService
 
-  attr_reader :player, :current_hp
+  attr_reader :player, :current_hp, :final_hp
 
   def initialize(player)
     @player = player
-    @current_hp = current_hp
+    @current_hp = player.current_hp
+    @final_hp = player.stats['hp']
   end
 
   def call
-    player.current_hp = current_hp
-    player.save
-    Player::RepairHpWorker.perform_at(5.seconds.from_now, player.id, current_hp)
-
-    if current_hp < player.hp
-
+    if current_hp < final_hp
+      Player::RepairHpWorker.perform_at(delay_period.seconds.from_now, player.id, restoring_hp)
     end
   end
 
-  private
+  def restoring_hp
+    final_hp * (Player::REGENERATION_HP_PERCENT.to_f / 100)
+  end
 
-  def worker_count
-    filled_hp_percent = (player.current_hp.to_f / player.hp.to_f) * 100
+  def delay_period
+    Player::REGENERATION_HP_DELAY
   end
 end
-
-increasing_hp = player.hp * (Player::REGENERATION_HP_PERCENT.to_f / 100)

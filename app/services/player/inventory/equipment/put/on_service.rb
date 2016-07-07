@@ -17,7 +17,7 @@ class Player::Inventory::Equipment::Put::OnService
       put_the_current_item_in_inventory if slot_is_busy?
       put_the_new_item_in_the_slot
       player.save
-      #start_repair_hp
+      start_repair_hp
     end
   end
 

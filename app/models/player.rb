@@ -18,7 +18,9 @@ class Player < ActiveRecord::Base
   STATS = %w( attack defense hp )
   EQUIPMENT_SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
   TOOL_SLOTS = %w( lumberjacking fishing )
+
   REGENERATION_HP_PERCENT = 10
+  REGENERATION_HP_DELAY = 5 # seconds
 
   # generate methods for increase of stats
   STATS.each do |stat|
@@ -71,8 +73,9 @@ class Player < ActiveRecord::Base
     Tool::Item.where(id: wearable_tools_ids).includes(:category)
   end
 
-  def stats(wearable_equipment)
-    service = Player::Stats::GetAllService.new(self, wearable_equipment)
+  def stats(wearable_equipment=nil)
+    service = Player::Stats::GetAllService.new(self, wearable_equipment) if  wearable_equipment
+    service = Player::Stats::GetAllService.new(self, self.wearable_equipment)
     service.call
   end
 end
