@@ -19,7 +19,7 @@ class Fight::HitService
     round.update(player_damage: player_damage, bot_damage: bot_damage, status: :finished)
     checking_for_finishing_fight(player_damage, bot_damage)
     player.save
-    start_repair_hp
+    start_restore_hp
   end
 
   private
@@ -79,8 +79,8 @@ class Fight::HitService
     service.call
   end
 
-  def start_repair_hp
-    service = Player::RepairHpService.new(player)
+  def start_restore_hp
+    service = Player::RestoreHpService.new(player)
     service.call
   end
 end
