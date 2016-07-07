@@ -18,16 +18,6 @@ class RoundsController < ApplicationController
     service.call
 
     if fight.finished?
-      if fight.dropped_gold.present?
-        @dropped_gold = fight.dropped_gold
-        log("Dropped <span>#{@dropped_gold}</span> gold from the enemy.")
-      end
-
-      if fight.dropped_item.present?
-        @dropped_item = Equipment::Item.find(fight.dropped_item)
-        log("Dropped <span>#{@dropped_item.name}</span> from the enemy.")
-      end
-
       redirect_to fight_path(fight.id)
     else
       redirect_to fight_round_path(fight_id: fight.id, id: fight.rounds.last.id)

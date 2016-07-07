@@ -3,12 +3,7 @@
     = render 'players/player'
 
   .col-md-3
-    .stats
-      .level
-        %h3= "Level: #{@player.level}"
-
-      %h2= @player.name
-      
+    .stats      
       - @stats.each do |stat_name, stat_value|
         %div{class: "#{stat_name} stat"}
           = image_tag "#{stat_name}.png"
