@@ -1,11 +1,12 @@
 class Fight::HitService
 
-  attr_reader :fight, :round, :player, :bot, :player_defense_point, :player_attack_point, :bot_defense_point, :bot_attack_point
+  attr_reader :fight, :round, :player, :player_stats, :bot, :player_defense_point, :player_attack_point, :bot_defense_point, :bot_attack_point
 
   def initialize(fight, defense_point, attack_point)
     @fight = fight
     @round = @fight.rounds.last
     @player = @fight.player
+    @player_stats = @player.stats
     @bot = @fight.bot
     @player_defense_point = defense_point
     @player_attack_point = attack_point
@@ -45,8 +46,13 @@ class Fight::HitService
   end
 
   def hit_damage(attacker, defender)
-    damage = attacker.attack - defender.defense * 0.25
-    damage < 0 ? attacker.attack / 2 : damage
+    if attacker == player
+      damage = player_stats['attack'] - defender.defense * 0.25
+      damage < 0 ? player_stats['attack'] / 2 : damage
+    else
+      damage = attacker.attack - defender.defense * 0.25
+      damage < 0 ? attacker.attack / 2 : damage
+    end
   end
 
   def checking_for_finishing_fight(player_damage, bot_damage)
@@ -55,8 +61,10 @@ class Fight::HitService
 
     if player_hp <= 0
       finish_fight(winner: bot.name)
+      player.current_hp = 0
     elsif bot_hp <= 0
       finish_fight(winner: 'Player')
+      player.current_hp = player_hp
       increase_player_exp
       drop_get
     else

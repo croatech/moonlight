@@ -8,17 +8,10 @@
 
     %h3= item.name
 
-    .attack.stat
-      = image_tag 'attack.png'
-      = item.attack
-
-    .defense.stat
-      = image_tag 'defense.png'
-      = item.defense
-
-    .hp.stat
-      = image_tag 'hp.png'
-      = item.hp
+    - Player::STATS.each do |stat|
+      %div{class: "#{stat} stat"}
+        = image_tag "#{stat}.png"
+        = item[stat]
 
     .buy-button
       = item.put_on_button(current_user.player) if params[:action] == 'equipment'
