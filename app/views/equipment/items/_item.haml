@@ -14,5 +14,5 @@
         = item[stat]
 
     .buy-button
-      = item.put_on_button(current_user.player) if params[:action] == 'equipment'
+      = item.put_on_button(current_user.player) if params[:controller] == 'player/inventory'
       = item.buy_or_sell_button(current_user.player)

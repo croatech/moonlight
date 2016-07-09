@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #resource :player, only: :show
+  resource :player, only: :show
 
   resources :resources do
     put :collect
