@@ -1,2 +1,0 @@
-module Tool::CategoriesHelper
-end

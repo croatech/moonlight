@@ -1,2 +1,0 @@
-module Tool::ItemsHelper
-end
