@@ -25,15 +25,15 @@ Rails.application.routes.draw do
       put :increase
     end
 
-    resources :inventory, except: :all do
-      collection do 
-        get :equipment
-        get :tools
-        get :resources
-      end
+    namespace :inventory, path: 'inventory' do
+      get :index
+      get :equipment
+      get :tools
+      get :resources
     end
 
-    resource :settings do
+    namespace :settings, path: 'settings' do
+      get :index
       put :change_frame
     end
   end
