@@ -17,11 +17,7 @@
               %li= link_to image_tag('locations/cities/moon_light/weapon_shop/icon.png'), weapon_shop_locations_path
               %li= link_to image_tag('locations/cities/moon_light/shop_of_artifacts/icon.png'), shop_of_artifacts_locations_path
               %li= link_to image_tag('locations/cities/moon_light/craft_shop/icon.png'), craft_shop_locations_path
-              %li
-                = link_to player_inventory_index_path, class: 'btn btn-success' do
-                  Inventory
-                  - if current_user.player.free_stats > 0
-                    %span.badge= current_user.player.free_stats
+              %li= link_to image_tag('players/bag.png'), player_inventory_index_path
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
               %li
                 = image_tag 'players/gold.png'
