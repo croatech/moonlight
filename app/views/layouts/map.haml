@@ -13,9 +13,8 @@
           %nav.navbar
             %ul
               %li= link_to 'Wayward Pines', wayward_pines_locations_path, class: 'btn btn-default'
-
-              - if ["29", "37"].include?(params[:id])
-                %li= link_to 'Moon Light', moon_light_locations_path, class: 'btn btn-default'
+              %li= link_to 'Moon Light', moon_light_locations_path, class: 'btn btn-default'
+              %li= link_to current_user.player.location.name, location_cell_path(location_id: current_user.player.location.slug, id: current_user.player.location.slug), class: 'btn btn-default'
                 
               %li
                 = link_to player_inventory_index_path, class: 'btn btn-success' do

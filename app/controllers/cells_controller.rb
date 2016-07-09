@@ -2,6 +2,11 @@ class CellsController < ApplicationController
 
   layout 'map'
 
+  def move
+    change_location(params[:cell_id])
+    redirect_to :back
+  end
+
   def show
     change_location(params[:id])
     @bots = @location.bots

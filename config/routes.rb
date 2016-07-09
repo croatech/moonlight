@@ -73,6 +73,8 @@ Rails.application.routes.draw do
       get :wayward_pines
     end
 
-    resources :cells, only: :show
+    resources :cells, only: :show do
+      get :move
+    end
   end
 end
