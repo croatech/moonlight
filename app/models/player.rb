@@ -15,6 +15,8 @@ class Player < ActiveRecord::Base
 
   has_and_belongs_to_many :resources
 
+  scope :recently_online, -> { where('updated_at > ?', 15.minutes.ago).order(:name) }
+
   STATS = %w( attack defense hp )
   EQUIPMENT_SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
   TOOL_SLOTS = %w( lumberjacking fishing )

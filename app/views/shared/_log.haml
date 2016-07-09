@@ -1,5 +1,16 @@
 - if @logs.present?
-  .log
+  .log.col-md-8
     - @logs.each do |log|
-      .event
-        = raw(log.body)
+      - cache log do
+        .event
+          = raw(log.body)
+
+  .players-online.col-md-4
+    %h3 Players online:
+
+    - @online_players.each do |player|
+      - cache player do
+        .player
+          %p 
+            = player.name
+            = link_to fa_icon("external-link"), player_path(id: player.name)

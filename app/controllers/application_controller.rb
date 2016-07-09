@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :check_for_an_active_fight
   before_action :log_get
+  before_action :online_players
 
   def check_for_an_active_fight
     unless params[:controller] == 'rounds' || params[:controller] == 'devise'
@@ -30,6 +31,10 @@ class ApplicationController < ActionController::Base
 
   def log_get
     @logs = current_user.player.logs.order('id DESC') if current_user
+  end
+
+  def online_players
+    @online_players = Player.recently_online
   end
 
   def add_event_to_log(event)
