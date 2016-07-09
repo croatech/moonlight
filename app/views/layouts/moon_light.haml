@@ -12,11 +12,11 @@
         .header
           %nav.navbar
             %ul
-              %li= link_to 'Wayward Pines', wayward_pines_locations_path, class: 'btn btn-default'
-              %li= link_to 'Town square', moon_light_locations_path, class: 'btn btn-default'
-              %li= link_to 'Weapon Shop', weapon_shop_locations_path, class: 'btn btn-default'
-              %li= link_to 'Craft Shop', craft_shop_locations_path, class: 'btn btn-default'
-              %li= link_to 'Shop of artifacts', shop_of_artifacts_locations_path, class: 'btn btn-default'
+              %li= link_to image_tag('locations/wayward_pines/icon.png'), wayward_pines_locations_path
+              %li= link_to image_tag('locations/cities/moon_light/icon.jpg'), moon_light_locations_path
+              %li= link_to image_tag('locations/cities/moon_light/weapon_shop/icon.png'), weapon_shop_locations_path
+              %li= link_to image_tag('locations/cities/moon_light/shop_of_artifacts/icon.png'), shop_of_artifacts_locations_path
+              %li= link_to image_tag('locations/cities/moon_light/craft_shop/icon.png'), craft_shop_locations_path
               %li
                 = link_to player_inventory_index_path, class: 'btn btn-success' do
                   Inventory
