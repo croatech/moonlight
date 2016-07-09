@@ -3,13 +3,8 @@
     = render 'players/player'
 
   .col-md-3
-    .stats      
-      - @stats.each do |stat_name, stat_value|
-        %div{class: "#{stat_name} stat"}
-          = image_tag "#{stat_name}.png"
-          = stat_value
-          = link_to '+', player_stat_increase_path(stat_id: stat_name), method: :put
+    = render 'stats'
 
-      .free-stats.stat
-        Free stats:
-        = @player.free_stats
+    .free-stats.stat
+      Free stats:
+      = @player.free_stats

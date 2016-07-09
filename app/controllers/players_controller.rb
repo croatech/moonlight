@@ -5,6 +5,9 @@ class PlayersController < ApplicationController
   layout 'player'
 
   def show
-    @player = current_user.player
+    @player = Player.find_by(name: params[:id]).decorate
+    @wearable_equipment = @player.wearable_equipment
+    @stats = @player.stats(@wearable_equipment)
+    @wearable_tools = @player.wearable_tools
   end
 end

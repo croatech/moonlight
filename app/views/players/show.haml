@@ -3,4 +3,4 @@
     = render @player
 
   .row
-    = request.url.split('/').last
+    = render 'player/stats/stats', stats: @stats

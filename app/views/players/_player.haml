@@ -1,6 +1,7 @@
 .player-name
   =  @player.name
   %strong= "[#{@player.level}]"
+  = link_to fa_icon("external-link"), player_path(id: @player.name)
 
 .progresses
   .progress
