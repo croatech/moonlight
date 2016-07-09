@@ -1,4 +1,10 @@
-- if @logs.present?
+.frame-settings
+  = link_to change_frame_player_settings_path(type: 'increment'), method: :put do
+    %i.fa.fa-angle-double-up
+  = link_to change_frame_player_settings_path(type: 'decrement'), method: :put do
+    %i.fa.fa-angle-double-down
+
+.frame{style: "max-height: #{current_user.player.frame_size * 100}px;"}
   .log.col-md-8
     - @logs.each do |log|
       - cache log do

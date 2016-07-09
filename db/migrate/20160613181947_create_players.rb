@@ -33,6 +33,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string  :tools, array: true, default: '{}'
       t.integer :lumberjacking_slot
       t.integer :fishing_slot
+      t.integer :frame_size
 
       t.timestamps null: false
     end

@@ -32,6 +32,10 @@ Rails.application.routes.draw do
         get :resources
       end
     end
+
+    resource :settings do
+      put :change_frame
+    end
   end
 
   namespace :equipment do
