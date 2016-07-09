@@ -30,7 +30,7 @@ class Fight::DropGetService
     add_event_to_log("Dropped <span>#{item.name}</span> from the enemy.")
   end
 
-  def add_event_log(event)
+  def add_event_to_log(event)
     service = Log::AddEventService.new(player, event)
     service.call
   end

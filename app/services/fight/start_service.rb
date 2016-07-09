@@ -19,6 +19,6 @@ class Fight::StartService
   end
 
   def first_round_create
-    fight.rounds.create(player_hp: player.stats['hp'], bot_hp: bot.hp)
+    fight.rounds.create(player_hp: player.current_hp, bot_hp: bot.hp)
   end
 end
