@@ -28,18 +28,18 @@ end
 # EQUIPMENT
   ## CATEGORIES
     Equipment::Category.create! [{name: 'Helmet',   slug: 'helmet'},
-                               {name: 'Armor',    slug: 'armor'},
-                               {name: 'Mail',     slug: 'mail'},
-                               {name: 'Gloves',   slug: 'gloves'},
-                               {name: 'Bracers',  slug: 'bracers'},
-                               {name: 'Foots',    slug: 'foots'},
-                               {name: 'Belt',     slug: 'belt'},
-                               {name: 'Weapon',   slug: 'weapon'},
-                               {name: 'Shield',   slug: 'shield'},
-                               {name: 'Ring',     slug: 'ring'},
-                               {name: 'Necklace', slug: 'necklace'},
-                               {name: 'Cloak',    slug: 'cloak'},
-                               {name: 'Pants',    slug: 'pants'}]
+                                 {name: 'Armor',    slug: 'armor'},
+                                 {name: 'Mail',     slug: 'mail'},
+                                 {name: 'Gloves',   slug: 'gloves'},
+                                 {name: 'Bracers',  slug: 'bracers'},
+                                 {name: 'Foots',    slug: 'foots'},
+                                 {name: 'Belt',     slug: 'belt'},
+                                 {name: 'Weapon',   slug: 'weapon'},
+                                 {name: 'Shield',   slug: 'shield'},
+                                 {name: 'Ring',     slug: 'ring'},
+                                 {name: 'Necklace', slug: 'necklace'},
+                                 {name: 'Cloak',    slug: 'cloak'},
+                                 {name: 'Pants',    slug: 'pants'}]
 
   ## NORMAL ITEMS
     ### HELMET
