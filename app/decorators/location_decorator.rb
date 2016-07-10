@@ -6,4 +6,8 @@ class LocationDecorator < Draper::Decorator
       h.image_tag 'locations/point.png' if current_user_location == self.slug
     end
   end
+
+  def background_image
+    h.image_tag "locations/wayward_pines/cells-bg/#{self.name}.jpg", class: 'center'
+  end
 end

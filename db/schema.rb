@@ -99,10 +99,6 @@ ActiveRecord::Schema.define(version: 20160710001443) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "slug"
-    t.string   "background_file_name"
-    t.string   "background_content_type"
-    t.integer  "background_file_size"
-    t.datetime "background_updated_at"
     t.boolean  "cell",                    default: false
   end
 
