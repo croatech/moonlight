@@ -1,0 +1,5 @@
+.settings-avatars
+  - @avatars.each do |avatar|
+    .avatar
+      %div{class: "#{check_for_active_avatar(avatar.id, current_user.player.avatar_id)}"}
+        = link_to image_tag(avatar.image.url), player_settings_change_avatar_path(avatar_id: avatar.id), method: :put

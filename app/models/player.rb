@@ -1,14 +1,12 @@
 class Player < ActiveRecord::Base
   
   include Percentable  
-
-  has_attached_file :image, default_url: "/images/players/avatars/1.jpg"
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   
   validates :name, presence: true
 
   belongs_to :location
   belongs_to :user
+  belongs_to :avatar
 
   has_many :fights
   has_many :logs

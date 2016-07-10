@@ -352,3 +352,8 @@ Bot.create! [{level: 1, name: 'Armillaria',  attack: 15,  defense: 80,  hp: 100,
                        {location_id: Location.find_by(name: 'Shady Walk').id,  bot_id: Bot.find_by(name: 'Rat').id},
                        {location_id: Location.find_by(name: 'Shady Walk').id,  bot_id: Bot.find_by(name: 'Spider').id},
                        {location_id: Location.find_by(name: 'Dalf Lagoon').id, bot_id: Bot.find_by(name: 'Drowned').id}]
+
+# AVATARS
+  Dir.glob("app/assets/images/players/avatars/*.jpg").sort.each do |file|
+    Avatar.create(image: File.new(file, "r"), private: false)
+  end

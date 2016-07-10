@@ -8,4 +8,8 @@ module PlayersHelper
       '100%'
     end
   end
+
+  def check_for_active_avatar(avatar_id, player_id)
+    'active' if avatar_id == player_id
+  end
 end

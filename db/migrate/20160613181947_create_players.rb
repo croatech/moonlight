@@ -6,6 +6,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :user_id
       t.references :location, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
+      t.references :avatar, index: true, foreign_key: true
       t.integer :helmet_slot
       t.integer :armor_slot
       t.integer :mail_slot
