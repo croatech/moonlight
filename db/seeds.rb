@@ -1,3 +1,8 @@
+# AVATARS
+  Dir.glob("app/assets/images/players/avatars/*.jpg").sort.each do |file|
+    Avatar.create(image: File.new(file, "r"), private: false)
+  end
+
 # USERS
   User.create!(email: 'admin@gmail.com', password: 'password')
   Player.first.increment!(:gold, 5555)
@@ -25,11 +30,11 @@
       when 37    
        location_name = 'Shady Walk'
       when 44    
-       location_name = 'South Thicket'
+       location_name = 'Mystic Thicket'
       when 45    
        location_name = 'River Fork'
       when 53    
-       location_name = 'Dangerous Grounds'
+       location_name = 'Hanging Willage'
       end
 
       Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
@@ -332,11 +337,11 @@
     end
 
     ### SINGLE CELLS
-    LocationResource.create!(location_id: Location.find_by(name: 'Dalf Lagoon').id,       resource_id: Resource.find_by(name: 'Larch').id)
-    LocationResource.create!(location_id: Location.find_by(name: 'Mycelium').id,          resource_id: Resource.find_by(name: 'Sequoia').id)
-    LocationResource.create!(location_id: Location.find_by(name: 'South Thicket').id,     resource_id: Resource.find_by(name: 'Eucalyptus').id)
-    LocationResource.create!(location_id: Location.find_by(name: 'River Fork').id,        resource_id: Resource.find_by(name: 'Rowan').id)
-    LocationResource.create!(location_id: Location.find_by(name: 'Dangerous Grounds').id, resource_id: Resource.find_by(name: 'Mysterious wood').id)
+    LocationResource.create!(location_id: Location.find_by(name: 'Dalf Lagoon').id,     resource_id: Resource.find_by(name: 'Larch').id)
+    LocationResource.create!(location_id: Location.find_by(name: 'Mycelium').id,        resource_id: Resource.find_by(name: 'Sequoia').id)
+    LocationResource.create!(location_id: Location.find_by(name: 'Mystic Thicket').id,  resource_id: Resource.find_by(name: 'Eucalyptus').id)
+    LocationResource.create!(location_id: Location.find_by(name: 'River Fork').id,      resource_id: Resource.find_by(name: 'Rowan').id)
+    LocationResource.create!(location_id: Location.find_by(name: 'Hanging Willage').id, resource_id: Resource.find_by(name: 'Mysterious wood').id)
 
 # BOTS
   Bot.create! [{level: 1, name: 'Armillaria',  attack: 15,  defense: 80,  hp: 100, image: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
@@ -362,8 +367,3 @@
                        {location_id: Location.find_by(name: 'Shady Walk').id,  bot_id: Bot.find_by(name: 'Rat').id},
                        {location_id: Location.find_by(name: 'Shady Walk').id,  bot_id: Bot.find_by(name: 'Spider').id},
                        {location_id: Location.find_by(name: 'Dalf Lagoon').id, bot_id: Bot.find_by(name: 'Drowned').id}]
-
-# AVATARS
-  Dir.glob("app/assets/images/players/avatars/*.jpg").sort.each do |file|
-    Avatar.create(image: File.new(file, "r"), private: false)
-  end
