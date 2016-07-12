@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160710001443) do
+ActiveRecord::Schema.define(version: 20160712200237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(version: 20160710001443) do
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "slug"
-    t.boolean  "cell",                    default: false
+    t.boolean  "cell",       default: false
   end
 
   add_index "locations", ["parent_id"], name: "index_locations_on_parent_id", using: :btree
@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(version: 20160710001443) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

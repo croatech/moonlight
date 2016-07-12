@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :check_for_an_active_fight
   before_action :log_get
   before_action :online_players
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def check_for_an_active_fight
     unless params[:controller] == 'rounds' || params[:controller] == 'devise'
@@ -40,5 +41,11 @@ class ApplicationController < ActionController::Base
   def add_event_to_log(event)
     service = Log::AddEventService.new(current_user.player, event)
     service.call
+  end
+
+  private
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password) }
   end
 end

@@ -74,8 +74,12 @@ class Player < ActiveRecord::Base
   end
 
   def stats(wearable_equipment=nil)
-    service = Player::Stats::GetAllService.new(self, wearable_equipment) if  wearable_equipment
-    service = Player::Stats::GetAllService.new(self, self.wearable_equipment)
+    if wearable_equipment
+      service = Player::Stats::GetAllService.new(self, wearable_equipment)
+    else
+      service = Player::Stats::GetAllService.new(self, self.wearable_equipment)
+    end
+    
     service.call
   end
 end
