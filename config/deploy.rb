@@ -81,9 +81,11 @@ namespace :deploy do
     end
   end
 
-  after "deploy:update_code", :copy_database_config
-  task :copy_database_config, roles => :app do
-    db_config = "#{shared_path}/database.yml"
-    run "cp #{db_config} #{release_path}/config/database.yml"
+  before "deploy:assets:precompile", 'deploy:copy_database_config'
+  task :copy_database_config do
+    on roles(:app) do
+      db_config = "#{shared_path}/config/database.yml"
+      execute "cp #{db_config} #{release_path}/config/database.yml"
+    end
   end
 end
