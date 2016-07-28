@@ -4,7 +4,7 @@
   end
 
 # USERS
-  User.create!(email: 'admin@gmail.com', password: 'password')
+  User.create!(email: 'admin@gmail.com', password: 'password', name: 'First Player')
   Player.first.increment!(:gold, 5555)
 
 # LOCATIONS
