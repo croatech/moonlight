@@ -1,0 +1,35 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:9.6.0
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: bin/rails server --port 3000 --binding 0.0.0.0
+    ports:
+      - "3000:3000"
+    links:
+      - postgres
+    volumes:
+      - .:/moonlight
+
+  redis:
+    image: 'redis:3.2.4-alpine'
+    command: redis-server
+    ports:
+      - '6379:6379'
+    volumes:
+      - .:/moonlight
+
+  sidekiq:
+    depends_on:
+      - 'postgres'
+      - 'redis'
+    build: .
+    command: sidekiq
+    volumes:
+      - .:/moonlight
+    env_file:
+      - '.env'
