@@ -11,6 +11,7 @@ default: &default
 development:
   <<: *default
   database: moonlight_development
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_development?') %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,7 +19,10 @@ development:
 test:
   <<: *default
   database: moonlight_test
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_test?') %>
+
+staging:
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_staging?') %>
 
 production:
-  <<: *default
-  database: moonlight_production
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_production?') %>

@@ -23,5 +23,12 @@ module Mushrooms
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.active_record.observers = :user_observer
+
+    config.cache_store = :redis_store, ENV['CACHE_URL'],
+                         { namespace: 'moonlight::cache' }
+
+    # If you've never dealt with background workers before, this is the Rails
+    # way to use them through Active Job. We just need to tell it to use Sidekiq.
+    config.active_job.queue_adapter = :sidekiq
   end
 end

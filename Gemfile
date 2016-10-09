@@ -40,6 +40,7 @@ gem 'magnific-popup-rails', '~> 1.1.0'
 gem 'rack-mini-profiler'
 gem 'font-awesome-rails'
 gem 'active_model_serializers'
+gem 'redis-rails', '~> 4.0.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
