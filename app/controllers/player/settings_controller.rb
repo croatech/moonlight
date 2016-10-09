@@ -10,12 +10,7 @@ class Player::SettingsController < ApplicationController
   def avatar
     @avatars = Avatar.not_private
   end
-
-  def change_frame
-    current_user.player.public_send("#{params[:type]}!", :frame_size)
-    redirect_to :back
-  end
-
+  
   def change_avatar
     avatar = Avatar.not_private.find(params[:avatar_id])
     current_user.player.update_attribute(:avatar_id, avatar.id)

@@ -1,9 +1,3 @@
-.frame-settings
-  = link_to player_settings_change_frame_path(type: 'increment'), method: :put do
-    %i.fa.fa-angle-double-up
-  = link_to player_settings_change_frame_path(type: 'decrement'), method: :put do
-    %i.fa.fa-angle-double-down
-
 - if current_user
   .frame{style: "max-height: #{current_user.player.frame_size * 100}px;"}
     .log.col-md-8

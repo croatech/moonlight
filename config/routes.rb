@@ -39,8 +39,6 @@ Rails.application.routes.draw do
     namespace :settings, path: 'settings' do
       get :index
       get :avatar
-
-      put :change_frame
       put :change_avatar
     end
   end
