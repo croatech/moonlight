@@ -152,7 +152,6 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.integer  "cloak_slot"
     t.integer  "pants_slot"
     t.integer  "current_hp"
-    t.integer  "frame_size"
     t.integer  "avatar_id"
   end
 
