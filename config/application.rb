@@ -24,8 +24,7 @@ module Mushrooms
     config.active_record.raise_in_transactional_callbacks = true
     config.active_record.observers = :user_observer
 
-    config.cache_store = :redis_store, ENV['CACHE_URL'],
-                         { namespace: 'moonlight::cache' }
+    config.cache_store = :redis_store, "redis://localhost:6379/0/cache", { expires_in: 90.minutes }
 
     # If you've never dealt with background workers before, this is the Rails
     # way to use them through Active Job. We just need to tell it to use Sidekiq.
