@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_player
+    current_user.player
+  end
+
   def current_location
     current_user.player.location
   end
