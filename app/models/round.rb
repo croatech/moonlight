@@ -2,5 +2,5 @@ class Round < ApplicationRecord
 
   belongs_to :fight
 
-  enum status: [:active, :finished]
+  enum status: %i(active finished)
 end

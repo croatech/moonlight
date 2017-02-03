@@ -4,7 +4,17 @@ class Equipment::Category < ApplicationRecord
 
   validates :name, presence: true
 
-  ARTIFACT_CATEGORIES = ['Sapphire', 'Berserker', 'Mad Knight', 'Barbed', 'Moon', 
-                         'Winged God', 'Amber Phoenix', 'Amethyst', 'Demon Warrior',
-                         'Lone Druid', 'Ancient Serpent', 'Crystal', 'Ruby']
+  ARTIFACT_CATEGORIES = %w(Sapphire
+                           Berserker
+                           Mad Knight
+                           Barbed
+                           Moon
+                           Winged God
+                           Amber Phoenix
+                           Amethyst
+                           Demon Warrior
+                           Lone Druid
+                           Ancient Serpent
+                           Crystal
+                           Ruby)
 end

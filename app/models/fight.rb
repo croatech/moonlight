@@ -5,9 +5,13 @@ class Fight < ApplicationRecord
 
   has_many :rounds, dependent: :destroy
 
-  enum status: [:active, :finished]
+  enum status: %i(active finished)
 
-  POINTS = %w( head chest belly hands legs )
+  POINTS = %w(head
+              chest
+              belly
+              hands
+              legs)
 
   def winner
     if winner_type == 'Player'
