@@ -1,4 +1,4 @@
-class LocationBot < ActiveRecord::Base
+class LocationBot < ApplicationRecord
 
   validates :location_id, uniqueness: { scope: :bot_id }
 

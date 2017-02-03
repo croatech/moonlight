@@ -1,4 +1,4 @@
-class Equipment::Item < ActiveRecord::Base
+class Equipment::Item < ApplicationRecord
 
   belongs_to :category, class_name: 'Equipment::Category', foreign_key: 'category_id'
 

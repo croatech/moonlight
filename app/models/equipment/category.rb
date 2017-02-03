@@ -1,4 +1,4 @@
-class Equipment::Category < ActiveRecord::Base
+class Equipment::Category < ApplicationRecord
 
   has_many :items, class_name: 'Equipment::Item', foreign_key: 'category_id'
 

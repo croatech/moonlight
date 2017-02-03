@@ -1,4 +1,4 @@
-class Bot < ActiveRecord::Base
+class Bot < ApplicationRecord
 
   include Percentable
 

@@ -1,4 +1,4 @@
-class Fight < ActiveRecord::Base
+class Fight < ApplicationRecord
 
   belongs_to :player
   belongs_to :bot

@@ -1,4 +1,4 @@
-class Tool::Item < ActiveRecord::Base
+class Tool::Item < ApplicationRecord
 
   self.inheritance_column = nil
 

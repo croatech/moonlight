@@ -1,4 +1,4 @@
-class LocationResource < ActiveRecord::Base
+class LocationResource < ApplicationRecord
 
   validates :location_id, uniqueness: { scope: :resource_id }
 

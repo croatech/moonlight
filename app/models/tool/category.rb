@@ -1,4 +1,4 @@
-class Tool::Category < ActiveRecord::Base
+class Tool::Category < ApplicationRecord
 
   has_many :items, class_name: 'Tool::Item', foreign_key: 'category_id'
   
