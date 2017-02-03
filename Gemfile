@@ -21,13 +21,14 @@ gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 gem 'newrelic_rpm'
 gem 'sidekiq'
 gem 'sidekiq-unique-jobs'
-gem 'sinatra'
 gem 'magnific-popup-rails', '~> 1.1.0'
 gem 'rack-mini-profiler'
 gem 'font-awesome-rails'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'redis-rails'
+gem 'figaro'
+gem 'sinatra', github: 'sinatra/sinatra', require: false
 
 group :development, :test do
   gem 'byebug'

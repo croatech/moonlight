@@ -1,3 +1,7 @@
+=== Install
+==== ENVS
+`bundle exec figaro install`
+
 === MAP
 ==== CITIES
 Moonlight: 29, 37

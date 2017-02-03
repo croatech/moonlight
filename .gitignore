@@ -19,3 +19,5 @@
 /config/deploy/locum.rb
 .idea/*
 .idea/muninn.iml
+# Ignore application configuration
+/config/application.yml
