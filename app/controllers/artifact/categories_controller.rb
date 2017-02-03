@@ -11,6 +11,7 @@ class Artifact::CategoriesController < ApplicationController
     check_for_correct_location('shop_of_artifacts')
     get_categories_list
     @items = Equipment::Item.artifacts.where("name LIKE ?", "%#{params[:id]}%").decorate
+    @stats = Player::STATS
   end
 
   private

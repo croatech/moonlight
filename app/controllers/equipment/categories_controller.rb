@@ -12,6 +12,7 @@ class Equipment::CategoriesController < ApplicationController
     get_categories_list
     @category = Equipment::Category.find_by(slug: params[:id])
     @items = @category.items.not_artifact.decorate
+    @stats = Player::STATS
   end
 
   private

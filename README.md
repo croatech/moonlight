@@ -1,12 +1,18 @@
-=== Install
-==== ENVS
+### Install
+#### ENVS
 `bundle exec figaro install`
 
-=== MAP
-==== CITIES
+`rake db:setup`
+
+### Redis
+#### Keys
+`equipment_categories`
+
+### MAP
+#### CITIES
 Moonlight: 29, 37
 
-==== CELLS
+#### CELLS
 Mycelium: 22
 
 Sacred Forest: 29, 36
@@ -23,7 +29,7 @@ River Fork: 45
 
 Dangerous Grounds: 53
 
-==== BOTS
+#### BOTS
 Mushrooms [1,2,3]: 22 (Mycelium)
 
 Rat [4]: 37 (Shady Walk)
@@ -36,7 +42,7 @@ Ork [7]: 29, 36 (Sacred Forest)
 
 Drowned [8]: 28 (Dalf Lagoon)
 
-==== RESOURCES
+#### RESOURCES
 Beech [0-50]: 29, 36 (Sacred Forest)
 
 Elm [50-100]: 29, 36 (Sacred Forest)
@@ -53,8 +59,8 @@ Rowan [300-350]: 45 (River Fork)
 
 Mysterious wood [350-400]: 53 (Dangerous Grounds)
 
-=== CRAFT
-==== Chances for an increment of skill(lumberjacking, fishing, etc.)
+### CRAFT
+#### Chances for an increment of skill(lumberjacking, fishing, etc.)
 0-50 = 50%
 
 50-100 = 30%
