@@ -17,3 +17,5 @@
 /tmp
 /public/*
 /config/deploy/locum.rb
+.idea/*
+.idea/muninn.iml
