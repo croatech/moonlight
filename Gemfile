@@ -29,6 +29,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'redis-rails'
 gem 'figaro'
 gem 'sinatra', github: 'sinatra/sinatra', require: false
+gem 'vuejs-rails'
 
 group :development, :test do
   gem 'byebug'

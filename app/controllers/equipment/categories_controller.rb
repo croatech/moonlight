@@ -17,6 +17,6 @@ class Equipment::CategoriesController < ApplicationController
   private
 
   def get_categories_list
-    @categories = Equipment::Category.order(:name)
+    @categories = Equipment::Category::CategoriesService.all
   end
 end
