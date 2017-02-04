@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -59,9 +58,8 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "artifact",           default: false
+    t.index ["category_id"], name: "index_equipment_items_on_category_id", using: :btree
   end
-
-  add_index "equipment_items", ["category_id"], name: "index_equipment_items_on_category_id", using: :btree
 
   create_table "fights", force: :cascade do |t|
     t.integer  "player_id"
@@ -72,26 +70,23 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.string   "winner_type"
     t.integer  "dropped_gold"
     t.integer  "dropped_item"
+    t.index ["bot_id"], name: "index_fights_on_bot_id", using: :btree
+    t.index ["player_id"], name: "index_fights_on_player_id", using: :btree
   end
-
-  add_index "fights", ["bot_id"], name: "index_fights_on_bot_id", using: :btree
-  add_index "fights", ["player_id"], name: "index_fights_on_player_id", using: :btree
 
   create_table "location_bots", force: :cascade do |t|
     t.integer "location_id"
     t.integer "bot_id"
+    t.index ["bot_id"], name: "index_location_bots_on_bot_id", using: :btree
+    t.index ["location_id"], name: "index_location_bots_on_location_id", using: :btree
   end
-
-  add_index "location_bots", ["bot_id"], name: "index_location_bots_on_bot_id", using: :btree
-  add_index "location_bots", ["location_id"], name: "index_location_bots_on_location_id", using: :btree
 
   create_table "location_resources", force: :cascade do |t|
     t.integer "location_id"
     t.integer "resource_id"
+    t.index ["location_id"], name: "index_location_resources_on_location_id", using: :btree
+    t.index ["resource_id"], name: "index_location_resources_on_resource_id", using: :btree
   end
-
-  add_index "location_resources", ["location_id"], name: "index_location_resources_on_location_id", using: :btree
-  add_index "location_resources", ["resource_id"], name: "index_location_resources_on_resource_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -100,19 +95,17 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.datetime "updated_at",                 null: false
     t.string   "slug"
     t.boolean  "cell",       default: false
+    t.index ["parent_id"], name: "index_locations_on_parent_id", using: :btree
+    t.index ["slug"], name: "index_locations_on_slug", using: :btree
   end
-
-  add_index "locations", ["parent_id"], name: "index_locations_on_parent_id", using: :btree
-  add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
 
   create_table "logs", force: :cascade do |t|
     t.integer  "player_id"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_logs_on_player_id", using: :btree
   end
-
-  add_index "logs", ["player_id"], name: "index_logs_on_player_id", using: :btree
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
@@ -153,18 +146,16 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.integer  "pants_slot"
     t.integer  "current_hp"
     t.integer  "avatar_id"
+    t.index ["location_id"], name: "index_players_on_location_id", using: :btree
+    t.index ["user_id"], name: "index_players_on_user_id", using: :btree
   end
-
-  add_index "players", ["location_id"], name: "index_players_on_location_id", using: :btree
-  add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
   create_table "players_resources", id: false, force: :cascade do |t|
     t.integer "player_id"
     t.integer "resource_id"
+    t.index ["player_id"], name: "index_players_resources_on_player_id", using: :btree
+    t.index ["resource_id"], name: "index_players_resources_on_resource_id", using: :btree
   end
-
-  add_index "players_resources", ["player_id"], name: "index_players_resources_on_player_id", using: :btree
-  add_index "players_resources", ["resource_id"], name: "index_players_resources_on_resource_id", using: :btree
 
   create_table "resources", force: :cascade do |t|
     t.string   "name"
@@ -175,9 +166,8 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.index ["item_id"], name: "index_resources_on_item_id", using: :btree
   end
-
-  add_index "resources", ["item_id"], name: "index_resources_on_item_id", using: :btree
 
   create_table "rounds", force: :cascade do |t|
     t.integer  "fight_id"
@@ -188,9 +178,8 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.datetime "updated_at",                null: false
     t.integer  "player_hp"
     t.integer  "bot_hp"
+    t.index ["fight_id"], name: "index_rounds_on_fight_id", using: :btree
   end
-
-  add_index "rounds", ["fight_id"], name: "index_rounds_on_fight_id", using: :btree
 
   create_table "tool_categories", force: :cascade do |t|
     t.string   "name"
@@ -211,9 +200,8 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.datetime "image_updated_at"
     t.integer  "required_skill"
     t.string   "type"
+    t.index ["category_id"], name: "index_tool_items_on_category_id", using: :btree
   end
-
-  add_index "tool_items", ["category_id"], name: "index_tool_items_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -229,10 +217,9 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "fights", "players"
   add_foreign_key "location_resources", "locations"

@@ -13,8 +13,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   after_create do
-    default_avatar = Avatar.first
-
-    Player.create(user_id: self.id, current_hp: 20, gold: 1500, name: self.name, avatar_id: default_avatar.id)
+    default_avatar_id = Avatar.first.id
+    Player.create(user_id: self.id, current_hp: 20, gold: 1500, name: self.name, avatar_id: default_avatar_id)
   end
 end
