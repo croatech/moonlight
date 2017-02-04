@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Player::Exp::IncreaseService do
-
   let(:user) { create(:user) }
   let(:player) { user.player }
 

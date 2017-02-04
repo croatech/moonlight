@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Player::Inventory::Tool::Put::OnService do
-
   let(:user) { create(:user) }
   let(:player) { user.player }
   let(:item) { create(:tool_item, price: 100, type: 'lumberjacking') }
@@ -20,7 +19,7 @@ describe Player::Inventory::Tool::Put::OnService do
     it 'checks if the required skill too high' do
       Tool::Item::BuyItemService.new(player, second_item).call
       Player::Inventory::Tool::Put::OnService.new(player, second_item).call
-      expect(player.tools).to eq [1]
+      expect(player.tools).to eq ['1']
     end
   end
 end 
