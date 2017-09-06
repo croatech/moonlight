@@ -1,0 +1,18 @@
+.item.row
+  .col-md-3
+    = image_tag item.image.url, class: 'item-img'
+
+  .col-md-9
+    .level
+      = item.level_status(current_user.player)
+
+  %h3= item.name
+
+  - Player::STATS.each do |stat|
+    %div{class: "#{stat} stat"}
+      = image_tag "#{stat}.png"
+      = item[stat]
+
+  .buy-button
+    = item.put_on_button(current_user.player) if params[:controller] == 'player/inventory'
+    = item.buy_or_sell_button(current_user.player)
