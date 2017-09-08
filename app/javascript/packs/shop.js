@@ -1,14 +1,28 @@
 import Vue from 'vue/dist/vue.esm'
-import Shop from './components/shop.vue'
+import VueResource from 'vue-resource'
+import config from './config.js'
+Vue.use(VueResource);
 
 document.addEventListener('DOMContentLoaded', () => {
-  const shop = new Vue({
+  new Vue({
     el: '#shop',
     data: {
-      message: "Can you say hello?",
-      show: true
+      categories: ['First', 'Second']
     },
-    components: { Shop }
+    methods: {
+      getCategoriesList: function() {
+        var link = config.apiUrl + 'equipment/categories'
+        console.log(link)
+        this.$http.get(link).then(response => {
+          this.categories = response.body
+        }, response => {
+          // error callback
+        });
+      }
+    },
+    mounted: function() {
+      this.getCategoriesList()
+    }
   })
 })
 

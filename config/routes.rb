@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :players, only: [:index, :show]
+    namespace :equipment do
+      resources :categories, only: :index
+    end
   end
 
   resources :fights, only: [:create, :show] do

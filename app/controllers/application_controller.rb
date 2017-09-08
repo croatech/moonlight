@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :check_for_an_active_fight
-  before_action :log_get
-  before_action :online_players
+  #before_action :log_get
+  #before_action :online_players
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def check_for_an_active_fight
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_location
-    current_user.player.location
+    current_player.location
   end
 
   def check_for_correct_location(location_name)
