@@ -4,6 +4,7 @@ class Equipment::ItemDecorator < Draper::Decorator
 
   include Rails.application.routes.url_helpers
 
+  #TODO delete
   def level_status(player)
     if is_level_correct?(player, self)
       h.content_tag(:div, "[#{self.required_level}]")
@@ -12,6 +13,7 @@ class Equipment::ItemDecorator < Draper::Decorator
     end
   end
 
+  #TODO delete
   def buy_or_sell_button(player)
     if player.equipment.include?(self.id.to_s)
       h.link_to "Sell for #{self.sell_price.to_i} gold", equipment_item_sell_path(self.id), method: :put, class: 'btn btn-info'

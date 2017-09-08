@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showCategory: function(index) {
         this.currentCategory = index
         this.items = this.categories[index].items
-        console.log(items)
+        console.log(this.items)
       }
     },
     mounted: function() {
