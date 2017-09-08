@@ -2,9 +2,20 @@
 
 #shop
   .item-categories
-    .col-md-2
-      .category{"v-for"=>"category in categories"}
-        %a.category-btn.btn.btn-default{href: 'http://google.com'} {{category.name}}
+    .col-md-3
+      .category{"v-for"=>"(category, i) in categories"}
+        %a.category-btn.btn.btn-default{"@click"=>"showCategory(i)"} {{category.name}}
 
-    .col-md-10.items
-      = image_tag 'locations/cities/moon_light/weapon_shop/bg.jpg', class: 'center background'
+    .col-md-9
+      .items{"v-if"=>"currentCategory != null"}
+        .item.row{"v-for"=>"item in items"}
+          .col-md-3
+            %img{"v-bind:src" => "item.image"}/
+
+          .col-md-9
+            .level [{{item.required_level}}]
+
+          %h3 {{item.name}}
+
+      %div{"v-if"=>"currentCategory == null"}
+        = image_tag 'locations/cities/moon_light/weapon_shop/bg.jpg', class: 'center background'

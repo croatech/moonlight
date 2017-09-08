@@ -7,17 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
   new Vue({
     el: '#shop',
     data: {
-      categories: ['First', 'Second']
+      categories: [],
+      items: [],
+      currentCategory: null
     },
     methods: {
       getCategoriesList: function() {
-        var link = config.apiUrl + 'equipment/categories'
+        var link = config.apiUrl + '/equipment/categories'
         console.log(link)
         this.$http.get(link).then(response => {
           this.categories = response.body
         }, response => {
-          // error callback
+          console.log(response)
         });
+      },
+      showCategory: function(index) {
+        this.currentCategory = index
+        this.items = this.categories[index].items
+        console.log(items)
       }
     },
     mounted: function() {
