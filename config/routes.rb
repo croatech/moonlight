@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :players, only: [:index, :show]
     namespace :equipment do
       resources :categories, only: :index
-      resources :items, except: :all do
-        put :buy
+      resources :items, only: :show do
+        patch :buy
       end
     end
   end

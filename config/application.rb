@@ -25,5 +25,11 @@ module Mushrooms
     # If you've never dealt with background workers before, this is the Rails
     # way to use them through Active Job. We just need to tell it to use Sidekiq.
     config.active_job.queue_adapter = :sidekiq
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :patch, :put, :delete, :options]
+      end
+    end
   end
 end

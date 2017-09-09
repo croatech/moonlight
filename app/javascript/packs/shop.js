@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       buyItem: function(item_id) {
         var link = config.apiUrl + '/equipment/items/' + item_id + '/buy'
-        this.$http.post(link).then(response => {
+        console.log(item_id)
+        console.log(link)
+        this.$http.patch(link).then(response => {
           console.log(response)
         }, response => {
           console.log(response)

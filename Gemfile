@@ -30,6 +30,7 @@ gem 'figaro'
 gem 'sinatra', github: 'sinatra/sinatra', require: false
 gem 'webpacker', github: 'rails/webpacker'
 gem 'foreman'
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug'
