@@ -19,6 +19,8 @@ class Player < ApplicationRecord
   EQUIPMENT_SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
   TOOL_SLOTS = %w( lumberjacking fishing )
 
+  INITIAL_HP = 20
+  INITIAL_GOLD = 1500
   REGENERATION_HP_PERCENT = 10
   REGENERATION_HP_DELAY = 5 # seconds
 
@@ -81,5 +83,9 @@ class Player < ApplicationRecord
     end
     
     service.call
+  end
+
+  def self.default_avatar
+    Avatar.any? ? Avatar.first : nil
   end
 end

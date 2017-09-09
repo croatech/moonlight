@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   root 'locations#moon_light'
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   namespace :api do
     resources :players, only: [:index, :show]

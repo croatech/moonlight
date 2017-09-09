@@ -9,6 +9,7 @@ class Equipment::Item::BuyService
   def init(input)
     @player = input[:player]
     @item = input[:item]
+    Right(nil)
   end
 
   def gold_enough?(_input)
@@ -28,7 +29,7 @@ class Equipment::Item::BuyService
   end
 
   def buy(_input)
-    ActivRecord::Base.transaction do
+    ActiveRecord::Base.transaction do
       put_an_item_to_the_inventory
       withdraw_money
       player.save
