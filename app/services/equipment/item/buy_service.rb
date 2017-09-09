@@ -1,5 +1,4 @@
-class Equipment::Item::BuyItemService
-  
+class Equipment::Item::BuyService
   attr_reader :player, :item
 
   def initialize(player, item)
