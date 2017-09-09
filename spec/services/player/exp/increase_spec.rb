@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Player::Exp::IncreaseService do
   let(:user) { create(:user) }
-  let(:player) { user.player }
+  let(:player) { create(:player) }
 
   it 'checks zero exp after creating' do
     expect(player.exp).to eq 0
