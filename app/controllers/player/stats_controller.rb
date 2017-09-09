@@ -12,6 +12,6 @@ class Player::StatsController < ApplicationController
   def increase
     service = Player::Stats::IncreaseService.new(current_user.player, params[:stat_id])
     service.call
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 end
