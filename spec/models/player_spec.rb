@@ -16,7 +16,7 @@ describe Player do
 
     it 'checks increasing of hp' do
       player.increase_hp
-      expect(player.hp).to eq 25
+      expect(player.hp).to eq 10
     end
   end
 end

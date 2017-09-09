@@ -35,15 +35,18 @@ gem 'dry-transaction'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'better_errors'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'better_errors'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+end
