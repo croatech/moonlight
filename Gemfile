@@ -31,6 +31,7 @@ gem 'sinatra', github: 'sinatra/sinatra', require: false
 gem 'webpacker', github: 'rails/webpacker'
 gem 'foreman'
 gem 'rack-cors'
+gem 'dry-transaction'
 
 group :development, :test do
   gem 'byebug'

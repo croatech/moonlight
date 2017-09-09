@@ -1,33 +1,50 @@
 class Equipment::Item::BuyService
-  attr_reader :player, :item
+  include Dry::Transaction
 
-  def initialize(player, item)
-    @player =  player
-    @item = item
+  step :init
+  step :gold_enough?
+  step :level_enough?
+  step :buy
+
+  def init(input)
+    @player = input[:player]
+    @item = input[:item]
   end
 
-  def call
-    if is_money_enough? && level_required?
-      put_an_item_in_the_inventory if withdraw_money
+  def gold_enough?(_input)
+    if player.gold >= item.price
+      Right(nil)
+    else
+      Left('Gold is not enough')
+    end
+  end
+
+  def level_enough?(_input)
+    if player.level >= item.required_level
+      Right(nil)
+    else
+      Left('Level is not enough')
+    end
+  end
+
+  def buy(_input)
+    ActivRecord::Base.transaction do
+      put_an_item_to_the_inventory
+      withdraw_money
       player.save
+      Right(nil)
     end
   end
 
   private
 
-  def is_money_enough?
-    player.gold >= item.price
-  end
+  attr_reader :player, :item
 
-  def level_required?
-    player.level >= item.required_level
-  end
-
-  def put_an_item_in_the_inventory
+  def put_an_item_to_the_inventory
     player.equipment << item.id
   end
 
-  def withdraw_money 
+  def withdraw_money
     player.decrement(:gold, item.price)
   end
-end 
+end
