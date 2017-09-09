@@ -24,7 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
       showCategory: function(index) {
         this.currentCategory = index
         this.items = this.categories[index].items
-        console.log(this.items)
+      },
+      buyItem: function(item_id) {
+        var link = config.apiUrl + '/equipment/items/' + item_id + '/buy'
+        this.$http.post(link).then(response => {
+          console.log(response)
+        }, response => {
+          console.log(response)
+        });
       }
     },
     mounted: function() {

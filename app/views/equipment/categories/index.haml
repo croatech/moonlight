@@ -22,8 +22,8 @@
                 = image_tag "#{stat}.png"
                 {{item["#{stat}"]}}
 
-            .buy-button
-              = item.buy_or_sell_button(current_user.player)
+            %a.buy-button.btn.btn-success{"@click"=>"buyItem(item.id)"}
+              Buy for {{item.price}} gold
 
       %div{"v-if"=>"currentCategory == null"}
         = image_tag 'locations/cities/moon_light/weapon_shop/bg.jpg', class: 'center background'
