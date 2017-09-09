@@ -6,6 +6,7 @@ require 'capybara/rails'
 require 'database_cleaner'
 require 'factory_girl_rails'
 require 'helpers'
+require 'rails_helper'
 
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
@@ -33,4 +34,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
 end
