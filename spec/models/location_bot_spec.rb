@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: location_bots
+#
+#  id          :integer          not null, primary key
+#  location_id :integer
+#  bot_id      :integer
+#
+
 require 'spec_helper'
 
 describe LocationBot, type: :model do

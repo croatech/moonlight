@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: bots
+#
+#  id                 :integer          not null, primary key
+#  name               :string
+#  attack             :integer
+#  defense            :integer
+#  hp                 :integer
+#  inventory          :string           default([]), is an Array
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  level              :integer
+#
+
 require 'spec_helper'
 
 describe Bot, type: :model do
