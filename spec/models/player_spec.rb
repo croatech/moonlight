@@ -1,22 +1,36 @@
 require 'spec_helper'
 
-describe Player do
-  let(:player) { create(:player, attack: 1, defense: 1, hp: 5) }
+describe Player, type: :model do
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:user_id) }
+  it { is_expected.to belong_to(:location) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to belong_to(:avatar) }
+  it { is_expected.to have_many(:fights) }
+  it { is_expected.to have_many(:logs) }
 
-  context 'stats' do
-    it 'checks increasing of attack' do
-      player.increase_attack
-      expect(player.attack).to eq 2
+  describe 'stats increasing' do
+    let(:player) { create(:player, attack: 1, defense: 1, hp: 5) }
+
+    context 'increase_attack' do
+      it 'checks that successed' do
+        player.increase_attack
+        expect(player.attack).to eq 2
+      end
     end
 
-    it 'checks increasing of defense' do
-      player.increase_defense
-      expect(player.defense).to eq 2
+    context 'increase_defense' do
+      it 'checks that successed' do
+        player.increase_defense
+        expect(player.defense).to eq 2
+      end
     end
 
-    it 'checks increasing of hp' do
-      player.increase_hp
-      expect(player.hp).to eq 10
+    context 'increase_hp' do
+      it 'checks that successed' do
+        player.increase_hp
+        expect(player.hp).to eq 10
+      end
     end
   end
 end
