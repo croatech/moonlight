@@ -8,17 +8,59 @@ describe Equipment::Item::BuyService do
   let(:object) { subject.right }
   let(:errors) { subject.left }
 
-  let(:player) { create(:player, gold: 666, level: 666) }
+  let(:player) { create(:player, gold: 6, level: 6) }
   let(:item) { build_stubbed(:equipment_item, price: 6, required_level: 6) }
 
-  describe 'gold checking' do
-    context 'enough' do
-      it 'check that sevice succeeded' do
-        expect(subject.success?).to eq true
+  describe 'success' do
+    it 'check that service succeeded' do
+      expect(subject.success?).to eq true
+    end
+
+    it 'check that service has not errors' do
+      expect(errors).to be_nil
+    end
+
+    it 'checks that player has item in equipment' do
+      expect(object.equipment).to include(item.id.to_s)
+    end
+
+    it 'checks that gold of player has decremented' do
+      expect(object.gold).to eq 0
+    end
+  end
+
+  describe 'gold' do
+    context 'not enough' do
+      let(:player) { create(:player, gold: 0, level: 6) }
+
+      it 'check that service failed' do
+        expect(subject.failure?).to eq true
       end
 
-      it 'checks that player has item in equipment' do
-        expect(player.equipment).to include(item.id)
+      it 'check that service has errors' do
+        expect(errors).not_to be_nil
+      end
+
+      it 'checks that service has particular error' do
+        expect(errors).to include('Gold is not enough')
+      end
+    end
+  end
+
+  describe 'level' do
+    context 'not enough' do
+      let(:player) { create(:player, level: 1, gold: 6) }
+
+      it 'check that service failed' do
+        expect(subject.failure?).to eq true
+      end
+
+      it 'check that service has errors' do
+        expect(errors).not_to be_nil
+      end
+
+      it 'checks that service has particular error' do
+        expect(errors).to include('Level is not enough')
       end
     end
   end

@@ -33,7 +33,7 @@ class Equipment::Item::BuyService
       put_an_item_to_the_inventory
       withdraw_money
       player.save
-      Right(nil)
+      Right(player)
     end
   end
 
