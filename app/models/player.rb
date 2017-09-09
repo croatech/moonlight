@@ -2,7 +2,7 @@ class Player < ApplicationRecord
   
   include Percentable  
   
-  validates :name, presence: true
+  validates :name, :user_id, presence: true
 
   belongs_to :location
   belongs_to :user

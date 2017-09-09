@@ -3,9 +3,9 @@
     Avatar.create(image: File.new(file, "r"), private: false)
   end
 
-# USERS
-  User.create!(email: 'admin@gmail.com', password: 'password', name: 'First Player')
-  Player.first.increment!(:gold, 5555)
+# USERS & PLAYERS
+  user = User.create!(email: 'admin@gmail.com', password: 'password', name: 'First Player')
+  Player.create(user_id: user.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: user.name, avatar_id: Player.default_avatar.id)
 
 # LOCATIONS
   Location.create!(name: 'Moon Light',          slug: 'moon_light')
