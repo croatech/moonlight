@@ -52,7 +52,6 @@ Rails.application.routes.draw do
   namespace :equipment do
     resources :categories, only: :index
     resources :items, except: :all do
-      put :buy
       put :put_on
       put :put_off
       put :sell
