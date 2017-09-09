@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :trackable,
          :validatable
 
-  has_one :player
+  has_one :player, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 end

@@ -1,10 +1,25 @@
+# DELETE ALL
+User.delete_all
+Fight.delete_all
+Log.delete_all
+Player.delete_all
+Equipment::Category.delete_all
+Equipment::Item.delete_all
+Tool::Category.delete_all
+Tool::Item.delete_all
+LocationResource.delete_all
+LocationBot.delete_all
+Resource.delete_all
+Bot.delete_all
+Location.delete_all
+
 # AVATARS
   Dir.glob("app/assets/images/players/avatars/*.jpg").sort.each do |file|
     Avatar.create(image: File.new(file, "r"), private: false)
   end
 
 # USERS & PLAYERS
-  user = User.create!(email: 'admin@gmail.com', password: 'password', name: 'First Player')
+  user = User.create!(email: 'croaton6@gmail.com', password: 'password', name: 'Croaton')
   Player.create(user_id: user.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: user.name, avatar_id: Player.default_avatar.id)
 
 # LOCATIONS
