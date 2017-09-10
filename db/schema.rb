@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910185659) do
+ActiveRecord::Schema.define(version: 20170910191051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,7 +190,6 @@ ActiveRecord::Schema.define(version: 20170910185659) do
 
   create_table "tool_items", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "category_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -200,7 +199,8 @@ ActiveRecord::Schema.define(version: 20170910185659) do
     t.datetime "image_updated_at"
     t.integer "required_skill"
     t.string "type"
-    t.index ["category_id"], name: "index_tool_items_on_category_id"
+    t.bigint "tool_category_id"
+    t.index ["tool_category_id"], name: "index_tool_items_on_tool_category_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
