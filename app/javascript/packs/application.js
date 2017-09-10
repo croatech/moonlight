@@ -8,16 +8,17 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import Vue from 'vue/dist/vue.esm'
-import App from './components/app.vue'
+import VueResource from 'vue-resource'
+import Shop from './components/shop.vue'
+
+Vue.use(VueResource)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    el: '#hello',
+    el: '#app',
     data: {
-      message: "Can you say hello?"
+      message: 'dsf'
     },
-    components: { App }
+    components: { Shop }
   })
 })
-
-console.log('application.js loaded')
