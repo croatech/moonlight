@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712200237) do
+ActiveRecord::Schema.define(version: 20170910185659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20160712200237) do
 
   create_table "equipment_items", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "category_id"
     t.integer "attack", default: 0
     t.integer "defense", default: 0
     t.integer "hp", default: 0
@@ -58,7 +57,8 @@ ActiveRecord::Schema.define(version: 20160712200237) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.boolean "artifact", default: false
-    t.index ["category_id"], name: "index_equipment_items_on_category_id"
+    t.bigint "equipment_category_id"
+    t.index ["equipment_category_id"], name: "index_equipment_items_on_equipment_category_id"
   end
 
   create_table "fights", id: :serial, force: :cascade do |t|

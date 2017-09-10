@@ -48,7 +48,6 @@
     methods: {
       getCategoriesList: function() {
         var link = config.apiUrl + '/equipment/categories'
-        console.log(link)
         this.$http.get(link).then(response => {
           this.categories = response.body
         }, response => {

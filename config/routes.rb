@@ -15,6 +15,9 @@ Rails.application.routes.draw do
         patch :buy
       end
     end
+    namespace :artifact do
+      resources :categories, only: :index
+    end
   end
 
   resources :fights, only: [:create, :show] do
