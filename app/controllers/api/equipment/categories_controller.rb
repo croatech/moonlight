@@ -1,5 +1,5 @@
 class Api::Equipment::CategoriesController < ApplicationController
   def index
-    render json: ::Equipment::Category.includes(:items)
+    render json: ::Equipment::Category.includes(:items).where(equipment_items: { artifact: false })
   end
 end
