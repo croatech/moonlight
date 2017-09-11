@@ -16,9 +16,6 @@ Vue.use(VueResource)
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app',
-    data: {
-      message: 'dsf'
-    },
     components: { Shop }
   })
 })

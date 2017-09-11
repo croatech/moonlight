@@ -26,7 +26,7 @@
           </div>
         </div>
         <div v-if="currentCategory == null">
-          <img src="../assets/locations/cities/moon_light/weapon_shop/bg.jpg" alt="equipment" class="center background">
+          <img :src="'../assets/bg.jpg'" alt="equipment" class="center background">
         </div>
       </div>
     </div>
@@ -42,12 +42,16 @@
         categories: [],
         items: [],
         currentCategory: null,
-        stats: config.stats
+        stats: config.stats,
+        resource_name: null
       }
     },
     methods: {
       getCategoriesList: function() {
-        var link = config.apiUrl + '/equipment/categories'
+        var pathname = window.location.pathname
+        this.resource_name = pathname.match(/equipment|artifact/gi)[0]
+
+        var link = config.apiUrl + '/' + this.resource_name + '/categories'
         this.$http.get(link).then(response => {
           this.categories = response.body
         }, response => {

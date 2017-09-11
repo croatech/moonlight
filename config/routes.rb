@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         patch :buy
       end
     end
-    namespace :artifact do
+    namespace :artifact, module: '' do
       resources :categories, only: :index
     end
   end
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
 
   namespace :equipment do
     resources :categories, only: :index
-    resources :items, except: :all do
+    resources :items, only: :show do
       put :put_on
       put :put_off
       put :sell

@@ -10,7 +10,6 @@ class LocationsController < ApplicationController
 
   def weapon_shop
     change_location('weapon_shop')
-    redirect_to equipment_categories_path
   end
 
   def craft_shop
