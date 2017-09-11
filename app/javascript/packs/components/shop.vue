@@ -6,25 +6,45 @@
           <a @click="showCategory(i)" class="category-btn btn btn-default">{{category.name}}</a>
         </div>
       </div>
+
       <div class="col-md-9">
         <div class="items" v-if="currentCategory != null">
           <div class="item row" v-for="item in items">
             <div class="col-md-3">
               <img v-bind:src="item.image"/>
             </div>
+
             <div class="col-md-9">
               <div class="level">[{{item.required_level}}]</div>
+
               <h3>{{item.name}}</h3>
+
               <div v-for="stat in stats" :class="stat + ' stat'">
                 <img :src="'../assets/' + stat + '.png'" :alt="stat">
                 {{item[stat]}}
               </div>
+
               <a @click="buyItem(item.id)" class="buy-button btn btn-success">
                 Buy for {{item.price}} gold
               </a>
+
+              <b-alert variant="danger"
+                       dismissible
+                       :show="showErrorFlash && boughtItemId == item.id"
+                       @dismissed="showErrorFlash=false">
+                {{errorMessage}}
+              </b-alert>
+
+              <b-alert variant="success"
+                       dismissible
+                       :show="showSuccessFlash && boughtItemId == item.id"
+                       @dismissed="showSuccessFlash=false">
+                {{successMessage}}
+              </b-alert>
             </div>
           </div>
         </div>
+
         <div v-if="currentCategory == null">
           <img :src="'../assets/locations/cities/moon_light/' + resource_name + '/bg.jpg'" alt="equipment" class="center background">
         </div>
@@ -42,8 +62,16 @@
         categories: [],
         items: [],
         currentCategory: null,
+        boughtItemId: null,
         stats: config.stats,
-        resource_name: null
+        resource_name: null,
+        dismissSecs: 1,
+
+        // flashes
+        showErrorFlash: false,
+        errorMessage: '',
+        showSuccessFlash: false,
+        successMessage: ''
       }
     },
     methods: {
@@ -69,11 +97,18 @@
         this.items = this.categories[index].items
       },
       buyItem: function(item_id) {
+        this.boughtItemId = item_id
+
+        this.showErrorFlash = false
+        this.showSuccessFlash = false
+
         var link = config.apiUrl + '/equipment/items/' + item_id + '/buy'
         this.$http.patch(link).then(response => {
-          console.log(response)
+          this.showSuccessFlash = true
+          this.successMessage = 'Congrats! You have bought ' + item_id
         }, response => {
-          console.log(response)
+          this.showErrorFlash = true
+          this.errorMessage = response.bodyText
         });
       }
     },

@@ -10,8 +10,13 @@
 import Vue from 'vue/dist/vue.esm'
 import VueResource from 'vue-resource'
 import Shop from './components/shop.vue'
+import BootstrapVue from 'bootstrap-vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(VueResource)
+Vue.use(BootstrapVue)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
