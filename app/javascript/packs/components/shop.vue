@@ -3,7 +3,7 @@
     <div class="item-categories">
       <div class="col-md-3">
         <div class="category" v-for="(category, i) in categories">
-          <a @click="showCategory(i)" class="category-btn btn btn-default">{{category.name}}</a>
+          <a @click="showCategory(i)" :class="'category-btn btn btn-default ' + resolveCategoryClass(i)">{{category.name}}</a>
         </div>
       </div>
 
@@ -110,6 +110,11 @@
           this.showErrorFlash = true
           this.errorMessage = response.bodyText
         });
+      },
+      resolveCategoryClass: function(index) {
+        if(this.currentCategory == index) {
+          return 'active'
+        }
       }
     },
     mounted: function() {
