@@ -19,7 +19,6 @@ class LocationsController < ApplicationController
 
   def shop_of_artifacts
     change_location('shop_of_artifacts')
-    redirect_to artifact_categories_path
   end
 
   def wayward_pines

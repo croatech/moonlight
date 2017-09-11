@@ -26,7 +26,7 @@
           </div>
         </div>
         <div v-if="currentCategory == null">
-          <img :src="'../assets/bg.jpg'" alt="equipment" class="center background">
+          <img :src="'../assets/locations/cities/moon_light/' + resource_name + '/bg.jpg'" alt="equipment" class="center background">
         </div>
       </div>
     </div>
@@ -49,9 +49,15 @@
     methods: {
       getCategoriesList: function() {
         var pathname = window.location.pathname
-        this.resource_name = pathname.match(/equipment|artifact/gi)[0]
 
-        var link = config.apiUrl + '/' + this.resource_name + '/categories'
+        // Name of resource like locations/weapon_shop, background image and api path resolving depends on this variable
+        this.resource_name = pathname.match(/weapon_shop|shop_of_artifacts/gi)[0]
+
+        // Resolving of path to endpoint api, for example if location is weapon_shop, it must be called
+        // api/equipment/categories
+        var api_resource_name = this.resource_name == 'weapon_shop' ? 'equipment' : 'artifacts'
+
+        var link = config.apiUrl + '/' + api_resource_name + '/categories'
         this.$http.get(link).then(response => {
           this.categories = response.body
         }, response => {
