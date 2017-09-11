@@ -23,8 +23,8 @@ class Equipment::ItemDecorator < Draper::Decorator
     end
   end
 
-  def put_on_button(player)
-    h.link_to 'Put on', equipment_item_put_on_path(self.id), method: :put, class: 'btn btn-info' if player.equipment.include?(self.id.to_s)
+  def put_on_button
+    h.link_to 'Put on', equipment_item_put_on_path(self.id), method: :put, class: 'btn btn-info'
   end
 
   private
