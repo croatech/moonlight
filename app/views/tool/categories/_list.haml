@@ -1,4 +1,0 @@
-- @categories.each do |c|
-  - cache c do
-    .category
-      = link_to c.name, tool_category_path(c.slug), class: "category-btn btn btn-default #{check_for_active_tab(params[:id], c.slug.downcase)}"

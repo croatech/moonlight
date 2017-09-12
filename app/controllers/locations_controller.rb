@@ -14,7 +14,6 @@ class LocationsController < ApplicationController
 
   def craft_shop
     change_location('craft_shop')
-    redirect_to tool_categories_path
   end
 
   def shop_of_artifacts
