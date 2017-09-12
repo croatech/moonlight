@@ -10,6 +10,7 @@
 import Vue from 'vue/dist/vue.esm'
 import VueResource from 'vue-resource'
 import WeaponShop from './components/weapon_shop.vue'
+import CraftShop from './components/craft_shop.vue'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 
@@ -24,6 +25,9 @@ axios.defaults.baseURL = 'http://localhost:3000/api';
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app',
-    components: { WeaponShop }
+    components: {
+      WeaponShop,
+      CraftShop
+    }
   })
 })
