@@ -90,7 +90,7 @@
         this.showErrorFlash = false
         this.showSuccessFlash = false
 
-        var link = '/equipment/items/' + item_id + '/buy'
+        var link = '/tools/items/' + item_id + '/buy'
         axios.patch(link)
         .then(response => {
           this.showSuccessFlash = true
