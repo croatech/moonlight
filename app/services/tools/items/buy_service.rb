@@ -1,9 +1,9 @@
-class Equipment::Item::BuyService
+class Tools::Items::BuyService
   include Dry::Transaction
 
   step :init
   step :gold_enough?
-  step :level_enough?
+  step :skill_enough?
   step :buy
 
   def init(input)
@@ -21,8 +21,8 @@ class Equipment::Item::BuyService
     end
   end
 
-  def level_enough?(_input)
-    if player.level >= item.required_level
+  def skill_enough?(_input)
+    if player_skill_level >= item.required_skill
       Right(nil)
     else
       Left('Level is not enough')
@@ -42,10 +42,16 @@ class Equipment::Item::BuyService
   attr_reader :player, :item
 
   def put_an_item_to_the_inventory
-    player.equipment << item.id
+    player.tools << item.id
   end
 
   def withdraw_money
     player.decrement(:gold, item.price)
+  end
+
+  def player_skill_level
+    # Sends message to player.*_skill where * is type of item
+    # For example if item type is fishing it executes player.fishing_skill
+    player.send("#{item.type}_skill")
   end
 end

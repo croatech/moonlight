@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Equipment::Item::BuyService do
+describe Equipment::Items::BuyService do
   subject do
-    Equipment::Item::BuyService.new.call(player: player, item: item)
+    Equipment::Items::BuyService.new.call(player: player, item: item)
   end
 
   let(:object) { subject.right }
@@ -18,14 +18,6 @@ describe Equipment::Item::BuyService do
 
     it 'check that service has not errors' do
       expect(errors).to be_nil
-    end
-
-    it 'checks that player has item in equipment' do
-      expect(object.equipment).to include(item.id.to_s)
-    end
-
-    it 'checks that gold of player has decremented' do
-      expect(object.gold).to eq 0
     end
   end
 
