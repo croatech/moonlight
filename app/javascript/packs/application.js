@@ -9,7 +9,7 @@
 
 import Vue from 'vue/dist/vue.esm'
 import VueResource from 'vue-resource'
-import Shop from './components/shop.vue'
+import WeaponShop from './components/weapon_shop.vue'
 import BootstrapVue from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,6 +21,6 @@ Vue.use(BootstrapVue)
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app',
-    components: { Shop }
+    components: { WeaponShop }
   })
 })
