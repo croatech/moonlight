@@ -105,7 +105,7 @@
         var link = config.apiUrl + '/equipment/items/' + item_id + '/buy'
         this.$http.patch(link).then(response => {
           this.showSuccessFlash = true
-          this.successMessage = 'Congrats! You have bought ' + item_id
+          this.successMessage = 'Congrats! You have bought ' + response.data.name
         }, response => {
           this.showErrorFlash = true
           this.errorMessage = response.bodyText

@@ -34,7 +34,7 @@ class Equipment::Item::BuyService
     withdraw_money
     player.save
 
-    Right(player)
+    Right(item)
   end
 
   private
