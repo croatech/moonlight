@@ -25,7 +25,7 @@ class Tools::Items::BuyService
     if player_skill_level >= item.required_skill
       Right(nil)
     else
-      Left('Level is not enough')
+      Left('Skill is not enough')
     end
   end
 
