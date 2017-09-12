@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     namespace :artifacts do
       resources :categories, only: :index
     end
+    namespace :tools do
+      resources :categories, only: :index
+      resources :items, only: :show do
+        patch :buy
+      end
+    end
   end
 
   resources :fights, only: [:create, :show] do
@@ -67,9 +73,7 @@ Rails.application.routes.draw do
   end
 
   namespace :tool do
-    resources :categories, only: [:index, :show]
     resources :items, except: :all do
-      put :buy
       put :put_on
       put :put_off
       put :sell
