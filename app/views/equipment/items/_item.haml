@@ -6,13 +6,13 @@
     .level
       = item.level_status(current_user.player)
 
-  %h3= item.name
+    %h3= item.name
 
-  - Player::STATS.each do |stat|
-    %div{class: "#{stat} stat"}
-      = image_tag "#{stat}.png"
-      = item[stat]
+    - Player::STATS.each do |stat|
+      %div{class: "#{stat} stat"}
+        = image_tag "#{stat}.png"
+        = item[stat]
 
-  .buy-button
-    = item.put_on_button if params[:controller] == 'player/inventory'
-    = item.buy_or_sell_button(current_user.player)
+    .buy-button
+      = item.put_on_button if params[:controller] == 'player/inventory'
+      = item.buy_or_sell_button(current_user.player)
