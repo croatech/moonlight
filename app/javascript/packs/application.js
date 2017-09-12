@@ -11,12 +11,15 @@ import Vue from 'vue/dist/vue.esm'
 import VueResource from 'vue-resource'
 import WeaponShop from './components/weapon_shop.vue'
 import BootstrapVue from 'bootstrap-vue'
+import axios from 'axios'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(VueResource)
 Vue.use(BootstrapVue)
+
+axios.defaults.baseURL = 'http://localhost:3000/api';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

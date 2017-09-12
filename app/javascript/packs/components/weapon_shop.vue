@@ -55,6 +55,7 @@
 
 <script>
   import config from '../config.js'
+  import axios from 'axios'
 
   export default {
     data: function () {
@@ -85,12 +86,14 @@
         // api/equipment/categories
         var api_resource_name = this.resource_name == 'weapon_shop' ? 'equipment' : 'artifacts'
 
-        var link = config.apiUrl + '/' + api_resource_name + '/categories'
-        this.$http.get(link).then(response => {
-          this.categories = response.body
-        }, response => {
-          console.log(response)
-        });
+        var link = '/' + api_resource_name + '/categories'
+        axios.get(link)
+        .then(response => {
+          this.categories = response.data
+        })
+        .catch(e => {
+          console.log(e)
+        })
       },
       showCategory: function(index) {
         this.currentCategory = index
@@ -102,14 +105,16 @@
         this.showErrorFlash = false
         this.showSuccessFlash = false
 
-        var link = config.apiUrl + '/equipment/items/' + item_id + '/buy'
-        this.$http.patch(link).then(response => {
+        var link = '/equipment/items/' + item_id + '/buy'
+        axios.patch(link)
+        .then(response => {
           this.showSuccessFlash = true
           this.successMessage = 'Congrats! You have bought ' + response.data.name
-        }, response => {
+        })
+        .catch(e => {
           this.showErrorFlash = true
-          this.errorMessage = response.bodyText
-        });
+          this.errorMessage = e.response.data
+        })
       },
       resolveCategoryClass: function(index) {
         if(this.currentCategory == index) {
@@ -117,7 +122,7 @@
         }
       }
     },
-    mounted: function() {
+    created: function() {
       this.getCategoriesList()
     }
   }
