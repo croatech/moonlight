@@ -9,16 +9,20 @@
 
       <div class="col-md-9">
         <div class="items" v-if="currentCategory != null">
-          <h3 v-if="items.length == 0">Items will be soon</h3>
           <div class="item row" v-for="item in items">
             <div class="col-md-3">
               <img v-bind:src="item.image"/>
             </div>
 
             <div class="col-md-9">
-              <div class="level">[{{item.required_skill}}]</div>
+              <div class="level">[{{item.required_level}}]</div>
 
               <h3>{{item.name}}</h3>
+
+              <div v-for="stat in stats" :class="stat + ' stat'">
+                <img :src="'../assets/' + stat + '.png'" :alt="stat">
+                {{item[stat]}}
+              </div>
 
               <a @click="buyItem(item.id)" class="buy-button btn btn-success">
                 Buy for {{item.price}} gold
@@ -42,7 +46,7 @@
         </div>
 
         <div v-if="currentCategory == null">
-          <img :src="'../assets/locations/cities/moon_light/craft_shop/bg.jpg'" alt="equipment" class="center background">
+          <img :src="'../assets/locations/cities/moon_light/' + resource_name + '/bg.jpg'" alt="equipment" class="center background">
         </div>
       </div>
     </div>
@@ -50,7 +54,7 @@
 </template>
 
 <script>
-  import config from '../config.js'
+  import config from '../../config.js'
   import axios from 'axios'
 
   export default {
@@ -60,6 +64,7 @@
         items: [],
         currentCategory: null,
         boughtItemId: null,
+        stats: config.stats,
         resource_name: null,
         dismissSecs: 1,
 
@@ -72,7 +77,17 @@
     },
     methods: {
       getCategoriesList: function() {
-        axios.get('/tools/categories')
+        var pathname = window.location.pathname
+
+        // Name of resource like locations/weapon_shop, background image and api path resolving depends on this variable
+        this.resource_name = pathname.match(/weapon_shop|shop_of_artifacts/gi)[0]
+
+        // Resolving of path to endpoint api, for example if location is weapon_shop, it must be called
+        // api/equipment/categories
+        var api_resource_name = this.resource_name == 'weapon_shop' ? 'equipment' : 'artifacts'
+
+        var link = '/' + api_resource_name + '/categories'
+        axios.get(link)
         .then(response => {
           this.categories = response.data
         })
@@ -90,7 +105,7 @@
         this.showErrorFlash = false
         this.showSuccessFlash = false
 
-        var link = '/tools/items/' + item_id + '/buy'
+        var link = '/equipment/items/' + item_id + '/buy'
         axios.patch(link)
         .then(response => {
           this.showSuccessFlash = true

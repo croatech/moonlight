@@ -44,7 +44,5 @@
 #
 
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :id, :location
-
-  belongs_to :location
+  attributes :gold
 end

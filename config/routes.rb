@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   namespace :api do
-    resources :players, only: [:index, :show]
+    resources :players, only: [:index, :show] do
+      get :current, on: :collection
+    end
     namespace :equipment do
       resources :categories, only: :index
       resources :items, only: :show do

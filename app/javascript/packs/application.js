@@ -9,8 +9,8 @@
 
 import Vue from 'vue/dist/vue.esm'
 import VueResource from 'vue-resource'
-import WeaponShop from './components/weapon_shop.vue'
-import CraftShop from './components/craft_shop.vue'
+import WeaponShop from './components/shops/weapon_shop.vue'
+import CraftShop from './components/shops/craft_shop.vue'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
 
@@ -28,6 +28,29 @@ document.addEventListener('DOMContentLoaded', () => {
     components: {
       WeaponShop,
       CraftShop
+    },
+    data: {
+      player: null,
+      playerGold: null
+    },
+    methods: {
+      setPlayerData: function() {
+        axios.get('/players/current')
+        .then(response => {
+          this.player = response.data
+          this.playerGold = this.player.gold
+          console.log(this.player)
+          console.log(this.playerGold)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      }
+    },
+    created: function() {
+      this.setPlayerData()
     }
   })
 })
+
+export const eventBus = new Vue();
