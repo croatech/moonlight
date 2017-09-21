@@ -55,12 +55,15 @@
 
 <script>
   import axios from 'axios'
+  import config from '../../config.js'
+  import { eventBus } from '../../application'
 
   export default {
     data: function () {
       return {
         categories: [],
         items: [],
+        stats: config.stats,
         currentCategory: null,
         boughtItemId: null,
         resource_name: null,
@@ -106,6 +109,7 @@
         .then(response => {
           this.showSuccessFlash = true
           this.successMessage = 'Congrats! You have bought ' + response.data.name
+          eventBus.$emit('gold-changed', response.data.price)
         })
         .catch(e => {
           this.showErrorFlash = true
