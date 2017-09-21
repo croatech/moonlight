@@ -54,7 +54,6 @@
 </template>
 
 <script>
-  import config from '../../config.js'
   import axios from 'axios'
 
   export default {
@@ -64,9 +63,7 @@
         items: [],
         currentCategory: null,
         boughtItemId: null,
-        stats: config.stats,
         resource_name: null,
-        dismissSecs: 1,
 
         // flashes
         showErrorFlash: false,
@@ -101,7 +98,6 @@
       },
       buyItem: function(item_id) {
         this.boughtItemId = item_id
-
         this.showErrorFlash = false
         this.showSuccessFlash = false
 
