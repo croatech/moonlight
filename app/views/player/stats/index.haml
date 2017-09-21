@@ -3,8 +3,4 @@
     = render 'players/player'
 
   .col-md-3
-    = render 'stats'
-
-    .free-stats.stat
-      Free stats:
-      = @player.free_stats
+    %stats{':player'=>'currentPlayer'}

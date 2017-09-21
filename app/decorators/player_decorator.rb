@@ -19,7 +19,7 @@ class PlayerDecorator < Draper::Decorator
   end
 
   def current_hp_get(stats)
-   "#{current_hp} / #{stats['hp']}  HP"
+    "#{current_hp} / #{stats['hp']}  HP"
   end
 
   def current_exp_get

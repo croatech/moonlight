@@ -16,26 +16,26 @@
             </div>
 
             <div class="col-md-9">
-              <div class="level">[{{item.required_skill}}]</div>
+              <div class="level">[{{ item.required_skill }}]</div>
 
-              <h3>{{item.name}}</h3>
+              <h3>{{ item.name }}</h3>
 
               <a @click="buyItem(item.id)" class="buy-button btn btn-success">
-                Buy for {{item.price}} gold
+                Buy for {{ item.price }} gold
               </a>
 
               <b-alert variant="danger"
                        dismissible
                        :show="showErrorFlash && boughtItemId == item.id"
                        @dismissed="showErrorFlash=false">
-                {{errorMessage}}
+                {{ errorMessage }}
               </b-alert>
 
               <b-alert variant="success"
                        dismissible
                        :show="showSuccessFlash && boughtItemId == item.id"
                        @dismissed="showSuccessFlash=false">
-                {{successMessage}}
+                {{ successMessage }}
               </b-alert>
             </div>
           </div>
