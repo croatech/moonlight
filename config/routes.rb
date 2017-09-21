@@ -11,15 +11,24 @@ Rails.application.routes.draw do
     resources :players, only: [:index, :show] do
       get :current, on: :collection
     end
+
+    namespace :player do
+      resources :stats, only: :index do
+        patch :increase
+      end
+    end
+
     namespace :equipment do
       resources :categories, only: :index
       resources :items, only: :show do
         patch :buy
       end
     end
+
     namespace :artifacts do
       resources :categories, only: :index
     end
+
     namespace :tools do
       resources :categories, only: :index
       resources :items, only: :show do
@@ -42,9 +51,7 @@ Rails.application.routes.draw do
   end
 
   namespace :player do
-    resources :stats, only: :index do
-      put :increase
-    end
+    resources :stats, only: :index
 
     namespace :inventory, path: 'inventory' do
       get :index

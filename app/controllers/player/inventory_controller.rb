@@ -4,6 +4,8 @@ class Player::InventoryController < ApplicationController
 
   before_action :set_player
 
+  before_action :authenticate_user!
+
   def index
     @weapons = Equipment::Item.where(id: @player.equipment).decorate
     @tools = Tool::Item.where(id: @player.tools).decorate

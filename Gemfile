@@ -33,6 +33,7 @@ gem 'foreman'
 gem 'rack-cors'
 gem 'dry-transaction'
 gem 'annotate', require: false
+gem 'interactor'
 
 group :development, :test do
   gem 'byebug'

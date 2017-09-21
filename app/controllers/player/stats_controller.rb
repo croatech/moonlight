@@ -2,6 +2,8 @@ class Player::StatsController < ApplicationController
 
   layout 'player'
 
+  before_action :authenticate_user!
+
   def index
     @player = current_user.player.decorate
     @wearable_equipment = @player.wearable_equipment

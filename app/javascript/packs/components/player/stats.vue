@@ -16,6 +16,7 @@
 <script>
   import { eventBus } from '../../application'
   import config from '../../config'
+  import axios from 'axios'
 
   export default {
     props: ['player'],
@@ -25,8 +26,17 @@
       }
     },
     methods: {
-      incrementStat: function(name) {
-        console.log(name)
+      incrementStat: function(stat_name) {
+        var link = '/player/stats/' + stat_name + '/increase'
+        axios.patch(link)
+        .then(response => {
+          player[stat_name] = player[stat_name] + 1
+          player[free_stats] = player[free_stats] - 1
+          console.log(response)
+        })
+        .catch(e => {
+          console.log(e)
+        })
       }
     },
     created: function() {
