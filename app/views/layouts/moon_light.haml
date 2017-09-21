@@ -19,7 +19,7 @@
               %li= link_to image_tag('locations/cities/moon_light/craft_shop/icon.png'), craft_shop_locations_path
               %li= link_to image_tag('players/bag.png'), player_inventory_index_path
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
-            %gold{':gold'=>'playerGold'}
+            %gold{':player'=>'currentPlayer'}
 
       .container
         = yield

@@ -1,7 +1,7 @@
 <template>
   <div class="gold">
     <img :src="'../assets/players/gold.png'" alt="gold">
-    <p>{{ gold }}</p>
+    {{ player.gold }}
   </div>
 </template>
 
@@ -9,11 +9,10 @@
   import { eventBus } from '../../application'
 
   export default {
-    props: ['gold'],
+    props: ['player'],
     created: function() {
       eventBus.$on('gold-changed', (value) => {
-        var newGold = this.gold - value
-        this.gold = newGold
+        this.player.gold = this.player.gold - value
       })
     }
   }

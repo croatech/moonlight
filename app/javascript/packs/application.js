@@ -34,17 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
       Gold
     },
     data: {
-      player: null,
-      playerGold: null
+      currentPlayer: null
     },
     methods: {
       setPlayerData: function() {
         axios.get('/players/current')
         .then(response => {
-          this.player = response.data
-          this.playerGold = this.player.gold
-          console.log(this.player)
-          console.log(this.playerGold)
+          this.currentPlayer = response.data
         })
         .catch(e => {
           console.log(e)

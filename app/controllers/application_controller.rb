@@ -18,11 +18,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_player
-    current_user.player
+    @current_player ||= current_user.player
   end
 
   def current_location
-    current_player.location
+    @current_location ||= current_player.location
   end
 
   def check_for_correct_location(location_name)
