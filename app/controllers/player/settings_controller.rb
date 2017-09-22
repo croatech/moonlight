@@ -2,9 +2,9 @@ class Player::SettingsController < ApplicationController
 
   layout 'player'
 
-  before_action :authenticate_user!
-
-  def index; end
+  def index
+    @player = current_player
+  end
 
   def avatar
     @player = current_player

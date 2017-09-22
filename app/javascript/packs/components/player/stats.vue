@@ -14,7 +14,6 @@
 </template>
 
 <script>
-  import { eventBus } from '../../application'
   import config from '../../config'
   import axios from 'axios'
 
@@ -30,9 +29,8 @@
         var link = '/player/stats/' + stat_name + '/increase'
         axios.patch(link)
         .then(response => {
-          player[stat_name] = player[stat_name] + 1
-          player[free_stats] = player[free_stats] - 1
-          console.log(response)
+          this.player[stat_name] = response.data[stat_name]
+          this.player.free_stats -= 1
         })
         .catch(e => {
           console.log(e)

@@ -1,8 +1,10 @@
 class Api::Player::StatsController < ApplicationController
-
   def increase
-    service = Player::Stats::IncreaseService.new(current_player, params[:stat_id])
-    service.call
-    redirect_back(fallback_location: root_path)
+    service = Player::Stats::IncreaseService.call(player: current_player, stat: params[:stat_id])
+    if service.success?
+      render status: 200, json: service.player
+    else
+      render status: 500, json: service.error
+    end
   end
 end

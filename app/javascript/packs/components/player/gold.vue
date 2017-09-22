@@ -12,7 +12,7 @@
     props: ['player'],
     created: function() {
       eventBus.$on('gold-changed', (value) => {
-        this.player.gold = this.player.gold - value
+        this.player.gold -= value
       })
     }
   }
