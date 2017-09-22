@@ -52,7 +52,7 @@ describe Tools::Items::BuyService do
       end
 
       it 'checks that service has particular error' do
-        expect(errors).to include('Level is not enough')
+        expect(errors).to include('Skill is not enough')
       end
     end
   end
