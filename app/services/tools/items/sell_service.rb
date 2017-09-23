@@ -1,8 +1,8 @@
-class Tools::Items::SellItemService
+class Tools::Items::SellService
   attr_reader :player, :item
 
   def initialize(player, item)
-    @player =  player
+    @player = player
     @item = item
   end
 

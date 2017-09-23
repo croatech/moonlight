@@ -1,7 +1,4 @@
-class Player::Inventory::Equipment::Put::OffService
-
-  # put off an item from a slot
-  
+class Equipment::Items::TakeOffService
   attr_reader :player, :equipment, :new_item, :slot
 
   def initialize(player, item)

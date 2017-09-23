@@ -17,7 +17,7 @@
     - @wearable_equipment.each do |item|
       - cache item do
         %div{class: "#{item.category.name.downcase} item"} 
-          = link_to equipment_item_put_off_path(item_id: item.id), method: :put do 
+          = link_to equipment_item_take_off_path(item_id: item.id), method: :put do
             = image_tag item.image.url
 
   .avatar
@@ -28,5 +28,5 @@
     - @wearable_tools.each_with_index do |item, index|
       .player-items.tools
         %div{class: "item tool num-#{index}"}
-          = link_to tool_item_put_off_path(item_id: item.id), method: :put do
+          = link_to tool_item_take_off_path(item_id: item.id), method: :put do
             = image_tag item.image.url

@@ -1,7 +1,4 @@
-class Player::Inventory::Tool::Put::OnService
-
-  # put an item in inventory
-  
+class Tools::Items::PutOnService
   attr_reader :player, :tools, :item, :slot_name
 
   def initialize(player, item)

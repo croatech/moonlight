@@ -3,9 +3,3 @@
     %li= link_to 'Equipment', player_inventory_equipment_path, class: 'btn btn-default'
     %li= link_to 'Tools', player_inventory_tools_path, class: 'btn btn-default'
     %li= link_to 'Resources', player_inventory_resources_path, class: 'btn btn-default'
-
-- if params[:action] == 'equipment'
-  .actions
-    = link_to 'Put off all', put_off_all_equipment_items_path, method: :put, class: 'btn btn-warning'
-    = link_to 'Put on all', put_on_all_equipment_items_path, method: :put, class: 'btn btn-success'
-    = link_to "Sell all for #{@weapons.object.pluck(:price).reduce(:+)} gold", sell_all_equipment_items_path, method: :put, class: 'btn btn-primary'

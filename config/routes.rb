@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   namespace :equipment do
     resources :items, only: :show do
       put :put_on
-      put :put_off
+      put :take_off
       put :sell
     end
   end
@@ -78,7 +78,7 @@ Rails.application.routes.draw do
   namespace :tool do
     resources :items, except: :all do
       put :put_on
-      put :put_off
+      put :take_off
       put :sell
     end
   end

@@ -1,5 +1,4 @@
 class Player::InventoryController < ApplicationController
-
   layout 'player'
 
   before_action :set_player
