@@ -14,7 +14,7 @@ class Player::Stats::IncreaseService
 
       context.player = player
     else
-      context.fail!(error: 'No free stats')
+      context.fail!(error: 'You have no free stats')
     end
   end
 

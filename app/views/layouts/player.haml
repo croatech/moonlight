@@ -17,7 +17,7 @@
                 = link_to player_stats_path, class: 'btn btn-default' do
                   Stats
                   - if current_user.player.free_stats > 0
-                    %span.badge= current_user.player.free_stats
+                    %span.badge +
               %li= link_to 'Settings', player_settings_index_path, class: 'btn btn-default'
               %li= @player.decorate.current_location_path
               %li= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger'

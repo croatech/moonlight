@@ -34,7 +34,7 @@ describe Player::Stats::IncreaseService do
     end
 
     it 'checks that error has an error' do
-      expect(subject.error).to include('No free stats')
+      expect(subject.error).to include('You have no free stats')
     end
 
     it 'checks that attack was not incremented' do

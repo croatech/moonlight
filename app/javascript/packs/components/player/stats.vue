@@ -10,6 +10,13 @@
      Free stats:
      {{ player.free_stats }}
    </div>
+
+   <b-alert variant="danger"
+            dismissible
+            :show="showErrorFlash"
+            @dismissed="showErrorFlash=false">
+     {{ errorMessage }}
+   </b-alert>
  </div>
 </template>
 
@@ -21,7 +28,9 @@
     props: ['player'],
     data: function() {
       return {
-        stats: config.stats
+        stats: config.stats,
+        showErrorFlash: false,
+        errorMessage: null
       }
     },
     methods: {
@@ -33,7 +42,8 @@
           this.player.free_stats -= 1
         })
         .catch(e => {
-          console.log(e)
+          this.showErrorFlash = true
+          this.errorMessage = e.response.data
         })
       }
     },
