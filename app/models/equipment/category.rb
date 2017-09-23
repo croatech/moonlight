@@ -8,8 +8,7 @@
 #
 
 class Equipment::Category < ApplicationRecord
-
   has_many :items, class_name: 'Equipment::Item', foreign_key: 'equipment_category_id'
 
-  validates :name, presence: true
+  validates :name, :slug, presence: true
 end
