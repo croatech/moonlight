@@ -1,5 +1,4 @@
-class Tool::Item::SellItemService
-  
+class Tools::Items::SellItemService
   attr_reader :player, :item
 
   def initialize(player, item)
@@ -21,4 +20,4 @@ class Tool::Item::SellItemService
   def delete_an_item_from_an_inventory
     player.tools.delete(item.id.to_s)
   end
-end 
+end

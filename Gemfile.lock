@@ -217,7 +217,6 @@ GEM
     minitest (5.10.3)
     multi_json (1.12.2)
     mustermann (1.0.1)
-    newrelic_rpm (4.4.0.336)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -389,7 +388,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   magnific-popup-rails (~> 1.1.0)
-  newrelic_rpm
   paperclip
   pg
   puma (~> 3.0)

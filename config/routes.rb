@@ -72,12 +72,6 @@ Rails.application.routes.draw do
       put :put_on
       put :put_off
       put :sell
-
-      collection do
-        put :put_on_all
-        put :put_off_all
-        put :sell_all
-      end
     end
   end
 
