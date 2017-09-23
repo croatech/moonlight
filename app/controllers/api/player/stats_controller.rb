@@ -1,4 +1,6 @@
 class Api::Player::StatsController < ApplicationController
+  before_action :authenticate_user!
+
   def increase
     service = Player::Stats::IncreaseService.call(player: current_player, stat: params[:stat_id])
     if service.success?
