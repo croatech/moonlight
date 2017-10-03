@@ -56,6 +56,8 @@ class Player < ApplicationRecord
   has_many :logs
 
   has_and_belongs_to_many :resources
+  has_and_belongs_to_many :equipment_items, class_name: 'Equipment::Item', join_table: 'players_equipment_items'
+  has_and_belongs_to_many :tool_items, class_name: 'Tool::Item', join_table: 'players_tool_items'
 
   scope :recently_online, -> { where('updated_at > ?', 15.minutes.ago).order(:name) }
 

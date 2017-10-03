@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910191051) do
+ActiveRecord::Schema.define(version: 201709232242333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,13 @@ ActiveRecord::Schema.define(version: 20170910191051) do
     t.boolean "artifact", default: false
     t.bigint "equipment_category_id"
     t.index ["equipment_category_id"], name: "index_equipment_items_on_equipment_category_id"
+  end
+
+  create_table "equipment_items_players", id: false, force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "equipment_item_id", null: false
+    t.index ["equipment_item_id"], name: "index_equipment_items_players_on_equipment_item_id"
+    t.index ["player_id"], name: "index_equipment_items_players_on_player_id"
   end
 
   create_table "fights", id: :serial, force: :cascade do |t|
@@ -150,11 +157,25 @@ ActiveRecord::Schema.define(version: 20170910191051) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
+  create_table "players_equipment_items", id: false, force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "item_id", null: false
+    t.index ["item_id"], name: "index_players_equipment_items_on_item_id"
+    t.index ["player_id"], name: "index_players_equipment_items_on_player_id"
+  end
+
   create_table "players_resources", id: false, force: :cascade do |t|
     t.integer "player_id"
     t.integer "resource_id"
     t.index ["player_id"], name: "index_players_resources_on_player_id"
     t.index ["resource_id"], name: "index_players_resources_on_resource_id"
+  end
+
+  create_table "players_tool_items", id: false, force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "item_id", null: false
+    t.index ["item_id"], name: "index_players_tool_items_on_item_id"
+    t.index ["player_id"], name: "index_players_tool_items_on_player_id"
   end
 
   create_table "resources", id: :serial, force: :cascade do |t|

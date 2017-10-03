@@ -12,8 +12,7 @@ class Equipment::ItemsController < ApplicationController
   end
 
   def sell
-    service = Equipment::Items::SellService.new(current_user.player, find_item)
-    service.call
+    Equipment::Items::SellService.call(player: current_user.player, item: find_item)
     redirect_back(fallback_location: root_path)
   end
 
