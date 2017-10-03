@@ -54,16 +54,15 @@ class Player < ApplicationRecord
 
   has_many :fights
   has_many :logs
-
-  has_and_belongs_to_many :resources
-  has_and_belongs_to_many :equipment_items, class_name: 'Equipment::Item', join_table: 'players_equipment_items'
-  has_and_belongs_to_many :tool_items, class_name: 'Tool::Item', join_table: 'players_tool_items'
+  has_many :player_resources, class_name: 'PlayerResource'
+  has_many :player_equipment_items, class_name: 'PlayerEquipmentItem'
+  has_many :player_tool_items, class_name: 'PlayerToolItem'
 
   scope :recently_online, -> { where('updated_at > ?', 15.minutes.ago).order(:name) }
 
-  STATS = %w( attack defense hp )
-  EQUIPMENT_SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
-  TOOL_SLOTS = %w( lumberjacking fishing )
+  STATS = %w[attack defense hp]
+  EQUIPMENT_SLOTS = %w[helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants]
+  TOOL_SLOTS = %w[lumberjacking fishing]
 
   INITIAL_HP = 20
   INITIAL_GOLD = 1500
@@ -127,7 +126,7 @@ class Player < ApplicationRecord
     else
       service = Player::Stats::GetAllService.new(self, self.wearable_equipment)
     end
-    
+
     service.call
   end
 

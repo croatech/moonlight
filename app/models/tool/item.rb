@@ -4,7 +4,6 @@
 #
 #  id                 :integer          not null, primary key
 #  name               :string
-#  category_id        :integer
 #  price              :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
@@ -14,6 +13,7 @@
 #  image_updated_at   :datetime
 #  required_skill     :integer
 #  type               :string
+#  tool_category_id   :integer
 #
 
 class Tool::Item < ApplicationRecord
