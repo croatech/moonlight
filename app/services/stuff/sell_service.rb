@@ -24,7 +24,7 @@ class Stuff::SellService
   end
 
   def player_has_an_item?
-    player.stuff_item(item).present?
+    player.has_an_item?(item)
   end
 
   def delete_an_item_from_an_inventory

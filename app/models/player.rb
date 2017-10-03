@@ -135,6 +135,10 @@ class Player < ApplicationRecord
     stuffs.where(stuffable: item).take
   end
 
+  def has_an_item?(item)
+    stuff_item(item).present?
+  end
+
   def self.default_avatar
     Avatar.any? ? Avatar.first : nil
   end
