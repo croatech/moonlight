@@ -56,6 +56,7 @@ class Equipment::Items::PutOnService
   end
 
   def update_stats
+    Equipment::Items::RecalculateStatsService.decrease(player, current_item)
     Equipment::Items::RecalculateStatsService.increase(player, item)
   end
 
