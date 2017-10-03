@@ -11,7 +11,7 @@ class Equipment::Items::RecalculateStatsService
   def self.decrease(player, item)
     Player::STATS.each do |stat|
       next if stat.nil?
-      player[stat] += item[stat]
+      player[stat] -= item[stat]
     end
 
     player.save
