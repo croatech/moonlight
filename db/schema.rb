@@ -182,11 +182,11 @@ ActiveRecord::Schema.define(version: 201709232242333) do
   end
 
   create_table "stuffs", force: :cascade do |t|
-    t.string "stuffable_type"
-    t.bigint "stuffable_id"
+    t.string "stuffable_type", null: false
+    t.bigint "stuffable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "player_id"
+    t.bigint "player_id", null: false
     t.index ["player_id"], name: "index_stuffs_on_player_id"
     t.index ["stuffable_type", "stuffable_id"], name: "index_stuffs_on_stuffable_type_and_stuffable_id"
   end

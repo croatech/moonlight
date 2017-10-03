@@ -53,9 +53,6 @@ describe Player, type: :model do
   it { is_expected.to belong_to(:avatar) }
   it { is_expected.to have_many(:fights) }
   it { is_expected.to have_many(:logs) }
-  it { is_expected.to have_many(:player_resources) }
-  it { is_expected.to have_many(:player_equipment_items) }
-  it { is_expected.to have_many(:player_tool_items) }
 
   describe 'stats increasing' do
     let(:player) { create(:player, attack: 1, defense: 1, hp: 5) }
