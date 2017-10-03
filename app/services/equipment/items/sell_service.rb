@@ -5,9 +5,10 @@ class Equipment::Items::SellService
     pre_initialize
 
     if player_has_an_item?
-      delete_an_item_from_an_inventory
-      deposite_money
-      player.save
+      ActiveRecord::Base.transaction do
+        delete_an_item_from_an_inventory
+        deposite_money
+      end
     else
       context.fail!
     end
@@ -23,14 +24,14 @@ class Equipment::Items::SellService
   end
 
   def player_has_an_item?
-    player.equipment.include?(item.id.to_s)
-  end
-
-  def deposite_money 
-    player.increment(:gold, item.sell_price)
+    player.equipment_items.include?(item)
   end
 
   def delete_an_item_from_an_inventory
-    player.equipment.delete(item.id.to_s)
+    player.equipment_items.find(item).delete
+  end
+
+  def deposite_money
+    player.increment!(:gold, item.sell_price)
   end
 end

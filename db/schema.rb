@@ -114,6 +114,27 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.index ["player_id"], name: "index_logs_on_player_id"
   end
 
+  create_table "player_equipment_items", id: false, force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "item_id", null: false
+    t.index ["item_id"], name: "index_player_equipment_items_on_item_id"
+    t.index ["player_id"], name: "index_player_equipment_items_on_player_id"
+  end
+
+  create_table "player_resources", id: false, force: :cascade do |t|
+    t.integer "player_id"
+    t.integer "resource_id"
+    t.index ["player_id"], name: "index_player_resources_on_player_id"
+    t.index ["resource_id"], name: "index_player_resources_on_resource_id"
+  end
+
+  create_table "player_tool_items", id: false, force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "item_id", null: false
+    t.index ["item_id"], name: "index_player_tool_items_on_item_id"
+    t.index ["player_id"], name: "index_player_tool_items_on_player_id"
+  end
+
   create_table "players", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "location_id"
@@ -155,27 +176,6 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "avatar_id"
     t.index ["location_id"], name: "index_players_on_location_id"
     t.index ["user_id"], name: "index_players_on_user_id"
-  end
-
-  create_table "players_equipment_items", id: false, force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "item_id", null: false
-    t.index ["item_id"], name: "index_players_equipment_items_on_item_id"
-    t.index ["player_id"], name: "index_players_equipment_items_on_player_id"
-  end
-
-  create_table "players_resources", id: false, force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "resource_id"
-    t.index ["player_id"], name: "index_players_resources_on_player_id"
-    t.index ["resource_id"], name: "index_players_resources_on_resource_id"
-  end
-
-  create_table "players_tool_items", id: false, force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "item_id", null: false
-    t.index ["item_id"], name: "index_players_tool_items_on_item_id"
-    t.index ["player_id"], name: "index_players_tool_items_on_player_id"
   end
 
   create_table "resources", id: :serial, force: :cascade do |t|
