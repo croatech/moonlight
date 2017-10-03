@@ -21,6 +21,8 @@ class Equipment::Item < ApplicationRecord
 
   belongs_to :category, class_name: 'Equipment::Category', foreign_key: 'equipment_category_id'
 
+  has_many :stuffs, as: :stuffable
+
   has_attached_file :image, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
