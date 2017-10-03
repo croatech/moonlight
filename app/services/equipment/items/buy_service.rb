@@ -30,9 +30,10 @@ class Equipment::Items::BuyService
   end
 
   def buy(_input)
-    put_an_item_to_the_inventory
-    withdraw_money
-    player.save
+    ActiveRecord::Base.transaction do
+      put_an_item_to_the_inventory
+      withdraw_gold
+    end
 
     Right(item)
   end
@@ -42,10 +43,10 @@ class Equipment::Items::BuyService
   attr_reader :player, :item
 
   def put_an_item_to_the_inventory
-    player.equipment << item.id
+    player.equipment_items << item
   end
 
-  def withdraw_money
-    player.decrement(:gold, item.price)
+  def withdraw_gold
+    player.decrement!(:gold, item.price)
   end
 end

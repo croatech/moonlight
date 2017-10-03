@@ -1,5 +1,4 @@
 class ResourcesController < ApplicationController
-
   def collect
     resource = Resource.find(params[:resource_id])
     service = Resource::CollectService.new(current_user.player, resource)

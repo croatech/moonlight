@@ -9,7 +9,7 @@ describe Equipment::Items::BuyService do
   let(:errors) { subject.left }
 
   let(:player) { create(:player, gold: 6, level: 6) }
-  let(:item) { build_stubbed(:equipment_item, price: 6, required_level: 6) }
+  let(:item) { create(:equipment_item, price: 6, required_level: 6) }
 
   describe 'success' do
     it 'check that service succeeded' do
