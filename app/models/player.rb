@@ -131,6 +131,10 @@ class Player < ApplicationRecord
     service.call
   end
 
+  def stuff_item(item)
+    stuffs.where(stuffable: item).take
+  end
+
   def self.default_avatar
     Avatar.any? ? Avatar.first : nil
   end

@@ -28,7 +28,7 @@ class Equipment::Items::SellService
   end
 
   def delete_an_item_from_an_inventory
-    player.equipment_items.find(item).delete
+    player.stuff_item(item).delete
   end
 
   def deposite_money
