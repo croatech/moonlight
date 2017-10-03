@@ -1,4 +1,4 @@
-class Equipment::Items::SellService
+class Stuff::SellService
   include Interactor
 
   def call
@@ -24,7 +24,7 @@ class Equipment::Items::SellService
   end
 
   def player_has_an_item?
-    player.equipment_items.include?(item)
+    player.stuff_item(item).present?
   end
 
   def delete_an_item_from_an_inventory
