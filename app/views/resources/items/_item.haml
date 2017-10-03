@@ -1,0 +1,8 @@
+.item.row
+  .col-md-3
+    = image_tag item.image.url, class: 'item-img'
+
+  .col-md-9
+    .buy-button
+      - if params[:controller] == 'player/inventory'
+        = link_to "Sell for #{item.sell_price.to_i} gold", resource_sell_path(item.id), method: :put, class: 'btn btn-info'

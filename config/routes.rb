@@ -50,7 +50,7 @@ Rails.application.routes.draw do
 
   resources :resources do
     put :collect
-    put :sell_all, on: :collection
+    put :sell
   end
 
   namespace :player do
