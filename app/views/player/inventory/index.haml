@@ -21,8 +21,8 @@
         %h2 No craft tools
 
       - if @resources.present?
-        - @resources.each do |resource|
-          - cache resource do
-            = resource.image.url
+        - @resources.each do |item|
+          - cache item do
+            = render 'resources/items/item', item: item
       - else
         %h2 No craft resources

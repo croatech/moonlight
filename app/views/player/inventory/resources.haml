@@ -6,11 +6,8 @@
     = render 'menu'
 
     - if @resources.present?
-
-      = link_to "Sell all for #{@resources.pluck(:price).reduce(:+)} gold", sell_all_resources_path, method: :put, class: 'btn btn-warning'
-      
       - @resources.each do |resource|
         - cache resource do
-          = image_tag resource.image.url
+          = render 'resources/items/item', item: item
     - else
       %h2 No craft resources
