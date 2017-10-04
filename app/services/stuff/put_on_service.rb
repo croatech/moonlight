@@ -1,4 +1,4 @@
-class Equipment::Items::PutOnService
+class Stuff::PutOnService
   include Interactor
 
   def call
@@ -25,7 +25,7 @@ class Equipment::Items::PutOnService
   def pre_initialize
     @player = context.player
     @item = context.item
-    @current_item = Equipment::Item.find_by(id: player[item.slot_name])
+    @current_item = item.class.find(player[item.slot_name])
   end
 
   def player_has_an_item?
@@ -49,7 +49,7 @@ class Equipment::Items::PutOnService
   end
 
   def put_the_current_item_to_the_inventory
-    player.equipment_items << current_item
+    player.stuffs.create(stuffable: current_item)
   end
 
   def put_the_item_in_the_slot
