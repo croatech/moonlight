@@ -6,9 +6,9 @@ describe Stuff::PutOnService do
   end
 
   describe 'Equipment::Item' do
-    let(:current_item) { create(:equipment_item, hp: 0, defense: 0, attack: 0) }
+    let(:current_item) { create(:equipment_item, hp: 1, defense: 1, attack: 1) }
     let(:item) { create(:equipment_item, hp: 6, defense: 6, attack: 6) }
-    let(:player) { create(:player, armor_slot: current_item.id, hp: 0, defense: 0, attack: 0) }
+    let(:player) { create(:player, armor_slot: current_item.id, hp: 2, defense: 2, attack: 2) }
     let!(:stuff) { create(:stuff, player: player, stuffable: item) }
 
     describe 'success' do
@@ -30,17 +30,21 @@ describe Stuff::PutOnService do
         end
       end
 
-      context 'stats changing' do
-        it 'checks that hp increased' do
-          expect { subject }.to change { player.hp }.from(0).to(6)
+      context 'stats increasing' do
+        it 'checks that hp changed' do
+          expect { subject }.to change { player.hp }.from(player.hp).to(player.hp - current_item.hp + item.hp)
         end
 
-        it 'checks that attack increased' do
-          expect { subject }.to change { player.attack }.from(0).to(6)
+        it 'checks that attack changed' do
+          expect { subject }.to change { player.attack }.from(player.attack).to(player.attack - current_item.attack + item.attack)
         end
 
-        it 'checks that defense increased' do
-          expect { subject }.to change { player.defense }.from(0).to(6)
+        it 'checks that defense changed' do
+          expect { subject }.to change { player.defense }.from(player.defense).to(player.defense - current_item.defense + item.defense)
+        end
+
+        it 'checks that current hp changed' do
+          expect { subject }.to change { player.current_hp }.from(player.current_hp).to(player.current_hp - current_item.hp)
         end
       end
     end

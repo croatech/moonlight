@@ -38,7 +38,7 @@ class Stuff::PutOnService
 
   def take_off_a_current_item
     return if current_item.nil?
-    Stuff::TakeOffService.call(player: player, item: item)
+    Stuff::TakeOffService.call(player: player, item: current_item)
   end
 
   def remove_an_item_from_the_inventory
