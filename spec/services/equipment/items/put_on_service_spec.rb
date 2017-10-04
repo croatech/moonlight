@@ -47,4 +47,20 @@ describe Equipment::Items::PutOnService do
       end
     end
   end
+
+  describe 'failure' do
+    context 'player has not an item' do
+      it 'check that service failed' do
+        stuff.delete
+        expect(subject.failure?).to eq true
+      end
+    end
+
+    context 'level is not enough' do
+      it 'check that service failed' do
+        item.update(required_level: 10)
+        expect(subject.failure?).to eq true
+      end
+    end
+  end
 end
