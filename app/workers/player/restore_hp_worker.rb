@@ -4,7 +4,7 @@ class Player::RestoreHpWorker
   def perform(player_id, restoring_hp)
     player = Player.find(player_id)
     current_hp = player.current_hp
-    final_hp = player.stats['hp']
+    final_hp = player.hp
     
     current_hp += restoring_hp
     current_hp = final_hp if current_hp > final_hp # if current hp more then current_hp = final hp

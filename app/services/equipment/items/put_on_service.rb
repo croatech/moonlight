@@ -54,8 +54,8 @@ class Equipment::Items::PutOnService
   end
 
   def update_stats
-    Equipment::Items::RecalculateStatsService.decrease(player, current_item)
-    Equipment::Items::RecalculateStatsService.increase(player, item)
+    Equipment::Items::RecalculateStatsService.new(player, current_item).decrease
+    Equipment::Items::RecalculateStatsService.new(player, item).increase
   end
 
   def start_restore_hp

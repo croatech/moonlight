@@ -8,8 +8,9 @@ describe Tools::Items::BuyService do
   let(:object) { subject.right }
   let(:errors) { subject.left }
 
+  let(:category) { create(:tool_category, type: 'lumberjacking') }
   let(:player) { create(:player, gold: 6, level: 6, lumberjacking_skill: 6) }
-  let(:item) { create(:tool_item, price: 6, required_skill: 6, type: 'lumberjacking') }
+  let(:item) { create(:tool_item, price: 6, required_skill: 6, category: category) }
 
   describe 'success' do
     it 'check that service succeeded' do

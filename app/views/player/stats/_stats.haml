@@ -1,5 +1,5 @@
 .stats
-  - @stats.each do |stat_name, stat_value|
+  - Player::STATS do |stat_name|
     %div{class: "#{stat_name} stat"}
       = image_tag "#{stat_name}.png"
-      = stat_value
+      = @player[stat_name]

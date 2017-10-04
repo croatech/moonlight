@@ -12,5 +12,5 @@ class Equipment::Category < ApplicationRecord
 
   has_many :items, class_name: 'Equipment::Item', foreign_key: 'equipment_category_id'
 
-  validates :name, :slug, presence: true
+  validates :name, :type, presence: true
 end

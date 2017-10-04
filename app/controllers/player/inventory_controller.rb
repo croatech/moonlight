@@ -30,7 +30,6 @@ class Player::InventoryController < ApplicationController
   def load_player
     @player ||= current_user.player.decorate
     @wearable_equipment = @player.wearable_equipment
-    @stats = @player.stats(@wearable_equipment)
     @wearable_tools = @player.wearable_tools
   end
 
