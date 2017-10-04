@@ -3,7 +3,7 @@ class Api::Equipment::ItemsController < ApplicationController
 
   def buy
     item = Equipment::Item.find(params[:item_id])
-    service = Equipment::Items::BuyService.new
+    service = Stuff::BuyService.new
     service.call(player: current_player, item: item) do |m|
       m.success do |item|
         render json: item, status: 200
