@@ -36,4 +36,8 @@ class Tool::Item < ApplicationRecord
   def slot_name
     "#{type}_slot"
   end
+
+  def skill_name
+    "#{type}_skill"
+  end
 end

@@ -4,7 +4,7 @@ class Equipment::Items::PutOnService
   def call
     pre_initialize
 
-    if player_has_an_item? && level_required?
+    if player_has_an_item? && level_or_skill_required?
       ActiveRecord::Base.transaction do
         remove_item_from_the_inventory
         put_the_current_item_to_the_inventory if slot_is_busy?
@@ -32,8 +32,12 @@ class Equipment::Items::PutOnService
     player.has_an_item?(item)
   end
 
-  def level_required?
-    player.level >= item.required_level
+  def level_or_skill_required?
+    if item.is_a?(Equipment::Item)
+      player.level >= item.required_level
+    else
+      player.send(item.skill_name) >= item.required_skill
+    end
   end
 
   def slot_is_busy?
@@ -54,6 +58,7 @@ class Equipment::Items::PutOnService
   end
 
   def update_stats
+    return unless item.is_a?(Equipment::Item)
     Equipment::Items::RecalculateStatsService.new(player, current_item).decrease
     Equipment::Items::RecalculateStatsService.new(player, item).increase
   end
