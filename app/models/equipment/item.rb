@@ -19,6 +19,8 @@
 
 class Equipment::Item < ApplicationRecord
 
+  self.inheritance_column = nil
+
   belongs_to :category, class_name: 'Equipment::Category', foreign_key: 'equipment_category_id'
 
   has_attached_file :image, default_url: "/images/:style/missing.png"
@@ -28,5 +30,13 @@ class Equipment::Item < ApplicationRecord
 
   def sell_price
     self.artifact? ? price : price * 0.9
+  end
+
+  def type
+    category.type.downcase
+  end
+
+  def slot_name
+    "#{type}_slot"
   end
 end

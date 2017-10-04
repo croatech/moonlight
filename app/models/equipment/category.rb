@@ -4,10 +4,12 @@
 #
 #  id   :integer          not null, primary key
 #  name :string
-#  slug :string
+#  type :string
 #
 
 class Equipment::Category < ApplicationRecord
+  self.inheritance_column = nil
+
   has_many :items, class_name: 'Equipment::Item', foreign_key: 'equipment_category_id'
 
   validates :name, :slug, presence: true

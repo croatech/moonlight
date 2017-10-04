@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
 
   create_table "equipment_categories", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.string "slug"
+    t.string "type"
   end
 
   create_table "equipment_items", id: :serial, force: :cascade do |t|
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
 
   create_table "tool_categories", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.string "slug"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -208,7 +208,6 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "required_skill"
-    t.string "type"
     t.bigint "tool_category_id"
     t.index ["tool_category_id"], name: "index_tool_items_on_tool_category_id"
   end

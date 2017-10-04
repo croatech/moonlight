@@ -20,14 +20,12 @@ class Equipment::Items::PutOnService
 
   private
 
-  attr_reader :player, :equipment, :item, :current_item, :slot
+  attr_reader :player, :item, :current_item
 
   def pre_initialize
     @player = context.player
-    @equipment = player.equipment
     @item = context.item
-    @slot = "#{item.category.slug}_slot"
-    @current_item = Equipment::Item.find(player[slot])
+    @current_item = Equipment::Item.find_by(id: player[item.slot_name])
   end
 
   def player_has_an_item?
@@ -51,7 +49,7 @@ class Equipment::Items::PutOnService
   end
 
   def put_the_item_in_the_slot
-    player[slot] = item.id.to_i
+    player[item.slot_name] = item.id.to_i
     player.save
   end
 

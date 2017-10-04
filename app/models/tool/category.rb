@@ -4,12 +4,14 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
-#  slug       :string
+#  type       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Tool::Category < ApplicationRecord
+  self.inheritance_column = nil
+
   has_many :items, class_name: 'Tool::Item', foreign_key: 'tool_category_id'
 
   validates :name, :slug, presence: true

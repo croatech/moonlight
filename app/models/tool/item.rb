@@ -12,14 +12,10 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  required_skill     :integer
-#  type               :string
 #  tool_category_id   :integer
 #
 
 class Tool::Item < ApplicationRecord
-
-  self.inheritance_column = nil
-
   belongs_to :category, class_name: 'Tool::Category', foreign_key: 'tool_category_id'
 
   has_one :resource
@@ -31,5 +27,13 @@ class Tool::Item < ApplicationRecord
 
   def sell_price
     price * 0.1
+  end
+
+  def type
+    category.type.downcase
+  end
+
+  def slot_name
+    "#{type}_slot"
   end
 end
