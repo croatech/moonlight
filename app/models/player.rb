@@ -55,15 +55,17 @@ class Player < ApplicationRecord
   has_many :fights
   has_many :logs
 
-  has_and_belongs_to_many :resources
-  has_and_belongs_to_many :equipment_items, class_name: 'Equipment::Item', join_table: 'players_equipment_items'
-  has_and_belongs_to_many :tool_items, class_name: 'Tool::Item', join_table: 'players_tool_items'
+  has_many :stuffs
+  has_many :equipment_items, class_name: 'Equipment::Item', through: :stuffs, source: :stuffable, source_type: 'Equipment::Item'
+  has_many :tool_items, class_name: 'Tool::Item', through: :stuffs, source: :stuffable, source_type: 'Tool::Item'
+  has_many :resources, class_name: 'Resource', through: :stuffs, source: :stuffable, source_type: 'Resource'
+
 
   scope :recently_online, -> { where('updated_at > ?', 15.minutes.ago).order(:name) }
 
-  STATS = %w( attack defense hp )
-  EQUIPMENT_SLOTS = %w( helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants )
-  TOOL_SLOTS = %w( lumberjacking fishing )
+  STATS = %w[attack defense hp]
+  EQUIPMENT_SLOTS = %w[helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants]
+  TOOL_SLOTS = %w[lumberjacking fishing]
 
   INITIAL_HP = 20
   INITIAL_GOLD = 1500
@@ -121,17 +123,17 @@ class Player < ApplicationRecord
     Tool::Item.where(id: wearable_tools_ids).includes(:category)
   end
 
-  def stats(wearable_equipment=nil)
-    if wearable_equipment
-      service = Player::Stats::GetAllService.new(self, wearable_equipment)
-    else
-      service = Player::Stats::GetAllService.new(self, self.wearable_equipment)
-    end
-    
-    service.call
+  def stuff_item(item)
+    stuffs.where(stuffable: item).take
   end
 
-  def self.default_avatar
-    Avatar.any? ? Avatar.first : nil
+  def has_an_item?(item)
+    stuff_item(item).present?
+  end
+
+  class << self
+    def default_avatar
+      Avatar.any? ? Avatar.first : nil
+    end
   end
 end

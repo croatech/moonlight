@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tool_category, class: Tool::Category do
     name 'Lumberjacking'
-    slug 'Lumberjacking'
+    type 'lumberjacking'
   end
 end

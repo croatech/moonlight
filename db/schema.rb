@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
 
   create_table "equipment_categories", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.string "slug"
+    t.string "type"
   end
 
   create_table "equipment_items", id: :serial, force: :cascade do |t|
@@ -157,27 +157,6 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.index ["user_id"], name: "index_players_on_user_id"
   end
 
-  create_table "players_equipment_items", id: false, force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "item_id", null: false
-    t.index ["item_id"], name: "index_players_equipment_items_on_item_id"
-    t.index ["player_id"], name: "index_players_equipment_items_on_player_id"
-  end
-
-  create_table "players_resources", id: false, force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "resource_id"
-    t.index ["player_id"], name: "index_players_resources_on_player_id"
-    t.index ["resource_id"], name: "index_players_resources_on_resource_id"
-  end
-
-  create_table "players_tool_items", id: false, force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "item_id", null: false
-    t.index ["item_id"], name: "index_players_tool_items_on_item_id"
-    t.index ["player_id"], name: "index_players_tool_items_on_player_id"
-  end
-
   create_table "resources", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "item_id"
@@ -202,9 +181,19 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.index ["fight_id"], name: "index_rounds_on_fight_id"
   end
 
+  create_table "stuffs", force: :cascade do |t|
+    t.string "stuffable_type", null: false
+    t.bigint "stuffable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "player_id", null: false
+    t.index ["player_id"], name: "index_stuffs_on_player_id"
+    t.index ["stuffable_type", "stuffable_id"], name: "index_stuffs_on_stuffable_type_and_stuffable_id"
+  end
+
   create_table "tool_categories", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.string "slug"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -219,7 +208,6 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.integer "required_skill"
-    t.string "type"
     t.bigint "tool_category_id"
     t.index ["tool_category_id"], name: "index_tool_items_on_tool_category_id"
   end

@@ -4,7 +4,7 @@
 #
 #  id   :integer          not null, primary key
 #  name :string
-#  slug :string
+#  type :string
 #
 
 class Equipment::CategorySerializer < ActiveModel::Serializer
