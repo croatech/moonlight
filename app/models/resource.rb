@@ -14,6 +14,7 @@
 #
 
 class Resource < ApplicationRecord
+  # TODO change type to category_id and add required_skill
   self.inheritance_column = nil
 
   belongs_to :item, class_name: 'Tool::Item', foreign_key: 'item_id'
