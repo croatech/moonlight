@@ -4,7 +4,7 @@
 #
 #  id   :integer          not null, primary key
 #  name :string
-#  slug :string
+#  type :string
 #
 
 require 'spec_helper'

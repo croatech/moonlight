@@ -12,7 +12,6 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  required_skill     :integer
-#  type               :string
 #  tool_category_id   :integer
 #
 
