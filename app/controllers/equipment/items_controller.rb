@@ -1,13 +1,11 @@
 class Equipment::ItemsController < ApplicationController
   def put_on
-    service = Equipment::Items::PutOnService.new(player: current_player, item: find_item)
-    service.call
+    Stuff::PutOnService.new(player: current_player, item: find_item).call
     redirect_back(fallback_location: root_path)
   end
 
   def take_off
-    service = Equipment::Items::TakeOffService.new(current_user.player, find_item)
-    service.call
+    Equipment::Items::TakeOffService.new(current_user.player, find_item).call
     redirect_back(fallback_location: root_path)
   end
 
