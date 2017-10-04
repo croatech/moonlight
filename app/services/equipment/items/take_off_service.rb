@@ -28,9 +28,8 @@ class Equipment::Items::TakeOffService
   end
 
   def update_hp
-    current_hp = player.current_hp
-    final_hp = player.stats['hp']
-    player.current_hp = final_hp - new_item.hp if current_hp > final_hp
+    current_hp = player.current_hp  full_hp = player.hp
+    player.current_hp = full_hp - new_item.hp if current_hp > full_hp
   end
 
   def clear_slot

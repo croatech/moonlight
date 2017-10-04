@@ -1,21 +1,19 @@
 class Player::RestoreHpService
-
-  attr_reader :player, :current_hp, :final_hp
-
   def initialize(player)
     @player = player
-    @current_hp = player.current_hp
-    @final_hp = player.stats['hp']
   end
 
   def call
-    if current_hp < final_hp
-      Player::RestoreHpWorker.perform_at(delay_period.seconds.from_now, player.id, restoring_hp)
-    end
+    return if player.current_hp >= player.hp
+    Player::RestoreHpWorker.perform_at(delay_period.seconds.from_now, player.id, restoring_hp) if player.current_hp < player.hp
   end
 
+  private
+
+  attr_reader :player
+
   def restoring_hp
-    final_hp * (Player::REGENERATION_HP_PERCENT.to_f / 100)
+    player.hp * (Player::REGENERATION_HP_PERCENT.to_f / 100)
   end
 
   def delay_period

@@ -121,16 +121,6 @@ class Player < ApplicationRecord
     Tool::Item.where(id: wearable_tools_ids).includes(:category)
   end
 
-  def stats(wearable_equipment=nil)
-    if wearable_equipment
-      service = Player::Stats::GetAllService.new(self, wearable_equipment)
-    else
-      service = Player::Stats::GetAllService.new(self, self.wearable_equipment)
-    end
-
-    service.call
-  end
-
   def stuff_item(item)
     stuffs.where(stuffable: item).take
   end
@@ -139,7 +129,9 @@ class Player < ApplicationRecord
     stuff_item(item).present?
   end
 
-  def self.default_avatar
-    Avatar.any? ? Avatar.first : nil
+  class << self
+    def default_avatar
+      Avatar.any? ? Avatar.first : nil
+    end
   end
 end

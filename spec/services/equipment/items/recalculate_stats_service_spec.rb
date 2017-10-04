@@ -9,7 +9,7 @@ describe Equipment::Items::RecalculateStatsService do
 
   describe 'increase' do
     subject do
-      Equipment::Items::RecalculateStatsService.increase(player, item)
+      Equipment::Items::RecalculateStatsService.new(player, item).increase
     end
 
     it 'checks that hp increased' do
@@ -27,7 +27,7 @@ describe Equipment::Items::RecalculateStatsService do
 
   describe 'decrease' do
     subject do
-      Equipment::Items::RecalculateStatsService.decrease(player, item)
+      Equipment::Items::RecalculateStatsService.new(player, item).decrease
     end
 
     it 'checks that hp increased' do

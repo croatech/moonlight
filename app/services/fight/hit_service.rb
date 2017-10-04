@@ -1,12 +1,10 @@
 class Fight::HitService
-
-  attr_reader :fight, :round, :player, :player_stats, :bot, :player_defense_point, :player_attack_point, :bot_defense_point, :bot_attack_point
+  attr_reader :fight, :round, :player, :bot, :player_defense_point, :player_attack_point, :bot_defense_point, :bot_attack_point
 
   def initialize(fight, defense_point, attack_point)
     @fight = fight
     @round = @fight.rounds.last
     @player = @fight.player
-    @player_stats = @player.stats
     @bot = @fight.bot
     @player_defense_point = defense_point
     @player_attack_point = attack_point
@@ -47,8 +45,8 @@ class Fight::HitService
 
   def hit_damage(attacker, defender)
     if attacker == player
-      damage = player_stats['attack'] - defender.defense * 0.25
-      damage < 0 ? player_stats['attack'] / 2 : damage
+      damage = player.attack - defender.defense * 0.25
+      damage < 0 ? player.attack / 2 : damage
     else
       damage = attacker.attack - defender.defense * 0.25
       damage < 0 ? attacker.attack / 2 : damage

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Api::Tools::ItemsController, type: :controller do
   let(:player) { create(:player, gold: 6, level: 6, lumberjacking_skill: 6) }
-  let(:item) { create(:tool_item, price: 6, required_skill: 6, type: 'lumberjacking') }
+  let(:item) { create(:tool_item, price: 6, required_skill: 6) }
 
   describe 'PATCH #buy' do
     subject do

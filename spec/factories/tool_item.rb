@@ -4,6 +4,5 @@ FactoryGirl.define do
     category factory: :tool_category
     price 300
     required_skill 0
-    type 'lumberjacking'
   end
 end

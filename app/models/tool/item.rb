@@ -23,7 +23,7 @@ class Tool::Item < ApplicationRecord
   has_attached_file :image, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  validates :name, :tool_category_id, :price, :required_skill, :type, presence: true
+  validates :name, :tool_category_id, :price, :required_skill, presence: true
 
   def sell_price
     price * 0.1

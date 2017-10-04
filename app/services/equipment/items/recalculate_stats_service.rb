@@ -1,5 +1,10 @@
 class Equipment::Items::RecalculateStatsService
-  def self.increase(player, item)
+  def initialize(player, item)
+    @player = player
+    @item = item
+  end
+
+  def increase
     Player::STATS.each do |stat|
       next if stat.nil?
       player[stat] += item[stat]
@@ -8,7 +13,7 @@ class Equipment::Items::RecalculateStatsService
     player.save
   end
 
-  def self.decrease(player, item)
+  def decrease
     Player::STATS.each do |stat|
       next if stat.nil?
       player[stat] -= item[stat]
@@ -16,4 +21,8 @@ class Equipment::Items::RecalculateStatsService
 
     player.save
   end
+
+  private
+
+  attr_reader :player, :item
 end

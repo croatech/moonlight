@@ -1,5 +1,4 @@
 class Player::StatsController < ApplicationController
-
   layout 'player'
 
   before_action :authenticate_user!
@@ -7,7 +6,6 @@ class Player::StatsController < ApplicationController
   def index
     @player = current_user.player.decorate
     @wearable_equipment = @player.wearable_equipment
-    @stats = @player.stats(@wearable_equipment)
     @wearable_tools = @player.wearable_tools
   end
 
