@@ -1,4 +1,5 @@
 class Tools::Items::BuyService
+  # TODO move to one buy service
   include Dry::Transaction
 
   step :init

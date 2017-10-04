@@ -39,4 +39,8 @@ class Equipment::Item < ApplicationRecord
   def slot_name
     "#{type}_slot"
   end
+
+  def available_for_player?(player)
+    required_level <= player.level
+  end
 end

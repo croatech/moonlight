@@ -5,7 +5,7 @@ class Equipment::ItemsController < ApplicationController
   end
 
   def take_off
-    Equipment::Items::TakeOffService.new(current_user.player, find_item).call
+    Stuff::TakeOffService.new(player: current_user.player, item: find_item).call
     redirect_back(fallback_location: root_path)
   end
 

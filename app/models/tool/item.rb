@@ -40,4 +40,8 @@ class Tool::Item < ApplicationRecord
   def skill_name
     "#{type}_skill"
   end
+
+  def available_for_player?(player)
+    required_skill <= player.send(skill_name)
+  end
 end

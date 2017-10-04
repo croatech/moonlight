@@ -5,7 +5,7 @@ class Tool::ItemsController < ApplicationController
   end
 
   def take_off
-    Tools::Items::TakeOffService.new(current_player, find_item).call
+    Stuff::TakeOffService.new(player: current_player, item: find_item).call
     redirect_back(fallback_location: root_path)
   end
 

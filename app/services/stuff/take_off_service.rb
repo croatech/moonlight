@@ -1,4 +1,4 @@
-class Equipment::Items::TakeOffService
+class Stuff::TakeOffService
   attr_reader :player, :equipment, :new_item, :slot
 
   def initialize(player, item)
