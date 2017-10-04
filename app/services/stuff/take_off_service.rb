@@ -7,7 +7,7 @@ class Stuff::TakeOffService
     if is_an_item_weared?
       ActiveRecord::Base.transaction do
         put_the_current_item_to_the_inventory
-        update_hp
+        decrease_stats
         clear_slot
         player.save
       end
@@ -33,9 +33,9 @@ class Stuff::TakeOffService
     player.stuffs.create(stuffable: item)
   end
 
-  def update_hp
-    return unless item.is_a?(Equipment::Item)
-    player.current_hp = player.current_hp - item.hp
+  def decrease_stats
+    return if item.is_a?(Tool::Item)
+    Equipment::Items::RecalculateStatsService.new(player, item).decrease
   end
 
   def clear_slot
