@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :player do
-    name 'Player'
+    sequence(:name) { |n| "#{n}Name" }
     user
     current_hp 0
     hp 0

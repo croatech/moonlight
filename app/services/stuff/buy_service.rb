@@ -1,9 +1,9 @@
-class Equipment::Items::BuyService
+class Stuff::BuyService
   include Dry::Transaction
 
   step :init
   step :gold_enough?
-  step :level_enough?
+  step :level_or_skill_enough?
   step :buy
 
   def init(input)
@@ -21,11 +21,11 @@ class Equipment::Items::BuyService
     end
   end
 
-  def level_enough?(_input)
-    if player.level >= item.required_level
+  def level_or_skill_enough?(_input)
+    if item.available_for_player?(player)
       Right(nil)
     else
-      Left('Level is not enough')
+      Left('Level or skill is not enough')
     end
   end
 
@@ -43,7 +43,7 @@ class Equipment::Items::BuyService
   attr_reader :player, :item
 
   def put_an_item_to_the_inventory
-    player.equipment_items << item
+    player.stuffs.create(stuffable: item)
   end
 
   def withdraw_gold
