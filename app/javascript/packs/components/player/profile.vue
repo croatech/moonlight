@@ -1,5 +1,5 @@
 <template>
-  <div class="profile">
+  <div>
     <div class="player-name">
       {{ player.name }}
       <strong>
@@ -18,6 +18,28 @@
       <div class="progress">
         <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-warning" role="progressbar" :style="{ width: expPercent }">
           {{ player.exp }} / {{ player.exp_next }} EXP
+        </div>
+      </div>
+    </div>
+
+    <div class="player">
+      <div class="player-items left-column">
+        <div v-for="item in player.put_on_equipment_items" :class="item.category.name.toLowerCase() + ' item'">
+          <a href="'equipment/items/' + item.id + 'take_off'">
+            <img :src="item.image" alt="item">
+          </a>
+        </div>
+      </div>
+
+      <div class="avatar">
+        <img :src="player.avatar.image" alt="avatar">
+      </div>
+
+      <div class="player-items tools">
+        <div v-for="(item, i) in player.put_on_tool_items" :class="'item tool num-' + i">
+          <a href="">
+            <img :src="item.image" alt="tool">
+          </a>
         </div>
       </div>
     </div>

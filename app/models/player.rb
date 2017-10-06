@@ -60,7 +60,6 @@ class Player < ApplicationRecord
   has_many :tool_items, class_name: 'Tool::Item', through: :stuffs, source: :stuffable, source_type: 'Tool::Item'
   has_many :resources, class_name: 'Resource', through: :stuffs, source: :stuffable, source_type: 'Resource'
 
-
   scope :recently_online, -> { where('updated_at > ?', 15.minutes.ago).order(:name) }
 
   STATS = %w[attack defense hp]

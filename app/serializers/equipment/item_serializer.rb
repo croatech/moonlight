@@ -18,5 +18,7 @@
 #
 
 class Equipment::ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :image, :required_level, :price, :hp, :defense, :attack
+  attributes :id, :name, :image, :required_level, :price, :hp, :defense, :attack, :category
+
+  belongs_to :category, each_serializer: Equipment::Category
 end

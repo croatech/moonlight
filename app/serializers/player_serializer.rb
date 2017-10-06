@@ -53,5 +53,20 @@ class PlayerSerializer < ActiveModel::Serializer
              :current_hp,
              :level,
              :exp,
-             :exp_next
+             :exp_next,
+             :tool_items
+             :avatar
+
+  has_many :put_on_equipment_items, serializer: Equipment::ItemSerializer
+  has_many :put_on_tool_items, serializer: Tool::ItemSerializer
+
+  belongs_to :avatar
+
+  def put_on_equipment_items
+    object.wearable_equipment.includes(:category)
+  end
+
+  def put_on_tool_items
+    object.wearable_tools.includes(:category)
+  end
 end

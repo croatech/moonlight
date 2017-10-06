@@ -10,5 +10,5 @@
 class Equipment::CategorySerializer < ActiveModel::Serializer
   attributes :name
 
-  has_many :items
+  has_many :items, include: false
 end
