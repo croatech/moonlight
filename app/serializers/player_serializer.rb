@@ -51,5 +51,7 @@ class PlayerSerializer < ActiveModel::Serializer
              :defense,
              :name,
              :current_hp,
-             :level
+             :level,
+             :exp,
+             :exp_next
 end
