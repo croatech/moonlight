@@ -44,5 +44,12 @@
 #
 
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :gold, :free_stats, :hp, :attack, :defense
+  attributes :gold,
+             :free_stats,
+             :hp,
+             :attack,
+             :defense,
+             :name,
+             :current_hp,
+             :level
 end
