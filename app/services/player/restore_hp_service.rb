@@ -4,8 +4,7 @@ class Player::RestoreHpService
   end
 
   def call
-    return if player.current_hp >= player.hp
-    Player::RestoreHpWorker.perform_at(delay_period.seconds.from_now, player.id, restoring_hp) if player.current_hp < player.hp
+    Player::RestoreHpWorker.perform_in(delay_period.seconds, player.id, restoring_hp)
   end
 
   private

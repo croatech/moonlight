@@ -20,7 +20,6 @@ class Equipment::Items::RecalculateStatsService
     end
 
     player.current_hp = player.current_hp - item.hp
-
     player.save
   end
 
