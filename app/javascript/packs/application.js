@@ -15,6 +15,7 @@ import WeaponShop from './components/shops/weapon_shop.vue'
 import CraftShop from './components/shops/craft_shop.vue'
 import Gold from './components/player/gold.vue'
 import Stats from './components/player/stats.vue'
+import Profile from './components/player/profile.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -33,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       WeaponShop,
       CraftShop,
       Gold,
-      Stats
+      Stats,
+      Profile
     },
     data: {
       currentPlayer: null

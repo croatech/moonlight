@@ -1,6 +1,6 @@
 <template>
   <div class="gold">
-    <img src="./packs/assets/gold.png" alt="gold">
+    <img src="../../assets/gold.png" alt="gold">
     {{ player.gold }}
   </div>
 </template>
