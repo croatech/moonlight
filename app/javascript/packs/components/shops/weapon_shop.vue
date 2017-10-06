@@ -10,38 +10,25 @@
       <div class="col-md-9">
         <div class="items" v-if="currentCategory != null">
           <div class="item row" v-for="item in items">
-            <div class="col-md-3">
-              <img v-bind:src="item.image"/>
-            </div>
+            <equipment-item :item="item"></equipment-item>
 
-            <div class="col-md-9">
-              <div class="level">[{{ item.required_level }}]</div>
+            <a @click="buyItem(item.id)" class="buy-button btn btn-success">
+              Buy for {{ item.price }} gold
+            </a>
 
-              <h3>{{ item.name }}</h3>
+            <b-alert variant="danger"
+                     dismissible
+                     :show="showErrorFlash && boughtItemId == item.id"
+                     @dismissed="showErrorFlash=false">
+              {{ errorMessage }}
+            </b-alert>
 
-              <div v-for="stat in stats" :class="stat + ' stat'">
-                <img :src="'../assets/' + stat + '.png'" :alt="stat">
-                {{ item[stat] }}
-              </div>
-
-              <a @click="buyItem(item.id)" class="buy-button btn btn-success">
-                Buy for {{ item.price }} gold
-              </a>
-
-              <b-alert variant="danger"
-                       dismissible
-                       :show="showErrorFlash && boughtItemId == item.id"
-                       @dismissed="showErrorFlash=false">
-                {{ errorMessage }}
-              </b-alert>
-
-              <b-alert variant="success"
-                       dismissible
-                       :show="showSuccessFlash && boughtItemId == item.id"
-                       @dismissed="showSuccessFlash=false">
-                {{ successMessage }}
-              </b-alert>
-            </div>
+            <b-alert variant="success"
+                     dismissible
+                     :show="showSuccessFlash && boughtItemId == item.id"
+                     @dismissed="showSuccessFlash=false">
+              {{ successMessage }}
+            </b-alert>
           </div>
         </div>
 
@@ -57,6 +44,7 @@
   import axios from 'axios'
   import config from '../../config.js'
   import { eventBus } from '../../application'
+  import EquipmentItem from '../equipment/item.vue'
 
   export default {
     data: function () {
@@ -72,8 +60,15 @@
         showErrorFlash: false,
         errorMessage: '',
         showSuccessFlash: false,
-        successMessage: ''
+        successMessage: '',
+
+        showMessage: false,
+        messageType: null,
+        message: 'null'
       }
+    },
+    components: {
+      equipmentItem: EquipmentItem
     },
     methods: {
       getCategoriesList: function() {

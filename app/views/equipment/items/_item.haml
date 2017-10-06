@@ -13,7 +13,7 @@
         = image_tag "#{stat}.png"
         = item[stat]
 
-    .buy-button
+    %div
       - if params[:controller] == 'player/inventory'
         = link_to 'Put on', equipment_item_put_on_path(item.id), method: :put, class: 'btn btn-info'
         = link_to "Sell for #{item.sell_price.to_i} gold", equipment_item_sell_path(item.id), method: :put, class: 'btn btn-info'
