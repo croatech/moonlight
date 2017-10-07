@@ -13,11 +13,6 @@ class PlayerDecorator < Draper::Decorator
     end
   end
 
-  def current_skill(resource)
-    skill_name = "#{resource.type}_skill"
-    self[skill_name]
-  end
-
   def current_hp_get
     "#{current_hp} / #{hp} HP"
   end
