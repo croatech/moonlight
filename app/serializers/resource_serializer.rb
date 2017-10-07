@@ -1,3 +1,3 @@
 class ResourceSerializer < ActiveModel::Serializer
-  attributes :image, :price, :name
+  attributes :id, :image, :price, :name
 end

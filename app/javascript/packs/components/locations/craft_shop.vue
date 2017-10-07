@@ -88,11 +88,11 @@
         this.showSuccessFlash = false
 
         var link = '/tools/items/' + item_id + '/buy'
-        axios.patch(link)
+        axios.post(link)
         .then(response => {
           this.showSuccessFlash = true
           this.successMessage = 'Congrats! You have bought ' + response.data.name
-          eventBus.$emit('gold-changed', response.data.price)
+          eventBus.$emit('gold-decrease', response.data.price)
         })
         .catch(e => {
           this.showErrorFlash = true

@@ -14,4 +14,19 @@ class Api::Equipment::ItemsController < ApplicationController
       end
     end
   end
+
+  def sell
+    service = Stuff::SellService.call(player: current_player, item: find_item)
+    if service.success?
+      render status: 200, body: nil
+    else
+      render status: 500, body: nil
+    end
+  end
+
+  private
+
+  def find_item
+    Equipment::Item.find(params[:item_id])
+  end
 end
