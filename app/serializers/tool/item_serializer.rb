@@ -16,5 +16,5 @@
 #
 
 class Tool::ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :image, :required_skill, :price, :image
+  attributes :id, :name, :image, :required_skill, :price, :image, :sell_price
 end

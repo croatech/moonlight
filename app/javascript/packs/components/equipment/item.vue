@@ -1,10 +1,10 @@
 <template>
   <div class="row top">
-    <div class="col-md-3 col-md-offset-1">
+    <div class="col-md-3">
       <img v-bind:src="item.image"/>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-9">
       <div class="level">[{{ item.required_level }}]</div>
 
       <h3>{{ item.name }}</h3>
@@ -19,7 +19,6 @@
 
 <script>
   import config from '../../config'
-  import axios from 'axios'
 
   export default {
     props: ['item'],

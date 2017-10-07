@@ -53,12 +53,14 @@ class PlayerSerializer < ActiveModel::Serializer
              :current_hp,
              :level,
              :exp,
-             :exp_next,
-             :tool_items
+             :exp_next
              :avatar
 
-  has_many :put_on_equipment_items, serializer: Equipment::ItemSerializer
-  has_many :put_on_tool_items, serializer: Tool::ItemSerializer
+  has_many :put_on_equipment_items
+  has_many :put_on_tool_items
+  has_many :equipment_items
+  has_many :tool_items
+  has_many :resources
 
   belongs_to :avatar
 
