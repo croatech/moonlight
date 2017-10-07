@@ -17,7 +17,7 @@
           <a @click="putOnItem('equipment', item)" class="btn btn-info">Put on</a>
           <a @click="sellEquipmentItem(item, index)" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
         </div>
-        <h2 v-else>No equipment items</h2>
+        <h2 v-if="player.equipment_items.length == 0">No equipment items</h2>
       </div>
 
       <div class="tool_items" v-if="currentCategory == 'all' || currentCategory == 'tool_items'">
@@ -27,7 +27,7 @@
           <a @click="putOnItem('tools', item)" class="btn btn-info">Put on</a>
           <a @click="sellToolItem(item, index)" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
         </div>
-        <h2 v-else>No tool items</h2>
+        <h2 v-if="player.tool_items.length == 0">No tool items</h2>
       </div>
 
       <div class="resources" v-if="currentCategory == 'all' || currentCategory == 'resources'">
@@ -36,7 +36,7 @@
 
           <a @click="sellResource(item, index)" class="btn btn-info">Sell for {{ item.price }} gold</a>
         </div>
-        <h2 v-else>No resources</h2>
+        <h2 v-if="player.resources.length == 0">No resources</h2>
       </div>
     </div>
   </div>
