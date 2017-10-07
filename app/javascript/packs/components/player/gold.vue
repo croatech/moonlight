@@ -1,6 +1,6 @@
 <template>
   <div class="gold">
-    <img :src="'../assets/players/gold.png'" alt="gold">
+    <img src="../../assets/gold.png" alt="gold">
     {{ player.gold }}
   </div>
 </template>
@@ -11,8 +11,12 @@
   export default {
     props: ['player'],
     created: function() {
-      eventBus.$on('gold-changed', (value) => {
+      eventBus.$on('gold-decreased', (value) => {
         this.player.gold -= value
+      })
+
+      eventBus.$on('gold-increased', (value) => {
+        this.player.gold += value
       })
     }
   }

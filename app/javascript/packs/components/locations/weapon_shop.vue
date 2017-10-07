@@ -9,40 +9,31 @@
 
       <div class="col-md-9">
         <div class="items" v-if="currentCategory != null">
-          <h3 v-if="items.length == 0">Items will be soon</h3>
           <div class="item row" v-for="item in items">
-            <div class="col-md-3">
-              <img v-bind:src="item.image"/>
-            </div>
+            <equipment-item :item="item"></equipment-item>
 
-            <div class="col-md-9">
-              <div class="level">[{{ item.required_skill }}]</div>
+            <a @click="buyItem(item.id)" class="buy-button btn btn-success">
+              Buy for {{ item.price }} gold
+            </a>
 
-              <h3>{{ item.name }}</h3>
+            <b-alert variant="danger"
+                     dismissible
+                     :show="showErrorFlash && boughtItemId == item.id"
+                     @dismissed="showErrorFlash=false">
+              {{ errorMessage }}
+            </b-alert>
 
-              <a @click="buyItem(item.id)" class="buy-button btn btn-success">
-                Buy for {{ item.price }} gold
-              </a>
-
-              <b-alert variant="danger"
-                       dismissible
-                       :show="showErrorFlash && boughtItemId == item.id"
-                       @dismissed="showErrorFlash=false">
-                {{ errorMessage }}
-              </b-alert>
-
-              <b-alert variant="success"
-                       dismissible
-                       :show="showSuccessFlash && boughtItemId == item.id"
-                       @dismissed="showSuccessFlash=false">
-                {{ successMessage }}
-              </b-alert>
-            </div>
+            <b-alert variant="success"
+                     dismissible
+                     :show="showSuccessFlash && boughtItemId == item.id"
+                     @dismissed="showSuccessFlash=false">
+              {{ successMessage }}
+            </b-alert>
           </div>
         </div>
 
         <div v-if="currentCategory == null">
-          <img :src="'../assets/locations/cities/moon_light/craft_shop/bg.jpg'" alt="equipment" class="center background">
+          <img :src="'../assets/locations/cities/moon_light/' + resource_name + '/bg.jpg'" alt="equipment" class="center background">
         </div>
       </div>
     </div>
@@ -50,30 +41,48 @@
 </template>
 
 <script>
-  import config from '../../config.js'
   import axios from 'axios'
+  import config from '../../config.js'
   import { eventBus } from '../../application'
+  import EquipmentItem from '../equipment/item.vue'
 
   export default {
     data: function () {
       return {
         categories: [],
         items: [],
+        stats: config.stats,
         currentCategory: null,
         boughtItemId: null,
         resource_name: null,
-        dismissSecs: 1,
 
         // flashes
         showErrorFlash: false,
         errorMessage: '',
         showSuccessFlash: false,
-        successMessage: ''
+        successMessage: '',
+
+        showMessage: false,
+        messageType: null,
+        message: 'null'
       }
+    },
+    components: {
+      equipmentItem: EquipmentItem
     },
     methods: {
       getCategoriesList: function() {
-        axios.get('/tools/categories')
+        var pathname = window.location.pathname
+
+        // Name of resource like locations/weapon_shop, background image and api path resolving depends on this variable
+        this.resource_name = pathname.match(/weapon_shop|shop_of_artifacts/gi)[0]
+
+        // Resolving of path to endpoint api, for example if location is weapon_shop, it must be called
+        // api/equipment/categories
+        var api_resource_name = this.resource_name == 'weapon_shop' ? 'equipment' : 'artifacts'
+
+        var link = '/' + api_resource_name + '/categories'
+        axios.get(link)
         .then(response => {
           this.categories = response.data
         })
@@ -87,16 +96,15 @@
       },
       buyItem: function(item_id) {
         this.boughtItemId = item_id
-
         this.showErrorFlash = false
         this.showSuccessFlash = false
 
-        var link = '/tools/items/' + item_id + '/buy'
-        axios.patch(link)
+        var link = '/equipment/items/' + item_id + '/buy'
+        axios.post(link)
         .then(response => {
           this.showSuccessFlash = true
           this.successMessage = 'Congrats! You have bought ' + response.data.name
-          eventBus.$emit('gold-changed', response.data.price)
+          eventBus.$emit('gold-decreased', response.data.price)
         })
         .catch(e => {
           this.showErrorFlash = true

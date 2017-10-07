@@ -44,5 +44,31 @@
 #
 
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :gold, :free_stats, :hp, :attack, :defense
+  attributes :gold,
+             :free_stats,
+             :hp,
+             :attack,
+             :defense,
+             :name,
+             :current_hp,
+             :level,
+             :exp,
+             :exp_next
+             :avatar
+
+  has_many :put_on_equipment_items
+  has_many :put_on_tool_items
+  has_many :equipment_items
+  has_many :tool_items
+  has_many :resources
+
+  belongs_to :avatar
+
+  def put_on_equipment_items
+    object.wearable_equipment.includes(:category)
+  end
+
+  def put_on_tool_items
+    object.wearable_tools.includes(:category)
+  end
 end

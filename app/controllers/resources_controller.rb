@@ -6,12 +6,6 @@ class ResourcesController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  def sell
-    service = Stuff::SellService.call(player: current_player, item: find_item)
-    service.call
-    redirect_back(fallback_location: root_path)
-  end
-
   private
 
   def find_item

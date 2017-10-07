@@ -18,7 +18,6 @@
 #
 
 class Equipment::Item < ApplicationRecord
-
   self.inheritance_column = nil
 
   belongs_to :category, class_name: 'Equipment::Category', foreign_key: 'equipment_category_id'

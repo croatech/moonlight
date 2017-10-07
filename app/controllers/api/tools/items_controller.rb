@@ -14,4 +14,33 @@ class Api::Tools::ItemsController < ApplicationController
       end
     end
   end
+
+  def put_on
+    service = Stuff::PutOnService.call(player: current_player, item: find_item)
+    if service.success?
+      render status: 200, json: PlayerQuery.call(current_player.id)
+    else
+      render status: 500, body: nil
+    end
+  end
+
+  def take_off
+    service = Stuff::TakeOffService.call(player: current_player, item: find_item)
+    if service.success?
+      render status: 200, json: PlayerQuery.call(current_player.id)
+    else
+      render status: 500, body: nil
+    end
+  end
+
+  def sell
+    Stuff::SellService.call(player: current_player, item: find_item)
+    redirect_back(fallback_location: root_path)
+  end
+
+  private
+
+  def find_item
+    Tool::Item.find(params[:item_id])
+  end
 end

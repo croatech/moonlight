@@ -12,6 +12,7 @@ class Player::Stats::IncreaseService
         player.decrement!(:free_stats, 1)
       end
 
+      Player::RestoreHpService.new(player).call if stat == 'hp'
       context.player = player
     else
       context.fail!(error: 'You have no free stats')

@@ -4,9 +4,9 @@ describe Api::Tools::ItemsController, type: :controller do
   let(:player) { create(:player, gold: 6, level: 6, lumberjacking_skill: 6) }
   let(:item) { create(:tool_item, price: 6, required_skill: 6) }
 
-  describe 'PATCH #buy' do
+  describe 'POST #buy' do
     subject do
-      patch :buy, params: { item_id: item.id }
+      post :buy, params: { item_id: item.id }
     end
 
     context 'unathorized' do

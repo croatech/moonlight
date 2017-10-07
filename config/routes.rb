@@ -24,7 +24,10 @@ Rails.application.routes.draw do
     namespace :equipment do
       resources :categories, only: :index
       resources :items, only: :show do
-        patch :buy
+        post :buy
+        post :put_on
+        post :take_off
+        post :sell
       end
     end
 
@@ -35,8 +38,15 @@ Rails.application.routes.draw do
     namespace :tools do
       resources :categories, only: :index
       resources :items, only: :show do
-        patch :buy
+        post :buy
+        post :put_on
+        post :take_off
+        post :sell
       end
+    end
+
+    resources :resources do
+      post :sell
     end
   end
 
@@ -50,7 +60,6 @@ Rails.application.routes.draw do
 
   resources :resources do
     put :collect
-    put :sell
   end
 
   namespace :player do
@@ -58,31 +67,12 @@ Rails.application.routes.draw do
 
     namespace :inventory, path: 'inventory' do
       get :index
-      get :equipment
-      get :tools
-      get :resources
     end
 
     namespace :settings, path: 'settings' do
       get :index
       get :avatar
       put :change_avatar
-    end
-  end
-
-  namespace :equipment do
-    resources :items, only: :show do
-      put :put_on
-      put :take_off
-      put :sell
-    end
-  end
-
-  namespace :tool do
-    resources :items, except: :all do
-      put :put_on
-      put :take_off
-      put :sell
     end
   end
 

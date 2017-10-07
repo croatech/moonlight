@@ -46,11 +46,6 @@
           this.errorMessage = e.response.data
         })
       }
-    },
-    created: function() {
-      eventBus.$on('stat-was-incremented', (value) => {
-        this.player.gold = this.player.gold - value
-      })
     }
   }
 </script>
