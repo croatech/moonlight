@@ -11,11 +11,11 @@
   export default {
     props: ['player'],
     created: function() {
-      eventBus.$on('gold-decrease', (value) => {
+      eventBus.$on('gold-decreased', (value) => {
         this.player.gold -= value
       })
 
-      eventBus.$on('gold-increase', (value) => {
+      eventBus.$on('gold-increased', (value) => {
         this.player.gold += value
       })
     }

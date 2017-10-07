@@ -48,6 +48,7 @@
 
 <script>
   import axios from 'axios'
+  import { eventBus } from '../../application'
 
   export default {
     props: ['player'],
@@ -58,6 +59,11 @@
       expPercent: function() {
         return (this.player.exp / this.player.exp_next * 100) + '%'
       }
+    },
+    created: function() {
+      eventBus.$on('player-changed', (data) => {
+        this.player = data
+      })
     }
   }
 </script>

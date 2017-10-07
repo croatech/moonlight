@@ -65,12 +65,22 @@
       setCategory: function(name) {
         this.currentCategory = name
       },
+      putOnItem(type, item) {
+        var link = type + '/items/' + item.id + '/put_on'
+        axios.post(link)
+        .then(response => {
+          eventBus.$emit('player-changed', response.data)
+        })
+        .catch(e => {
+          console.log(e.response.data)
+        })
+      },
       sellEquipmentItem(item, index) {
         var link = 'equipment/items/' + item.id + '/sell'
         axios.post(link)
         .then(response => {
           this.player.equipment_items.splice(index, 1)
-          eventBus.$emit('gold-increase', item.sell_price)
+          eventBus.$emit('gold-increased', item.sell_price)
         })
         .catch(e => {
           console.log(e.response.data)
@@ -81,7 +91,7 @@
         axios.post(link)
         .then(response => {
           this.player.tool_items.splice(index, 1)
-          eventBus.$emit('gold-increase', item.sell_price)
+          eventBus.$emit('gold-increased', item.sell_price)
         })
         .catch(e => {
           console.log(e.response.data)
@@ -92,12 +102,17 @@
         axios.post(link)
         .then(response => {
           this.player.resources.splice(index, 1)
-          eventBus.$emit('gold-increase', item.price)
+          eventBus.$emit('gold-increased', item.price)
         })
         .catch(e => {
           console.log(e.response.data)
         })
       }
     },
+    created: function() {
+      eventBus.$on('player-changed', (data) => {
+        this.player = data
+      })
+    }
   }
 </script>

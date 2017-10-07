@@ -15,6 +15,15 @@ class Api::Equipment::ItemsController < ApplicationController
     end
   end
 
+  def put_on
+    service = Stuff::PutOnService.call(player: current_player, item: find_item)
+    if service.success?
+      render status: 200, json: PlayerQuery.call(current_player.id)
+    else
+      render status: 500, body: nil
+    end
+  end
+
   def sell
     service = Stuff::SellService.call(player: current_player, item: find_item)
     if service.success?
