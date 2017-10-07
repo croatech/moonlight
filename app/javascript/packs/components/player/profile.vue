@@ -25,7 +25,7 @@
     <div class="player">
       <div class="player-items left-column">
         <div v-for="item in player.put_on_equipment_items" :class="item.category.name.toLowerCase() + ' item'">
-          <a href="'equipment/items/' + item.id + 'take_off'">
+          <a @click="takeOffItem('equipment', item)">
             <img :src="item.image" alt="item">
           </a>
         </div>
@@ -37,7 +37,7 @@
 
       <div class="player-items tools">
         <div v-for="(item, i) in player.put_on_tool_items" :class="'item tool num-' + i">
-          <a href="">
+          <a @click="takeOffItem('tools', item)">
             <img :src="item.image" alt="tool">
           </a>
         </div>
@@ -52,6 +52,18 @@
 
   export default {
     props: ['player'],
+    methods: {
+      takeOffItem(type, item) {
+        var link = type + '/items/' + item.id + '/take_off'
+        axios.post(link)
+        .then(response => {
+          eventBus.$emit('player-changed', response.data)
+        })
+        .catch(e => {
+          console.log(e.response.data)
+        })
+      }
+    },
     computed: {
       hpPercent: function() {
         return (this.player.current_hp / this.player.hp * 100) + '%'
