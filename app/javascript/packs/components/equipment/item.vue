@@ -10,7 +10,7 @@
       <h3>{{ item.name }}</h3>
 
       <div v-for="stat in stats" :class="stat + ' stat'">
-        <img :src="'../assets/' + stat + '.png'" :alt="stat">
+        <img :src="'../../assets/' + stat + '.png'" :alt="stat">
         {{ item[stat] }}
       </div>
     </div>

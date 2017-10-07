@@ -58,9 +58,6 @@ Rails.application.routes.draw do
 
     namespace :inventory, path: 'inventory' do
       get :index
-      get :equipment
-      get :tools
-      get :resources
     end
 
     namespace :settings, path: 'settings' do
