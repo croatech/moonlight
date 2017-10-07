@@ -1,18 +1,13 @@
 <template>
   <div class="row top">
-    <div class="col-md-3 col-md-offset-1">
+    <div class="top col-md-3 col-md-offset-1">
       <img v-bind:src="item.image"/>
     </div>
 
     <div class="col-md-6">
-      <div class="level">[{{ item.required_level }}]</div>
+      <div class="level">[{{ item.required_skill }}]</div>
 
       <h3>{{ item.name }}</h3>
-
-      <div v-for="stat in stats" :class="stat + ' stat'">
-        <img :src="'../assets/' + stat + '.png'" :alt="stat">
-        {{ item[stat] }}
-      </div>
     </div>
   </div>
 </template>

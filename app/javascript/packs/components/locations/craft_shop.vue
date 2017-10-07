@@ -11,33 +11,25 @@
         <div class="items" v-if="currentCategory != null">
           <h3 v-if="items.length == 0">Items will be soon</h3>
           <div class="item row" v-for="item in items">
-            <div class="col-md-3">
-              <img v-bind:src="item.image"/>
-            </div>
+            <tool-item :item="item"></tool-item>
 
-            <div class="col-md-9">
-              <div class="level">[{{ item.required_skill }}]</div>
+            <a @click="buyItem(item.id)" class="buy-button btn btn-success">
+              Buy for {{ item.price }} gold
+            </a>
 
-              <h3>{{ item.name }}</h3>
+            <b-alert variant="danger"
+                     dismissible
+                     :show="showErrorFlash && boughtItemId == item.id"
+                     @dismissed="showErrorFlash=false">
+              {{ errorMessage }}
+            </b-alert>
 
-              <a @click="buyItem(item.id)" class="buy-button btn btn-success">
-                Buy for {{ item.price }} gold
-              </a>
-
-              <b-alert variant="danger"
-                       dismissible
-                       :show="showErrorFlash && boughtItemId == item.id"
-                       @dismissed="showErrorFlash=false">
-                {{ errorMessage }}
-              </b-alert>
-
-              <b-alert variant="success"
-                       dismissible
-                       :show="showSuccessFlash && boughtItemId == item.id"
-                       @dismissed="showSuccessFlash=false">
-                {{ successMessage }}
-              </b-alert>
-            </div>
+            <b-alert variant="success"
+                     dismissible
+                     :show="showSuccessFlash && boughtItemId == item.id"
+                     @dismissed="showSuccessFlash=false">
+              {{ successMessage }}
+            </b-alert>
           </div>
         </div>
 
@@ -53,6 +45,7 @@
   import config from '../../config.js'
   import axios from 'axios'
   import { eventBus } from '../../application'
+  import ToolItem from '../tool/item.vue'
 
   export default {
     data: function () {
@@ -70,6 +63,9 @@
         showSuccessFlash: false,
         successMessage: ''
       }
+    },
+    components: {
+      toolItem: ToolItem
     },
     methods: {
       getCategoriesList: function() {
