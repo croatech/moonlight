@@ -27,6 +27,8 @@ class Equipment::Item < ApplicationRecord
 
   validates :name, :equipment_category_id, :required_level, :price, presence: true
 
+  scope :not_artifact, -> { where(artifact: false) }
+
   def sell_price
     self.artifact? ? price : price * 0.9
   end

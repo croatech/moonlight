@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   before_action :check_for_an_active_fight
-  #before_action :log_get
-  #before_action :online_players
+  before_action :load_logs
+  before_action :online_players
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def check_for_an_active_fight
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def log_get
+  def load_logs
     @logs = current_user.player.logs.order('id DESC') if current_user
   end
 
