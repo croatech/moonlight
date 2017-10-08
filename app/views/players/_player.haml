@@ -20,7 +20,7 @@
           = image_tag item.image.url
 
   .avatar
-    = image_tag @player.avatar.image.url, class: 'avatar'
+    = image_tag @player.avatar.url, class: 'avatar'
 
   - if @wearable_tools.present?
     - @wearable_tools.each_with_index do |item, index|

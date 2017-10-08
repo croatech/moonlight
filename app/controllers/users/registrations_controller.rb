@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     return unless resource
-    Player.create(user_id: resource.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: resource.name, avatar_id: Player.default_avatar.id)
+    Player.create(user_id: resource.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: resource.name, avatar_id: Avatar.first.id)
   end
 
   # GET /resource/edit

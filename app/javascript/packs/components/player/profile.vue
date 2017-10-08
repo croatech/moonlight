@@ -26,19 +26,19 @@
       <div class="player-items left-column">
         <div v-for="item in player.put_on_equipment_items" :class="item.category.name.toLowerCase() + ' item'">
           <a @click="takeOffItem('equipment', item)">
-            <img :src="item.image" alt="item">
+            <img :src="item.image.url" alt="item">
           </a>
         </div>
       </div>
 
       <div class="avatar">
-        <img :src="player.avatar.image" alt="avatar">
+        <img :src="player.avatar.url" alt="avatar">
       </div>
 
       <div class="player-items tools">
         <div v-for="(item, i) in player.put_on_tool_items" :class="'item tool num-' + i">
           <a @click="takeOffItem('tools', item)">
-            <img :src="item.image" alt="tool">
+            <img :src="item.image.url" alt="tool">
           </a>
         </div>
       </div>

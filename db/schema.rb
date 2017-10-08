@@ -18,11 +18,8 @@ ActiveRecord::Schema.define(version: 201709232242333) do
   create_table "avatars", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.boolean "private", default: true
+    t.string "image"
   end
 
   create_table "bots", id: :serial, force: :cascade do |t|
@@ -33,11 +30,8 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.string "inventory", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.integer "level"
+    t.string "avatar"
   end
 
   create_table "equipment_categories", id: :serial, force: :cascade do |t|
@@ -52,12 +46,9 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "hp", default: 0
     t.integer "required_level", default: 1
     t.integer "price"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.boolean "artifact", default: false
     t.bigint "equipment_category_id"
+    t.string "image"
     t.index ["equipment_category_id"], name: "index_equipment_items_on_equipment_category_id"
   end
 
@@ -140,10 +131,6 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "exp_next", default: 100
     t.string "equipment", default: [], array: true
     t.integer "free_stats", default: 10
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.integer "lumberjacking_skill", default: 0
     t.integer "fishing_skill", default: 0
     t.string "tools", default: [], array: true
@@ -162,10 +149,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "item_id"
     t.integer "price"
     t.string "type"
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
+    t.string "image"
     t.index ["item_id"], name: "index_resources_on_item_id"
   end
 
@@ -203,12 +187,9 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.integer "required_skill"
     t.bigint "tool_category_id"
+    t.string "image"
     t.index ["tool_category_id"], name: "index_tool_items_on_tool_category_id"
   end
 

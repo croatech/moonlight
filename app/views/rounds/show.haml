@@ -14,7 +14,7 @@
                 %span.sr-only 20% Complete
                 1 MP
 
-            = image_tag @player.avatar.image.url, class: 'image'
+            = image_tag @player.avatar.url, class: 'image'
 
             .points
               %h4.block-title Defense:
@@ -44,7 +44,7 @@
                   = f.label point_name
                   = f.radio_button 'attack', point_name, checked: true
 
-            = image_tag @bot.image.url, class: 'image'
+            = image_tag @bot.avatar.url, class: 'image'
 
       .row
         = f.submit 'HIT', class: 'btn btn-danger center'

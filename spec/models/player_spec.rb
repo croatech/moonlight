@@ -28,10 +28,6 @@
 #  exp_next            :integer          default(100)
 #  equipment           :string           default([]), is an Array
 #  free_stats          :integer          default(10)
-#  image_file_name     :string
-#  image_content_type  :string
-#  image_file_size     :integer
-#  image_updated_at    :datetime
 #  lumberjacking_skill :integer          default(0)
 #  fishing_skill       :integer          default(0)
 #  tools               :string           default([]), is an Array

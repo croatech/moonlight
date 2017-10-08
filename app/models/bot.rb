@@ -2,19 +2,16 @@
 #
 # Table name: bots
 #
-#  id                 :integer          not null, primary key
-#  name               :string
-#  attack             :integer
-#  defense            :integer
-#  hp                 :integer
-#  inventory          :string           default([]), is an Array
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
-#  level              :integer
+#  id         :integer          not null, primary key
+#  name       :string
+#  attack     :integer
+#  defense    :integer
+#  hp         :integer
+#  inventory  :string           default([]), is an Array
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  level      :integer
+#  avatar     :string
 #
 
 class Bot < ApplicationRecord
@@ -25,9 +22,8 @@ class Bot < ApplicationRecord
   has_many :location_bots
   has_many :locations, through: :location_bots
 
-  has_attached_file :image, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  
+  mount_uploader :avatar, AvatarUploader
+
   validates :name, :attack, :defense, :hp, presence: true
 
   def given_exp
@@ -39,7 +35,7 @@ class Bot < ApplicationRecord
   end
 
   def try_drop_gold
-    try_chance(percent: 100)
+    try_chance(percent: 30)
   end
 
   def drop_item
@@ -47,10 +43,6 @@ class Bot < ApplicationRecord
   end
 
   def try_drop_item
-    try_chance(percent: 10)
-  end
-
-  def avatar
-    image
+    try_chance(percent: 1)
   end
 end

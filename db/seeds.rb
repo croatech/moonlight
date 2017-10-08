@@ -1,5 +1,6 @@
 # DELETE ALL
 User.delete_all
+Round.delete_all
 Fight.delete_all
 Log.delete_all
 Player.delete_all
@@ -12,6 +13,7 @@ LocationBot.delete_all
 Resource.delete_all
 Bot.delete_all
 Location.delete_all
+Avatar.delete_all
 
 # Delete sidekiq workers
 Sidekiq.redis { |conn| conn.flushdb }
@@ -23,7 +25,7 @@ Sidekiq.redis { |conn| conn.flushdb }
 
 # USERS & PLAYERS
   user = User.create!(email: 'croaton6@gmail.com', password: 'password', name: 'Croaton')
-  Player.create(user_id: user.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: user.name, avatar_id: Player.default_avatar.id)
+  Player.create(user_id: user.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: user.name, avatar_id: Avatar.first.id)
 
 # LOCATIONS
   Location.create!(name: 'Moon Light',          slug: 'moon_light')
@@ -233,7 +235,7 @@ Sidekiq.redis { |conn| conn.flushdb }
                              {name: 'Bracers of Berserker', equipment_category_id: Equipment::Category.find_by(type: 'bracers').id,  attack: 15,  defense: 85,  hp: 105, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/bracers/art/bracers_of_berserker.png"), artifact: true},
                              {name: 'Boots of Berserker',   equipment_category_id: Equipment::Category.find_by(type: 'foots').id,    attack: 15,  defense: 85,  hp: 105, required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/foots/art/boots_of_berserker.png"), artifact: true},
                              {name: 'Belt of Berserker',    equipment_category_id: Equipment::Category.find_by(type: 'belt').id,     attack: 0,   defense: 75,  hp: 85,  required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/belt/art/belt_of_berserker.png"), artifact: true},
-                             {name: 'Axe of Berserker',   equipment_category_id: Equipment::Category.find_by(type: 'weapon').id,     attack: 180, defense: 0,   hp: 0,   required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/axe_of_berserker.png"), artifact: true},
+                             {name: 'Axe of Berserker',     equipment_category_id: Equipment::Category.find_by(type: 'weapon').id,     attack: 180, defense: 0,   hp: 0,   required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/weapon/art/axe_of_berserker.png"), artifact: true},
                              {name: 'Ring of Berserker',    equipment_category_id: Equipment::Category.find_by(type: 'ring').id,     attack: 10,  defense: 70,  hp: 95,  required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/ring/art/ring_of_berserker.png"), artifact: true},
                              {name: 'Amulet of Berserker',  equipment_category_id: Equipment::Category.find_by(type: 'necklace').id, attack: 0,   defense: 70,  hp: 80,  required_level: 12,  price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/necklace/art/amulet_of_berserker.png"), artifact: true}]
   ### MAD KNIGHT SET
@@ -362,14 +364,14 @@ Sidekiq.redis { |conn| conn.flushdb }
     LocationResource.create!(location_id: Location.find_by(name: 'Hanging Willage').id, resource_id: Resource.find_by(name: 'Mysterious wood').id)
 
 # BOTS
-  Bot.create! [{level: 1, name: 'Armillaria',  attack: 15,  defense: 80,  hp: 100, image: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
-               {level: 2, name: 'Chanterelle', attack: 40,  defense: 85,  hp: 150, image: File.new("#{Rails.root}/db/seeds/bots/chanterelle.jpg")},
-               {level: 3, name: 'Amanita',     attack: 60,  defense: 120, hp: 200, image: File.new("#{Rails.root}/db/seeds/bots/amanita.jpg")},
-               {level: 4, name: 'Rat',         attack: 90,  defense: 180, hp: 250, image: File.new("#{Rails.root}/db/seeds/bots/rat.jpg")},
-               {level: 5, name: 'Spider',      attack: 110, defense: 300, hp: 400, image: File.new("#{Rails.root}/db/seeds/bots/spider.jpg")},
-               {level: 6, name: 'Hoblin',      attack: 160, defense: 300, hp: 600, image: File.new("#{Rails.root}/db/seeds/bots/hoblin.jpg")},
-               {level: 7, name: 'Ork',         attack: 200, defense: 350, hp: 800, image: File.new("#{Rails.root}/db/seeds/bots/ork.jpg")},
-               {level: 8, name: 'Drowned',     attack: 220,  defense: 80, hp: 1000, image: File.new("#{Rails.root}/db/seeds/bots/drowned.jpg")}]
+  Bot.create! [{level: 1, name: 'Armillaria',  attack: 15,  defense: 80,  hp: 100, avatar: File.new("#{Rails.root}/db/seeds/bots/armillaria.jpg")},
+               {level: 2, name: 'Chanterelle', attack: 40,  defense: 85,  hp: 150, avatar: File.new("#{Rails.root}/db/seeds/bots/chanterelle.jpg")},
+               {level: 3, name: 'Amanita',     attack: 60,  defense: 120, hp: 200, avatar: File.new("#{Rails.root}/db/seeds/bots/amanita.jpg")},
+               {level: 4, name: 'Rat',         attack: 90,  defense: 180, hp: 250, avatar: File.new("#{Rails.root}/db/seeds/bots/rat.jpg")},
+               {level: 5, name: 'Spider',      attack: 110, defense: 300, hp: 400, avatar: File.new("#{Rails.root}/db/seeds/bots/spider.jpg")},
+               {level: 6, name: 'Hoblin',      attack: 160, defense: 300, hp: 600, avatar: File.new("#{Rails.root}/db/seeds/bots/hoblin.jpg")},
+               {level: 7, name: 'Ork',         attack: 200, defense: 350, hp: 800, avatar: File.new("#{Rails.root}/db/seeds/bots/ork.jpg")},
+               {level: 8, name: 'Drowned',     attack: 220, defense: 80, hp: 1000, avatar: File.new("#{Rails.root}/db/seeds/bots/drowned.jpg")}]
 
 # POPULATE BOTS
   ## MULTIPLE CELLS

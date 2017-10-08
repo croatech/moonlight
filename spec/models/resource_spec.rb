@@ -2,15 +2,12 @@
 #
 # Table name: resources
 #
-#  id                 :integer          not null, primary key
-#  name               :string
-#  item_id            :integer
-#  price              :integer
-#  type               :string
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
+#  id      :integer          not null, primary key
+#  name    :string
+#  item_id :integer
+#  price   :integer
+#  type    :string
+#  image   :string
 #
 
 require 'spec_helper'
