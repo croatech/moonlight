@@ -53,8 +53,10 @@ class PlayerSerializer < ActiveModel::Serializer
              :current_hp,
              :level,
              :exp,
-             :exp_next
-             :avatar
+             :exp_next,
+             :avatar,
+             :lumberjacking_skill,
+             :fishing_skill
 
   has_many :put_on_equipment_items
   has_many :put_on_tool_items

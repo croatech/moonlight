@@ -8,10 +8,10 @@
       </div>
 
       <div class="col-md-9">
-        <div class="items" v-if="currentCategory != null">
+        <div class="items" v-if="currentCategoryIndex != null">
           <h3 v-if="items.length == 0">Items will be soon</h3>
           <div class="item row" v-for="item in items">
-            <tool-item :item="item"></tool-item>
+            <tool-item :item="item" :playerSkill="playerSkill"></tool-item>
 
             <a @click="buyItem(item.id)" class="buy-button btn btn-success">
               Buy for {{ item.price }} gold
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div v-if="currentCategory == null">
+        <div v-if="currentCategoryIndex == null">
           <img :src="'../assets/locations/cities/moon_light/craft_shop/bg.jpg'" alt="equipment" class="center background">
         </div>
       </div>
@@ -48,11 +48,13 @@
   import ToolItem from '../tool/item.vue'
 
   export default {
+    props: ['player'],
     data: function () {
       return {
         categories: [],
         items: [],
-        currentCategory: null,
+        currentCategoryIndex: null,
+        playerSkill: null,
         boughtItemId: null,
         resource_name: null,
         dismissSecs: 1,
@@ -78,7 +80,11 @@
         })
       },
       showCategory: function(index) {
-        this.currentCategory = index
+        this.currentCategoryIndex = index
+
+        var categoryName = this.categories[index].name.toLowerCase()
+        this.playerSkill = this.player[categoryName + '_skill']
+
         this.items = this.categories[index].items
       },
       buyItem: function(item_id) {
@@ -100,7 +106,7 @@
         })
       },
       resolveCategoryClass: function(index) {
-        if(this.currentCategory == index) {
+        if(this.currentCategoryIndex == index) {
           return 'active'
         }
       }

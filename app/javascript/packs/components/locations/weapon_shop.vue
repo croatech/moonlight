@@ -10,7 +10,7 @@
       <div class="col-md-9">
         <div class="items" v-if="currentCategory != null">
           <div class="item row" v-for="item in items">
-            <equipment-item :item="item"></equipment-item>
+            <equipment-item :item="item" :playerLevel="player.level"></equipment-item>
 
             <a @click="buyItem(item.id)" class="buy-button btn btn-success">
               Buy for {{ item.price }} gold
@@ -47,6 +47,7 @@
   import EquipmentItem from '../equipment/item.vue'
 
   export default {
+    props: ['player'],
     data: function () {
       return {
         categories: [],

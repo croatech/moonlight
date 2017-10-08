@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-9">
-      <div class="level">[{{ item.required_level }}]</div>
+      <div :class="'level ' + checkForNotAvailableLevel(item.required_level, this.playerLevel)">[{{ item.required_level }}]</div>
 
       <h3>{{ item.name }}</h3>
 
@@ -21,10 +21,15 @@
   import config from '../../config'
 
   export default {
-    props: ['item'],
+    props: ['item', 'playerLevel'],
     data: function() {
       return {
         stats: config.stats
+      }
+    },
+    methods: {
+      checkForNotAvailableLevel(itemLevel, playerLevel) {
+        return itemLevel > playerLevel ? 'red' : ''
       }
     }
   }
