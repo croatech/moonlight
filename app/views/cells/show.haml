@@ -7,13 +7,8 @@
       .bots
         - @bots.each do |bot|
           - cache bot do
-            .bot.spoiler-wrapper
-              .spoiler.folded
-                = link_to "#{bot.name}[#{bot.level}]", "javascript:void(0);"
-
-              .spoiler-text
-                .row
-                  = render 'bots/bot', bot: bot
+            .bot.row
+              = render 'bots/bot', bot: bot
 
     - if @resources.present?
       .resources

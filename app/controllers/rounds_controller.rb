@@ -15,8 +15,7 @@ class RoundsController < ApplicationController
   def update
     form_params = params.values[3]
     fight = Fight.find(params[:fight_id])
-    service = Fight::HitService.new(fight, form_params['defense'], form_params['attack'])
-    service.call
+    Fight::HitService.new(fight, form_params['defense'], form_params['attack']).call
 
     if fight.finished?
       redirect_to fight_path(fight.id)

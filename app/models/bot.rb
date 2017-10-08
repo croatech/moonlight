@@ -49,4 +49,8 @@ class Bot < ApplicationRecord
   def try_drop_item
     try_chance(percent: 10)
   end
+
+  def avatar
+    image
+  end
 end

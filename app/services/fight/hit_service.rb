@@ -18,7 +18,6 @@ class Fight::HitService
     round.update(player_damage: player_damage, bot_damage: bot_damage, status: :finished)
     checking_for_finishing_fight(player_damage, bot_damage)
     player.save
-    start_restore_hp
   end
 
   private
@@ -74,6 +73,7 @@ class Fight::HitService
 
   def finish_fight(winner:)
     fight.update(winner_type: winner, status: :finished)
+    start_restore_hp
   end
 
   def increase_player_exp
@@ -81,12 +81,10 @@ class Fight::HitService
   end
 
   def drop_get
-    service = Fight::DropGetService.new(fight, player, bot)
-    service.call
+    Fight::DropGetService.new(fight, player, bot).call
   end
 
   def start_restore_hp
-    service = Player::RestoreHpService.new(player)
-    service.call
+    Player::RestoreHpService.new(player).call
   end
 end
