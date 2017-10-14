@@ -127,6 +127,6 @@ class Player < ApplicationRecord
   end
 
   def avatar
-    Avatar.find(avatar_id).image
+    Avatar.any? ? Avatar.find(avatar_id).image : nil
   end
 end
