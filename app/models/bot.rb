@@ -38,8 +38,8 @@ class Bot < ApplicationRecord
     try_chance(percent: 30)
   end
 
-  def drop_item
-    Equipment::Item.not_artifact.where(required_level: self.level).sample.id
+  def dropped_item
+    Equipment::Item.not_artifact.where(required_level: self.level).sample
   end
 
   def try_drop_item

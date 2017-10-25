@@ -41,19 +41,19 @@ Sidekiq.redis { |conn| conn.flushdb }
       case t + 1
       when 20, 21
        location_name = 'Northern Forest'
-      when 22    
+      when 22
        location_name = 'Mycelium'
-      when 28    
+      when 28
        location_name = 'Dalf Lagoon'
       when 29, 36
        location_name = 'Sacred Forest'
-      when 37    
+      when 37
        location_name = 'Shady Walk'
-      when 44    
+      when 44
        location_name = 'Mystic Thicket'
-      when 45    
+      when 45
        location_name = 'River Fork'
-      when 53    
+      when 53
        location_name = 'Hanging Willage'
       end
 
