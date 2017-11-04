@@ -13,8 +13,8 @@ class Fight::HitService
   end
 
   def call
-    player_damage = calculate_player_damage
-    bot_damage = calculate_bot_damage
+    player_damage = calculate_damage(player, bot)
+    bot_damage = calculate_damage(bot, player)
     round.update(player_damage: player_damage, bot_damage: bot_damage, status: :finished)
     checking_for_finishing_fight(player_damage, bot_damage)
     player.save
@@ -22,33 +22,19 @@ class Fight::HitService
 
   private
 
-  def calculate_player_damage
-    if point_is_blocked?(player_attack_point, bot_defense_point)
-      0
-    else
-      hit_damage(player, bot)
-    end
+  def calculate_damage(attacker, defender)
+    return 0 if point_is_blocked?(attacker)
+
+    main_damage = attacker.attack - defender.defense * 0.25
+    additional_level_damage = ((attacker.level - defender.level) * 0.10) * main_damage
+    main_damage + additional_level_damage
   end
 
-  def calculate_bot_damage
-    if point_is_blocked?(bot_attack_point, player_defense_point)
-      0
+  def point_is_blocked?(attacker)
+    if attacker.class.is_a?(Player)
+      player_attack_point == bot_defense_point
     else
-      hit_damage(bot, player)
-    end
-  end
-
-  def point_is_blocked?(attack_point, defense_point)
-    attack_point == defense_point
-  end
-
-  def hit_damage(attacker, defender)
-    if attacker == player
-      damage = player.attack - defender.defense * 0.25
-      damage < 0 ? player.attack / 2 : damage
-    else
-      damage = attacker.attack - defender.defense * 0.25
-      damage < 0 ? attacker.attack / 2 : damage
+      bot_attack_point == player_defense_point
     end
   end
 
