@@ -15,7 +15,6 @@
 #
 
 class Bot < ApplicationRecord
-
   include Percentable
 
   has_many :fights

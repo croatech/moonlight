@@ -3,6 +3,7 @@ class Fight::StartService
 
   def call
     pre_initialize
+    check_for_an_active_fight
     fight_create
     first_round_create
     context.object = { fight_id: fight.id, round_id: round.id }
@@ -15,6 +16,10 @@ class Fight::StartService
   def pre_initialize
     @player = context.player
     @bot = context.bot
+  end
+
+  def check_for_an_active_fight
+    context.fail!(error: 'Player has an active fight') if player.active_fight.present?
   end
 
   def fight_create
