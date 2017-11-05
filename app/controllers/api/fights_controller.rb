@@ -1,15 +1,12 @@
-class RoundsController < ApplicationController
-
-  before_action :authenticate_user!
-
+class Api::FightsController < ApplicationController
   def show
-    fight = Fight.find(params[:fight_id])
+    fight = current_player.active_fight
     @player = fight.player
     @bot = fight.bot
     @round = fight.rounds.last
-    @rounds = fight.rounds.finished.limit(5).order('id DESC')
+    @rounds = fight.rounds.finished.limit(5).order(id: :desc)
     @points = Fight::POINTS
-    redirect_to fight_path(fight.id) if fight.finished?
+    render json: fight
   end
 
   def update
@@ -20,7 +17,7 @@ class RoundsController < ApplicationController
     if fight.finished?
       redirect_to fight_path(fight.id)
     else
-      redirect_to fight_round_path(fight_id: fight.id, id: fight.rounds.last.id)
+      redirect_to fight_process_path(fight_id: fight.id)
     end
   end
 end

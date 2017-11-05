@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def check_for_an_active_fight
-    unless params[:controller] == 'rounds' || params[:controller] == 'devise'
+    unless params[:controller] == 'fights' || params[:controller] == 'devise'
       fight = current_player.active_fight
       return if fight.nil?
-      redirect_to fight_round_path(fight_id: fight.id, id: fight.rounds.last.id)
+      redirect_to fight_path
     end
   end
 

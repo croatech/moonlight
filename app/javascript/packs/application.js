@@ -17,6 +17,7 @@ import CraftShop from './components/locations/craft_shop.vue'
 import Gold from './components/player/gold.vue'
 import Stats from './components/player/stats.vue'
 import Inventory from './components/player/inventory.vue'
+import Fight from './components/fight.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -29,9 +30,7 @@ axios.defaults.baseURL = 'http://localhost:3000/api';
 
 export const store = new Vuex.Store({
   state: {
-    player: {
-      gold: null
-    }
+    player: {}
   },
   mutations: {
     increment_gold(state, n) {
@@ -46,7 +45,6 @@ export const store = new Vuex.Store({
   }
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app',
@@ -56,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
       CraftShop,
       Gold,
       Stats,
-      Inventory
+      Inventory,
+      Fight
     },
     data: {
       currentPlayer: null

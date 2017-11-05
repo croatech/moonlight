@@ -5,18 +5,11 @@ class FightsController < ApplicationController
     bot = current_player.location.bots.find(params[:bot_id])
     service = Fight::StartService.call(player: current_player, bot: bot)
     if service.success?
-      redirect_to fight_round_path(fight_id: service.object[:fight_id], id: service.object[:round_id])
+      redirect_to fight_path
     else
       redirect_back(fallback_location: root_path)
     end
   end
 
-  def show
-    @player = current_player
-    @fight = Fight.find(params[:id])
-    @rounds = @fight.rounds.finished
-    @winner = @fight.winner
-    @player = @fight.player
-    @bot = @fight.bot
-  end
+  def show; end
 end

@@ -48,14 +48,11 @@ Rails.application.routes.draw do
     resources :resources do
       post :sell
     end
+
+    resource :fight, only: [:show, :update]
   end
 
-  resources :fights, only: [:create, :show] do
-    resources :rounds do
-      post :hit
-    end
-  end
-
+  resource :fight, only: [:create, :show]
   resources :players, only: :show
 
   resources :resources do

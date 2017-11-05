@@ -6,7 +6,7 @@ class Fight::StartService
     check_for_an_active_fight
     fight_create
     first_round_create
-    context.object = { fight_id: fight.id, round_id: round.id }
+    context.fight_id = fight.id
   end
 
   private
