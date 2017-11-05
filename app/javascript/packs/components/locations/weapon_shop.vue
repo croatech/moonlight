@@ -43,7 +43,6 @@
 <script>
   import axios from 'axios'
   import config from '../../config.js'
-  import { eventBus } from '../../application'
   import EquipmentItem from '../equipment/item.vue'
 
   export default {
@@ -70,6 +69,11 @@
     },
     components: {
       equipmentItem: EquipmentItem
+    },
+    computed: {
+      player() {
+        return this.$store.state.player
+      }
     },
     methods: {
       getCategoriesList: function() {

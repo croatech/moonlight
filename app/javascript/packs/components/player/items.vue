@@ -47,7 +47,6 @@
   import EquipmentItem from '../equipment/item.vue'
   import ToolItem from '../tool/item.vue'
   import Resource from '../resources/item.vue'
-  import { eventBus } from '../../application'
 
   export default {
     props: ['player'],
@@ -69,7 +68,7 @@
         var link = type + '/items/' + item.id + '/put_on'
         axios.post(link)
         .then(response => {
-          eventBus.$emit('player-changed', response.data)
+          this.$store.commit('updatePlayer', response.data)
         })
         .catch(e => {
           console.log(e.response.data)
@@ -91,7 +90,7 @@
         axios.post(link)
         .then(response => {
           this.player.tool_items.splice(index, 1)
-          eventBus.$emit('gold-increased', item.sell_price)
+          this.$store.commit('increment_gold', item.price)
         })
         .catch(e => {
           console.log(e.response.data)
@@ -108,11 +107,6 @@
           console.log(e.response.data)
         })
       }
-    },
-    created: function() {
-      eventBus.$on('player-changed', (data) => {
-        this.player = data
-      })
     }
   }
 </script>

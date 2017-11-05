@@ -27,8 +27,6 @@ Vue.use(Vuex);
 
 axios.defaults.baseURL = 'http://localhost:3000/api';
 
-export const eventBus = new Vue();
-
 export const store = new Vuex.Store({
   state: {
     player: {
@@ -41,6 +39,9 @@ export const store = new Vuex.Store({
     },
     decrement_gold(state, n) {
       state.player.gold -= n
+    },
+    updatePlayer(state, data) {
+      state.player = data
     }
   }
 });
@@ -64,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setPlayerData: function() {
         axios.get('/players/current')
         .then(response => {
-          this.currentPlayer = response.data
+          this.$store.state.player = response.data
           this.$store.state.player.gold = response.data['gold']
         })
         .catch(e => {

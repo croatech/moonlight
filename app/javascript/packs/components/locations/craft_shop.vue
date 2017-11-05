@@ -44,11 +44,9 @@
 <script>
   import config from '../../config.js'
   import axios from 'axios'
-  import { eventBus } from '../../application'
   import ToolItem from '../tool/item.vue'
 
   export default {
-    props: ['player'],
     data: function () {
       return {
         categories: [],
@@ -68,6 +66,11 @@
     },
     components: {
       toolItem: ToolItem
+    },
+    computed: {
+      player() {
+        return this.$store.state.player
+      }
     },
     methods: {
       getCategoriesList: function() {

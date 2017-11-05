@@ -15,10 +15,14 @@
   import Items from './items.vue'
 
   export default {
-    props: ['player'],
     components: {
       profile: Profile,
       items: Items
+    },
+    computed: {
+      player() {
+        return this.$store.state.player
+      }
     }
   }
 </script>

@@ -48,7 +48,6 @@
 
 <script>
   import axios from 'axios'
-  import { eventBus } from '../../application'
 
   export default {
     props: ['player'],
@@ -57,7 +56,7 @@
         var link = type + '/items/' + item.id + '/take_off'
         axios.post(link)
         .then(response => {
-          eventBus.$emit('player-changed', response.data)
+          this.$store.commit('updatePlayer', response.data)
         })
         .catch(e => {
           console.log(e.response.data)
@@ -71,11 +70,6 @@
       expPercent: function() {
         return (this.player.exp / this.player.exp_next * 100) + '%'
       }
-    },
-    created: function() {
-      eventBus.$on('player-changed', (data) => {
-        this.player = data
-      })
     }
   }
 </script>
