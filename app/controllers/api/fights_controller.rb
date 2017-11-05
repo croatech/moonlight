@@ -1,4 +1,6 @@
 class Api::FightsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     fight = current_player.active_fight
     @player = fight.player

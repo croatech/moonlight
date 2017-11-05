@@ -35,4 +35,8 @@ class Fight < ApplicationRecord
       Bot.find(self.bot_id)
     end
   end
+
+  def current_round
+    self.rounds.active.last
+  end
 end

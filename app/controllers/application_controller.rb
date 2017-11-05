@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :verify_authenticity_token
 
-  before_action :check_for_an_active_fight
+  #before_action :check_for_an_active_fight
   before_action :load_logs
   before_action :online_players
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_player
+    return Player.first if Rails.env.development?
     @current_player ||= current_user.player
   end
 
