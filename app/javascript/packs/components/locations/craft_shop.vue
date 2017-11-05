@@ -98,7 +98,7 @@
         .then(response => {
           this.showSuccessFlash = true
           this.successMessage = 'Congrats! You have bought ' + response.data.name
-          eventBus.$emit('gold-decreased', response.data.price)
+          this.$store.commit('gold-decrease', reponse.data.price)
         })
         .catch(e => {
           this.showErrorFlash = true

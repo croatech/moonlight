@@ -8,6 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import Vue from 'vue/dist/vue.esm'
+import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
 import axios from 'axios'
@@ -20,16 +21,35 @@ import Inventory from './components/player/inventory.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-Vue.use(VueResource)
-Vue.use(BootstrapVue)
+Vue.use(VueResource);
+Vue.use(BootstrapVue);
+Vue.use(Vuex);
 
 axios.defaults.baseURL = 'http://localhost:3000/api';
 
-export const eventBus = new Vue()
+export const eventBus = new Vue();
+
+export const store = new Vuex.Store({
+  state: {
+    player: {
+      gold: null
+    }
+  },
+  mutations: {
+    increment_gold(state, n) {
+      state.player.gold += n
+    },
+    decrement_gold(state, n) {
+      state.player.gold -= n
+    }
+  }
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#app',
+    store,
     components: {
       WeaponShop,
       CraftShop,
@@ -45,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         axios.get('/players/current')
         .then(response => {
           this.currentPlayer = response.data
+          this.$store.state.player.gold = response.data['gold']
         })
         .catch(e => {
           console.log(e)

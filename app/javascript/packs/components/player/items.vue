@@ -80,7 +80,7 @@
         axios.post(link)
         .then(response => {
           this.player.equipment_items.splice(index, 1)
-          eventBus.$emit('gold-increased', item.sell_price)
+          this.$store.commit('increment_gold', item.sell_price)
         })
         .catch(e => {
           console.log(e.response.data)
@@ -102,7 +102,7 @@
         axios.post(link)
         .then(response => {
           this.player.resources.splice(index, 1)
-          eventBus.$emit('gold-increased', item.price)
+          this.$store.commit('increment_gold', item.price)
         })
         .catch(e => {
           console.log(e.response.data)
