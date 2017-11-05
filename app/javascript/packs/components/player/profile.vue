@@ -48,9 +48,11 @@
 
 <script>
   import axios from 'axios'
+  import { calculate } from '../../mixins/calculate'
 
   export default {
     props: ['player'],
+    mixins: [calculate],
     methods: {
       takeOffItem(type, item) {
         var link = type + '/items/' + item.id + '/take_off'
@@ -65,10 +67,10 @@
     },
     computed: {
       hpPercent: function() {
-        return (this.player.current_hp / this.player.hp * 100) + '%'
+        return this.percentProgressBar(this.player.current_hp, this.player.hp)
       },
       expPercent: function() {
-        return (this.player.exp / this.player.exp_next * 100) + '%'
+        return this.percentProgressBar(this.player.exp, this.player.exp_next)
       }
     }
   }

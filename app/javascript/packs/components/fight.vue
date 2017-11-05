@@ -1,58 +1,42 @@
 <template>
   <div class="container">
-    <div class="round">
-      <%= form_for fight_round_path(round_id: params[:round_id]), method: :put do |f| %>
-      <div class="row">
+    <div class="fight">
+      <div class="characters row">
         <div class="col-md-6">
           <div class="character player">
             <div class="progress">
-              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= progress_percents(@player.hp, @round.player_hp) %>">
-                <span class="sr-only">80% Complete (danger)</span>
-                <%= "#{@round.player_hp} HP" %>
+              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" :style="{ width: playerHpPercent }">
+                {{ round.player_hp }} HP
               </div>
             </div>
-            <div class="progress">
-              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-info" role="progressbar" style="width: 100%">
-                <span class="sr-only">20% Complete</span>
-                1 MP
-              </div>
-            </div>
-            <%= image_tag @player.avatar.url, class: 'image' %>
+
+            <img :src="player.avatar.url" class="image" alt="avatar">
+
             <div class="points">
-              <h4 class="block-title">Defense:</h4>
-              <% @points.each do |point_name| %>
-              <div class="button">
-                <%= f.label point_name %>
-                <%= f.radio_button 'defense', point_name, checked: true %>
-              </div>
-              <% end %>
+              <h4 class="block-title">Defense: {{ defensePoint }}</h4>
+              <ul v-for="point in points">
+                <li><button class="btn btn-default attack">{{ point }}</button></li>
+              </ul>
             </div>
           </div>
         </div>
+
         <div class="col-md-6">
           <div class="character bot">
             <div class="progress">
-              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= progress_percents(@bot.hp, @round.bot_hp) %>">
-                <span class="sr-only">80% Complete (danger)</span>
-                <%= "#{@round.bot_hp} HP" %>
+              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" :style="{ width: botHpPercent }">
+              {{ round.bot_hp }} HP
               </div>
             </div>
-            <div class="progress">
-              <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-info" role="progressbar" style="width: 100%">
-                <span class="sr-only">20% Complete</span>
-                1 MP
-              </div>
-            </div>
+
+            <img :src="bot.avatar.url" class="image" alt="avatar">
+
             <div class="points">
-              <h4 class="block-title">Attack:</h4>
-              <% @points.each do |point_name| %>
-              <div class="button">
-                <%= f.label point_name %>
-                <%= f.radio_button 'attack', point_name, checked: true %>
-              </div>
-              <% end %>
+              <h4 class="block-title">Defense: {{ attackPoint }}</h4>
+              <ul v-for="point in points">
+                <li><button class="btn btn-default attack">{{ point }}</button></li>
+              </ul>
             </div>
-            <%= image_tag @bot.avatar.url, class: 'image' %>
           </div>
         </div>
       </div>
@@ -91,21 +75,32 @@
 
 <script>
   import axios from 'axios'
+  import { calculate } from '../mixins/calculate'
 
   export default {
     data: function() {
       return {
-        fight: null,
-        player: null,
-        bot: null
+        rounds: [],
+        round: {},
+        player: {},
+        bot: {},
+        points: [],
+        attackPoint: '',
+        defensePoint: ''
       }
     },
+    mixins: [calculate],
     methods: {
       getFight: function() {
         axios.get('/fight')
         .then(response => {
-          this.fight = response.data
-          console.log(response)
+          this.rounds = response.data['fight']['rounds']
+          this.round = response.data['fight']['current_round']
+          this.player = response.data['fight']['player']
+          this.bot = response.data['fight']['bot']
+          this.points = response.data['points']
+          this.attackPoint = this.points[this.points.length - 1]
+          this.attackPoint = this.points[this.points.length - 1]
         })
         .catch(e => {
           console.log(e)
@@ -114,6 +109,14 @@
     },
     created: function() {
       this.getFight()
+    },
+    computed: {
+      playerHpPercent: function() {
+        return this.percentProgressBar(this.round['player_hp'], this.player['hp'])
+      },
+      botHpPercent: function() {
+        return this.percentProgressBar(this.round['bot_hp'], this.bot['hp'])
+      }
     }
   }
 </script>

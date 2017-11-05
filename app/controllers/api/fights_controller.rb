@@ -2,13 +2,7 @@ class Api::FightsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    fight = current_player.active_fight
-    @player = fight.player
-    @bot = fight.bot
-    @round = fight.rounds.last
-    @rounds = fight.rounds.finished.limit(5).order(id: :desc)
-    @points = Fight::POINTS
-    render json: fight
+    render json: { fight: FightSerializer.new(current_player.active_fight), points: Fight::POINTS }
   end
 
   def update
