@@ -13,9 +13,9 @@
             <img :src="player.avatar.url" class="image" alt="avatar">
 
             <div class="points">
-              <h4 class="block-title">Defense: {{ defensePoint }}</h4>
+              <h4 class="block-title">Defense: {{ attackPoint }}</h4>
               <ul v-for="point in points">
-                <li><button class="btn btn-default attack">{{ point }}</button></li>
+                <li><button @click=setAttackPoint(point) :class="'btn btn-default attack ' + resolveAttackPointClass(point)">{{ point }}</button></li>
               </ul>
             </div>
           </div>
@@ -32,9 +32,9 @@
             <img :src="bot.avatar.url" class="image" alt="avatar">
 
             <div class="points">
-              <h4 class="block-title">Defense: {{ attackPoint }}</h4>
+              <h4 class="block-title">Attack: {{ defensePoint }}</h4>
               <ul v-for="point in points">
-                <li><button class="btn btn-default attack">{{ point }}</button></li>
+                <li><button @click=setDefensePoint(point) :class="'btn btn-default attack ' + resolveDefensePointClass(point)">{{ point }}</button></li>
               </ul>
             </div>
           </div>
@@ -100,11 +100,27 @@
           this.bot = response.data['fight']['bot']
           this.points = response.data['points']
           this.attackPoint = this.points[this.points.length - 1]
-          this.attackPoint = this.points[this.points.length - 1]
+          this.defensePoint = this.points[this.points.length - 1]
         })
         .catch(e => {
           console.log(e)
         })
+      },
+      resolveAttackPointClass: function(point) {
+        if(this.attackPoint == point) {
+          return 'active'
+        }
+      },
+      resolveDefensePointClass: function(point) {
+        if(this.defensePoint == point) {
+          return 'active'
+        }
+      },
+      setAttackPoint: function(point) {
+        this.attackPoint = point
+      },
+      setDefensePoint: function(point) {
+        this.defensePoint = point
       }
     },
     created: function() {

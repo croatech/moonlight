@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_logs
-    @logs = current_user.player.logs.order('id DESC') if current_user
+    @logs = current_user.player.logs.order(id: :desc) if current_user
   end
 
   def online_players

@@ -22,11 +22,13 @@ class Fight < ApplicationRecord
 
   enum status: %i(active finished)
 
-  POINTS = %w(head
-              chest
-              belly
-              hands
-              legs)
+  POINTS = %w(
+    head
+    chest
+    waist
+    hands
+    legs
+  )
 
   def winner
     if winner_type == 'Player'
