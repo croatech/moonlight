@@ -25,7 +25,6 @@
   import axios from 'axios'
 
   export default {
-    props: ['player'],
     data: function() {
       return {
         stats: config.stats,
@@ -34,7 +33,7 @@
       }
     },
     methods: {
-      incrementStat: function(stat_name) {
+      incrementStat: function (stat_name) {
         var link = '/player/stats/' + stat_name + '/increase'
         axios.patch(link)
         .then(response => {
@@ -45,6 +44,11 @@
           this.showErrorFlash = true
           this.errorMessage = e.response.data
         })
+      }
+    },
+    computed: {
+      player() {
+        return this.$store.state.player
       }
     }
   }
