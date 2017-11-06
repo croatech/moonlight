@@ -130,7 +130,7 @@ class Player < ApplicationRecord
     return Avatar.find(avatar_id).image if avatar_id.present?
   end
 
-  def active_fight
-    self.fights.active.take
+  def last_fight
+    self.fights.last
   end
 end

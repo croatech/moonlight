@@ -10,14 +10,11 @@ class ApplicationController < ActionController::Base
 
   def check_for_an_active_fight
     unless params[:controller] == 'fights' || params[:controller] == 'devise'
-      fight = current_player.active_fight
-      return if fight.nil?
-      redirect_to fight_path
+      redirect_to fight_path if current_player.last_fight.active?
     end
   end
 
   def current_player
-    return Player.first if Rails.env.development?
     @current_player ||= current_user.player
   end
 

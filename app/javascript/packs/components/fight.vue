@@ -4,6 +4,7 @@
       <div class="characters row">
         <div class="col-md-6">
           <div class="character player">
+            <h2>{{ player.name }}[{{ player.level }}]</h2>
             <div class="progress">
               <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" :style="{ width: playerHpPercent }">
                 {{ round.player_hp }} HP
@@ -23,6 +24,7 @@
 
         <div class="col-md-6">
           <div class="character bot">
+            <h2>{{ bot.name }}[{{ bot.level }}]</h2>
             <div class="progress">
               <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" :style="{ width: botHpPercent }">
               {{ round.bot_hp }} HP
@@ -41,32 +43,30 @@
         </div>
       </div>
       <div class="row">
-        <%= f.submit 'HIT', class: 'btn btn-danger center' %>
+        <button @click="attack" class="btn btn-danger btn-attack">Attack</button>
       </div>
-      <% end %>
       <div class="rounds">
-        <% @rounds.each do |round| %>
-        <hr/>
-        <div class="damage">
-          <p>
-            <%= "#{@player.name} has dealt" %>
-            <span>
-              <%= "#{round.player_damage}" %>
-            </span>
-            <%= "to #{@bot.name}." %>
-          </p>
+        <div v-for="round in rounds">
+          <div v-if="round.player_damage != null">
+            <hr/>
+            <div class="damage">
+              <p>
+                {{ player.name }} has dealt
+                <span>{{ round.player_damage }}</span>
+                damage to {{ bot.name }}.
+              </p>
+            </div>
+
+            <div class="damage">
+              <p>
+                {{ bot.name }} has dealt
+                <span>{{ round.bot_damage }}</span>
+                damage to {{ player.name }}.
+              </p>
+            </div>
+            <hr/>
+          </div>
         </div>
-        <div class="damage">
-          <p>
-            <%= "#{@bot.name} has dealt" %>
-            <span>
-              <%= "#{round.bot_damage}" %>
-            </span>
-            <%= "to #{@player.name}." %>
-          </p>
-        </div>
-        <hr/>
-        <% end %>
       </div>
     </div>
   </div>
@@ -94,13 +94,19 @@
       getFight: function() {
         axios.get('/fight')
         .then(response => {
-          this.rounds = response.data['fight']['rounds']
-          this.round = response.data['fight']['current_round']
-          this.player = response.data['fight']['player']
-          this.bot = response.data['fight']['bot']
-          this.points = response.data['points']
-          this.attackPoint = this.points[this.points.length - 1]
-          this.defensePoint = this.points[this.points.length - 1]
+          this.setDataFromResponse(response.data)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+      },
+      attack: function() {
+        axios.patch('/fight', {
+          defensePoint: this.defensePoint,
+          attackPoint: this.attackPoint
+        })
+        .then(response => {
+          this.setDataFromResponse(response.data)
         })
         .catch(e => {
           console.log(e)
@@ -121,6 +127,15 @@
       },
       setDefensePoint: function(point) {
         this.defensePoint = point
+      },
+      setDataFromResponse: function(data) {
+        this.rounds = data['fight']['rounds']
+        this.round = data['fight']['current_round']
+        this.player = data['fight']['player']
+        this.bot = data['fight']['bot']
+        this.points = data['points']
+        this.attackPoint = this.points[this.points.length - 1]
+        this.defensePoint = this.points[this.points.length - 1]
       }
     },
     created: function() {

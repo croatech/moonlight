@@ -1,4 +1,6 @@
 class FightSerializer < ActiveModel::Serializer
+  attributes :status, :winner
+
   belongs_to :player
   belongs_to :bot
 
@@ -7,6 +9,6 @@ class FightSerializer < ActiveModel::Serializer
   attributes :current_round
 
   def current_round
-    RoundSerializer.new(object.rounds.active.last)
+    RoundSerializer.new(object.rounds.last)
   end
 end
