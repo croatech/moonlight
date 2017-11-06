@@ -43,10 +43,10 @@ class Fight::HitService
     bot_hp = round.bot_hp - player_damage
 
     if player_hp <= 0
-      finish_fight(winner: bot.name)
+      finish_fight(winner: bot)
       player.current_hp = 0
     elsif bot_hp <= 0
-      finish_fight(winner: 'Player')
+      finish_fight(winner: player)
       player.current_hp = player_hp
       increase_player_exp
       drop_get
@@ -58,7 +58,7 @@ class Fight::HitService
   end
 
   def finish_fight(winner:)
-    fight.update(winner_type: winner, status: :finished)
+    fight.update(winner: winner, status: :finished)
     start_restore_hp
   end
 

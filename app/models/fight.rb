@@ -19,6 +19,8 @@ class Fight < ApplicationRecord
 
   has_many :rounds, dependent: :destroy
 
+  belongs_to :winner, polymorphic: true
+
   enum status: %i(active finished)
 
   POINTS = %w(
@@ -28,12 +30,4 @@ class Fight < ApplicationRecord
     hands
     legs
   )
-
-  def winner
-    if winner_type == 'Player'
-      Player.find(self.player_id)
-    else
-      Bot.find(self.bot_id)
-    end
-  end
 end

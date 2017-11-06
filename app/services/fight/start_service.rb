@@ -3,7 +3,7 @@ class Fight::StartService
 
   def call
     pre_initialize
-    check_for_an_active_fight
+    raise_if_there_is_an_active_fight
     fight_create
     first_round_create
     context.fight_id = fight.id
@@ -18,8 +18,8 @@ class Fight::StartService
     @bot = context.bot
   end
 
-  def check_for_an_active_fight
-    context.fail!(error: 'Player has an active fight') if player.active_fight.present?
+  def raise_if_there_is_an_active_fight
+    context.fail!(error: 'Player has an active fight') if player.last_fight.active?
   end
 
   def fight_create

@@ -1,6 +1,27 @@
 <template>
   <div class="container">
-    <div class="fight">
+    <div class="winner center" v-if="winner != null">
+      <h1 class="text-center">
+        Winner: {{ winner.name }}
+      </h1>
+      <% if @winner.is_a?(Player) %>
+      <div class="progress">
+        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= progress_percents(@player.hp, @rounds.last.player_hp) %>">
+          <span class="sr-only">80% Complete (danger)</span>
+          <%= "#{@winner.current_hp} HP" if @winner == @player %>
+        </div>
+      </div>
+      <div class="progress">
+        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-warning" role="progressbar" style="width: <%= progress_percents(@player.exp_next, @player.exp) %>">
+          <%= "EXP: #{@player.exp}/#{@player.exp_next}" %>
+        </div>
+      </div>
+      <% end %>
+      <%= image_tag @winner.avatar, class: 'image center' %>
+    </div>
+
+
+    <div class="fight" v-if="winner == null">
       <div class="characters row">
         <div class="col-md-6">
           <div class="character player">
@@ -84,6 +105,7 @@
         round: {},
         player: {},
         bot: {},
+        winner: {},
         points: [],
         attackPoint: '',
         defensePoint: ''
@@ -133,6 +155,7 @@
         this.round = data['fight']['current_round']
         this.player = data['fight']['player']
         this.bot = data['fight']['bot']
+        this.winner = data['fight']['winner']
         this.points = data['points']
         this.attackPoint = this.points[this.points.length - 1]
         this.defensePoint = this.points[this.points.length - 1]
