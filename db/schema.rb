@@ -60,9 +60,12 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.datetime "updated_at", null: false
     t.string "winner_type"
     t.integer "dropped_gold"
-    t.integer "dropped_item"
     t.integer "winner_id"
+    t.integer "dropped_item_id"
+    t.string "dropped_item_type"
     t.index ["bot_id"], name: "index_fights_on_bot_id"
+    t.index ["dropped_item_id"], name: "index_fights_on_dropped_item_id"
+    t.index ["dropped_item_type"], name: "index_fights_on_dropped_item_type"
     t.index ["player_id"], name: "index_fights_on_player_id"
     t.index ["winner_id"], name: "index_fights_on_winner_id"
     t.index ["winner_type"], name: "index_fights_on_winner_type"

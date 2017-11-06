@@ -20,6 +20,7 @@ class Fight < ApplicationRecord
   has_many :rounds, dependent: :destroy
 
   belongs_to :winner, polymorphic: true
+  belongs_to :dropped_item, polymorphic: true
 
   enum status: %i(active finished)
 

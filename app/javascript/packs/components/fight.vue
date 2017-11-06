@@ -18,9 +18,19 @@
         </div>
       </div>
 
-      <img :src="winner.avatar.url" class="image center" alt="avatar">
-    </div>
+      <img :src="winner.avatar.url" class="image center avatar" alt="avatar">
 
+      <div v-if="fight.dropped_gold != null" class="center drop">
+        <b>Dropped gold:</b>
+        <img src="../assets/gold.png" alt="gold">
+        {{ fight.dropped_gold }}
+      </div>
+
+      <div v-if="fight.dropped_item != null" class="center drop">
+        <b>Dropped item:</b>
+        <img :src="fight.dropped_item.image.url" alt="item">
+      </div>
+    </div>
 
     <div class="fight" v-if="winner == null">
       <div class="characters row">
@@ -33,7 +43,7 @@
               </div>
             </div>
 
-            <img :src="player.avatar.url" class="image" alt="avatar">
+            <img :src="player.avatar.url" class="image avatar" alt="avatar">
 
             <div class="points">
               <h4 class="block-title">Defense: {{ attackPoint }}</h4>
@@ -53,7 +63,7 @@
               </div>
             </div>
 
-            <img :src="bot.avatar.url" class="image" alt="avatar">
+            <img :src="bot.avatar.url" class="image avatar" alt="avatar">
 
             <div class="points">
               <h4 class="block-title">Attack: {{ defensePoint }}</h4>
@@ -68,6 +78,7 @@
         <button @click="attack" class="btn btn-danger btn-attack">Attack</button>
       </div>
     </div>
+
     <div class="rounds center">
       <div v-for="round in rounds">
         <div v-if="round.player_damage != null">
@@ -131,6 +142,7 @@
         })
         .then(response => {
           this.setDataFromResponse(response.data)
+          this.commit_if_gold_dropped()
         })
         .catch(e => {
           console.log(e)
@@ -162,6 +174,11 @@
         this.points = data['points']
         this.attackPoint = this.points[this.points.length - 1]
         this.defensePoint = this.points[this.points.length - 1]
+      },
+      commit_if_gold_dropped: function() {
+        if(this.fight.dropped_gold != null) {
+          this.$store.commit('increment_gold', this.fight.dropped_gold)
+        }
       }
     },
     created: function() {
