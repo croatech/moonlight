@@ -210,10 +210,10 @@ Sidekiq.redis { |conn| conn.flushdb }
                                {name: 'Pants of warrior', equipment_category_id: Equipment::Category.find_by(type: 'pants').id, attack: 0,  defense: 200, hp: 200, required_level: 20, price: 5000, image: File.new("#{Rails.root}/db/seeds/equipment/items/pants/pants_of_warrior.png")}]
 
     ### CROATON
-      Equipment::Item.create!(name: 'Cape of Croaton',   equipment_category_id: Equipment::Category.find_by(type: 'cloak').id,  attack: 0,   defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/cape_of_croaton.png"), artifact: true)
-      Equipment::Item.create!(name: 'Judgment Day',      equipment_category_id: Equipment::Category.find_by(type: 'weapon').id, attack: 666, defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/judgment_day.png"), artifact: true)
-      Equipment::Item.create!(name: 'Death Note',        equipment_category_id: Equipment::Category.find_by(type: 'shield').id, attack: 666, defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/death_note.png"), artifact: true)
-      Equipment::Item.create!(name: 'Amulet of Croaton', equipment_category_id: Equipment::Category.find_by(type: 'shield').id, attack: 0,   defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/amulet_of_croaton.png"), artifact: true)
+      Equipment::Item.create!(name: 'Cape of Croaton',   equipment_category_id: Equipment::Category.find_by(type: 'cloak').id,    attack: 0,   defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/cape_of_croaton.png"), artifact: true)
+      Equipment::Item.create!(name: 'Judgment Day',      equipment_category_id: Equipment::Category.find_by(type: 'weapon').id,   attack: 666, defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/judgment_day.png"), artifact: true)
+      Equipment::Item.create!(name: 'Death Note',        equipment_category_id: Equipment::Category.find_by(type: 'shield').id,   attack: 666, defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/death_note.png"), artifact: true)
+      Equipment::Item.create!(name: 'Amulet of Croaton', equipment_category_id: Equipment::Category.find_by(type: 'necklace').id, attack: 0,   defense: 66, hp: 666, required_level: 1, price: 50000000, image: File.new("#{Rails.root}/db/seeds/equipment/items/croaton/amulet_of_croaton.png"), artifact: true)
 
   ## ARTIFACTS
   ### SAPPHIRE SET

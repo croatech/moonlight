@@ -34,7 +34,7 @@ class Bot < ApplicationRecord
   end
 
   def try_drop_gold
-    try_chance(percent: 30)
+    try_chance(percent: 100)
   end
 
   def dropped_item

@@ -1,5 +1,4 @@
 class CellsController < ApplicationController
-
   layout 'map'
 
   def move

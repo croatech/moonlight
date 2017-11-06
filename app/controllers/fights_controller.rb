@@ -1,6 +1,8 @@
 class FightsController < ApplicationController
   before_action :authenticate_user!
 
+  layout 'map'
+
   def create
     bot = current_player.location.bots.find(params[:bot_id])
     service = Fight::StartService.call(player: current_player, bot: bot)

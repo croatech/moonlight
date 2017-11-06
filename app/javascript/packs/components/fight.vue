@@ -4,20 +4,21 @@
       <h1 class="text-center">
         Winner: {{ winner.name }}
       </h1>
-      <% if @winner.is_a?(Player) %>
-      <div class="progress">
-        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= progress_percents(@player.hp, @rounds.last.player_hp) %>">
-          <span class="sr-only">80% Complete (danger)</span>
-          <%= "#{@winner.current_hp} HP" if @winner == @player %>
+      <div v-if="fight['winner_type'] == 'Player'">
+        <div class="progress">
+          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-danger" role="progressbar" :style="{ width: playerHpPercent }">
+            {{ round.player_hp }} / {{ player.hp }} HP
+          </div>
+        </div>
+
+        <div class="progress">
+          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="progress-bar progress-bar-warning" role="progressbar" :style="{ width: playerExpPercent }">
+            {{ player.exp }} / {{ player.exp_next }} EXP
+          </div>
         </div>
       </div>
-      <div class="progress">
-        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" class="progress-bar progress-bar-warning" role="progressbar" style="width: <%= progress_percents(@player.exp_next, @player.exp) %>">
-          <%= "EXP: #{@player.exp}/#{@player.exp_next}" %>
-        </div>
-      </div>
-      <% end %>
-      <%= image_tag @winner.avatar, class: 'image center' %>
+
+      <img :src="winner.avatar.url" class="image center" alt="avatar">
     </div>
 
 
@@ -66,27 +67,27 @@
       <div class="row">
         <button @click="attack" class="btn btn-danger btn-attack">Attack</button>
       </div>
-      <div class="rounds">
-        <div v-for="round in rounds">
-          <div v-if="round.player_damage != null">
-            <hr/>
-            <div class="damage">
-              <p>
-                {{ player.name }} has dealt
-                <span>{{ round.player_damage }}</span>
-                damage to {{ bot.name }}.
-              </p>
-            </div>
-
-            <div class="damage">
-              <p>
-                {{ bot.name }} has dealt
-                <span>{{ round.bot_damage }}</span>
-                damage to {{ player.name }}.
-              </p>
-            </div>
-            <hr/>
+    </div>
+    <div class="rounds center">
+      <div v-for="round in rounds">
+        <div v-if="round.player_damage != null">
+          <hr/>
+          <div class="damage">
+            <p>
+              {{ player.name }} has dealt
+              <span>{{ round.player_damage }}</span>
+              damage to {{ bot.name }}.
+            </p>
           </div>
+
+          <div class="damage">
+            <p>
+              {{ bot.name }} has dealt
+              <span>{{ round.bot_damage }}</span>
+              damage to {{ player.name }}.
+            </p>
+          </div>
+          <hr/>
         </div>
       </div>
     </div>
@@ -102,6 +103,7 @@
     data: function() {
       return {
         rounds: [],
+        fight: {},
         round: {},
         player: {},
         bot: {},
@@ -151,11 +153,12 @@
         this.defensePoint = point
       },
       setDataFromResponse: function(data) {
-        this.rounds = data['fight']['rounds']
-        this.round = data['fight']['current_round']
-        this.player = data['fight']['player']
-        this.bot = data['fight']['bot']
-        this.winner = data['fight']['winner']
+        this.fight = data['fight']
+        this.rounds = this.fight['rounds']
+        this.round = this.fight['current_round']
+        this.player = this.fight['player']
+        this.bot = this.fight['bot']
+        this.winner = this.fight['winner']
         this.points = data['points']
         this.attackPoint = this.points[this.points.length - 1]
         this.defensePoint = this.points[this.points.length - 1]
@@ -170,7 +173,10 @@
       },
       botHpPercent: function() {
         return this.percentProgressBar(this.round['bot_hp'], this.bot['hp'])
-      }
+      },
+      playerExpPercent: function() {
+        return this.percentProgressBar(this.player['exp'], this.player['exp_next'])
+      },
     }
   }
 </script>

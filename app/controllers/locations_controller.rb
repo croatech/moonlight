@@ -30,12 +30,8 @@ class LocationsController < ApplicationController
 
   def change_location(location_name)
     @location = Location.find_by(slug: location_name)
-    
-    if @location.id == current_player.location_id
-      return
-    else
-      Location::ChangeLocationService.new(current_user.player, @location.id).call
-      add_event_to_log("You\'ve changed the location to <span>#{@location.name}</span>")
-    end
+    return if @location.id == current_player.location_id
+    Location::ChangeLocationService.new(current_user.player, @location.id).call
+    add_event_to_log("You\'ve changed the location to <span>#{@location.name}</span>")
   end
 end

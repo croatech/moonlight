@@ -1,8 +1,9 @@
 class FightSerializer < ActiveModel::Serializer
-  attributes :status, :winner
+  attributes :status, :winner_type
 
   belongs_to :player
   belongs_to :bot
+  belongs_to :winner
 
   has_many :rounds
 
