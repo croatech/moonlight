@@ -19,15 +19,13 @@
 
             <b-alert variant="danger"
                      dismissible
-                     :show="showErrorFlash && boughtItemId == item.id"
-                     @dismissed="showErrorFlash=false">
+                     :show="errorMessage != '' && boughtItemId == item.id">
               {{ errorMessage }}
             </b-alert>
 
             <b-alert variant="success"
                      dismissible
-                     :show="showSuccessFlash && boughtItemId == item.id"
-                     @dismissed="showSuccessFlash=false">
+                     :show="successMessage != '' && boughtItemId == item.id">
               {{ successMessage }}
             </b-alert>
           </div>
@@ -58,9 +56,7 @@
         dismissSecs: 1,
 
         // flashes
-        showErrorFlash: false,
         errorMessage: '',
-        showSuccessFlash: false,
         successMessage: ''
       }
     },
@@ -92,19 +88,16 @@
       },
       buyItem: function(item_id) {
         this.boughtItemId = item_id
-
-        this.showErrorFlash = false
-        this.showSuccessFlash = false
+        this.errorMessage = ''
+        this.successMessage = ''
 
         var link = '/tools/items/' + item_id + '/buy'
         axios.post(link)
         .then(response => {
-          this.showSuccessFlash = true
           this.successMessage = 'Congrats! You have bought ' + response.data.name
           this.$store.commit('gold-decrease', reponse.data.price)
         })
         .catch(e => {
-          this.showErrorFlash = true
           this.errorMessage = e.response.data
         })
       },
