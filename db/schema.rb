@@ -161,6 +161,10 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.datetime "updated_at", null: false
     t.integer "player_hp"
     t.integer "bot_hp"
+    t.string "player_attack_point"
+    t.string "player_defense_point"
+    t.string "bot_attack_point"
+    t.string "bot_defense_point"
     t.index ["fight_id"], name: "index_rounds_on_fight_id"
   end
 

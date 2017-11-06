@@ -87,7 +87,8 @@
             <p>
               {{ player.name }} has dealt
               <span>{{ round.player_damage }}</span>
-              damage to {{ bot.name }}.
+              damage to {{ bot.name }} in the
+              <b>{{ round.player_attack_point }}</b>.
             </p>
           </div>
 
@@ -95,7 +96,8 @@
             <p>
               {{ bot.name }} has dealt
               <span>{{ round.bot_damage }}</span>
-              damage to {{ player.name }}.
+              damage to {{ player.name }} in the
+              <b>{{ round.bot_attack_point }}</b>.
             </p>
           </div>
           <hr/>
@@ -166,7 +168,7 @@
       },
       setDataFromResponse: function(data) {
         this.fight = data['fight']
-        this.rounds = this.fight['rounds']
+        this.rounds = this.fight['rounds'].reverse()
         this.round = this.fight['current_round']
         this.player = this.fight['player']
         this.bot = this.fight['bot']

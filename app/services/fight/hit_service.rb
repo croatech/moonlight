@@ -8,14 +8,22 @@ class Fight::HitService
     @bot = @fight.bot
     @player_defense_point = defense_point
     @player_attack_point = attack_point
-    @bot_defense_point = Player::EQUIPMENT_SLOTS.sample
-    @bot_attack_point = Player::EQUIPMENT_SLOTS.sample
+    @bot_defense_point = Fight::POINTS.sample
+    @bot_attack_point = Fight::POINTS.sample
   end
 
   def call
     player_damage = calculate_damage(player, bot)
     bot_damage = calculate_damage(bot, player)
-    round.update(player_damage: player_damage, bot_damage: bot_damage, status: :finished)
+    round.update(
+      player_damage: player_damage,
+      bot_damage: bot_damage,
+      player_defense_point: player_defense_point,
+      player_attack_point: player_attack_point,
+      bot_defense_point: bot_defense_point,
+      bot_attack_point: bot_attack_point,
+      status: :finished
+    )
     checking_for_finishing_fight(player_damage, bot_damage)
     player.save
   end
