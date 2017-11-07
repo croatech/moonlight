@@ -1,0 +1,81 @@
+module Seeds::LocationsImport
+  def self.call
+    # Main locations
+    Location.create!(name: 'Moon Light', slug: 'moon_light')
+    Location.create!(
+      [
+        { name: 'Weapon Shop',       slug: 'weapon_shop',       parent_id: Location.find_by(slug: 'moon_light').id },
+        { name: 'Weapon Shop',       slug: 'weapon_shop',       parent_id: Location.find_by(slug: 'moon_light').id },
+        { name: 'Craft Shop',        slug: 'craft_shop',        parent_id: Location.find_by(slug: 'moon_light').id },
+        { name: 'Shop of Artifacts', slug: 'shop_of_artifacts', parent_id: Location.find_by(slug: 'moon_light').id },
+        { name: 'Wayward Pines',     slug: 'wayward_pines'}
+      ]
+    )
+
+    # Cells
+    Location.create!(name: '1cell', slug: '1cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true, inactive: true)
+    Location.create!(name: '2cell', slug: '2cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '3cell', slug: '3cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '4cell', slug: '4cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '5cell', slug: '5cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '6cell', slug: '6cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '7cell', slug: '7cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '8cell', slug: '8cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '9cell', slug: '9cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '10cell', slug: '10cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '11cell', slug: '11cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '12cell', slug: '12cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '13cell', slug: '13cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '14cell', slug: '14cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '15cell', slug: '15cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '16cell', slug: '16cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '17cell', slug: '17cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '18cell', slug: '18cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '19cell', slug: '19cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Northern Forest', slug: 'northern_forest_1', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Northern Forest', slug: 'northern_forest_2', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Mycelium', slug: 'mycelium', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '23cell', slug: '23cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '24cell', slug: '24cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '25cell', slug: '25cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '26cell', slug: '26cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '27cell', slug: '27cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Dalf Lagoon', slug: 'dalf_lagoon', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Sacred Forest', slug: 'sacred_forest_1', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '30cell', slug: '30cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '31cell', slug: '31cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '32cell', slug: '32cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '33cell', slug: '33cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '34cell', slug: '34cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '35cell', slug: '35cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Sacred Forest', slug: 'sacred_forest_2', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Shady Walk', slug: 'shady_walk', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '38cell', slug: '38cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '39cell', slug: '39cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '40cell', slug: '40cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '41cell', slug: '41cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '42cell', slug: '42cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '43cell', slug: '43cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Mystic Thicket', slug: 'mystic_thicket', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'River Fork', slug: 'river_fork', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '46cell', slug: '46cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '47cell', slug: '47cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '48cell', slug: '48cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '49cell', slug: '49cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '50cell', slug: '50cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '51cell', slug: '51cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '52cell', slug: '52cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: 'Hanging Willage', slug: 'hanging_willage', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '54cell', slug: '54cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '55cell', slug: '55cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '56cell', slug: '56cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '57cell', slug: '57cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '58cell', slug: '58cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '59cell', slug: '59cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '60cell', slug: '60cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '61cell', slug: '61cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '62cell', slug: '62cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '63cell', slug: '63cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+    Location.create!(name: '64cell', slug: '64cell', parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
+  end
+end
