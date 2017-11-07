@@ -44,7 +44,6 @@
   import EquipmentItem from '../equipment/item.vue'
 
   export default {
-    props: ['player'],
     data: function () {
       return {
         categories: [],
@@ -76,11 +75,12 @@
 
         // Resolving of path to endpoint api, for example if location is weapon_shop, it must be called
         // api/equipment/categories
-        var api_resource_name = this.resource_name == 'weapon_shop' ? 'equipment' : 'artifacts'
+        var category_type = this.resource_name == 'weapon_shop' ? 'equipment' : 'artifacts'
 
-        var link = '/' + api_resource_name + '/categories'
+        var link = '/stuff/categories?category_type=' + category_type
         axios.get(link)
         .then(response => {
+          console.log(response)
           this.categories = response.data
         })
         .catch(e => {

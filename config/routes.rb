@@ -22,24 +22,13 @@ Rails.application.routes.draw do
     end
 
     namespace :stuff do
+      resources :categories, only: :index
       resources :items, only: :show do
         post :buy
         post :put_on
         post :take_off
         post :sell
       end
-    end
-
-    namespace :equipment do
-      resources :categories, only: :index
-    end
-
-    namespace :artifacts do
-      resources :categories, only: :index
-    end
-
-    namespace :tools do
-      resources :categories, only: :index
     end
 
     resources :resources do

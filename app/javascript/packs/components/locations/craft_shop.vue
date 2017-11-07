@@ -70,7 +70,7 @@
     },
     methods: {
       getCategoriesList: function() {
-        axios.get('/tools/categories')
+        axios.get('/stuff/categories?category_type=tool')
         .then(response => {
           this.categories = response.data
         })
