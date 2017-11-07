@@ -32,12 +32,6 @@ Rails.application.routes.draw do
 
     namespace :equipment do
       resources :categories, only: :index
-      resources :items, only: :show do
-        post :buy
-        post :put_on
-        post :take_off
-        post :sell
-      end
     end
 
     namespace :artifacts do
@@ -46,12 +40,6 @@ Rails.application.routes.draw do
 
     namespace :tools do
       resources :categories, only: :index
-      resources :items, only: :show do
-        post :buy
-        post :put_on
-        post :take_off
-        post :sell
-      end
     end
 
     resources :resources do

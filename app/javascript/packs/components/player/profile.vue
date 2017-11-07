@@ -25,7 +25,7 @@
     <div class="player">
       <div class="player-items left-column">
         <div v-for="item in player.put_on_equipment_items" :class="item.category.name.toLowerCase() + ' item'">
-          <a @click="takeOffItem('equipment', item)">
+          <a @click="takeOffItem(item, 'equipment')">
             <img :src="item.image.url" alt="item">
           </a>
         </div>
@@ -37,7 +37,7 @@
 
       <div class="player-items tools">
         <div v-for="(item, i) in player.put_on_tool_items" :class="'item tool num-' + i">
-          <a @click="takeOffItem('tools', item)">
+          <a @click="takeOffItem(item, 'tool')">
             <img :src="item.image.url" alt="tool">
           </a>
         </div>
@@ -54,9 +54,11 @@
     props: ['player'],
     mixins: [calculate],
     methods: {
-      takeOffItem(type, item) {
-        var link = type + '/items/' + item.id + '/take_off'
-        axios.post(link)
+      takeOffItem(item, type) {
+        var link = '/stuff/items/' + item.id + '/take_off'
+        axios.post(link, {
+          item_type: type
+        })
         .then(response => {
           this.$store.commit('updatePlayer', response.data)
         })

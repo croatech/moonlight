@@ -64,6 +64,7 @@
   import Resource from '../resources/item.vue'
 
   export default {
+    props: ['player'],
     data: function() {
       return {
         currentCategory: 'all',
@@ -112,11 +113,6 @@
         this.errorMessage = ''
         this.sellingItemId = 0
         this.sellingResourceId = 0
-      }
-    },
-    computed: {
-      player() {
-        return this.$store.state.player
       }
     }
   }
