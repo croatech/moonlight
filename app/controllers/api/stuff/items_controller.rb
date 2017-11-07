@@ -1,10 +1,10 @@
-class Api::Tools::ItemsController < ApplicationController
+class Api::Stuff::ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_for_non_resource, except: :sell
 
   def buy
-    item = Tool::Item.find(params[:item_id])
     service = Stuff::BuyService.new
-    service.call(player: current_player, item: item) do |m|
+    service.call(player: current_player, item: find_item) do |m|
       m.success do |item|
         render json: item, status: 200
       end
@@ -36,7 +36,7 @@ class Api::Tools::ItemsController < ApplicationController
   def sell
     service = Stuff::SellService.call(player: current_player, item: find_item)
     if service.success?
-      render status: 200, body: nil
+      render status: 200, json: current_player
     else
       render status: 500, json: service.error
     end
@@ -45,6 +45,15 @@ class Api::Tools::ItemsController < ApplicationController
   private
 
   def find_item
-    Tool::Item.find(params[:item_id])
+    type = case params[:item_type]
+      when 'equipment' then Equipment::Item
+      when 'tool' then Tool::Item
+      when 'resource' then Resource
+    end
+    type.find(params[:item_id])
+  end
+
+  def check_for_non_resource
+    return not_found if params[:item_type] == 'resource'
   end
 end

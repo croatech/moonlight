@@ -14,8 +14,8 @@
         <div class="item row" v-for="(item, index) in player.equipment_items" v-if="player.equipment_items.length > 0">
           <equipment-item :item="item"></equipment-item>
 
-          <a @click="putOnItem('equipment', item)" class="btn btn-info">Put on</a>
-          <a @click="sellEquipmentItem(item, index)" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
+          <a @click="putOnItem(item, 'equipment')" class="btn btn-info">Put on</a>
+          <a @click="sellItem(item, index, 'equipment')" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
           <b-alert variant="danger"
                    dismissible
                    :show="errorMessage != '' && item.id == sellingItemId">
@@ -29,8 +29,8 @@
         <div class="item row" v-for="(item, index) in player.tool_items" v-if="player.tool_items.length > 0">
           <tool-item :item="item"></tool-item>
 
-          <a @click="putOnItem('tools', item)" class="btn btn-info">Put on</a>
-          <a @click="sellToolItem(item, index)" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
+          <a @click="putOnItem(item, 'tool')" class="btn btn-info">Put on</a>
+          <a @click="sellItem(item, index, 'tool')" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
           <b-alert variant="danger"
                    dismissible
                    :show="errorMessage != '' && item.id == sellingItemId">
@@ -44,7 +44,7 @@
         <div class="item row" v-for="(item, index) in player.resources" v-if="player.resources.length > 0">
           <resource :item="item"></resource>
 
-          <a @click="sellResource(item, index)" class="btn btn-info">Sell for {{ item.price }} gold</a>
+          <a @click="sellItem(item, index, 'resource')" class="btn btn-info">Sell for {{ item.price }} gold</a>
           <b-alert variant="danger"
                    dismissible
                    :show="errorMessage != '' && item.id == sellingResourceId">
@@ -64,7 +64,6 @@
   import Resource from '../resources/item.vue'
 
   export default {
-    props: ['player'],
     data: function() {
       return {
         currentCategory: 'all',
@@ -82,9 +81,11 @@
       setCategory: function(name) {
         this.currentCategory = name
       },
-      putOnItem(type, item) {
-        var link = type + '/items/' + item.id + '/put_on'
-        axios.post(link)
+      putOnItem(item, type) {
+        var link = '/stuff/items/' + item.id + '/put_on'
+        axios.post(link, {
+          item_type: type
+        })
         .then(response => {
           this.$store.commit('updatePlayer', response.data)
         })
@@ -92,45 +93,18 @@
           console.log(e.response)
         })
       },
-      sellEquipmentItem(item, index) {
+      sellItem(item, index, type) {
         this.cleanErrors()
 
-        var link = 'equipment/items/' + item.id + '/sell'
-        axios.post(link)
+        var link = '/stuff/items/' + item.id + '/sell'
+        axios.post(link, {
+          item_type: type
+        })
         .then(response => {
-          this.player.equipment_items.splice(index, 1)
-          this.$store.commit('increment_gold', item.sell_price)
+          this.$store.commit('updatePlayer', response.data)
         })
         .catch(e => {
           this.sellingItemId = item.id
-          this.errorMessage = e.response.data
-        })
-      },
-      sellToolItem(item, index) {
-        this.cleanErrors()
-
-        var link = 'tools/items/' + item.id + '/sell'
-        axios.post(link)
-        .then(response => {
-          this.player.tool_items.splice(index, 1)
-          this.$store.commit('increment_gold', item.price)
-        })
-        .catch(e => {
-          this.sellingItemId = item.id
-          this.errorMessage = e.response.data
-        })
-      },
-      sellResource(item, index) {
-        this.cleanErrors()
-
-        var link = '/resources/' + item.id + '/sell'
-        axios.post(link)
-        .then(response => {
-          this.player.resources.splice(index, 1)
-          this.$store.commit('increment_gold', item.price)
-        })
-        .catch(e => {
-          this.sellingResourceId = item.id
           this.errorMessage = e.response.data
         })
       },
@@ -138,6 +112,11 @@
         this.errorMessage = ''
         this.sellingItemId = 0
         this.sellingResourceId = 0
+      }
+    },
+    computed: {
+      player() {
+        return this.$store.state.player
       }
     }
   }

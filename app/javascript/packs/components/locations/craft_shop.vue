@@ -91,8 +91,10 @@
         this.errorMessage = ''
         this.successMessage = ''
 
-        var link = '/tools/items/' + item_id + '/buy'
-        axios.post(link)
+        var link = '/stuff/items/' + item_id + '/buy'
+        axios.post(link, {
+          item_type: 'tool'
+        })
         .then(response => {
           this.successMessage = 'Congrats! You have bought ' + response.data.name
           this.$store.commit('gold-decrease', reponse.data.price)

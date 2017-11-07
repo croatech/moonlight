@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   before_action :online_players
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  include CustomErrors
+
   def check_for_an_active_fight
     unless params[:controller] == 'fights' || params[:controller] == 'devise'
       redirect_to fight_path if current_player.last_fight.active?
