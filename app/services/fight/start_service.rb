@@ -19,7 +19,7 @@ class Fight::StartService
   end
 
   def raise_if_there_is_an_active_fight
-    context.fail!(error: 'Player has an active fight') if player.last_fight.active?
+    context.fail!(error: 'Player has an active fight') if player.last_fight&.active?
   end
 
   def fight_create

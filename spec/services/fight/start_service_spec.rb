@@ -14,11 +14,11 @@ describe Fight::StartService do
     end
 
     it 'check that service creates an active fight' do
-      expect { subject }.to change { player.active_fight.present? }.from(false).to(true)
+      expect { subject }.to change { player.fights.last.present? }.from(false).to(true)
     end
 
     it 'check that service gives an object wiht fight_id and round_id' do
-      expect(subject.object).to eq({ fight_id: player.active_fight.id, round_id: player.active_fight.rounds.first.id })
+      expect(subject.fight_id).to eq(player.fights.last.id)
     end
   end
 

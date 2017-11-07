@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe Api::ResourcesController, type: :controller do
-  let(:player) { create(:player) }
+  let(:location) { create(:location, name: 'Shop') }
+  let(:player) { create(:player, location: location) }
   let(:item) { create(:resource) }
   let!(:stuff) { create(:stuff, player: player, stuffable: item) }
 
