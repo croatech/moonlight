@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.boolean "cell", default: false
+    t.boolean "inactive", default: false
     t.index ["parent_id"], name: "index_locations_on_parent_id"
     t.index ["slug"], name: "index_locations_on_slug"
   end

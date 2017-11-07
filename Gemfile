@@ -33,6 +33,7 @@ gem 'rack-cors'
 gem 'dry-transaction'
 gem 'annotate', require: false
 gem 'interactor'
+gem 'directed_graph'
 
 group :development, :test do
   gem 'byebug'

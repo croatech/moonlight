@@ -28,37 +28,7 @@ Sidekiq.redis { |conn| conn.flushdb }
   Player.create(user_id: user.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: user.name, avatar_id: Avatar.first.id)
 
 # LOCATIONS
-  Location.create!(name: 'Moon Light',          slug: 'moon_light')
-  Location.create! [{name: 'Weapon Shop',       slug: 'weapon_shop',       parent_id: Location.find_by(slug: 'moon_light').id},
-                    {name: 'Craft Shop',        slug: 'craft_shop',        parent_id: Location.find_by(slug: 'moon_light').id},
-                    {name: 'Shop of Artifacts', slug: 'shop_of_artifacts', parent_id: Location.find_by(slug: 'moon_light').id},
-                    {name: 'Wayward Pines',     slug: 'wayward_pines'}]
-
-  ## CELLS
-    64.times do |t|
-      location_name = "#{t} cell"
-
-      case t + 1
-      when 20, 21
-       location_name = 'Northern Forest'
-      when 22
-       location_name = 'Mycelium'
-      when 28
-       location_name = 'Dalf Lagoon'
-      when 29, 36
-       location_name = 'Sacred Forest'
-      when 37
-       location_name = 'Shady Walk'
-      when 44
-       location_name = 'Mystic Thicket'
-      when 45
-       location_name = 'River Fork'
-      when 53
-       location_name = 'Hanging Willage'
-      end
-
-      Location.create!(name: "#{location_name}", slug: "#{t+1}", parent_id: Location.find_by(slug: 'wayward_pines').id, cell: true)
-    end
+  Seeds::LocationsImport.call
 
 # EQUIPMENT
   ## CATEGORIES
