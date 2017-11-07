@@ -2,20 +2,19 @@ class CellsController < ApplicationController
   layout 'map'
 
   def move
-    change_location(params[:cell_id])
+    change_location(location_name(params[:cell_id]))
     redirect_back(fallback_location: root_path)
   end
 
   def show
-    change_location(params[:id])
+    change_location(location_name(params[:id]))
     @bots = @location.bots
     @resources = @location.resources
   end
 
   private
 
-  def change_location(location_id)
-    @location = Location.find_by(slug: location_id).decorate
-    Location::ChangeLocationService.new(current_user.player, @location.id).call
+  def location_name(id)
+    Location.find_by(slug: id).name
   end
 end

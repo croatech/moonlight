@@ -38,13 +38,13 @@ class Api::Equipment::ItemsController < ApplicationController
     if service.success?
       render status: 200, body: nil
     else
-      render status: 500, body: nil
+      render status: 500, json: service.error
     end
   end
 
   private
 
   def find_item
-    Equipment::Item.find(params[:item_id])
+    ::Equipment::Item.find(params[:item_id])
   end
 end

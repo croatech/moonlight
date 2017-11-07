@@ -16,6 +16,11 @@
 
           <a @click="putOnItem('equipment', item)" class="btn btn-info">Put on</a>
           <a @click="sellEquipmentItem(item, index)" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
+          <b-alert variant="danger"
+                   dismissible
+                   :show="errorMessage != '' && item.id == sellingItemId">
+            {{ errorMessage }}
+          </b-alert>
         </div>
         <h2 v-if="player.equipment_items.length == 0">No equipment items</h2>
       </div>
@@ -26,6 +31,11 @@
 
           <a @click="putOnItem('tools', item)" class="btn btn-info">Put on</a>
           <a @click="sellToolItem(item, index)" class="btn btn-info">Sell for {{ item.sell_price }} gold</a>
+          <b-alert variant="danger"
+                   dismissible
+                   :show="errorMessage != '' && item.id == sellingItemId">
+            {{ errorMessage }}
+          </b-alert>
         </div>
         <h2 v-if="player.tool_items.length == 0">No tool items</h2>
       </div>
@@ -35,6 +45,11 @@
           <resource :item="item"></resource>
 
           <a @click="sellResource(item, index)" class="btn btn-info">Sell for {{ item.price }} gold</a>
+          <b-alert variant="danger"
+                   dismissible
+                   :show="errorMessage != '' && item.id == sellingResourceId">
+            {{ errorMessage }}
+          </b-alert>
         </div>
         <h2 v-if="player.resources.length == 0">No resources</h2>
       </div>
@@ -52,7 +67,10 @@
     props: ['player'],
     data: function() {
       return {
-        currentCategory: 'all'
+        currentCategory: 'all',
+        errorMessage: '',
+        sellingItemId: 0,
+        sellingResourceId: 0
       }
     },
     components: {
@@ -71,10 +89,12 @@
           this.$store.commit('updatePlayer', response.data)
         })
         .catch(e => {
-          console.log(e.response.data)
+          console.log(e.response)
         })
       },
       sellEquipmentItem(item, index) {
+        this.cleanErrors()
+
         var link = 'equipment/items/' + item.id + '/sell'
         axios.post(link)
         .then(response => {
@@ -82,10 +102,13 @@
           this.$store.commit('increment_gold', item.sell_price)
         })
         .catch(e => {
-          console.log(e.response.data)
+          this.sellingItemId = item.id
+          this.errorMessage = e.response.data
         })
       },
       sellToolItem(item, index) {
+        this.cleanErrors()
+
         var link = 'tools/items/' + item.id + '/sell'
         axios.post(link)
         .then(response => {
@@ -93,10 +116,13 @@
           this.$store.commit('increment_gold', item.price)
         })
         .catch(e => {
-          console.log(e.response.data)
+          this.sellingItemId = item.id
+          this.errorMessage = e.response.data
         })
       },
       sellResource(item, index) {
+        this.cleanErrors()
+
         var link = '/resources/' + item.id + '/sell'
         axios.post(link)
         .then(response => {
@@ -104,8 +130,14 @@
           this.$store.commit('increment_gold', item.price)
         })
         .catch(e => {
-          console.log(e.response.data)
+          this.sellingResourceId = item.id
+          this.errorMessage = e.response.data
         })
+      },
+      cleanErrors() {
+        this.errorMessage = ''
+        this.sellingItemId = 0
+        this.sellingResourceId = 0
       }
     }
   }

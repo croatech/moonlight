@@ -4,6 +4,8 @@ class Stuff::SellService
   def call
     pre_initialize
 
+    check_for_correct_location
+
     if player_has_an_item?
       ActiveRecord::Base.transaction do
         delete_an_item_from_an_inventory
@@ -21,6 +23,11 @@ class Stuff::SellService
   def pre_initialize
     @player = context.player
     @item = context.item
+  end
+
+  def check_for_correct_location
+    service = Locations::CheckForShopLocation.call(player: player)
+    context.fail!(error: service.error) if service.failure?
   end
 
   def player_has_an_item?

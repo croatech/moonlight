@@ -34,8 +34,12 @@ class Api::Tools::ItemsController < ApplicationController
   end
 
   def sell
-    Stuff::SellService.call(player: current_player, item: find_item)
-    redirect_back(fallback_location: root_path)
+    service = Stuff::SellService.call(player: current_player, item: find_item)
+    if service.success?
+      render status: 200, body: nil
+    else
+      render status: 500, json: service.error
+    end
   end
 
   private

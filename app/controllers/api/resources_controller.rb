@@ -6,7 +6,7 @@ class Api::ResourcesController < ApplicationController
     if service.success?
       render status: 200, body: nil
     else
-      render status: 500, body: nil
+      render status: 500, json: service.error
     end
   end
 

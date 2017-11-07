@@ -12,7 +12,6 @@
 #
 
 class Location < ApplicationRecord
-
   has_many :players
   has_many :location_bots
   has_many :location_resources
