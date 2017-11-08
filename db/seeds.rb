@@ -12,6 +12,7 @@ LocationResource.delete_all
 LocationBot.delete_all
 Resource.delete_all
 Bot.delete_all
+LocationLocation.delete_all
 Location.delete_all
 Avatar.delete_all
 
@@ -27,8 +28,11 @@ Sidekiq.redis { |conn| conn.flushdb }
   user = User.create!(email: 'croaton6@gmail.com', password: 'password', name: 'Croaton')
   Player.create(user_id: user.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: user.name, avatar_id: Avatar.first.id)
 
-# LOCATIONS
-  Seeds::LocationsImport.call
+# Location
+Seeds::LocationsImport.call
+
+# LocationLocation
+Seeds::LocationLocationsImport.call
 
 # EQUIPMENT
   ## CATEGORIES
