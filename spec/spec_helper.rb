@@ -34,6 +34,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Sidekiq::Worker.clear_all
   end
 
   config.include Devise::Test::ControllerHelpers, type: :controller

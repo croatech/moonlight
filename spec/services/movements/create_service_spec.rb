@@ -14,6 +14,10 @@ describe Movements::CreateService do
     expect { subject }.to change { player.active_movement.present? }.from(false).to(true)
   end
 
+  it 'checks that worker created' do
+    expect { subject }.to change { Sidekiq::Worker.jobs.size }.from(0).to(1)
+  end
+
   context 'movement object' do
     before :each do
       subject
