@@ -1,4 +1,4 @@
-class LocationLocations::FindShortestPath
+class Locations::FindShortestPathService
   def initialize(location_id:, near_location_id:)
     @location_id = location_id
     @near_location_id = near_location_id

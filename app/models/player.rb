@@ -50,11 +50,11 @@ class Player < ApplicationRecord
 
   has_many :fights
   has_many :logs
-
   has_many :stuffs
   has_many :equipment_items, class_name: 'Equipment::Item', through: :stuffs, source: :stuffable, source_type: 'Equipment::Item'
   has_many :tool_items, class_name: 'Tool::Item', through: :stuffs, source: :stuffable, source_type: 'Tool::Item'
   has_many :resources, class_name: 'Resource', through: :stuffs, source: :stuffable, source_type: 'Resource'
+  has_many :movements
 
   scope :recently_online, -> { where('updated_at > ?', 15.minutes.ago).order(:name) }
 
@@ -132,5 +132,9 @@ class Player < ApplicationRecord
 
   def last_fight
     self.fights.last
+  end
+
+  def active_movement
+    self.movements.active.take
   end
 end

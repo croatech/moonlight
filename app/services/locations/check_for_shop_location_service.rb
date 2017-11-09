@@ -1,4 +1,4 @@
-class Locations::CheckForShopLocation
+class Locations::CheckForShopLocationService
   include Interactor
 
   def call

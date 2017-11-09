@@ -26,7 +26,7 @@ class Stuff::SellService
   end
 
   def check_for_correct_location
-    service = Locations::CheckForShopLocation.call(player: player)
+    service = Locations::CheckForShopLocationService.call(player: player)
     context.fail!(error: service.error) if service.failure?
   end
 

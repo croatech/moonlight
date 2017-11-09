@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Locations::CheckForShopLocation do
+describe Locations::CheckForShopLocationService do
   let!(:shop_location) { create(:location, name: 'Magic Shop') }
   let(:location) { create(:location, name: 'Some Cave') }
   let(:player) { create(:player, location: location) }
 
   subject do
-    Locations::CheckForShopLocation.call(player: player)
+    Locations::CheckForShopLocationService.call(player: player)
   end
 
   describe 'call' do
@@ -31,7 +31,7 @@ describe Locations::CheckForShopLocation do
 
   describe 'shop_names' do
     subject do
-      Locations::CheckForShopLocation.new(player: player)
+      Locations::CheckForShopLocationService.new(player: player)
     end
 
     it 'checks that shop_names return an array with Shops' do

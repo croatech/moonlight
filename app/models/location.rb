@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  slug       :string
 #  cell       :boolean          default(FALSE)
+#  inactive   :boolean          default(FALSE)
 #
 
 class Location < ApplicationRecord

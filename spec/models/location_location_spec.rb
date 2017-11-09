@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: location_locations
+#
+#  id               :integer          not null, primary key
+#  location_id      :integer          not null
+#  near_location_id :integer          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 require 'spec_helper'
 
 describe LocationLocation, type: :model do
