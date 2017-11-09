@@ -52,7 +52,8 @@ class PlayerSerializer < ActiveModel::Serializer
              :exp_next,
              :avatar,
              :lumberjacking_skill,
-             :fishing_skill
+             :fishing_skill,
+             :active_movement
 
   has_many :put_on_equipment_items
   has_many :put_on_tool_items

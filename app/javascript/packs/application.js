@@ -18,6 +18,7 @@ import Gold from './components/player/gold.vue'
 import Stats from './components/player/stats.vue'
 import Inventory from './components/player/inventory.vue'
 import Fight from './components/fight.vue'
+import WaywardPines from './components/wayward_pines.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -55,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Gold,
       Stats,
       Inventory,
-      Fight
+      Fight,
+      WaywardPines
     },
     data: {
       currentPlayer: null
