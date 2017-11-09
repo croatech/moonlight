@@ -7,6 +7,7 @@ require 'database_cleaner'
 require 'factory_girl_rails'
 require 'helpers'
 require 'rails_helper'
+require 'sidekiq/testing'
 
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
