@@ -31,11 +31,12 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :resources do
-      post :sell
-    end
-
     resource :fight, only: [:show, :update]
+    resources :locations, except: :all do
+      collection do
+        get :wayward_pines
+      end
+    end
   end
 
   resource :fight, only: [:create, :show]

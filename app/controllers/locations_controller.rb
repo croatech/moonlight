@@ -23,8 +23,6 @@ class LocationsController < ApplicationController
 
   def wayward_pines
     change_location(Location::START_LOCATION_NAME) if current_location.in_city?
-    @location = Location.find_by(slug: 'wayward_pines')
-    @cells = @location.children.order(:id).decorate
     render layout: 'map'
   end
 
