@@ -26,4 +26,8 @@ class Location < ApplicationRecord
   acts_as_tree
 
   scope :cells, -> { where(cell: true) }
+
+  def in_city?
+    self.name == 'Moon Light' || self.parent.name == 'Moon Light'
+  end
 end

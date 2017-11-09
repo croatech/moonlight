@@ -5,7 +5,6 @@ module Seeds::LocationsImport
     Location.create!(
       [
         { name: 'Weapon Shop',       slug: 'weapon_shop',       parent_id: Location.find_by(slug: 'moon_light').id },
-        { name: 'Weapon Shop',       slug: 'weapon_shop',       parent_id: Location.find_by(slug: 'moon_light').id },
         { name: 'Craft Shop',        slug: 'craft_shop',        parent_id: Location.find_by(slug: 'moon_light').id },
         { name: 'Shop of Artifacts', slug: 'shop_of_artifacts', parent_id: Location.find_by(slug: 'moon_light').id },
         { name: 'Wayward Pines',     slug: 'wayward_pines'}

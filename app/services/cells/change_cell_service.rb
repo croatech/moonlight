@@ -5,7 +5,7 @@ class Cells::ChangeCellService
   end
 
   def call
-    return if active_movement_in_progress? || current_location?
+    return if active_movement_in_progress? || current_location_chosen?
 
     Movements::CreateService.new(player, location).call
   end
@@ -18,7 +18,7 @@ class Cells::ChangeCellService
     player.active_movement.present?
   end
 
-  def current_location?
+  def current_location_chosen?
     player.location_id == location.id
   end
 end
