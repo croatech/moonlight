@@ -6,7 +6,7 @@ describe Locations::FindShortestPathService do
   let!(:location_location) { create(:location_location, location: location, near_location: near_location) }
 
   subject do
-    Locations::FindShortestPathService.new(location_id: location.id, near_location_id: near_location.id).call
+    Locations::FindShortestPathService.new(from_location_id: location.id, to_location_id: near_location.id).call
   end
 
   let(:object) { subject }
@@ -24,7 +24,7 @@ describe Locations::FindShortestPathService do
     let!(:location_location3) { create(:location_location, location: location3, near_location: location4) }
 
     subject do
-      Locations::FindShortestPathService.new(location_id: location.id, near_location_id: location4.id).call
+      Locations::FindShortestPathService.new(from_location_id: location.id, to_location_id: location4.id).call
     end
 
     it 'checks that path is correct' do

@@ -1,5 +1,5 @@
 class Locations::ChangeLocationService
-  def initialize(player:, location:)
+  def initialize(player, location)
     @player = player
     @location = location
   end

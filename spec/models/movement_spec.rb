@@ -10,10 +10,11 @@
 #  updated_at :datetime         not null
 #
 
-class Movement < ApplicationRecord
-  belongs_to :player
+require 'spec_helper'
 
-  enum status: %i[active completed]
-
-  validates :player_id, :status, :path, presence: true
+describe Movement, type: :model do
+  it { is_expected.to belong_to(:player) }
+  it { is_expected.to validate_presence_of(:player_id) }
+  it { is_expected.to validate_presence_of(:status) }
+  it { is_expected.to validate_presence_of(:path) }
 end

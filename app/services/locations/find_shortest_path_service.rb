@@ -1,7 +1,7 @@
 class Locations::FindShortestPathService
-  def initialize(location_id:, near_location_id:)
-    @location_id = location_id
-    @near_location_id = near_location_id
+  def initialize(from_location_id:, to_location_id:)
+    @from_location_id = from_location_id
+    @to_location_id = to_location_id
     @result = []
   end
 
@@ -10,8 +10,8 @@ class Locations::FindShortestPathService
     build_edges
     graph = DirectedGraph::Graph.new(@edges)
     graph.shortest_path(
-      instance_variable_get("@vertice_#{location_id}"),
-     instance_variable_get("@vertice_#{near_location_id}")
+      instance_variable_get("@vertice_#{from_location_id}"),
+     instance_variable_get("@vertice_#{to_location_id}")
     ).each do |d|
       @result << d.name
     end
@@ -21,7 +21,7 @@ class Locations::FindShortestPathService
 
   private
 
-  attr_reader :location_id, :near_location_id, :result
+  attr_reader :from_location_id, :to_location_id, :result
 
   def build_vertices
     locations.find_each do |location|

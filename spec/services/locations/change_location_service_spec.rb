@@ -6,7 +6,7 @@ describe Locations::ChangeLocationService do
   let(:new_location) { create(:location) }
 
   subject do
-    Locations::ChangeLocationService.new(player: player, location: new_location).call
+    Locations::ChangeLocationService.new(player, new_location).call
   end
 
   it 'checks that player belongs to current location' do
