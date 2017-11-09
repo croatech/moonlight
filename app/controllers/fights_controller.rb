@@ -4,7 +4,7 @@ class FightsController < ApplicationController
   layout 'map'
 
   def create
-    bot = current_player.location.bots.find(params[:bot_id])
+    bot = current_location.bots.find(params[:bot_id])
     service = Fight::StartService.call(player: current_player, bot: bot)
     if service.success?
       redirect_to fight_path

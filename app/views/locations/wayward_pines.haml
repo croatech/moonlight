@@ -5,5 +5,8 @@
       - @cells.each do |cell|
         - cache cell do
           .cell{:class => ('inactive' if cell.inactive?)}
-            = link_to image_tag("locations/wayward_pines/cells/#{cell.slug}.png", alt: cell.slug), location_cell_move_path(location_id: params[:action], cell_id: cell.slug)
-            = cell.check_for_current_position(current_user.player.location.slug)
+            - if cell.inactive?
+              = image_tag("locations/wayward_pines/cells/#{cell.slug}.png")
+            - else
+              = link_to image_tag("locations/wayward_pines/cells/#{cell.slug}.png", alt: cell.slug), location_cell_move_path(location_id: params[:action], cell_id: cell.slug)
+              = cell.check_for_current_position(current_user.player.location.slug)

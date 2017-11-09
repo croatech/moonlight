@@ -22,7 +22,7 @@ class LocationsController < ApplicationController
   end
 
   def wayward_pines
-    change_location('Shady Walk') if current_location.in_city?
+    change_location(Location::START_LOCATION_NAME) if current_location.in_city?
     @location = Location.find_by(slug: 'wayward_pines')
     @cells = @location.children.order(:id).decorate
     render layout: 'map'
@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
   private
 
   def go_to_city_if_outside
-    return if current_location.name == 'Shady Walk' || current_location.in_city?
+    return if current_location.name == Location::START_LOCATION_NAME || current_location.in_city?
     change_cell('Shady Walk')
     redirect_back(fallback_location: root_path)
   end

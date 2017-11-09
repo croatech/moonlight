@@ -27,6 +27,9 @@ class Location < ApplicationRecord
 
   scope :cells, -> { where(cell: true) }
 
+  # name of location from you start when exit from the city
+  START_LOCATION_NAME = 'Shady Walk'
+
   def in_city?
     self.name == 'Moon Light' || self.parent.name == 'Moon Light'
   end
