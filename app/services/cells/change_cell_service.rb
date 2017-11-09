@@ -5,16 +5,20 @@ class Cells::ChangeCellService
   end
 
   def call
-    if player.active_movement.present?
-      Movements::HandleService.new(player).call
-    else
-      Movements::CreateService.new(player, location).call
-    end
+    return if active_movement_in_progress? || current_location?
+
+    Movements::CreateService.new(player, location).call
   end
 
   private
 
   attr_reader :player, :location
-end
 
-#Cells::ChangeCellWorker.perform_in(Player::MOVEMENT_SPEED, player.id, location.id)
+  def active_movement_in_progress?
+    player.active_movement.present?
+  end
+
+  def current_location?
+    player.location_id == location.id
+  end
+end

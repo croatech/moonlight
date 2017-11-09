@@ -49,13 +49,6 @@ class ApplicationController < ActionController::Base
     add_event_to_log("You\'ve changed the location to <span>#{@location.name}</span>")
   end
 
-  def change_cell(cell_name)
-    @location = Location.find_by(name: cell_name).decorate
-    return if @location.id == current_player.location_id
-    Cells::ChangeCellService.new(current_player, @location).call
-    add_event_to_log("You\'ve changed the cell to <span>#{@location.name}</span>")
-  end
-
   private
 
   def configure_permitted_parameters

@@ -19,6 +19,6 @@ class Movements::CreateService
   end
 
   def handle_movement
-    Movements::HandleService.new()
+    Movements::HandleService.new(player).call
   end
 end

@@ -2,8 +2,9 @@ class CellsController < ApplicationController
   layout 'map'
 
   def move
-    return if current_player.active_movement.present?
-    change_cell(location_name(params[:cell_id]))
+    @location = Location.find_by(name: location_name(params[:cell_id])).decorate
+    Cells::ChangeCellService.new(current_player, @location).call
+    add_event_to_log("You\'ve changed the cell to <span>#{@location.name}</span>")
     redirect_back(fallback_location: root_path)
   end
 
