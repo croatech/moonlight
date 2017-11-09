@@ -1,6 +1,5 @@
 module Seeds::LocationLocationsImport
   def self.call
-
     Location.cells.where(inactive: false).find_each do |location|
       near_location_ids = []
       near_location_ids << location.id - 9

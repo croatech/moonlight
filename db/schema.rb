@@ -115,6 +115,15 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.index ["player_id"], name: "index_logs_on_player_id"
   end
 
+  create_table "movements", force: :cascade do |t|
+    t.string "path", null: false, array: true
+    t.bigint "player_id", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_movements_on_player_id"
+  end
+
   create_table "players", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "location_id"
@@ -225,6 +234,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
   add_foreign_key "location_resources", "locations"
   add_foreign_key "location_resources", "resources"
   add_foreign_key "logs", "players"
+  add_foreign_key "movements", "players"
   add_foreign_key "players", "locations"
   add_foreign_key "rounds", "fights"
 end
