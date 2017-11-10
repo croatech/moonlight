@@ -53,7 +53,8 @@ class PlayerSerializer < ActiveModel::Serializer
              :avatar,
              :lumberjacking_skill,
              :fishing_skill,
-             :active_movement
+             :active_movement,
+             :location_id
 
   has_many :put_on_equipment_items
   has_many :put_on_tool_items
