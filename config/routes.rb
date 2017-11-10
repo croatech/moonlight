@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  # API
   namespace :api do
     resources :players, only: [:index, :show] do
       get :current, on: :collection
@@ -37,8 +38,12 @@ Rails.application.routes.draw do
         get :wayward_pines
       end
     end
+    resources :cells, only: :show do
+      post :move
+    end
   end
 
+  # Backend
   resource :fight, only: [:create, :show]
   resources :players, only: :show
 
@@ -69,8 +74,6 @@ Rails.application.routes.draw do
       get :wayward_pines
     end
 
-    resources :cells, only: :show do
-      get :move
-    end
+    resources :cells, only: :show
   end
 end

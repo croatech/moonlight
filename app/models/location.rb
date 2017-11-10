@@ -26,6 +26,7 @@ class Location < ApplicationRecord
   acts_as_tree
 
   scope :cells, -> { where(cell: true) }
+  scope :active, -> { where(inactive: false) }
 
   # name of location from you start when exit from the city
   START_LOCATION_NAME = 'Shady Walk'

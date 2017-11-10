@@ -66,7 +66,7 @@ class Player < ApplicationRecord
   INITIAL_GOLD = 1500
   REGENERATION_HP_PERCENT = 10
   REGENERATION_HP_DELAY = 5 # seconds
-  MOVEMENT_SPEED = 5 # seconds
+  MOVEMENT_SPEED = 1 # seconds
 
   # generate methods for increase of stats
   STATS.each do |stat|

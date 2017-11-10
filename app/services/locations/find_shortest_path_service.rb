@@ -43,6 +43,6 @@ class Locations::FindShortestPathService
   end
 
   def locations
-    @locations ||= Location.cells.where(inactive: false).includes(:near_locations)
+    @locations ||= Location.cells.active.includes(:near_locations)
   end
 end
