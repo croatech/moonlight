@@ -5,7 +5,7 @@ class Api::CellsController < ApplicationController
     location = Location.find(params[:cell_id])
     service = Cells::ChangeCellService.call(player: current_player, location: location)
     if service.success?
-      render status: 200, body: nil
+      render status: 200, json: current_player
     else
       render status: 500, body: nil
     end
