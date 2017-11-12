@@ -8,6 +8,9 @@
 #### Keys
 `equipment_categories`
 
+### Sidekiq
+`sidekiq -q critical,2 -q default`
+
 ### MAP
 #### CITIES
 Moonlight: 29, 37
