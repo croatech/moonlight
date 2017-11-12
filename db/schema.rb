@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.index ["equipment_category_id"], name: "index_equipment_items_on_equipment_category_id"
   end
 
+  create_table "equipment_items_players", id: false, force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.bigint "equipment_item_id", null: false
+    t.index ["equipment_item_id"], name: "index_equipment_items_players_on_equipment_item_id"
+    t.index ["player_id"], name: "index_equipment_items_players_on_player_id"
+  end
+
   create_table "events", id: :serial, force: :cascade do |t|
     t.integer "player_id"
     t.text "body"
@@ -68,15 +75,9 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.datetime "updated_at", null: false
     t.string "winner_type"
     t.integer "dropped_gold"
-    t.integer "winner_id"
-    t.integer "dropped_item_id"
-    t.string "dropped_item_type"
+    t.integer "dropped_item"
     t.index ["bot_id"], name: "index_fights_on_bot_id"
-    t.index ["dropped_item_id"], name: "index_fights_on_dropped_item_id"
-    t.index ["dropped_item_type"], name: "index_fights_on_dropped_item_type"
     t.index ["player_id"], name: "index_fights_on_player_id"
-    t.index ["winner_id"], name: "index_fights_on_winner_id"
-    t.index ["winner_type"], name: "index_fights_on_winner_type"
   end
 
   create_table "location_bots", id: :serial, force: :cascade do |t|
@@ -112,6 +113,15 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.boolean "inactive", default: false
     t.index ["parent_id"], name: "index_locations_on_parent_id"
     t.index ["slug"], name: "index_locations_on_slug"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.text "text", null: false
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_messages_on_player_id"
   end
 
   create_table "movements", force: :cascade do |t|
@@ -180,10 +190,6 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.datetime "updated_at", null: false
     t.integer "player_hp"
     t.integer "bot_hp"
-    t.string "player_attack_point"
-    t.string "player_defense_point"
-    t.string "bot_attack_point"
-    t.string "bot_defense_point"
     t.index ["fight_id"], name: "index_rounds_on_fight_id"
   end
 
@@ -237,6 +243,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
   add_foreign_key "fights", "players"
   add_foreign_key "location_resources", "locations"
   add_foreign_key "location_resources", "resources"
+  add_foreign_key "messages", "players"
   add_foreign_key "movements", "players"
   add_foreign_key "players", "locations"
   add_foreign_key "rounds", "fights"
