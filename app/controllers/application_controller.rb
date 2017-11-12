@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
 
   #before_action :check_for_an_active_fight
-  before_action :load_logs
   before_action :online_players
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -29,12 +28,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def load_logs
-    @logs = current_user.player.logs.order(id: :desc) if current_user
-  end
-
   def online_players
-    @online_players = Player.recently_online
+    @online_players = Player.online
   end
 
   def add_event_to_log(event)

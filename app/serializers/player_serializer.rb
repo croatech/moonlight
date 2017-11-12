@@ -61,6 +61,7 @@ class PlayerSerializer < ActiveModel::Serializer
   has_many :equipment_items
   has_many :tool_items
   has_many :resources
+  has_many :logs
 
   belongs_to :avatar
 
@@ -70,5 +71,9 @@ class PlayerSerializer < ActiveModel::Serializer
 
   def put_on_tool_items
     object.wearable_tools.includes(:category)
+  end
+
+  def logs
+    object.logs.order(id: :desc)
   end
 end

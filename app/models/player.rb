@@ -56,7 +56,7 @@ class Player < ApplicationRecord
   has_many :resources, class_name: 'Resource', through: :stuffs, source: :stuffable, source_type: 'Resource'
   has_many :movements
 
-  scope :recently_online, -> { where('updated_at > ?', 15.minutes.ago).order(:name) }
+  scope :online, -> { where('updated_at < ?', 5.minutes.ago).order(:name) }
 
   STATS = %w[attack defense hp]
   EQUIPMENT_SLOTS = %w[helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants]

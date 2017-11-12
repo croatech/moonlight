@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   # API
   namespace :api do
     resources :players, only: [:index, :show] do
-      get :current, on: :collection
+      collection do
+        get :current
+        get :online
+      end
     end
 
     namespace :player do
