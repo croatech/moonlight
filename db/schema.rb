@@ -52,13 +52,6 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.index ["equipment_category_id"], name: "index_equipment_items_on_equipment_category_id"
   end
 
-  create_table "equipment_items_players", id: false, force: :cascade do |t|
-    t.bigint "player_id", null: false
-    t.bigint "equipment_item_id", null: false
-    t.index ["equipment_item_id"], name: "index_equipment_items_players_on_equipment_item_id"
-    t.index ["player_id"], name: "index_equipment_items_players_on_player_id"
-  end
-
   create_table "events", id: :serial, force: :cascade do |t|
     t.integer "player_id"
     t.text "body"
@@ -75,9 +68,15 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.datetime "updated_at", null: false
     t.string "winner_type"
     t.integer "dropped_gold"
-    t.integer "dropped_item"
+    t.integer "winner_id"
+    t.integer "dropped_item_id"
+    t.string "dropped_item_type"
     t.index ["bot_id"], name: "index_fights_on_bot_id"
+    t.index ["dropped_item_id"], name: "index_fights_on_dropped_item_id"
+    t.index ["dropped_item_type"], name: "index_fights_on_dropped_item_type"
     t.index ["player_id"], name: "index_fights_on_player_id"
+    t.index ["winner_id"], name: "index_fights_on_winner_id"
+    t.index ["winner_type"], name: "index_fights_on_winner_type"
   end
 
   create_table "location_bots", id: :serial, force: :cascade do |t|
@@ -135,7 +134,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
 
   create_table "players", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "location_id"
+    t.integer "location_id", default: 1383
     t.integer "helmet_slot"
     t.integer "armor_slot"
     t.integer "mail_slot"
@@ -190,6 +189,10 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.datetime "updated_at", null: false
     t.integer "player_hp"
     t.integer "bot_hp"
+    t.string "player_attack_point"
+    t.string "player_defense_point"
+    t.string "bot_attack_point"
+    t.string "bot_defense_point"
     t.index ["fight_id"], name: "index_rounds_on_fight_id"
   end
 

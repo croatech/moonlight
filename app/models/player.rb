@@ -51,6 +51,7 @@ class Player < ApplicationRecord
   has_many :fights
   has_many :events
   has_many :stuffs
+  has_many :messages
   has_many :equipment_items, class_name: 'Equipment::Item', through: :stuffs, source: :stuffable, source_type: 'Equipment::Item'
   has_many :tool_items, class_name: 'Tool::Item', through: :stuffs, source: :stuffable, source_type: 'Tool::Item'
   has_many :resources, class_name: 'Resource', through: :stuffs, source: :stuffable, source_type: 'Resource'

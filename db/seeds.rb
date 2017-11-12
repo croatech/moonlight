@@ -19,6 +19,12 @@ Avatar.delete_all
 # Delete sidekiq workers
 Sidekiq.redis { |conn| conn.flushdb }
 
+# Location
+Seeds::LocationsImport.call
+
+# LocationLocation
+Seeds::LocationLocationsImport.call
+
 # AVATARS
   Dir.glob("app/assets/images/players/avatars/*.jpg").sort.each do |file|
     Avatar.create(image: File.new(file, "r"), private: false)
@@ -27,12 +33,6 @@ Sidekiq.redis { |conn| conn.flushdb }
 # USERS & PLAYERS
   user = User.create!(email: 'croaton6@gmail.com', password: 'password', name: 'Croaton')
   Player.create(user_id: user.id, current_hp: Player::INITIAL_HP, gold: Player::INITIAL_GOLD, name: user.name, avatar_id: Avatar.first.id)
-
-# Location
-Seeds::LocationsImport.call
-
-# LocationLocation
-Seeds::LocationLocationsImport.call
 
 # EQUIPMENT
   ## CATEGORIES

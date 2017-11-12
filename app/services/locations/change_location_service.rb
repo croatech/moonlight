@@ -24,6 +24,6 @@ class Locations::ChangeLocationService
   end
 
   def track_event
-    add_event_to_log("You\'ve changed the location to <span>#{location.name}</span>")
+    Events::AddService.new("You\'ve changed the location to <span>#{location.name}</span>").call
   end
 end

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :cells, only: :show do
       post :move
     end
+    resources :messages, only: [:index, :create]
   end
 
   # Backend
