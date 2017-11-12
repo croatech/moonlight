@@ -7,6 +7,7 @@ class Cells::ChangeCellWorker
     player.update(location: location)
 
     ActionCable.server.broadcast("movement_#{player.active_movement.id}", PlayerSerializer.new(player))
+    Log::AddEventService.new(player, "You\'ve changed the cell to <span>#{location.name}</span>").call
 
     Movements::HandleService.new(player).call
   end

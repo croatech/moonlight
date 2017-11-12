@@ -7,7 +7,7 @@ class Api::CellsController < ApplicationController
     if service.success?
       render status: 200, json: current_player
     else
-      render status: 500, body: nil
+      render status: 500, body: service.error
     end
   end
 end

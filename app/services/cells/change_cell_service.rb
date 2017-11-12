@@ -4,10 +4,11 @@ class Cells::ChangeCellService
   def call
     pre_initialize
 
-    context.fail! if active_movement_in_progress? || current_location_chosen? || inactive?
+    context.fail!(error: 'You\'re already wakling') if active_movement_in_progress?
+    context.fail!(error: 'You\'re already here') if current_location_chosen?
+    context.fail!(error: 'You can\'t go to uncharted lands') if inactive_location?
 
     Movements::CreateService.new(player, location).call
-    track_event
   end
 
   private
@@ -27,11 +28,7 @@ class Cells::ChangeCellService
     player.location_id == location.id
   end
 
-  def inactive?
-    player.location.inactive?
-  end
-
-  def track_event
-    Log::AddEventService.new(player, "You\'ve changed the cell to <span>#{location.name}</span>").call
+  def inactive_location?
+    location.inactive?
   end
 end
