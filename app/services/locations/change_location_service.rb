@@ -8,6 +8,7 @@ class Locations::ChangeLocationService
     return if active_movement_in_progress? || current_location_chosen?
 
     player.update(location: location)
+    track_event
   end
 
   private
@@ -20,5 +21,9 @@ class Locations::ChangeLocationService
 
   def current_location_chosen?
     player.location_id == location.id
+  end
+
+  def track_event
+    add_event_to_log("You\'ve changed the location to <span>#{location.name}</span>")
   end
 end

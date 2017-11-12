@@ -33,13 +33,12 @@ class ApplicationController < ActionController::Base
   end
 
   def add_event_to_log(event)
-    Log::AddEventService.new(current_user.player, event).call
+    Events::AddService.new(current_user.player, event).call
   end
 
   def change_location(location_name)
     @location = Location.find_by(name: location_name).decorate
     Locations::ChangeLocationService.new(current_player, @location).call
-    add_event_to_log("You\'ve changed the location to <span>#{@location.name}</span>")
   end
 
   private

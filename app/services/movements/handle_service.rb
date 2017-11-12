@@ -9,7 +9,7 @@ class Movements::HandleService
     next_location_id = determine_next_location_id
     if next_location_id.nil?
       movement.completed!
-      ws_stream
+      ws_publish
     else
       run_worker(next_location_id)
     end
@@ -29,7 +29,7 @@ class Movements::HandleService
     return path_array[index_of_next_location_id]
   end
 
-  def ws_stream
+  def ws_publish
     ActionCable.server.broadcast("movement_#{movement.id}", PlayerSerializer.new(player))
   end
 end
