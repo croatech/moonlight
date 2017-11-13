@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  root 'locations#moon_light'
+  root 'locations#wayward_pines'
 
   devise_for :users, :controllers => {
     registrations: 'users/registrations',

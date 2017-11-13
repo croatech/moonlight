@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   def index
-    render json: Message.includes(:player).limit(50).order(id: :desc)
+    render json: Message.includes([:player, :recipient]).limit(50).order(id: :desc)
   end
 
   def create
