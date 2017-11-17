@@ -2,8 +2,7 @@ class CellsController < ApplicationController
   layout 'map'
 
   def show
-    @location = Location.find(params[:cell_id])
-    Cells::ChangeCellService.new(current_player, @location).call
+    @location = Location.find_by(slug: params[:id]).decorate
     @bots = @location.bots
     @resources = @location.resources
   end

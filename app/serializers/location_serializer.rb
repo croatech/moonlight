@@ -13,7 +13,7 @@
 #
 
 class LocationSerializer < ActiveModel::Serializer
-  attributes :name, :children
+  attributes :name, :children, :slug
 
   def children
     object.children.order(:id)

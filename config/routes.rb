@@ -41,7 +41,7 @@ Rails.application.routes.draw do
         get :wayward_pines
       end
     end
-    resources :cells, only: :show do
+    resources :cells, except: :all do
       post :move
     end
     resources :messages, only: [:index, :create]
@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   # Backend
   resource :fight, only: [:create, :show]
   resources :players, only: :show
+  resources :cells, only: :show
 
   resources :resources do
     put :collect
@@ -77,7 +78,5 @@ Rails.application.routes.draw do
       get :shop_of_artifacts
       get :wayward_pines
     end
-
-    resources :cells, only: :show
   end
 end
