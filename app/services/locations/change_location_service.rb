@@ -24,6 +24,6 @@ class Locations::ChangeLocationService
   end
 
   def track_event
-    Events::AddService.new("You\'ve changed the location to <span>#{location.name}</span>").call
+    Events::AddService.new(player,"You\'ve changed the location to <span>#{location.name}</span>").call
   end
 end

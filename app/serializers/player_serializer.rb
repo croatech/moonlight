@@ -65,6 +65,7 @@ class PlayerSerializer < ActiveModel::Serializer
   has_many :events
 
   belongs_to :avatar
+  belongs_to :location
 
   def put_on_equipment_items
     object.wearable_equipment.includes(:category)
