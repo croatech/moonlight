@@ -1,0 +1,51 @@
+app:
+  build: .
+  command: bundle exec puma -C config/puma.rb
+  volumes:
+    - /var/www/muninn
+  expose:
+    - "3000"
+  links:
+    - postgres
+    - redis
+
+web:
+  build: .
+  dockerfile: Dockerfile-nginx
+  links:
+    - app
+  ports:
+    - "443:443"
+
+redis:
+  image: redis:3.0.7
+  ports:
+    - '6379:6379'
+  volumes_from:
+    - redis-data
+
+postgres:
+  image: postgres:9.5
+  ports:
+    - '5432:5432'
+  volumes_from:
+    - postgres-data
+
+sidekiq:
+  build: .
+  command: bundle exec sidekiq -q critical,2 -q default
+  links:
+    - postgres
+    - redis
+  volumes:
+    - .:/sp
+
+postgres-data:
+  image: busybox
+  volumes:
+    - /var/lib/postgresql/data
+
+redis-data:
+  image: busybox
+  volumes:
+    - /var/lib/redis/data
