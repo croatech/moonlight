@@ -31,8 +31,6 @@ class Location < ApplicationRecord
   # name of location from you start when exit from the city
   START_LOCATION_NAME = 'Shady Walk'
 
-  mount_uploader :image, LocationUploader
-
   def in_city?
     self.name == 'Moon Light' || self.parent.name == 'Moon Light'
   end

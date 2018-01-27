@@ -2,7 +2,7 @@
 User.delete_all
 Round.delete_all
 Fight.delete_all
-Log.delete_all
+Event.delete_all
 Player.delete_all
 Equipment::Category.delete_all
 Equipment::Item.delete_all
