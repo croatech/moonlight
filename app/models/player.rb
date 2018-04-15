@@ -60,8 +60,6 @@ class Player < ApplicationRecord
 
   scope :online, -> { where('updated_at > ?', 5.minutes.ago).order(:name) }
 
-  before_create :set_initial_location
-
   STATS = %w[attack defense hp]
   EQUIPMENT_SLOTS = %w[helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants]
   TOOL_SLOTS = %w[lumberjacking fishing]
@@ -141,11 +139,5 @@ class Player < ApplicationRecord
 
   def active_movement
     self.movements.active.take
-  end
-
-  private
-
-  def set_initial_location
-    self.location_id = Location.first.id
   end
 end
