@@ -14,11 +14,11 @@
 
 class Location < ApplicationRecord
   has_many :players
-  has_many :location_bots
-  has_many :location_resources
-  has_many :bots, through: :location_bots
-  has_many :resources, through: :location_resources
-  has_many :location_locations
+  has_many :location_bots, dependent: :destroy
+  has_many :location_resources, dependent: :destroy
+  has_many :bots, through: :location_bots, dependent: :destroy
+  has_many :resources, through: :location_resources, dependent: :destroy
+  has_many :location_locations, dependent: :destroy
   has_many :near_locations, class_name: 'Location', through: :location_locations, source: :near_location
 
   validates :name, :slug, presence: true

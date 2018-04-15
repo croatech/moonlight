@@ -48,16 +48,19 @@ class Player < ApplicationRecord
   belongs_to :user
   belongs_to :avatar
 
-  has_many :fights
-  has_many :events
-  has_many :stuffs
-  has_many :messages
+  has_many :fights, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :stuffs, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :events, dependent: :destroy
   has_many :equipment_items, class_name: 'Equipment::Item', through: :stuffs, source: :stuffable, source_type: 'Equipment::Item'
   has_many :tool_items, class_name: 'Tool::Item', through: :stuffs, source: :stuffable, source_type: 'Tool::Item'
   has_many :resources, class_name: 'Resource', through: :stuffs, source: :stuffable, source_type: 'Resource'
-  has_many :movements
+  has_many :movements, dependent: :destroy
 
   scope :online, -> { where('updated_at > ?', 5.minutes.ago).order(:name) }
+
+  before_create :set_initial_location
 
   STATS = %w[attack defense hp]
   EQUIPMENT_SLOTS = %w[helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants]
@@ -138,5 +141,11 @@ class Player < ApplicationRecord
 
   def active_movement
     self.movements.active.take
+  end
+
+  private
+
+  def set_initial_location
+    self.location_id = Location.first.id
   end
 end

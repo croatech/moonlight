@@ -1,21 +1,3 @@
-# DELETE ALL
-User.delete_all
-Round.delete_all
-Fight.delete_all
-Event.delete_all
-Player.delete_all
-Equipment::Category.delete_all
-Equipment::Item.delete_all
-Tool::Category.delete_all
-Tool::Item.delete_all
-LocationResource.delete_all
-LocationBot.delete_all
-Resource.delete_all
-Bot.delete_all
-LocationLocation.delete_all
-Location.delete_all
-Avatar.delete_all
-
 # Delete sidekiq workers
 Sidekiq.redis { |conn| conn.flushdb }
 

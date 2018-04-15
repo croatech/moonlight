@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
 
   create_table "players", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "location_id", default: 1383
+    t.integer "location_id"
     t.integer "helmet_slot"
     t.integer "armor_slot"
     t.integer "mail_slot"
