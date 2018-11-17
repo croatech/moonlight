@@ -9,7 +9,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem 'acts_as_tree'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.6'

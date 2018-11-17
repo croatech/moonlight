@@ -20,6 +20,17 @@ GIT
       tilt (~> 2.0)
 
 GIT
+  remote: https://github.com/plataformatec/devise
+  revision: 517010e2c543920c43378e527ddb62e1bc6eb490
+  specs:
+    devise (4.5.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 6.0)
+      responders
+      warden (~> 1.2.3)
+
+GIT
   remote: https://github.com/rails/activemodel-serializers-xml
   revision: 356edf4dfc38fb1fbfee90c87856e4fe5b73c5e1
   specs:
@@ -84,12 +95,12 @@ GEM
     autoprefixer-rails (7.1.5)
       execjs
     awesome_print (1.8.0)
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     better_errors (2.3.0)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
-    binding_of_caller (0.7.2)
+    binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -124,12 +135,6 @@ GEM
     crass (1.0.4)
     database_cleaner (1.6.1)
     debug_inspector (0.0.3)
-    devise (4.3.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.2)
-      responders
-      warden (~> 1.2.3)
     diff-lcs (1.3)
     directed_graph (0.6.1)
       pry
@@ -374,7 +379,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   database_cleaner
-  devise
+  devise!
   directed_graph
   draper (~> 3.0.0)
   dry-transaction

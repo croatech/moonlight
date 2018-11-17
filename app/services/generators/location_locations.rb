@@ -1,6 +1,5 @@
-module Seeds::LocationLocationsImport
+module Generators::LocationLocations
   def self.call
-    # Seed near cells of each cell
     Location.cells.active.find_each do |location|
       near_location_ids = []
       near_location_ids << location.id - 9

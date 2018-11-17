@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "armor_slot"
     t.integer "mail_slot"
     t.integer "gloves_slot"
-    t.integer "foots_slot"
+    t.integer "shoes_slot"
     t.integer "bracers_slot"
     t.integer "belt_slot"
     t.integer "weapon_slot"

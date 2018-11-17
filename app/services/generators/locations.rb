@@ -1,4 +1,4 @@
-module Seeds::LocationsImport
+module Generators::Locations
   def self.call
     # Main locations
     Location.create!(name: 'Moon Light', slug: 'moon_light')

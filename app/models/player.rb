@@ -61,7 +61,7 @@ class Player < ApplicationRecord
   scope :online, -> { where('updated_at > ?', 5.minutes.ago).order(:name) }
 
   STATS = %w[attack defense hp]
-  EQUIPMENT_SLOTS = %w[helmet armor mail gloves bracers foots belt weapon shield ring necklace cloak pants]
+  EQUIPMENT_SLOTS = %w[helmet armor mail gloves bracers shoes belt weapon shield ring necklace cloak pants]
   TOOL_SLOTS = %w[lumberjacking fishing]
 
   INITIAL_HP = 20
