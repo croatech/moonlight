@@ -12,8 +12,6 @@ module Generators::Equipment::Items::Artifacts
       seed_demon_warrior_set
     end
 
-    private
-
     def seed_sapphire_set
       Equipment::Item.create!(
         [
