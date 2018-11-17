@@ -17,8 +17,6 @@ module Generators::Equipment::Items::Normal
       seed_croaton_set
     end
 
-    private
-
     def seed_helmets
       Equipment::Item.create!(
         [
