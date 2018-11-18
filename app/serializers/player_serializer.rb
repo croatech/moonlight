@@ -65,7 +65,7 @@ class PlayerSerializer < ActiveModel::Serializer
   has_many :resources
   has_many :events
 
-  belongs_to :avatar
+  belongs_to :avatar, serializer: AvatarSerializer
   belongs_to :location
 
   def username

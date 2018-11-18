@@ -28,8 +28,9 @@ GIT
       activesupport (> 5.x)
       builder (~> 3.1)
 
-PATH
-  remote: /Users/vitaliy/Projects/ruby/knock
+GIT
+  remote: https://github.com/vitaliy-cro/knock
+  revision: b0a9a955d4b96d0d3b63fe8164b73f515d0435d0
   specs:
     knock (2.1.1)
       bcrypt (~> 3.1)
@@ -313,6 +314,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    settingslogic (2.0.9)
     sexp_processor (4.10.0)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
@@ -395,6 +397,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  settingslogic
   shoulda-matchers
   sidekiq
   sidekiq-unique-jobs

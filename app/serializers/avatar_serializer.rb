@@ -10,5 +10,9 @@
 #
 
 class AvatarSerializer < ActiveModel::Serializer
-  attributes :image
+  attributes :url
+
+  def url
+    "#{Settings.host}#{object.url}"
+  end
 end
