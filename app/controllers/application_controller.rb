@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
+  include Knock::Authenticable
+
   protect_from_forgery
 
-  skip_before_action :verify_authenticity_token
-
   #before_action :check_for_an_active_fight
-  before_action :online_players
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   include CustomErrors
 
@@ -28,10 +26,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def online_players
-    @online_players = Player.online
-  end
-
   def add_event_to_log(event)
     Events::AddService.new(current_user.player, event).call
   end
@@ -42,10 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password])
-  end
 
   def after_sign_in_path_for(resource)
     wayward_pines_locations_path

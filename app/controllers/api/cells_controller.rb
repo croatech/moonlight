@@ -1,5 +1,5 @@
 class Api::CellsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
 
   def move
     location = Location.find(params[:cell_id])

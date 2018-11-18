@@ -1,5 +1,5 @@
 class Api::Stuff::ItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
   before_action :check_for_non_resource, except: :sell
 
   def buy

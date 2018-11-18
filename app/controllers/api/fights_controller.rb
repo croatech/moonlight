@@ -1,5 +1,5 @@
 class Api::FightsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
 
   def show
     render json: { fight: FightSerializer.new(current_player.last_fight), points: Fight::POINTS }

@@ -5,20 +5,8 @@ Rails.application.routes.draw do
 
   root 'locations#wayward_pines'
 
-  devise_for :users, :controllers => {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
-
   # API
   namespace :api do
-    resources :players, only: [:index, :show] do
-      collection do
-        get :current
-        get :online
-      end
-    end
-
     namespace :player do
       resources :stats, only: :index do
         patch :increase
@@ -35,16 +23,29 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :messages, only: [:index, :create]
     resource :fight, only: [:show, :update]
+
+    resources :users, only: :create do
+      post :auth, on: :collection
+    end
+
+    resources :players, only: [:index, :show] do
+      collection do
+        get :current
+        get :online
+      end
+    end
+
     resources :locations, except: :all do
       collection do
         get :wayward_pines
       end
     end
+
     resources :cells, except: :all do
       post :move
     end
-    resources :messages, only: [:index, :create]
   end
 
   # Backend

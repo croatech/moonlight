@@ -47,6 +47,7 @@ class PlayerSerializer < ActiveModel::Serializer
              :attack,
              :defense,
              :name,
+             :username,
              :current_hp,
              :level,
              :exp,
@@ -66,6 +67,10 @@ class PlayerSerializer < ActiveModel::Serializer
 
   belongs_to :avatar
   belongs_to :location
+
+  def username
+    object.user.username
+  end
 
   def put_on_equipment_items
     object.wearable_equipment.includes(:category)

@@ -13,3 +13,5 @@ end
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+worker_timeout 3600

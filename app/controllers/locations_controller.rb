@@ -1,6 +1,5 @@
 class LocationsController < ApplicationController
-
-  before_action :authenticate_user!
+  before_action :authenticate_user
   before_action :go_to_city_if_outside, except: :wayward_pines
 
   layout 'moon_light'
