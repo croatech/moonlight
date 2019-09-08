@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'puma', '~> 3.0'
@@ -25,6 +25,7 @@ gem 'font-awesome-rails'
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'redis-rails'
+gem 'redis-namespace'
 gem 'figaro'
 gem 'sinatra', github: 'sinatra/sinatra', require: false
 gem 'webpacker', github: 'rails/webpacker'
@@ -34,6 +35,7 @@ gem 'dry-transaction'
 gem 'annotate', require: false
 gem 'interactor'
 gem 'directed_graph'
+gem 'settingslogic'
 
 group :development, :test do
   gem 'byebug'

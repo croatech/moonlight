@@ -2,7 +2,7 @@ app:
   build: .
   command: bundle exec puma -C config/puma.rb
   volumes:
-    - /var/www/muninn
+    - /var/www/moonlight
   expose:
     - "3000"
   links:
@@ -33,12 +33,12 @@ postgres:
 
 sidekiq:
   build: .
-  command: bundle exec sidekiq -q critical,2 -q default
+  command: bundle exec sidekiq --environment development -C config/sidekiq.yml -q critical,2 -q default
   links:
     - postgres
     - redis
   volumes:
-    - .:/sp
+    - .:/moonlight
 
 postgres-data:
   image: busybox
