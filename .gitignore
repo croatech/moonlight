@@ -24,10 +24,8 @@
 /node_modules
 /.byebug_history
 app/assets/
-
-/public/packs
-/public/packs-test
 /node_modules
+
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
