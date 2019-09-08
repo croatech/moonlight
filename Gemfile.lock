@@ -39,6 +39,15 @@ GIT
       activesupport (>= 5.0.0.a)
       builder (~> 3.1)
 
+GIT
+  remote: https://github.com/vitaliy-cro/knock
+  revision: b0a9a955d4b96d0d3b63fe8164b73f515d0435d0
+  specs:
+    knock (2.1.1)
+      bcrypt (~> 3.1)
+      jwt (~> 1.5)
+      rails (>= 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -216,6 +225,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     jsonapi-renderer (0.2.2)
+    jwt (1.5.6)
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -410,6 +420,7 @@ DEPENDENCIES
   interactor
   jbuilder (~> 2.0)
   jquery-rails
+  knock!
   magnific-popup-rails (~> 1.1.0)
   pg
   puma (~> 3.0)

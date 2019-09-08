@@ -36,6 +36,7 @@ gem 'annotate', require: false
 gem 'interactor'
 gem 'directed_graph'
 gem 'settingslogic'
+gem 'knock', git: 'https://github.com/vitaliy-cro/knock'
 
 group :development, :test do
   gem 'byebug'
