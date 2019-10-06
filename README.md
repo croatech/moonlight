@@ -1,6 +1,7 @@
 ### Install
-#### ENVS
-`bundle exec figaro install`
+`npm install yarn`
+
+`yarn install`
 
 `rake db:setup`
 

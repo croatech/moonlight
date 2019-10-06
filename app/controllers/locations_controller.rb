@@ -30,7 +30,7 @@ class LocationsController < ApplicationController
 
   def go_to_city_if_outside
     return if current_location.name == Location::START_LOCATION_NAME || current_location.in_city?
-    Cells::ChangeCellService.call(player: current_player, location: Location.find_by(name: 'Shady Walk'))
+    Cells::ChangeCellService.call(player: current_player, location: Location.find_by(name: Location::START_LOCATION_NAME))
     redirect_back(fallback_location: 'locations/wayward_pines')
   end
 end
