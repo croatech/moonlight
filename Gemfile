@@ -26,7 +26,6 @@ gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-se
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'redis-rails'
 gem 'redis-namespace'
-gem 'figaro'
 gem 'sinatra', github: 'sinatra/sinatra', require: false
 gem 'webpacker', github: 'rails/webpacker'
 gem 'foreman'

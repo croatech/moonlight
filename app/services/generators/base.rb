@@ -3,7 +3,7 @@ module Generators::Base
     def call
       generators.each_with_index do |generator, index|
         puts "Importing resources: #{index + 1}/#{generators.length}"
-        generator.send(:call)
+        generator.call
       end
     end
 

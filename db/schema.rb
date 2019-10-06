@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 201709232242333) do
 
   create_table "players", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "location_id"
+    t.integer "location_id", null: false
     t.integer "helmet_slot"
     t.integer "armor_slot"
     t.integer "mail_slot"
@@ -148,25 +148,25 @@ ActiveRecord::Schema.define(version: 201709232242333) do
     t.integer "necklace_slot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "gold", default: 0
-    t.integer "attack", default: 1
-    t.integer "defense", default: 1
-    t.integer "hp", default: 20
-    t.integer "level", default: 1
-    t.integer "exp", default: 0
-    t.integer "exp_next", default: 100
+    t.integer "user_id", null: false
+    t.integer "gold", default: 0, null: false
+    t.integer "attack", default: 1, null: false
+    t.integer "defense", default: 1, null: false
+    t.integer "hp", default: 20, null: false
+    t.integer "level", default: 1, null: false
+    t.integer "exp", default: 0, null: false
+    t.integer "exp_next", default: 100, null: false
     t.string "equipment", default: [], array: true
-    t.integer "free_stats", default: 10
-    t.integer "lumberjacking_skill", default: 0
-    t.integer "fishing_skill", default: 0
+    t.integer "free_stats", default: 10, null: false
+    t.integer "lumberjacking_skill", default: 0, null: false
+    t.integer "fishing_skill", default: 0, null: false
     t.string "tools", default: [], array: true
     t.integer "lumberjacking_slot"
     t.integer "fishing_slot"
     t.integer "cloak_slot"
     t.integer "pants_slot"
-    t.integer "current_hp"
-    t.integer "avatar_id"
+    t.integer "current_hp", null: false
+    t.integer "avatar_id", null: false
     t.index ["location_id"], name: "index_players_on_location_id"
     t.index ["user_id"], name: "index_players_on_user_id"
   end
