@@ -20,17 +20,6 @@ GIT
       tilt (~> 2.0)
 
 GIT
-  remote: https://github.com/plataformatec/devise
-  revision: 098345aace53d4ddf88e04f1eb2680e2676e8c28
-  specs:
-    devise (4.7.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-
-GIT
   remote: https://github.com/rails/activemodel-serializers-xml
   revision: 93689638c28525acc65afb638fce866826532641
   specs:
@@ -99,7 +88,7 @@ GEM
     autoprefixer-rails (9.6.1.1)
       execjs
     awesome_print (1.8.0)
-    bcrypt (3.1.13)
+    bcrypt (3.1.16)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -136,10 +125,16 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
-    connection_pool (2.2.2)
+    connection_pool (2.2.5)
     crass (1.0.4)
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
+    devise (4.8.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.3)
     directed_graph (0.6.1)
       pry
@@ -244,7 +239,7 @@ GEM
     public_suffix (4.0.1)
     puma (5.5.1)
       nio4r (~> 2.0)
-    rack (2.0.7)
+    rack (2.2.3)
     rack-cors (1.0.3)
     rack-mini-profiler (1.0.2)
       rack (>= 1.2.0)
@@ -281,7 +276,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rdoc (4.3.0)
-    redis (4.1.2)
+    redis (4.5.1)
     redis-actionpack (5.1.0)
       actionpack (>= 4.0, < 7)
       redis-rack (>= 1, < 3)
@@ -303,7 +298,7 @@ GEM
     regexp_parser (1.6.0)
     request_store (1.4.1)
       rack (>= 1.4)
-    responders (3.0.0)
+    responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     rspec-core (3.8.2)
@@ -343,11 +338,10 @@ GEM
     sexp_processor (4.12.1)
     shoulda-matchers (4.1.2)
       activesupport (>= 4.2.0)
-    sidekiq (6.0.0)
+    sidekiq (6.2.2)
       connection_pool (>= 2.2.2)
-      rack (>= 2.0.0)
-      rack-protection (>= 2.0.0)
-      redis (>= 4.1.0)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     sidekiq-unique-jobs (6.0.13)
       concurrent-ruby (~> 1.0, >= 1.0.5)
       sidekiq (>= 4.0, < 7.0)
@@ -369,8 +363,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    warden (1.2.8)
-      rack (>= 2.0.6)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -399,7 +393,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   database_cleaner
-  devise!
+  devise
   directed_graph
   draper (~> 3.0.0)
   dry-transaction
