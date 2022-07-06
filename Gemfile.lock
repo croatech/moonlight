@@ -1,36 +1,4 @@
 GIT
-  remote: git://github.com/rails/webpacker.git
-  revision: d0fa1d1351bfc5bb53e76b94ce6f33cf2175a879
-  specs:
-    webpacker (4.0.7)
-      activesupport (>= 4.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
-
-GIT
-  remote: git://github.com/sinatra/sinatra.git
-  revision: 722353ee7c02981050ff2658677e8a51a6ddab30
-  specs:
-    rack-protection (2.0.7)
-      rack
-    sinatra (2.0.7)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.7)
-      tilt (~> 2.0)
-
-GIT
-  remote: https://github.com/plataformatec/devise
-  revision: 098345aace53d4ddf88e04f1eb2680e2676e8c28
-  specs:
-    devise (4.7.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-
-GIT
   remote: https://github.com/rails/activemodel-serializers-xml
   revision: 93689638c28525acc65afb638fce866826532641
   specs:
@@ -38,6 +6,28 @@ GIT
       activemodel (>= 5.0.0.a)
       activesupport (>= 5.0.0.a)
       builder (~> 3.1)
+
+GIT
+  remote: https://github.com/rails/webpacker.git
+  revision: 6b7aa2b464c5cb67784dbb6b4b9893a6bfe03b8a
+  specs:
+    webpacker (6.0.0.rc.6)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
+
+GIT
+  remote: https://github.com/sinatra/sinatra.git
+  revision: 118b429d95145174260cd4c564e1bd5d05434e59
+  specs:
+    rack-protection (3.0.0)
+      rack
+    sinatra (3.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 3.0.0)
+      tilt (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -99,7 +89,7 @@ GEM
     autoprefixer-rails (9.6.1.1)
       execjs
     awesome_print (1.8.0)
-    bcrypt (3.1.13)
+    bcrypt (3.1.18)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -111,7 +101,7 @@ GEM
       sass (>= 3.3.4)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
-    builder (3.2.3)
+    builder (3.2.4)
     byebug (11.0.1)
     capybara (3.29.0)
       addressable
@@ -135,11 +125,17 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.10)
     connection_pool (2.2.2)
-    crass (1.0.4)
+    crass (1.0.6)
     database_cleaner (1.7.0)
     debug_inspector (0.0.3)
+    devise (4.8.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.3)
     directed_graph (0.6.1)
       pry
@@ -174,7 +170,7 @@ GEM
       dry-events (>= 0.1.0)
       dry-matcher (>= 0.7.0)
       dry-monads (>= 0.4.0)
-    erubi (1.8.0)
+    erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.9.0)
@@ -203,7 +199,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (1.6.0)
+    i18n (1.10.0)
       concurrent-ruby (~> 1.0)
     interactor (3.1.1)
     jbuilder (2.9.1)
@@ -214,7 +210,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     jsonapi-renderer (0.2.2)
-    loofah (2.2.3)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     magnific-popup-rails (1.1.0)
@@ -230,12 +226,14 @@ GEM
       nokogiri (~> 1)
       rake
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
-    minitest (5.11.3)
-    mustermann (1.0.3)
+    mini_portile2 (2.8.0)
+    minitest (5.16.2)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
     nio4r (2.5.1)
-    nokogiri (1.10.4)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.13.6)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.1.4)
     pry (0.12.2)
@@ -244,14 +242,15 @@ GEM
     public_suffix (4.0.1)
     puma (5.5.1)
       nio4r (~> 2.0)
-    rack (2.0.7)
+    racc (1.6.0)
+    rack (2.2.4)
     rack-cors (1.0.3)
     rack-mini-profiler (1.0.2)
       rack (>= 1.2.0)
-    rack-proxy (0.6.5)
+    rack-proxy (0.7.2)
       rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
+    rack-test (2.0.2)
+      rack (>= 1.3)
     rails (5.2.3)
       actioncable (= 5.2.3)
       actionmailer (= 5.2.3)
@@ -268,8 +267,8 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.2.0)
-      loofah (~> 2.2, >= 2.2.2)
+    rails-html-sanitizer (1.4.3)
+      loofah (~> 2.3)
     railties (5.2.3)
       actionpack (= 5.2.3)
       activesupport (= 5.2.3)
@@ -281,29 +280,29 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rdoc (4.3.0)
-    redis (4.1.2)
-    redis-actionpack (5.1.0)
-      actionpack (>= 4.0, < 7)
-      redis-rack (>= 1, < 3)
+    redis (4.7.1)
+    redis-actionpack (5.3.0)
+      actionpack (>= 5, < 8)
+      redis-rack (>= 2.1.0, < 3)
       redis-store (>= 1.1.0, < 2)
     redis-activesupport (5.2.0)
       activesupport (>= 3, < 7)
       redis-store (>= 1.3, < 2)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
-    redis-rack (2.0.5)
-      rack (>= 1.5, < 3)
+    redis-rack (2.1.4)
+      rack (>= 2.0.8, < 3)
       redis-store (>= 1.2, < 2)
     redis-rails (5.0.2)
       redis-actionpack (>= 5.0, < 6)
       redis-activesupport (>= 5.0, < 6)
       redis-store (>= 1.2, < 2)
-    redis-store (1.6.0)
-      redis (>= 2.2, < 5)
+    redis-store (1.9.1)
+      redis (>= 4, < 5)
     regexp_parser (1.6.0)
-    request_store (1.4.1)
+    request_store (1.5.1)
       rack (>= 1.4)
-    responders (3.0.0)
+    responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     rspec-core (3.8.2)
@@ -323,6 +322,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
+    ruby2_keywords (0.0.5)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
     sass (3.7.4)
@@ -339,6 +339,7 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    semantic_range (3.0.0)
     settingslogic (2.0.9)
     sexp_processor (4.12.1)
     shoulda-matchers (4.1.2)
@@ -365,12 +366,12 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    tzinfo (1.2.5)
+    tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
-    warden (1.2.8)
-      rack (>= 2.0.6)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -399,7 +400,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   database_cleaner
-  devise!
+  devise
   directed_graph
   draper (~> 3.0.0)
   dry-transaction
